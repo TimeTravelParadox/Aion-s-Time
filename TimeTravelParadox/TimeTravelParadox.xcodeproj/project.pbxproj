@@ -17,6 +17,7 @@
 		379B54682A60FA8F00F10217 /* futureST.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 379B54672A60FA8F00F10217 /* futureST.mp3 */; };
 		379B546A2A60FAA600F10217 /* QGST.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 379B54692A60FAA600F10217 /* QGST.mp3 */; };
 		379B546C2A60FAB200F10217 /* pastST.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 379B546B2A60FAB200F10217 /* pastST.mp3 */; };
+		379B54722A61104600F10217 /* TypeMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B54712A61104600F10217 /* TypeMachine.swift */; };
 		9B82F4CE2A5C6EB200BC66F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82F4CD2A5C6EB200BC66F2 /* AppDelegate.swift */; };
 		9B82F4D02A5C6EB200BC66F2 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B82F4CF2A5C6EB200BC66F2 /* GameScene.sks */; };
 		9B82F4D22A5C6EB200BC66F2 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B82F4D12A5C6EB200BC66F2 /* Actions.sks */; };
@@ -41,6 +42,7 @@
 		379B54672A60FA8F00F10217 /* futureST.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = futureST.mp3; sourceTree = "<group>"; };
 		379B54692A60FAA600F10217 /* QGST.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = QGST.mp3; sourceTree = "<group>"; };
 		379B546B2A60FAB200F10217 /* pastST.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pastST.mp3; sourceTree = "<group>"; };
+		379B54712A61104600F10217 /* TypeMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeMachine.swift; sourceTree = "<group>"; };
 		9B82F4CA2A5C6EB200BC66F2 /* TimeTravelParadox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTravelParadox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B82F4CD2A5C6EB200BC66F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B82F4CF2A5C6EB200BC66F2 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				C55C133A2A5C792E00334DD8 /* Past.swift */,
 				379B545F2A60F42D00F10217 /* PastScene.sks */,
 				379B54652A60F8DF00F10217 /* Clock.swift */,
+				379B54712A61104600F10217 /* TypeMachine.swift */,
 			);
 			path = Past;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				9B82F4D42A5C6EB200BC66F2 /* GameScene.swift in Sources */,
 				9B82F4D62A5C6EB200BC66F2 /* GameViewController.swift in Sources */,
 				C55C13392A5C792300334DD8 /* Future.swift in Sources */,
+				379B54722A61104600F10217 /* TypeMachine.swift in Sources */,
 				379B54662A60F8DF00F10217 /* Clock.swift in Sources */,
 				379B54642A60F79200F10217 /* Manager.swift in Sources */,
 				C55C133B2A5C792E00334DD8 /* Past.swift in Sources */,

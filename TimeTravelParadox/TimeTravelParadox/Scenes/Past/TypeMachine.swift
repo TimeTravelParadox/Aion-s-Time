@@ -1,6 +1,6 @@
 import SpriteKit
 
-class Clock: SKNode{
+class TypeMachine: SKNode{
     let past = SKScene(fileNamed: "PastScene")
     
     
@@ -72,7 +72,6 @@ class Clock: SKNode{
             if minuteRotate == 30  && hourRotate == 60{
                 minuteRotate -= 30
                 hourRotate -= 60
-                clock?.isPaused = false
                 clock?.run(clockOpening)
                 scene?.run(SKAction.wait(forDuration: 0.6)){
                     self.minuteHand?.isHidden = true
@@ -85,7 +84,6 @@ class Clock: SKNode{
             if minuteRotate == 30  && hourRotate == 60{
                 minuteRotate -= 30
                 hourRotate -= 60
-                clock?.isPaused = false
                 clock?.run(clockOpening)
                 scene?.run(SKAction.wait(forDuration: 0.6)){
                     self.minuteHand?.isHidden = true

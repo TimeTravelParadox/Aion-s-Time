@@ -7,7 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		377D8C412A5C71EC008C6355 /* passadoTrilha.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 377D8C402A5C71EC008C6355 /* passadoTrilha.mp3 */; };
+		379B545A2A60F40A00F10217 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B54592A60F40A00F10217 /* HUD.swift */; };
+		379B545C2A60F41500F10217 /* HUDScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 379B545B2A60F41500F10217 /* HUDScene.sks */; };
+		379B545E2A60F42500F10217 /* QGScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 379B545D2A60F42500F10217 /* QGScene.sks */; };
+		379B54602A60F42D00F10217 /* PastScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 379B545F2A60F42D00F10217 /* PastScene.sks */; };
+		379B54622A60F43B00F10217 /* FutureScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 379B54612A60F43B00F10217 /* FutureScene.sks */; };
+		379B54642A60F79200F10217 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B54632A60F79200F10217 /* Manager.swift */; };
+		379B54662A60F8DF00F10217 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B54652A60F8DF00F10217 /* Clock.swift */; };
+		379B54682A60FA8F00F10217 /* futureST.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 379B54672A60FA8F00F10217 /* futureST.mp3 */; };
+		379B546A2A60FAA600F10217 /* QGST.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 379B54692A60FAA600F10217 /* QGST.mp3 */; };
+		379B546C2A60FAB200F10217 /* pastST.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 379B546B2A60FAB200F10217 /* pastST.mp3 */; };
 		9B82F4CE2A5C6EB200BC66F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82F4CD2A5C6EB200BC66F2 /* AppDelegate.swift */; };
 		9B82F4D02A5C6EB200BC66F2 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B82F4CF2A5C6EB200BC66F2 /* GameScene.sks */; };
 		9B82F4D22A5C6EB200BC66F2 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B82F4D12A5C6EB200BC66F2 /* Actions.sks */; };
@@ -19,13 +28,19 @@
 		C55C13392A5C792300334DD8 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55C13382A5C792300334DD8 /* Future.swift */; };
 		C55C133B2A5C792E00334DD8 /* Past.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55C133A2A5C792E00334DD8 /* Past.swift */; };
 		C55C133D2A5C795B00334DD8 /* QG.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55C133C2A5C795B00334DD8 /* QG.swift */; };
-		C55C133F2A5C796F00334DD8 /* Future.sks in Resources */ = {isa = PBXBuildFile; fileRef = C55C133E2A5C796F00334DD8 /* Future.sks */; };
-		C55C13412A5C797E00334DD8 /* Past.sks in Resources */ = {isa = PBXBuildFile; fileRef = C55C13402A5C797E00334DD8 /* Past.sks */; };
-		C55C13432A5C79F600334DD8 /* QG.sks in Resources */ = {isa = PBXBuildFile; fileRef = C55C13422A5C79F600334DD8 /* QG.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		377D8C402A5C71EC008C6355 /* passadoTrilha.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = passadoTrilha.mp3; sourceTree = "<group>"; };
+		379B54592A60F40A00F10217 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
+		379B545B2A60F41500F10217 /* HUDScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HUDScene.sks; sourceTree = "<group>"; };
+		379B545D2A60F42500F10217 /* QGScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = QGScene.sks; sourceTree = "<group>"; };
+		379B545F2A60F42D00F10217 /* PastScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PastScene.sks; sourceTree = "<group>"; };
+		379B54612A60F43B00F10217 /* FutureScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FutureScene.sks; sourceTree = "<group>"; };
+		379B54632A60F79200F10217 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		379B54652A60F8DF00F10217 /* Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
+		379B54672A60FA8F00F10217 /* futureST.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = futureST.mp3; sourceTree = "<group>"; };
+		379B54692A60FAA600F10217 /* QGST.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = QGST.mp3; sourceTree = "<group>"; };
+		379B546B2A60FAB200F10217 /* pastST.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pastST.mp3; sourceTree = "<group>"; };
 		9B82F4CA2A5C6EB200BC66F2 /* TimeTravelParadox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTravelParadox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B82F4CD2A5C6EB200BC66F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B82F4CF2A5C6EB200BC66F2 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -38,9 +53,6 @@
 		C55C13382A5C792300334DD8 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		C55C133A2A5C792E00334DD8 /* Past.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Past.swift; sourceTree = "<group>"; };
 		C55C133C2A5C795B00334DD8 /* QG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QG.swift; sourceTree = "<group>"; };
-		C55C133E2A5C796F00334DD8 /* Future.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Future.sks; sourceTree = "<group>"; };
-		C55C13402A5C797E00334DD8 /* Past.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Past.sks; sourceTree = "<group>"; };
-		C55C13422A5C79F600334DD8 /* QG.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = QG.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +69,6 @@
 		377D8C3A2A5C7180008C6355 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				377D8C3D2A5C7198008C6355 /* Font */,
 				377D8C3C2A5C7192008C6355 /* Sound */,
 				377D8C3B2A5C7187008C6355 /* Graphic */,
 			);
@@ -75,16 +86,11 @@
 		377D8C3C2A5C7192008C6355 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
-				377D8C402A5C71EC008C6355 /* passadoTrilha.mp3 */,
+				379B546B2A60FAB200F10217 /* pastST.mp3 */,
+				379B54692A60FAA600F10217 /* QGST.mp3 */,
+				379B54672A60FA8F00F10217 /* futureST.mp3 */,
 			);
 			path = Sound;
-			sourceTree = "<group>";
-		};
-		377D8C3D2A5C7198008C6355 /* Font */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Font;
 			sourceTree = "<group>";
 		};
 		377D8C3E2A5C71A0008C6355 /* LaunchScene */ = {
@@ -98,12 +104,51 @@
 		377D8C3F2A5C71C5008C6355 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				C55C13462A5C80C000334DD8 /* Tilemaps */,
-				9B82F4D12A5C6EB200BC66F2 /* Actions.sks */,
+				379B54582A60F40300F10217 /* HUD */,
+				379B54572A60F3F300F10217 /* QG */,
+				379B54562A60F3E600F10217 /* Past */,
+				379B54552A60F3D900F10217 /* Future */,
 				C55C13442A5C806300334DD8 /* GameScenes */,
 				377D8C3E2A5C71A0008C6355 /* LaunchScene */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		379B54552A60F3D900F10217 /* Future */ = {
+			isa = PBXGroup;
+			children = (
+				C55C13382A5C792300334DD8 /* Future.swift */,
+				379B54612A60F43B00F10217 /* FutureScene.sks */,
+			);
+			path = Future;
+			sourceTree = "<group>";
+		};
+		379B54562A60F3E600F10217 /* Past */ = {
+			isa = PBXGroup;
+			children = (
+				C55C133A2A5C792E00334DD8 /* Past.swift */,
+				379B545F2A60F42D00F10217 /* PastScene.sks */,
+				379B54652A60F8DF00F10217 /* Clock.swift */,
+			);
+			path = Past;
+			sourceTree = "<group>";
+		};
+		379B54572A60F3F300F10217 /* QG */ = {
+			isa = PBXGroup;
+			children = (
+				C55C133C2A5C795B00334DD8 /* QG.swift */,
+				379B545D2A60F42500F10217 /* QGScene.sks */,
+			);
+			path = QG;
+			sourceTree = "<group>";
+		};
+		379B54582A60F40300F10217 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				379B54592A60F40A00F10217 /* HUD.swift */,
+				379B545B2A60F41500F10217 /* HUDScene.sks */,
+			);
+			path = HUD;
 			sourceTree = "<group>";
 		};
 		9B82F4C12A5C6EB200BC66F2 = {
@@ -137,23 +182,12 @@
 		C55C13442A5C806300334DD8 /* GameScenes */ = {
 			isa = PBXGroup;
 			children = (
+				9B82F4D12A5C6EB200BC66F2 /* Actions.sks */,
+				9B82F4CF2A5C6EB200BC66F2 /* GameScene.sks */,
 				9B82F4D32A5C6EB200BC66F2 /* GameScene.swift */,
-				C55C13382A5C792300334DD8 /* Future.swift */,
-				C55C133A2A5C792E00334DD8 /* Past.swift */,
-				C55C133C2A5C795B00334DD8 /* QG.swift */,
+				379B54632A60F79200F10217 /* Manager.swift */,
 			);
 			path = GameScenes;
-			sourceTree = "<group>";
-		};
-		C55C13462A5C80C000334DD8 /* Tilemaps */ = {
-			isa = PBXGroup;
-			children = (
-				9B82F4CF2A5C6EB200BC66F2 /* GameScene.sks */,
-				C55C133E2A5C796F00334DD8 /* Future.sks */,
-				C55C13402A5C797E00334DD8 /* Past.sks */,
-				C55C13422A5C79F600334DD8 /* QG.sks */,
-			);
-			path = Tilemaps;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,15 +248,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				379B54622A60F43B00F10217 /* FutureScene.sks in Resources */,
 				9B82F4D92A5C6EB200BC66F2 /* Main.storyboard in Resources */,
 				9B82F4D02A5C6EB200BC66F2 /* GameScene.sks in Resources */,
-				C55C13432A5C79F600334DD8 /* QG.sks in Resources */,
-				377D8C412A5C71EC008C6355 /* passadoTrilha.mp3 in Resources */,
+				379B54602A60F42D00F10217 /* PastScene.sks in Resources */,
 				9B82F4DB2A5C6EB400BC66F2 /* Assets.xcassets in Resources */,
+				379B546A2A60FAA600F10217 /* QGST.mp3 in Resources */,
+				379B545E2A60F42500F10217 /* QGScene.sks in Resources */,
 				9B82F4DE2A5C6EB400BC66F2 /* LaunchScreen.storyboard in Resources */,
+				379B546C2A60FAB200F10217 /* pastST.mp3 in Resources */,
+				379B545C2A60F41500F10217 /* HUDScene.sks in Resources */,
 				9B82F4D22A5C6EB200BC66F2 /* Actions.sks in Resources */,
-				C55C133F2A5C796F00334DD8 /* Future.sks in Resources */,
-				C55C13412A5C797E00334DD8 /* Past.sks in Resources */,
+				379B54682A60FA8F00F10217 /* futureST.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,7 +273,10 @@
 				9B82F4D42A5C6EB200BC66F2 /* GameScene.swift in Sources */,
 				9B82F4D62A5C6EB200BC66F2 /* GameViewController.swift in Sources */,
 				C55C13392A5C792300334DD8 /* Future.swift in Sources */,
+				379B54662A60F8DF00F10217 /* Clock.swift in Sources */,
+				379B54642A60F79200F10217 /* Manager.swift in Sources */,
 				C55C133B2A5C792E00334DD8 /* Past.swift in Sources */,
+				379B545A2A60F40A00F10217 /* HUD.swift in Sources */,
 				9B82F4CE2A5C6EB200BC66F2 /* AppDelegate.swift in Sources */,
 				C55C133D2A5C795B00334DD8 /* QG.swift in Sources */,
 			);

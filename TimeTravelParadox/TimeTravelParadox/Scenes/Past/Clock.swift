@@ -3,6 +3,8 @@ import SpriteKit
 class Clock: SKNode{
     let past = SKScene(fileNamed: "PastScene")
     
+     var delegate: ZoomProtocol?
+
     
     private var clock: SKSpriteNode?
     private var hourHand: SKSpriteNode?
@@ -34,7 +36,8 @@ class Clock: SKNode{
         }
     }
     
-    override init(){
+    init(delegate: ZoomProtocol){
+        self.delegate = delegate
         super.init()
         self.zPosition = 1
         if let past {
@@ -55,6 +58,7 @@ class Clock: SKNode{
     }
     
     required init?(coder aDecoder: NSCoder) {
+        
         super.init(coder: aDecoder)
     }
     
@@ -66,6 +70,7 @@ class Clock: SKNode{
         
         switch tapped.name {
         case "clock":
+            delegate?.zoom(isZoom: true, node: clock, ratio: 0.5)
             return
         case "hourHand":
             spin(hand: hourHand, degree: 30)

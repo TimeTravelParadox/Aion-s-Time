@@ -2,9 +2,12 @@ import SpriteKit
 
 
 class Past: SKNode{
-    let clock = Clock()
+    
+    var clock: Clock?
      private let past = SKScene(fileNamed: "PastScene")
      private var pastBG: SKSpriteNode?
+    
+    
 
     var minuteRotate: CGFloat = 0 // variável para saber o grau dos minutos
     var hourRotate: CGFloat = 0 // variável para saber o grau das horas
@@ -14,23 +17,29 @@ class Past: SKNode{
     func spin() {
         pastBG?.run(SKAction.rotate(byAngle: -.pi/6, duration: 0.2))
     }
+    
 
-    override init(){
+
+    init(delegate: ZoomProtocol){
+        self.clock = Clock(delegate: delegate)
         super.init()
         self.zPosition = 1
-        if let past {
+        if let past, let clock {
             pastBG = (past.childNode(withName: "pastBG") as? SKSpriteNode)
             pastBG?.removeFromParent()
                         
             self.isUserInteractionEnabled = true
+            
+            if let pastBG{
+                self.addChild(pastBG)
+            }
+            self.isPaused = false
+            self.addChild(clock)
+            clock.delegate = delegate
+            
+            self.removeAction(forKey: "futureST")
         }
-        if let pastBG{
-            self.addChild(pastBG)
-        }
-        self.isPaused = false
-        self.addChild(clock)
-        
-        self.removeAction(forKey: "futureST")
+
         
     }
     
@@ -46,6 +55,7 @@ class Past: SKNode{
         
         switch tapped.name {
         case "pastBG":
+            
             print("plano de fundo")
         default:
             return

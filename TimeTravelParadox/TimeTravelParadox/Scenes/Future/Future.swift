@@ -6,6 +6,12 @@ class Future: SKNode{
     
     let futureST = SKAction.repeatForever(SKAction.playSoundFileNamed("futureST.mp3", waitForCompletion: true))
 
+    let futureCam = SKCameraNode()
+    
+    func zoom(node: SKSpriteNode?){
+        futureCam.position = node?.position ?? futureCam.position
+        futureCam.run(SKAction.scale(to: 0.5, duration: 0))
+    }
     
     override init(){
         super.init()
@@ -19,6 +25,7 @@ class Future: SKNode{
         if let futureBG{
             self.addChild(futureBG)
         }
+        addChild(futureCam)
         
     }
     

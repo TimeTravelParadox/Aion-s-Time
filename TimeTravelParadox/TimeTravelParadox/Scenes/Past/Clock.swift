@@ -11,7 +11,8 @@ class Clock: SKNode{
     var minuteRotate: CGFloat = 0 // variável para saber o grau dos minutos
     var hourRotate: CGFloat = 0 // variável para saber o grau das horas
 
-    let pastCam = SKCameraNode()
+    
+    let clockOpening =  SKAction.animate(with: [SKTexture(imageNamed: "clock1"), SKTexture(imageNamed: "clock2"), SKTexture(imageNamed: "clock3"), SKTexture(imageNamed: "clock4"), SKTexture(imageNamed: "clock5")], timePerFrame: 0.4)
     
     func spin(hand: SKSpriteNode?, degree: CGFloat) {
         hand?.isPaused = false
@@ -68,8 +69,27 @@ class Clock: SKNode{
             return
         case "hourHand":
             spin(hand: hourHand, degree: 30)
+            if minuteRotate == 30  && hourRotate == 60{
+                minuteRotate -= 30
+                hourRotate -= 60
+                clock?.run(clockOpening)
+                scene?.run(SKAction.wait(forDuration: 0.6)){
+                    self.minuteHand?.isHidden = true
+                    self.hourHand?.isHidden = true
+                }
+
+            }
         case "minuteHand":
             spin(hand: minuteHand, degree: 15)
+            if minuteRotate == 30  && hourRotate == 60{
+                minuteRotate -= 30
+                hourRotate -= 60
+                clock?.run(clockOpening)
+                scene?.run(SKAction.wait(forDuration: 0.6)){
+                    self.minuteHand?.isHidden = true
+                    self.hourHand?.isHidden = true
+                }
+            }
         default:
             return
         }

@@ -7,7 +7,6 @@ class QG: SKNode{
     var QGBG: SKSpriteNode?
     
     let QGST = SKAction.repeatForever(SKAction.playSoundFileNamed("QGST.mp3", waitForCompletion: true))
-    var qgStatus = false
     
     override init(){
         super.init()

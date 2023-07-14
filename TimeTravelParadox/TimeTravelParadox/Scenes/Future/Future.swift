@@ -6,7 +6,6 @@ class Future: SKNode{
     
     let futureST = SKAction.repeatForever(SKAction.playSoundFileNamed("futureST.mp3", waitForCompletion: true))
 
-    var futureStatus = false
     
     override init(){
         super.init()
@@ -20,7 +19,7 @@ class Future: SKNode{
         if let futureBG{
             self.addChild(futureBG)
         }
-        scene?.run(futureST)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

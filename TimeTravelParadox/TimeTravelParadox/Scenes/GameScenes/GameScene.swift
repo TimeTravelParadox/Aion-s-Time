@@ -6,7 +6,9 @@ class GameScene: SKScene{
     private let hud = HUD()
     private let qg = QG()
 
-    let sceneCam = SKCameraNode()
+    let cameraNode = SKCameraNode()
+    
+    var futurePlayingST = false
     
     override func didMove(to view: SKView) {
         addChild(past)
@@ -24,9 +26,11 @@ class GameScene: SKScene{
         hud.hideQGButton(isHide: true)
 //        self.isUserInteractionEnabled = true
     }
-    
-    override func update(_ currentTime: TimeInterval) {
 
+    override func update(_ currentTime: TimeInterval) {
+        if !futurePlayingST{
+            futurePlayingST = false
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -44,6 +48,11 @@ class GameScene: SKScene{
             qg.qgStatus = true
             past.pastStatus = false
             future.futureStatus = false
+            if qg.action(forKey: "qgST") == nil { //evitar camadas de áudio
+                qg.run(qg.QGST, withKey: "qgST")
+            }
+            qg.removeAction(forKey: "pastST")
+            qg.removeAction(forKey: "futureST")
         case "travel":
             print("travel", past.zPosition, future.zPosition)
             if past.zPosition > 0  {
@@ -53,9 +62,10 @@ class GameScene: SKScene{
                 future.zPosition = 5
                 hud.hideQGButton(isHide: false)
                 qg.qgStatus = false
-                past.pastStatus = false
-                future.futureStatus = true
-
+                if !futurePlayingST{
+                    future.run(future.futureST)
+                    futurePlayingST = true
+                }
 
             }else{
                 qg.zPosition = 0
@@ -64,8 +74,7 @@ class GameScene: SKScene{
                 past.zPosition = 5
                 hud.hideQGButton(isHide: false)
                 qg.qgStatus = false
-                past.pastStatus = true
-                future.futureStatus = false
+
             }
         default:
             return

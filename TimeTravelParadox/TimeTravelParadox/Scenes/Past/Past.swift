@@ -7,7 +7,7 @@ class Past: SKNode{
      private let past = SKScene(fileNamed: "PastScene")
      private var pastBG: SKSpriteNode?
     
-    
+    var delegate: ZoomProtocol?
 
     var minuteRotate: CGFloat = 0 // variável para saber o grau dos minutos
     var hourRotate: CGFloat = 0 // variável para saber o grau das horas
@@ -21,6 +21,7 @@ class Past: SKNode{
 
 
     init(delegate: ZoomProtocol){
+        self.delegate = delegate
         self.clock = Clock(delegate: delegate)
         super.init()
         self.zPosition = 1
@@ -55,7 +56,7 @@ class Past: SKNode{
         
         switch tapped.name {
         case "pastBG":
-            
+            delegate?.zoom(isZoom: false, node: pastBG, ratio: 0)
             print("plano de fundo")
         default:
             return

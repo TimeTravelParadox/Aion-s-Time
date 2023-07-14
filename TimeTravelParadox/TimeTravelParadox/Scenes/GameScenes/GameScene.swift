@@ -26,11 +26,10 @@ class GameScene: SKScene, ZoomProtocol{
                 cameraNode.position = cameraPosition
                 cameraNode.run(SKAction.scale(to: ratio, duration: 0))
             }else{
-                cameraNode.position = CGPoint(x: (view?.bounds.width ?? 0)/2, y: (view?.bounds.height ?? 0)/2)
+                print("zoom out")
+                cameraNode.position = node?.position ?? cameraNode.position
                 cameraNode.run(SKAction.scale(to: 1, duration: 0))
             }
-            cameraNode.isPaused = false
-            cameraNode.run(SKAction.scale(to: 0.5, duration: 0))
         }
 
     

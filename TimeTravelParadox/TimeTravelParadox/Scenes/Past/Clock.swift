@@ -75,25 +75,33 @@ class Clock: SKNode{
         case "clock":
             delegate?.zoom(isZoom: true, node: clock, ratio: 0.26)
         case "hourHand":
-            hourHand?.run(clockTickingSFX)
-            spin(hand: hourHand, degree: 30)
-            if minuteRotate == 60  && hourRotate == 330{
-                clock?.isPaused = false
-                clock?.run(clockOpening)
-                self.minuteHand?.isHidden = true
-                self.hourHand?.isHidden = true
-                clock?.run(clockOpeningSFX)
-
+            if delegate?.didZoom == true {
+                hourHand?.run(clockTickingSFX)
+                spin(hand: hourHand, degree: 30)
+                if minuteRotate == 60  && hourRotate == 330{
+                    clock?.isPaused = false
+                    clock?.run(clockOpening)
+                    self.minuteHand?.isHidden = true
+                    self.hourHand?.isHidden = true
+                    clock?.run(clockOpeningSFX)
+                    
+                }
+            }else{
+                delegate?.zoom(isZoom: true, node: clock, ratio: 0.26)
             }
         case "minuteHand":
-            minuteHand?.run(clockTickingSFX)
-            spin(hand: minuteHand, degree: 30)
-            if minuteRotate == 60  && hourRotate == 330{
-                clock?.isPaused = false
-                clock?.run(clockOpening)
-                self.minuteHand?.isHidden = true
-                self.hourHand?.isHidden = true
-                clock?.run(clockOpeningSFX)
+            if delegate?.didZoom == true{
+                minuteHand?.run(clockTickingSFX)
+                spin(hand: minuteHand, degree: 30)
+                if minuteRotate == 60  && hourRotate == 330{
+                    clock?.isPaused = false
+                    clock?.run(clockOpening)
+                    self.minuteHand?.isHidden = true
+                    self.hourHand?.isHidden = true
+                    clock?.run(clockOpeningSFX)
+                }
+            }else{
+                delegate?.zoom(isZoom: true, node: clock, ratio: 0.26)
             }
         default:
             return

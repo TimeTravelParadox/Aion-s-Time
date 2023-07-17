@@ -1,50 +1,54 @@
 import SpriteKit
 
 class Future: SKNode{
-    private let futureScene = SKScene(fileNamed: "FutureScene")
-    private var futureBG: SKSpriteNode?
-    
-    let futureST = SKAction.repeatForever(SKAction.playSoundFileNamed("futureST.mp3", waitForCompletion: true))
 
-    let futureCam = SKCameraNode()
+  private let futureScene = SKScene(fileNamed: "FutureScene")
+  private var futureBG: SKSpriteNode?
+  
+  var computer: Computer?
+  
+  let futureST = SKAction.repeatForever(SKAction.playSoundFileNamed("futureST.mp3", waitForCompletion: true))
+  
+  var delegate: ZoomProtocol?
+  
+  init(delegate: ZoomProtocol){
+    super.init()
+    self.delegate = delegate
+    self.computer = Computer(delegate: delegate)
     
-    func zoom(node: SKSpriteNode?){
-        futureCam.position = node?.position ?? futureCam.position
-        futureCam.run(SKAction.scale(to: 0.5, duration: 0))
+    if let futureScene, let computer {
+      futureBG = (futureScene.childNode(withName: "futureBG") as? SKSpriteNode)
+      futureBG?.removeFromParent()
+      
+      self.isUserInteractionEnabled = true
+ 
+      if let futureBG{
+        self.addChild(futureBG)
+      }
+      
+      self.addChild(computer)
+      computer.delegate = delegate
+      
     }
     
-    override init(){
-        super.init()
-        self.zPosition = 0
-        if let futureScene {
-            futureBG = (futureScene.childNode(withName: "futureBG") as? SKSpriteNode)
-            futureBG?.removeFromParent()
-            self.isUserInteractionEnabled = true
-
-        }
-        if let futureBG{
-            self.addChild(futureBG)
-        }
-        addChild(futureCam)
-        
-    }
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+  }
+  
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    guard let touch = touches.first else { return }
+    let location = touch.location(in: self)
+    let tappedNodes = nodes(at: location)
+    guard let tapped = tappedNodes.first else { return }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    switch tapped.name {
+    case "futureBG":
+      delegate?.zoom(isZoom: false, node: futureBG, ratio: 0)
+      print("futuro plano de fundo")
+    default:
+      return
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
-        let location = touch.location(in: self)
-        let tappedNodes = nodes(at: location)
-        guard let tapped = tappedNodes.first else { return }
-
-        switch tapped.name {
-        case "futureBG":
-            print("futuro plano de fundo")
-        default:
-            return
-        }
-    }
+  }
 }
-

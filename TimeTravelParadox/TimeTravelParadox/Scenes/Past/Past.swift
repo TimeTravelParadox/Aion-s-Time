@@ -13,6 +13,7 @@ class Past: SKNode{
     var hourRotate: CGFloat = 0 // variável para saber o grau das horas
 
     let pastST = SKAction.repeatForever(SKAction.playSoundFileNamed("pastST.mp3", waitForCompletion: true))
+    let clockOpeningSFX = SKAction.playSoundFileNamed("clockOpeningSFX.mp3", waitForCompletion: true)
     
     func spin() {
         pastBG?.run(SKAction.rotate(byAngle: -.pi/6, duration: 0.2))

@@ -6,6 +6,7 @@ class Clock: SKNode{
      var delegate: ZoomProtocol?
 
     
+    
     private var clock: SKSpriteNode?
     private var hourHand: SKSpriteNode?
     private var minuteHand: SKSpriteNode?
@@ -13,14 +14,16 @@ class Clock: SKNode{
     var minuteRotate: CGFloat = 0 // variável para saber o grau dos minutos
     var hourRotate: CGFloat = 0 // variável para saber o grau das horas
 
-    
-    let clockOpening =  SKAction.animate(with: [SKTexture(imageNamed: "clock1"), SKTexture(imageNamed: "clock2"), SKTexture(imageNamed: "clock3"), SKTexture(imageNamed: "clock4"), SKTexture(imageNamed: "clock5")], timePerFrame: 0.4)
+    let clockOpeningSFX = SKAction.playSoundFileNamed("clockOpeningSFX.mp3", waitForCompletion: true)
+    let clockTickingSFX = SKAction.playSoundFileNamed("ticking.mp3", waitForCompletion: false)
+
+
+    let clockOpening =  SKAction.animate(with: [SKTexture(imageNamed: "clock1"), SKTexture(imageNamed: "clock2"), SKTexture(imageNamed: "clock3"), SKTexture(imageNamed: "clock4"), SKTexture(imageNamed: "clock5"), SKTexture(imageNamed: "clock6"), SKTexture(imageNamed: "clock7"), SKTexture(imageNamed: "clock8"), SKTexture(imageNamed: "clock9"), SKTexture(imageNamed: "clock10"), SKTexture(imageNamed: "clock11"), SKTexture(imageNamed: "clock12")], timePerFrame: 0.2)
     
     func spin(hand: SKSpriteNode?, degree: CGFloat) {
         hand?.isPaused = false
         let rotationAngleInRadians = CGFloat.pi * -degree / 180.0 // Converter graus em radianos
-        var rotationRatio = -round(hand!.zRotation * 180.0 / CGFloat.pi) // Retornar um valor de rotação em 360 graus
-        rotationRatio += degree // Atualizar o valor de rotação
+        var rotationRatio = -round(hand!.zRotation * 180.0 / CGFloat.pi) + 30// Retornar um valor de rotação em 360 graus
         
         if rotationRatio >= 360 { // Verificar se ultrapassou 360 graus
             rotationRatio -= 360
@@ -47,7 +50,6 @@ class Clock: SKNode{
             hourHand?.removeFromParent()
             minuteHand = (past.childNode(withName: "minuteHand") as? SKSpriteNode)
             minuteHand?.removeFromParent()
-                        
             self.isUserInteractionEnabled = true
         }
         if let clock, let hourHand, let minuteHand{
@@ -62,6 +64,7 @@ class Clock: SKNode{
         super.init(coder: aDecoder)
     }
     
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return } // se nao estiver em toque acaba aqui
         let location = touch.location(in: self)
@@ -70,32 +73,27 @@ class Clock: SKNode{
         
         switch tapped.name {
         case "clock":
-            delegate?.zoom(isZoom: true, node: clock, ratio: 0.5)
-            return
+            delegate?.zoom(isZoom: true, node: clock, ratio: 0.26)
         case "hourHand":
+            hourHand?.run(clockTickingSFX)
             spin(hand: hourHand, degree: 30)
-            if minuteRotate == 30  && hourRotate == 60{
-                minuteRotate -= 30
-                hourRotate -= 60
+            if minuteRotate == 60  && hourRotate == 330{
                 clock?.isPaused = false
                 clock?.run(clockOpening)
-                scene?.run(SKAction.wait(forDuration: 0.6)){
-                    self.minuteHand?.isHidden = true
-                    self.hourHand?.isHidden = true
-                }
+                self.minuteHand?.isHidden = true
+                self.hourHand?.isHidden = true
+                clock?.run(clockOpeningSFX)
 
             }
         case "minuteHand":
-            spin(hand: minuteHand, degree: 15)
-            if minuteRotate == 30  && hourRotate == 60{
-                minuteRotate -= 30
-                hourRotate -= 60
+            minuteHand?.run(clockTickingSFX)
+            spin(hand: minuteHand, degree: 30)
+            if minuteRotate == 60  && hourRotate == 330{
                 clock?.isPaused = false
                 clock?.run(clockOpening)
-                scene?.run(SKAction.wait(forDuration: 0.6)){
-                    self.minuteHand?.isHidden = true
-                    self.hourHand?.isHidden = true
-                }
+                self.minuteHand?.isHidden = true
+                self.hourHand?.isHidden = true
+                clock?.run(clockOpeningSFX)
             }
         default:
             return

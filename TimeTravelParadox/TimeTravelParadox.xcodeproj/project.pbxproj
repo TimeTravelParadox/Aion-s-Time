@@ -19,6 +19,8 @@
 		379B546C2A60FAB200F10217 /* pastST.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 379B546B2A60FAB200F10217 /* pastST.mp3 */; };
 		379B54722A61104600F10217 /* TypeMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B54712A61104600F10217 /* TypeMachine.swift */; };
 		379B54742A61CE5D00F10217 /* Zoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B54732A61CE5D00F10217 /* Zoom.swift */; };
+		379B54762A6492DE00F10217 /* clockOpeningSFX.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 379B54752A6492DE00F10217 /* clockOpeningSFX.mp3 */; };
+		379B54782A64B7D000F10217 /* ticking.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 379B54772A64B7D000F10217 /* ticking.mp3 */; };
 		9B82F4CE2A5C6EB200BC66F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82F4CD2A5C6EB200BC66F2 /* AppDelegate.swift */; };
 		9B82F4D02A5C6EB200BC66F2 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B82F4CF2A5C6EB200BC66F2 /* GameScene.sks */; };
 		9B82F4D22A5C6EB200BC66F2 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B82F4D12A5C6EB200BC66F2 /* Actions.sks */; };
@@ -45,6 +47,8 @@
 		379B546B2A60FAB200F10217 /* pastST.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pastST.mp3; sourceTree = "<group>"; };
 		379B54712A61104600F10217 /* TypeMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeMachine.swift; sourceTree = "<group>"; };
 		379B54732A61CE5D00F10217 /* Zoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zoom.swift; sourceTree = "<group>"; };
+		379B54752A6492DE00F10217 /* clockOpeningSFX.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clockOpeningSFX.mp3; sourceTree = "<group>"; };
+		379B54772A64B7D000F10217 /* ticking.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ticking.mp3; sourceTree = "<group>"; };
 		9B82F4CA2A5C6EB200BC66F2 /* TimeTravelParadox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTravelParadox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B82F4CD2A5C6EB200BC66F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B82F4CF2A5C6EB200BC66F2 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -90,6 +94,8 @@
 		377D8C3C2A5C7192008C6355 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				379B54772A64B7D000F10217 /* ticking.mp3 */,
+				379B54752A6492DE00F10217 /* clockOpeningSFX.mp3 */,
 				379B546B2A60FAB200F10217 /* pastST.mp3 */,
 				379B54692A60FAA600F10217 /* QGST.mp3 */,
 				379B54672A60FA8F00F10217 /* futureST.mp3 */,
@@ -260,11 +266,13 @@
 				379B54602A60F42D00F10217 /* PastScene.sks in Resources */,
 				9B82F4DB2A5C6EB400BC66F2 /* Assets.xcassets in Resources */,
 				379B546A2A60FAA600F10217 /* QGST.mp3 in Resources */,
+				379B54762A6492DE00F10217 /* clockOpeningSFX.mp3 in Resources */,
 				379B545E2A60F42500F10217 /* QGScene.sks in Resources */,
 				9B82F4DE2A5C6EB400BC66F2 /* LaunchScreen.storyboard in Resources */,
 				379B546C2A60FAB200F10217 /* pastST.mp3 in Resources */,
 				379B545C2A60F41500F10217 /* HUDScene.sks in Resources */,
 				9B82F4D22A5C6EB200BC66F2 /* Actions.sks in Resources */,
+				379B54782A64B7D000F10217 /* ticking.mp3 in Resources */,
 				379B54682A60FA8F00F10217 /* futureST.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

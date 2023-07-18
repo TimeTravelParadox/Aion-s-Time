@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3753BE9D2A6740210075AA56 /* deleting.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3753BE9C2A6740210075AA56 /* deleting.mp3 */; };
+		3753BE9F2A6740270075AA56 /* typing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3753BE9E2A6740270075AA56 /* typing.mp3 */; };
+		3753BEA12A6740340075AA56 /* ding.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3753BEA02A6740340075AA56 /* ding.wav */; };
 		379B545A2A60F40A00F10217 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B54592A60F40A00F10217 /* HUD.swift */; };
 		379B545C2A60F41500F10217 /* HUDScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 379B545B2A60F41500F10217 /* HUDScene.sks */; };
 		379B545E2A60F42500F10217 /* QGScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 379B545D2A60F42500F10217 /* QGScene.sks */; };
@@ -35,6 +38,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3753BE9C2A6740210075AA56 /* deleting.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = deleting.mp3; sourceTree = "<group>"; };
+		3753BE9E2A6740270075AA56 /* typing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = typing.mp3; sourceTree = "<group>"; };
+		3753BEA02A6740340075AA56 /* ding.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ding.wav; sourceTree = "<group>"; };
 		379B54592A60F40A00F10217 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		379B545B2A60F41500F10217 /* HUDScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HUDScene.sks; sourceTree = "<group>"; };
 		379B545D2A60F42500F10217 /* QGScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = QGScene.sks; sourceTree = "<group>"; };
@@ -94,6 +100,9 @@
 		377D8C3C2A5C7192008C6355 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				3753BEA02A6740340075AA56 /* ding.wav */,
+				3753BE9C2A6740210075AA56 /* deleting.mp3 */,
+				3753BE9E2A6740270075AA56 /* typing.mp3 */,
 				379B54772A64B7D000F10217 /* ticking.mp3 */,
 				379B54752A6492DE00F10217 /* clockOpeningSFX.mp3 */,
 				379B546B2A60FAB200F10217 /* pastST.mp3 */,
@@ -263,8 +272,11 @@
 				379B54622A60F43B00F10217 /* FutureScene.sks in Resources */,
 				9B82F4D92A5C6EB200BC66F2 /* Main.storyboard in Resources */,
 				9B82F4D02A5C6EB200BC66F2 /* GameScene.sks in Resources */,
+				3753BE9F2A6740270075AA56 /* typing.mp3 in Resources */,
 				379B54602A60F42D00F10217 /* PastScene.sks in Resources */,
 				9B82F4DB2A5C6EB400BC66F2 /* Assets.xcassets in Resources */,
+				3753BE9D2A6740210075AA56 /* deleting.mp3 in Resources */,
+				3753BEA12A6740340075AA56 /* ding.wav in Resources */,
 				379B546A2A60FAA600F10217 /* QGST.mp3 in Resources */,
 				379B54762A6492DE00F10217 /* clockOpeningSFX.mp3 in Resources */,
 				379B545E2A60F42500F10217 /* QGScene.sks in Resources */,

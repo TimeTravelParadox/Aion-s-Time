@@ -101,6 +101,7 @@ class Clock: SKNode{
                     clock?.run(clockOpeningSFX)
                 }
             }else{
+                //zoom aqui
                 delegate?.zoom(isZoom: true, node: clock, ratio: 0.26)
             }
         default:

@@ -35,6 +35,8 @@
 		C55C13392A5C792300334DD8 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55C13382A5C792300334DD8 /* Future.swift */; };
 		C55C133B2A5C792E00334DD8 /* Past.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55C133A2A5C792E00334DD8 /* Past.swift */; };
 		C55C133D2A5C795B00334DD8 /* QG.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55C133C2A5C795B00334DD8 /* QG.swift */; };
+		C5C034F72A67077200E604A9 /* Drawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C034F62A67077200E604A9 /* Drawer.swift */; };
+		C5C034FB2A67090700E604A9 /* Shelf.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C034FA2A67090700E604A9 /* Shelf.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +69,8 @@
 		C55C13382A5C792300334DD8 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		C55C133A2A5C792E00334DD8 /* Past.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Past.swift; sourceTree = "<group>"; };
 		C55C133C2A5C795B00334DD8 /* QG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QG.swift; sourceTree = "<group>"; };
+		C5C034F62A67077200E604A9 /* Drawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawer.swift; sourceTree = "<group>"; };
+		C5C034FA2A67090700E604A9 /* Shelf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shelf.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +154,8 @@
 				379B545F2A60F42D00F10217 /* PastScene.sks */,
 				379B54652A60F8DF00F10217 /* Clock.swift */,
 				379B54712A61104600F10217 /* TypeMachine.swift */,
+				C5C034F62A67077200E604A9 /* Drawer.swift */,
+				C5C034FA2A67090700E604A9 /* Shelf.swift */,
 			);
 			path = Past;
 			sourceTree = "<group>";
@@ -296,10 +302,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5C034FB2A67090700E604A9 /* Shelf.swift in Sources */,
 				9B82F4D42A5C6EB200BC66F2 /* GameScene.swift in Sources */,
 				9B82F4D62A5C6EB200BC66F2 /* GameViewController.swift in Sources */,
 				C55C13392A5C792300334DD8 /* Future.swift in Sources */,
 				379B54722A61104600F10217 /* TypeMachine.swift in Sources */,
+				C5C034F72A67077200E604A9 /* Drawer.swift in Sources */,
 				379B54662A60F8DF00F10217 /* Clock.swift in Sources */,
 				C55C133B2A5C792E00334DD8 /* Past.swift in Sources */,
 				379B54742A61CE5D00F10217 /* Zoom.swift in Sources */,

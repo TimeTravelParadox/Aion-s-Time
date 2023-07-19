@@ -15,6 +15,9 @@ class Past: SKNode {
     private let crumpledPaper = SKSpriteNode(imageNamed: "crumpledPaper")
     private let paper = SKSpriteNode(imageNamed: "paper")
     
+    var shelf: Shelf = childNode(withName: "shelf") as? SKSpriteNode
+    polaroid = childNode(withName: "polaroid") as? SKSpriteNode
+    
     var delegate: ZoomProtocol?
     
     var minuteRotate: CGFloat = 0 // variável para saber o grau dos minutos
@@ -111,7 +114,7 @@ class Past: SKNode {
                 guard let self else {
                     return
                 }
-                if drawer.isOpened == false {
+                if drawer.isOpened == true {
                     if drawer.drawerSize == .large { // Verifica se a gaveta é a largerOpenDrawer
                         drawer.spriteNode.addChild(self.crumpledPaper)
                         self.positionCrumpledPaper()

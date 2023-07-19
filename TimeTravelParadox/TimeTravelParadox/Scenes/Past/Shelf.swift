@@ -17,7 +17,7 @@ class Shelf: SKNode{
     var shelf: SKSpriteNode?
     var polaroid: SKSpriteNode?
     
-    let expand = SKAction.resize(toWidth: 80, height: 80, duration: 1)
+    let expand = SKAction.resize(toWidth: 1000, height: 1000, duration: 1)
     
     let shake = SKAction.sequence([
                 SKAction.rotate(byAngle: -.pi/12, duration: 0.5),
@@ -43,10 +43,12 @@ class Shelf: SKNode{
             self.addChild(shelf)
             self.addChild(polaroid)
             self.addChild(hiddenPolaroid)
+            
+            polaroid.isHidden = true
+            polaroid.isPaused = false
+            hiddenPolaroid.isPaused = false
         }
         isPaused = false
-        polaroid?.isPaused = false
-        hiddenPolaroid?.isPaused = false
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -68,11 +70,15 @@ class Shelf: SKNode{
         case "hiddenPolaroid":
             // se clicar na polaroid e tiver com zoom
             if delegate?.didZoom == true {
+                polaroid?.isHidden = false
+                hiddenPolaroid?.isHidden = true
                 let moveToInventary = SKAction.run {
-                    self.hiddenPolaroid?.isHidden = true
+                    //codigo do inventario AQUI
+                    self.polaroid?.isHidden = true //substituir por esse
+                    //
                 }
                 let sequence = SKAction.sequence([expand, shake, moveToInventary])
-                hiddenPolaroid?.run(sequence)
+                polaroid?.run(sequence)
             // se clicar na polaroid e nao tiver com zoom
             }else{
                 delegate?.zoom(isZoom: true, node: shelf, ratio: 0.5)

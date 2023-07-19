@@ -132,7 +132,7 @@ class Past: SKNode {
                     }
                 } else {
                     if drawer.drawerSize == .large { // Verifica se a gaveta é a largerOpenDrawer
-                        self.crumpledPaper.removeFromParent()
+                        self.crumpledPaper.removeFromParent() //ta aqui o problema do papel
                     }
                 }
             })

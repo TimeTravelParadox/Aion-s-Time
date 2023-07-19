@@ -29,6 +29,10 @@
 		9B82F4DB2A5C6EB400BC66F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B82F4DA2A5C6EB400BC66F2 /* Assets.xcassets */; };
 		9B82F4DE2A5C6EB400BC66F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B82F4DC2A5C6EB400BC66F2 /* LaunchScreen.storyboard */; };
 		9B8F40612A657D4E0009567B /* Computer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8F40602A657D4E0009567B /* Computer.swift */; };
+		9BEB80272A670C0F00352220 /* Hologram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB80262A670C0F00352220 /* Hologram.swift */; };
+		9BEB80292A670C1800352220 /* Vault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB80282A670C1800352220 /* Vault.swift */; };
+		9BEB802C2A670E7E00352220 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB802B2A670E7E00352220 /* Buttons.swift */; };
+		9BEB802F2A672E2000352220 /* Inventario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB802E2A672E2000352220 /* Inventario.swift */; };
 		C55C13392A5C792300334DD8 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55C13382A5C792300334DD8 /* Future.swift */; };
 		C55C133B2A5C792E00334DD8 /* Past.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55C133A2A5C792E00334DD8 /* Past.swift */; };
 		C55C133D2A5C795B00334DD8 /* QG.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55C133C2A5C795B00334DD8 /* QG.swift */; };
@@ -58,6 +62,10 @@
 		9B82F4DA2A5C6EB400BC66F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B82F4DD2A5C6EB400BC66F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B8F40602A657D4E0009567B /* Computer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Computer.swift; sourceTree = "<group>"; };
+		9BEB80262A670C0F00352220 /* Hologram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hologram.swift; sourceTree = "<group>"; };
+		9BEB80282A670C1800352220 /* Vault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vault.swift; sourceTree = "<group>"; };
+		9BEB802B2A670E7E00352220 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		9BEB802E2A672E2000352220 /* Inventario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventario.swift; sourceTree = "<group>"; };
 		C55C13382A5C792300334DD8 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		C55C133A2A5C792E00334DD8 /* Past.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Past.swift; sourceTree = "<group>"; };
 		C55C133C2A5C795B00334DD8 /* QG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QG.swift; sourceTree = "<group>"; };
@@ -130,6 +138,8 @@
 				C55C13382A5C792300334DD8 /* Future.swift */,
 				379B54612A60F43B00F10217 /* FutureScene.sks */,
 				9B8F40602A657D4E0009567B /* Computer.swift */,
+				9BEB80262A670C0F00352220 /* Hologram.swift */,
+				9BEB80282A670C1800352220 /* Vault.swift */,
 			);
 			path = Future;
 			sourceTree = "<group>";
@@ -159,6 +169,7 @@
 			children = (
 				379B54592A60F40A00F10217 /* HUD.swift */,
 				379B545B2A60F41500F10217 /* HUDScene.sks */,
+				9BEB802E2A672E2000352220 /* Inventario.swift */,
 			);
 			path = HUD;
 			sourceTree = "<group>";
@@ -185,10 +196,19 @@
 				9B82F4CD2A5C6EB200BC66F2 /* AppDelegate.swift */,
 				9B82F4D52A5C6EB200BC66F2 /* GameViewController.swift */,
 				9B82F4D72A5C6EB200BC66F2 /* Main.storyboard */,
+				9BEB802A2A670E6100352220 /* Components */,
 				377D8C3F2A5C71C5008C6355 /* Scenes */,
 				377D8C3A2A5C7180008C6355 /* Resources */,
 			);
 			path = TimeTravelParadox;
+			sourceTree = "<group>";
+		};
+		9BEB802A2A670E6100352220 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				9BEB802B2A670E7E00352220 /* Buttons.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		C55C13442A5C806300334DD8 /* GameScenes */ = {
@@ -286,11 +306,15 @@
 			files = (
 				9B82F4D42A5C6EB200BC66F2 /* GameScene.swift in Sources */,
 				9B82F4D62A5C6EB200BC66F2 /* GameViewController.swift in Sources */,
+				9BEB80272A670C0F00352220 /* Hologram.swift in Sources */,
 				C55C13392A5C792300334DD8 /* Future.swift in Sources */,
 				379B54722A61104600F10217 /* TypeMachine.swift in Sources */,
 				379B54662A60F8DF00F10217 /* Clock.swift in Sources */,
 				C55C133B2A5C792E00334DD8 /* Past.swift in Sources */,
+				9BEB802F2A672E2000352220 /* Inventario.swift in Sources */,
+				9BEB802C2A670E7E00352220 /* Buttons.swift in Sources */,
 				379B54742A61CE5D00F10217 /* Zoom.swift in Sources */,
+				9BEB80292A670C1800352220 /* Vault.swift in Sources */,
 				379B545A2A60F40A00F10217 /* HUD.swift in Sources */,
 				9B8F40612A657D4E0009567B /* Computer.swift in Sources */,
 				9B82F4CE2A5C6EB200BC66F2 /* AppDelegate.swift in Sources */,

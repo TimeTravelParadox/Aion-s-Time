@@ -10,6 +10,8 @@ import SpriteKit
 class Computer: SKNode {
   let future = SKScene(fileNamed: "FutureScene")
   
+  var inventarioHUD = HUD()
+  
   var delegate: ZoomProtocol?
   
   private var fundoVerde: SKSpriteNode?
@@ -18,6 +20,9 @@ class Computer: SKNode {
   private var pasta3: SKSpriteNode?
   private var enigma: SKSpriteNode?
   private var voltar: SKSpriteNode?
+  
+  
+  private var quadrado: SKSpriteNode?
   
   init(delegate: ZoomProtocol) {
     super.init()
@@ -37,10 +42,14 @@ class Computer: SKNode {
       voltar = future.childNode(withName: "voltar") as? SKSpriteNode
       voltar?.removeFromParent()
       
+      quadrado = future.childNode(withName: "quadrado") as? SKSpriteNode
+      quadrado?.removeFromParent()
+      
+      
       self.isUserInteractionEnabled = true
     }
     
-    if let fundoVerde, let pasta1, let pasta2, let pasta3, let enigma, let voltar {
+    if let fundoVerde, let pasta1, let pasta2, let pasta3, let enigma, let voltar, let quadrado {
 
       self.addChild(fundoVerde)
       self.addChild(pasta1)
@@ -48,6 +57,7 @@ class Computer: SKNode {
       self.addChild(pasta3)
       self.addChild(enigma)
       self.addChild(voltar)
+      self.addChild(quadrado)
     }
     
   }
@@ -115,8 +125,14 @@ class Computer: SKNode {
       if delegate?.didZoom == true {
       delegate?.zoom(isZoom: false, node: enigma, ratio: 0.5)
     } else {
-      delegate?.zoom(isZoom: true, node: fundoVerde, ratio: 0.5)
+      delegate?.zoom(isZoom: true, node: enigma, ratio: 0.5)
     }
+      
+      // teste para adicionar no inventario
+    case "quadrado":
+      inventarioHUD.adicionarNoInv(item: quadrado!, acao: SKAction.run {
+        print("teste adicionar no inventario")
+      })
       
     default:
       return

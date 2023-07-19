@@ -41,15 +41,11 @@ class Computer: SKNode {
       enigma?.removeFromParent()
       voltar = future.childNode(withName: "voltar") as? SKSpriteNode
       voltar?.removeFromParent()
-      
-      quadrado = future.childNode(withName: "quadrado") as? SKSpriteNode
-      quadrado?.removeFromParent()
-      
-      
+    
       self.isUserInteractionEnabled = true
     }
     
-    if let fundoVerde, let pasta1, let pasta2, let pasta3, let enigma, let voltar, let quadrado {
+    if let fundoVerde, let pasta1, let pasta2, let pasta3, let enigma, let voltar{
 
       self.addChild(fundoVerde)
       self.addChild(pasta1)
@@ -57,7 +53,6 @@ class Computer: SKNode {
       self.addChild(pasta3)
       self.addChild(enigma)
       self.addChild(voltar)
-      self.addChild(quadrado)
     }
     
   }
@@ -127,12 +122,6 @@ class Computer: SKNode {
     } else {
       delegate?.zoom(isZoom: true, node: enigma, ratio: 0.5)
     }
-      
-      // teste para adicionar no inventario
-    case "quadrado":
-      inventarioHUD.adicionarNoInv(item: quadrado!, acao: SKAction.run {
-        print("teste adicionar no inventario")
-      })
       
     default:
       return

@@ -7,8 +7,6 @@ class GameScene: SKScene, ZoomProtocol{
   private let hud = HUD()
   private let qg = QG()
   
-  private var fade: Fade?
-  
   let cameraNode = SKCameraNode()
   var cameraPosition = CGPoint(x: 0, y: 0)
   
@@ -23,18 +21,17 @@ class GameScene: SKScene, ZoomProtocol{
   func zoom(isZoom: Bool, node: SKSpriteNode?, ratio: CGFloat){
     if isZoom {
       self.didZoom = isZoom
-      self.cameraPosition = node?.position ?? self.cameraNode.position
-      self.cameraNode.position = self.cameraPosition
-      self.cameraNode.run(SKAction.scale(to: ratio, duration: 0))
-      fade?.fade(camera: cameraNode.position)
-    } else {
+      cameraPosition = node?.position ?? cameraNode.position
+      cameraNode.position = cameraPosition
+      cameraNode.run(SKAction.scale(to: ratio, duration: 0))
+    }else{
       self.didZoom = isZoom
-      self.cameraNode.position = node?.position ?? self.cameraNode.position
-      self.cameraNode.run(SKAction.scale(to: 1, duration: 0))
-      fade?.fade(camera: cameraNode.position)
+      cameraNode.position = node?.position ?? cameraNode.position
+      cameraNode.run(SKAction.scale(to: 1, duration: 0))
       print("zoom out")
     }
   }
+  
   
   var futurePlayingST = false
   
@@ -51,21 +48,15 @@ class GameScene: SKScene, ZoomProtocol{
       future.zPosition = 0
     }
     
-    self.fade = Fade()
-    if let fade {
-      addChild(fade)
-      fade.zPosition = 25
-    }
-    
     setupCamera()
     
     addChild(hud)
     addChild(qg)
-    
+  
     qg.zPosition = 15
     hud.zPosition = 20
     hud.hideQGButton(isHide: true)
-    
+    //        self.isUserInteractionEnabled = true
   }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

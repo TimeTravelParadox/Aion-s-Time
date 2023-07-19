@@ -35,8 +35,6 @@
 		9BEB80272A670C0F00352220 /* Hologram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB80262A670C0F00352220 /* Hologram.swift */; };
 		9BEB80292A670C1800352220 /* Vault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB80282A670C1800352220 /* Vault.swift */; };
 		9BEB802C2A670E7E00352220 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB802B2A670E7E00352220 /* Buttons.swift */; };
-		9BEB803A2A68694600352220 /* Fade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB80392A68694600352220 /* Fade.swift */; };
-		9BEB803C2A68695300352220 /* Fade.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9BEB803B2A68695300352220 /* Fade.sks */; };
 		C55C13392A5C792300334DD8 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55C13382A5C792300334DD8 /* Future.swift */; };
 		C55C133B2A5C792E00334DD8 /* Past.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55C133A2A5C792E00334DD8 /* Past.swift */; };
 		C55C133D2A5C795B00334DD8 /* QG.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55C133C2A5C795B00334DD8 /* QG.swift */; };
@@ -74,8 +72,6 @@
 		9BEB80262A670C0F00352220 /* Hologram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hologram.swift; sourceTree = "<group>"; };
 		9BEB80282A670C1800352220 /* Vault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vault.swift; sourceTree = "<group>"; };
 		9BEB802B2A670E7E00352220 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
-		9BEB80392A68694600352220 /* Fade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fade.swift; sourceTree = "<group>"; };
-		9BEB803B2A68695300352220 /* Fade.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fade.sks; sourceTree = "<group>"; };
 		C55C13382A5C792300334DD8 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		C55C133A2A5C792E00334DD8 /* Past.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Past.swift; sourceTree = "<group>"; };
 		C55C133C2A5C795B00334DD8 /* QG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QG.swift; sourceTree = "<group>"; };
@@ -223,8 +219,6 @@
 			isa = PBXGroup;
 			children = (
 				9BEB802B2A670E7E00352220 /* Buttons.swift */,
-				9BEB80392A68694600352220 /* Fade.swift */,
-				9BEB803B2A68695300352220 /* Fade.sks */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -307,7 +301,6 @@
 				3753BE9D2A6740210075AA56 /* deleting.mp3 in Resources */,
 				3753BEA12A6740340075AA56 /* ding.wav in Resources */,
 				379B546A2A60FAA600F10217 /* QGST.mp3 in Resources */,
-				9BEB803C2A68695300352220 /* Fade.sks in Resources */,
 				379B54762A6492DE00F10217 /* clockOpeningSFX.mp3 in Resources */,
 				379B545E2A60F42500F10217 /* QGScene.sks in Resources */,
 				9B82F4DE2A5C6EB400BC66F2 /* LaunchScreen.storyboard in Resources */,
@@ -332,7 +325,6 @@
 				9BEB80272A670C0F00352220 /* Hologram.swift in Sources */,
 				C55C13392A5C792300334DD8 /* Future.swift in Sources */,
 				379B54722A61104600F10217 /* TypeMachine.swift in Sources */,
-				9BEB803A2A68694600352220 /* Fade.swift in Sources */,
 				C5C034F72A67077200E604A9 /* Drawer.swift in Sources */,
 				379B54662A60F8DF00F10217 /* Clock.swift in Sources */,
 				C55C133B2A5C792E00334DD8 /* Past.swift in Sources */,

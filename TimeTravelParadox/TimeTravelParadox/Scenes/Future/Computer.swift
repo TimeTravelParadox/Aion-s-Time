@@ -117,12 +117,8 @@ class Computer: SKNode {
       }
       
     case "enigma":
-      if delegate?.didZoom == true {
-      delegate?.zoom(isZoom: false, node: enigma, ratio: 0.5)
-    } else {
       delegate?.zoom(isZoom: true, node: enigma, ratio: 0.5)
-    }
-      
+
     default:
       return
     }

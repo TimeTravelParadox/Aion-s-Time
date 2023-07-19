@@ -1,12 +1,14 @@
 import SpriteKit
 
-class Past: SKNode, DrawerDelegate {
+class Past: SKNode {
     //criar uma variavel da classe da drawer
-    var drawer1: Drawer?
-    var drawer2: Drawer?
-    var drawer3: Drawer?
+    lazy var drawer1: Drawer = Drawer(drawerSize: .small, spriteNode: past?.childNode(withName: "smallerDrawer1") as! SKSpriteNode)
+    lazy var drawer2: Drawer = Drawer(drawerSize: .large, spriteNode: past?.childNode(withName: "largerDrawer") as! SKSpriteNode)
+    lazy var drawer3: Drawer = Drawer(drawerSize: .small, spriteNode: past?.childNode(withName: "smallerDrawer2") as! SKSpriteNode)
+    
     var clock: Clock?
     
+    var table: SKSpriteNode?
     private let past = SKScene(fileNamed: "PastScene")
     private var pastBG: SKSpriteNode?
     
@@ -25,12 +27,10 @@ class Past: SKNode, DrawerDelegate {
         pastBG?.run(SKAction.rotate(byAngle: -.pi/6, duration: 0.2))
     }
     
-    init(delegate: ZoomProtocol){
+    init(delegate: ZoomProtocol) {
         self.delegate = delegate
         //fazer o mesmo abaixo
-        self.drawer1 = Drawer(drawerSize: .small, spriteNode: past?.childNode(withName: "smallerDrawer1") as? SKSpriteNode)
-        self.drawer2 = Drawer(drawerSize: .large, spriteNode: past?.childNode(withName: "largerDrawer") as? SKSpriteNode)
-        self.drawer3 = Drawer(drawerSize: .small, spriteNode: past?.childNode(withName: "smallerDrawer2") as? SKSpriteNode)
+        self.table = past?.childNode(withName: "table") as? SKSpriteNode
         self.clock = Clock(delegate: delegate)
         super.init()
         
@@ -53,22 +53,13 @@ class Past: SKNode, DrawerDelegate {
             self.removeAction(forKey: "futureST")
         }
         
-        if let drawer1 {
-            addChild(drawer1)
-            drawer1.delegate = self
-            drawer1.zoomDelegate = delegate
-        }
+        self.addChild(drawer1.spriteNode)
+        self.addChild(drawer2.spriteNode)
+        self.addChild(drawer3.spriteNode)
         
-        if let drawer2 {
-            addChild(drawer2)
-            drawer2.delegate = self
-            drawer2.zoomDelegate = delegate
-        }
-        
-        if let drawer3 {
-            addChild(drawer3)
-            drawer3.delegate = self
-            drawer3.zoomDelegate = delegate
+        if let table {
+            table.removeFromParent()
+            self.addChild(table)
         }
     }
     
@@ -87,17 +78,22 @@ class Past: SKNode, DrawerDelegate {
         case "pastBG":
             delegate?.zoom(isZoom: false, node: pastBG, ratio: 0)
             print("plano de fundo")
+        case "table":
+            print("mesa")
+        case "smallerDrawer1":
+            verification(drawer: drawer1, tapped: tapped)
+            print("smallerDrawer1")
+        case "largerDrawer":
+            verification(drawer: drawer2, tapped: tapped)
+            print("largerDrawer")
+        case "smallerDrawer2":
+            verification(drawer: drawer3, tapped: tapped)
+            print("smallerDrawer2")
         default:
             return
         }
     }
     
-    func addCrumpledPaperIfNeeded(to drawer: Drawer) {
-        if drawer.drawerSize == .large { // Verifica se a gaveta é a largerOpenDrawer
-            drawer.spriteNode?.addChild(self.crumpledPaper)
-            positionCrumpledPaper()
-        }
-    }
     
     private func positionCrumpledPaper() {
         // Defina as coordenadas x e y desejadas para a posição do crumpledPaper
@@ -108,10 +104,28 @@ class Past: SKNode, DrawerDelegate {
         crumpledPaper.zPosition = 3
     }
     
-    func removeCrumpledPaperIfNeeded(to drawer: Drawer) {
-        if drawer.drawerSize == .large { // Verifica se a gaveta é a largerOpenDrawer
-            crumpledPaper.removeFromParent()
+    
+    func verification(drawer: Drawer, tapped: SKNode) {
+        if delegate?.didZoom == true && tapped == drawer.spriteNode {
+            drawer.toggle(completion: { [weak self] in
+                guard let self else {
+                    return
+                }
+                if drawer.isOpened == false {
+                    if drawer.drawerSize == .large { // Verifica se a gaveta é a largerOpenDrawer
+                        drawer.spriteNode.addChild(self.crumpledPaper)
+                        self.positionCrumpledPaper()
+                    }
+                } else {
+                    if drawer.drawerSize == .large { // Verifica se a gaveta é a largerOpenDrawer
+                        self.crumpledPaper.removeFromParent()
+                    }
+                }
+            })
+        } else {
+            delegate?.zoom(isZoom: true, node: table, ratio: 0.5)
         }
     }
 }
+
 

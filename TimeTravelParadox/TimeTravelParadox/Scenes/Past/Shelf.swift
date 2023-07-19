@@ -7,18 +7,79 @@
 
 import SpriteKit
 
+class Shelf: SKNode{
+    let past = SKScene(fileNamed: "PastScene")
+    
+    var delegate: ZoomProtocol?
 
-class Shelf{
+    
+    var hiddenPolaroid: SKSpriteNode?
     var shelf: SKSpriteNode?
     var polaroid: SKSpriteNode?
     
-    var enlarged = false
-    
-    let expand = SKAction.resize(toWidth: 1000, height: 1000, duration: 1)
+    let expand = SKAction.resize(toWidth: 80, height: 80, duration: 1)
     
     let shake = SKAction.sequence([
                 SKAction.rotate(byAngle: -.pi/12, duration: 0.5),
                 SKAction.rotate(byAngle: .pi/6, duration: 0.5),
                 SKAction.rotate(byAngle: -.pi/12, duration: 0.5)
             ])
+
+    
+    init(delegate: ZoomProtocol){
+        self.delegate = delegate
+        super.init()
+        self.zPosition = 1
+        if let past {
+            shelf = (past.childNode(withName: "shelf") as? SKSpriteNode)
+            shelf?.removeFromParent()
+            polaroid = (past.childNode(withName: "polaroid") as? SKSpriteNode)
+            polaroid?.removeFromParent()
+            hiddenPolaroid = (past.childNode(withName: "hiddenPolaroid") as? SKSpriteNode)
+            hiddenPolaroid?.removeFromParent()
+            self.isUserInteractionEnabled = true
+        }
+        if let shelf, let polaroid, let hiddenPolaroid{
+            self.addChild(shelf)
+            self.addChild(polaroid)
+            self.addChild(hiddenPolaroid)
+        }
+        isPaused = false
+        polaroid?.isPaused = false
+        hiddenPolaroid?.isPaused = false
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        
+        super.init(coder: aDecoder)
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return } // se nao estiver em toque acaba aqui
+        let location = touch.location(in: self)
+        let tappedNodes = nodes(at: location)
+        guard let tapped = tappedNodes.first else { return } // ter ctz que algo esta sendo tocado
+        
+        switch tapped.name {
+        case "shelf":
+            delegate?.zoom(isZoom: true, node: shelf, ratio: 0.5)
+            print("shelf")
+        case "hiddenPolaroid":
+            // se clicar na polaroid e tiver com zoom
+            if delegate?.didZoom == true {
+                let moveToInventary = SKAction.run {
+                    self.hiddenPolaroid?.isHidden = true
+                }
+                let sequence = SKAction.sequence([expand, shake, moveToInventary])
+                hiddenPolaroid?.run(sequence)
+            // se clicar na polaroid e nao tiver com zoom
+            }else{
+                delegate?.zoom(isZoom: true, node: shelf, ratio: 0.5)
+            }
+        print("hiddenPolaroid")
+        default:
+            return
+        }
+    }
 }

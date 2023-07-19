@@ -8,7 +8,8 @@ class Past: SKNode {
     
     var clock: Clock?
     var typeMachine: TypeMachine?
-    
+    var shelf: Shelf?
+    var hiddenPolaroid: Shelf?
     var table: SKSpriteNode?
     private let past = SKScene(fileNamed: "PastScene")
     private var pastBG: SKSpriteNode?
@@ -16,8 +17,7 @@ class Past: SKNode {
     private let crumpledPaper = SKSpriteNode(imageNamed: "crumpledPaper")
     private let paper = SKSpriteNode(imageNamed: "paper")
     
-//    var shelf: Shelf = childNode(withName: "shelf") as? SKSpriteNode
-//    polaroid = childNode(withName: "polaroid") as? SKSpriteNode
+
     
     var delegate: ZoomProtocol?
     
@@ -37,10 +37,13 @@ class Past: SKNode {
         self.table = past?.childNode(withName: "table") as? SKSpriteNode
         self.clock = Clock(delegate: delegate)
         self.typeMachine = TypeMachine(delegate: delegate)
+        self.shelf = Shelf(delegate: delegate)
+        self.hiddenPolaroid = Shelf(delegate: delegate)
+        
         super.init()
         
         self.zPosition = 1
-        if let past, let clock, let typeMachine{
+        if let past, let clock, let typeMachine, let shelf, let hiddenPolaroid{
             pastBG = (past.childNode(withName: "pastBG") as? SKSpriteNode)
             pastBG?.removeFromParent()
             
@@ -56,6 +59,10 @@ class Past: SKNode {
             clock.delegate = delegate
             self.addChild(typeMachine)
             typeMachine.delegate = delegate
+            self.addChild(shelf)
+            shelf.delegate = delegate
+            self.addChild(hiddenPolaroid)
+            hiddenPolaroid.delegate = delegate
             
             self.removeAction(forKey: "futureST")
         }

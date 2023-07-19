@@ -6,6 +6,7 @@ class Future: SKNode{
   private var futureBG: SKSpriteNode?
   
   var computer: Computer?
+  var vault: Vault?
   
   let futureST = SKAction.repeatForever(SKAction.playSoundFileNamed("futureST.mp3", waitForCompletion: true))
   
@@ -15,8 +16,11 @@ class Future: SKNode{
     super.init()
     self.delegate = delegate
     self.computer = Computer(delegate: delegate)
+    self.vault = Vault(delegate: delegate)
+    vault?.setupCofre()
+    vault?.zPosition()
     
-    if let futureScene, let computer {
+    if let futureScene, let computer, let vault {
       futureBG = (futureScene.childNode(withName: "futureBG") as? SKSpriteNode)
       futureBG?.removeFromParent()
       
@@ -28,6 +32,8 @@ class Future: SKNode{
       
       self.addChild(computer)
       computer.delegate = delegate
+      self.addChild(vault)
+      vault.delegate = delegate
       
     }
     
@@ -51,4 +57,6 @@ class Future: SKNode{
       return
     }
   }
+  
+  
 }

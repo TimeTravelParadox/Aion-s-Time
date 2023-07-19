@@ -15,8 +15,8 @@ class Past: SKNode {
     private let crumpledPaper = SKSpriteNode(imageNamed: "crumpledPaper")
     private let paper = SKSpriteNode(imageNamed: "paper")
     
-    var shelf: Shelf = childNode(withName: "shelf") as? SKSpriteNode
-    polaroid = childNode(withName: "polaroid") as? SKSpriteNode
+//    var shelf: Shelf = childNode(withName: "shelf") as? SKSpriteNode
+//    polaroid = childNode(withName: "polaroid") as? SKSpriteNode
     
     var delegate: ZoomProtocol?
     

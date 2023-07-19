@@ -7,6 +7,7 @@ class Past: SKNode {
     lazy var drawer3: Drawer = Drawer(drawerSize: .small, spriteNode: past?.childNode(withName: "smallerDrawer2") as! SKSpriteNode)
     
     var clock: Clock?
+    var typeMachine: TypeMachine?
     
     var table: SKSpriteNode?
     private let past = SKScene(fileNamed: "PastScene")
@@ -35,10 +36,11 @@ class Past: SKNode {
         //fazer o mesmo abaixo
         self.table = past?.childNode(withName: "table") as? SKSpriteNode
         self.clock = Clock(delegate: delegate)
+        self.typeMachine = TypeMachine(delegate: delegate)
         super.init()
         
         self.zPosition = 1
-        if let past, let clock {
+        if let past, let clock, let typeMachine{
             pastBG = (past.childNode(withName: "pastBG") as? SKSpriteNode)
             pastBG?.removeFromParent()
             
@@ -52,6 +54,8 @@ class Past: SKNode {
             //fazer o mesmo
             self.addChild(clock)
             clock.delegate = delegate
+            self.addChild(typeMachine)
+            typeMachine.delegate = delegate
             
             self.removeAction(forKey: "futureST")
         }

@@ -1,5 +1,7 @@
 import SpriteKit
 
+ var inventario: [SKSpriteNode] = [] //classe global para ser pega na static func
+
 class HUD: SKNode{
   private let hud = SKScene(fileNamed: "HUDScene")
   private var travel: SKSpriteNode?
@@ -14,6 +16,7 @@ class HUD: SKNode{
   
   func hideQGButton(isHide: Bool){
     qgButton?.isHidden = isHide
+      inventarioHUD?.isHidden = isHide
   }
   
   override init(){
@@ -86,19 +89,19 @@ class HUD: SKNode{
       
     }
     
-    item.size = CGSize(width: 20, height: 20)
+    item.size = CGSize(width: 50, height: 50)
     
     switch inventario.count {
     case 0:
-      item.position = CGPoint(x: 60, y: 160)
+      item.position = CGPoint(x: 35, y: 124)
     case 1:
-      item.position = CGPoint(x: 110, y: 160)
+      item.position = CGPoint(x: 10, y: 124)
     case 2:
-      item.position = CGPoint(x: 160, y: 160)
+      item.position = CGPoint(x: -15, y: 124)
     case 3:
-      item.position = CGPoint(x: 210, y: 160)
+      item.position = CGPoint(x: -40, y: 124)
     case 4:
-      item.position = CGPoint(x: 260, y: 160)
+      item.position = CGPoint(x: -65, y: 124)
     default:
       return
     }
@@ -107,5 +110,30 @@ class HUD: SKNode{
     inventario.append(item)
     
   }
+    
+    static func addOnInv(node: SKSpriteNode?, inventario: inout [SKSpriteNode]){//inout é uma palavra-chave em Swift que permite que um parâmetro de função seja passado por referência.
+        let nodeName = node?.name ?? "" // Obtém o nome do nó
+        if inventario.contains(where: { $0.name == nodeName }) {
+            return // Se já existir, retorna sem adicionar o nó novamente
+        }
+        
+        node?.size = CGSize(width: 30, height: 30) // padroniza o tamanho do node
+        node?.zPosition = 30
+        switch inventario.count {       // posiciona o node de acordo com a quantidade e node dentro de inventario
+        case 0:
+          node?.position = CGPoint(x: -50, y: 144)
+        case 1:
+          node?.position = CGPoint(x: 0, y: 144)
+        case 2:
+          node?.position = CGPoint(x: 50, y: 144)
+        case 3:
+          node?.position = CGPoint(x: 100, y: 144)
+        case 4:
+          node?.position = CGPoint(x: 150, y: 144)
+        default:
+          return
+        }
+        inventario.append(node!)
+    }
   
 }

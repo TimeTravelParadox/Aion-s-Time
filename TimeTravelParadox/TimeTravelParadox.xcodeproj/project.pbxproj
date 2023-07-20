@@ -39,6 +39,9 @@
 		9BEB803C2A68695300352220 /* Fade.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9BEB803B2A68695300352220 /* Fade.sks */; };
 		9BF7D48D2A69B523006E628B /* gavetaAbrindo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BF7D48A2A69B523006E628B /* gavetaAbrindo.mp3 */; };
 		9BF7D48E2A69B523006E628B /* mouseClick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BF7D48B2A69B523006E628B /* mouseClick.mp3 */; };
+		9BF7D4912A69C8DB006E628B /* cofreAbrindo.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9BF7D48F2A69C8DB006E628B /* cofreAbrindo.wav */; };
+		9BF7D4922A69C8DB006E628B /* escolhaDaSenha.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BF7D4902A69C8DB006E628B /* escolhaDaSenha.mp3 */; };
+		9BF7D4942A69CDE2006E628B /* zoomSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BF7D4932A69CDE2006E628B /* zoomSound.mp3 */; };
 		C55C13392A5C792300334DD8 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55C13382A5C792300334DD8 /* Future.swift */; };
 		C55C133B2A5C792E00334DD8 /* Past.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55C133A2A5C792E00334DD8 /* Past.swift */; };
 		C55C133D2A5C795B00334DD8 /* QG.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55C133C2A5C795B00334DD8 /* QG.swift */; };
@@ -80,6 +83,9 @@
 		9BEB803B2A68695300352220 /* Fade.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fade.sks; sourceTree = "<group>"; };
 		9BF7D48A2A69B523006E628B /* gavetaAbrindo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gavetaAbrindo.mp3; sourceTree = "<group>"; };
 		9BF7D48B2A69B523006E628B /* mouseClick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mouseClick.mp3; sourceTree = "<group>"; };
+		9BF7D48F2A69C8DB006E628B /* cofreAbrindo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cofreAbrindo.wav; sourceTree = "<group>"; };
+		9BF7D4902A69C8DB006E628B /* escolhaDaSenha.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = escolhaDaSenha.mp3; sourceTree = "<group>"; };
+		9BF7D4932A69CDE2006E628B /* zoomSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = zoomSound.mp3; sourceTree = "<group>"; };
 		C55C13382A5C792300334DD8 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		C55C133A2A5C792E00334DD8 /* Past.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Past.swift; sourceTree = "<group>"; };
 		C55C133C2A5C795B00334DD8 /* QG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QG.swift; sourceTree = "<group>"; };
@@ -118,6 +124,9 @@
 		377D8C3C2A5C7192008C6355 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				9BF7D4932A69CDE2006E628B /* zoomSound.mp3 */,
+				9BF7D48F2A69C8DB006E628B /* cofreAbrindo.wav */,
+				9BF7D4902A69C8DB006E628B /* escolhaDaSenha.mp3 */,
 				9BF7D48A2A69B523006E628B /* gavetaAbrindo.mp3 */,
 				9BF7D48B2A69B523006E628B /* mouseClick.mp3 */,
 				3753BEA02A6740340075AA56 /* ding.wav */,
@@ -313,15 +322,18 @@
 				9BF7D48D2A69B523006E628B /* gavetaAbrindo.mp3 in Resources */,
 				3753BE9D2A6740210075AA56 /* deleting.mp3 in Resources */,
 				3753BEA12A6740340075AA56 /* ding.wav in Resources */,
+				9BF7D4922A69C8DB006E628B /* escolhaDaSenha.mp3 in Resources */,
 				379B546A2A60FAA600F10217 /* QGST.mp3 in Resources */,
 				9BF7D48E2A69B523006E628B /* mouseClick.mp3 in Resources */,
 				9BEB803C2A68695300352220 /* Fade.sks in Resources */,
 				379B54762A6492DE00F10217 /* clockOpeningSFX.mp3 in Resources */,
 				379B545E2A60F42500F10217 /* QGScene.sks in Resources */,
+				9BF7D4942A69CDE2006E628B /* zoomSound.mp3 in Resources */,
 				9B82F4DE2A5C6EB400BC66F2 /* LaunchScreen.storyboard in Resources */,
 				379B546C2A60FAB200F10217 /* pastST.mp3 in Resources */,
 				379B545C2A60F41500F10217 /* HUDScene.sks in Resources */,
 				9B82F4D22A5C6EB200BC66F2 /* Actions.sks in Resources */,
+				9BF7D4912A69C8DB006E628B /* cofreAbrindo.wav in Resources */,
 				379B54782A64B7D000F10217 /* ticking.mp3 in Resources */,
 				379B54682A60FA8F00F10217 /* futureST.mp3 in Resources */,
 			);

@@ -8,6 +8,8 @@ class GameScene: SKScene, ZoomProtocol{
     private let qg = QG()
     
     private var fade: Fade?
+  
+  let zoomSound = SKAction.playSoundFileNamed("zoomSound", waitForCompletion: false)
     
     let cameraNode = SKCameraNode()
     var cameraPosition = CGPoint(x: 0, y: 0)
@@ -30,12 +32,17 @@ class GameScene: SKScene, ZoomProtocol{
             self.cameraNode.position = self.cameraPosition
             self.cameraNode.run(SKAction.scale(to: ratio, duration: 0))
             fade?.fade(camera: cameraNode.position)
+          node?.isPaused = false
+          node?.run(zoomSound)
         } else {
             self.didZoom = isZoom
             self.cameraNode.position = node?.position ?? self.cameraNode.position
             self.cameraNode.run(SKAction.scale(to: 1, duration: 0))
             fade?.fade(camera: cameraNode.position)
+          node?.isPaused = false
+          node?.run(zoomSound)
             print("zoom out")
+          
         }
     }
     

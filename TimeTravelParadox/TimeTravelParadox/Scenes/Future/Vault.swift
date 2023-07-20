@@ -20,6 +20,10 @@ class Vault: SKNode {
   
   let vaultOpening =  SKAction.animate(with: [SKTexture(imageNamed: "cofre0"), SKTexture(imageNamed: "cofre1"), SKTexture(imageNamed: "cofre2"), SKTexture(imageNamed: "cofre3"), SKTexture(imageNamed: "cofre4")], timePerFrame: 0.4)
   
+  let vaultOpeningSound = SKAction.playSoundFileNamed("cofreAbrindo", waitForCompletion: true)
+  
+  let vaultChoose = SKAction.playSoundFileNamed("escolhaDaSenha", waitForCompletion: false)
+  
   init(delegate: ZoomProtocol) {
     super.init()
     self.delegate = delegate
@@ -51,6 +55,7 @@ class Vault: SKNode {
       
       vault?.isPaused = false
       vault?.run(vaultOpening)
+      vault?.run(vaultOpeningSound)
       
       // Remover os botões da cena
       for child in self.children {
@@ -68,7 +73,6 @@ class Vault: SKNode {
       label.fontSize = 14
       label.fontColor = .black
       labels.append(label)
-      //label.name = "label"
       
       let button = SKButtonNodeLabel(label: label) {
         if self.delegate?.didZoom == true {

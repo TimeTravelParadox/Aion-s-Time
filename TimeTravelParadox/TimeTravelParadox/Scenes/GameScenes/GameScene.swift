@@ -25,12 +25,22 @@ class GameScene: SKScene, ZoomProtocol{
             return
         }
         if isZoom {
+            // Deselecionar o item
+            if HUD.shared.isSelected {
+                HUD.shared.removeBorder(from: HUD.shared.itemSelecionado!)
+            }
             self.didZoom = isZoom
             self.cameraPosition = node?.position ?? self.cameraNode.position
             self.cameraNode.position = self.cameraPosition
             self.cameraNode.run(SKAction.scale(to: ratio, duration: 0))
             fade?.fade(camera: cameraNode.position)
         } else {
+            // Deselecionar o item
+            if HUD.shared.isSelected {
+                if HUD.shared.itemSelecionado != nil {
+                    HUD.shared.removeBorder(from: HUD.shared.itemSelecionado!)
+                }
+            }
             self.didZoom = isZoom
             self.cameraNode.position = node?.position ?? self.cameraNode.position
             self.cameraNode.run(SKAction.scale(to: 1, duration: 0))

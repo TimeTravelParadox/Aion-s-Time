@@ -3,6 +3,9 @@ import SpriteKit
  var inventario: [SKSpriteNode] = [] //classe global para ser pega na static func
 
 class HUD: SKNode{
+    
+    static let shared = HUD()
+    
   private let hud = SKScene(fileNamed: "HUDScene")
   private var travel: SKSpriteNode?
   private var qgButton: SKSpriteNode?
@@ -62,6 +65,7 @@ class HUD: SKNode{
   }
   
   func removeBorder(from node: SKSpriteNode) {
+      HUD.shared.itemSelecionado = nil
     // Percorre os nós filhos do sprite node
     for childNode in node.children {
       // Verifica se o nó filho é um shape node

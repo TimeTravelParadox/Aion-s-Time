@@ -78,7 +78,18 @@ class Clock: SKNode{
         
         switch tapped.name {
         case "peca1":
+            if !peca1Taken{
                 HUD.addOnInv(node: peca1, inventario: &inventario)
+                peca1Taken = true
+            }else {
+                if let itemSelecionado = HUD.shared.itemSelecionado {
+                    HUD.shared.removeBorder(from: itemSelecionado)
+                }
+                HUD.shared.addBorder(to: peca1!)
+                HUD.shared.itemSelecionado = peca1
+                HUD.shared.isSelected = true
+            }
+                
         case "clock":
             delegate?.zoom(isZoom: true, node: clock, ratio: 0.26)
         case "hourHand":

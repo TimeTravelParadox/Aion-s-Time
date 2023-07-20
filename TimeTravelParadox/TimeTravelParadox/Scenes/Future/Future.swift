@@ -53,6 +53,12 @@ class Future: SKNode{
     case "futureBG":
       delegate?.zoom(isZoom: false, node: futureBG, ratio: 0)
       print("futuro plano de fundo")
+        // Deselecionar o item
+        if HUD.shared.isSelected {
+            if HUD.shared.itemSelecionado != nil {
+                HUD.shared.removeBorder(from: HUD.shared.itemSelecionado!)
+            }
+        }
     default:
       return
     }

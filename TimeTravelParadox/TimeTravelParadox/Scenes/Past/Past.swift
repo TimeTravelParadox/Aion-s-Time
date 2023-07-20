@@ -17,8 +17,6 @@ class Past: SKNode {
     private let crumpledPaper = SKSpriteNode(imageNamed: "crumpledPaper")
     private let paper = SKSpriteNode(imageNamed: "paper")
     
-
-    
     var delegate: ZoomProtocol?
     
     var minuteRotate: CGFloat = 0 // variável para saber o grau dos minutos
@@ -96,15 +94,12 @@ class Past: SKNode {
             print("mesa")
         case "smallerDrawer1":
             verification(drawer: drawer1, tapped: tapped)
-          drawer1.spriteNode.run(drawer1.drawerOpening)
             print("smallerDrawer1")
         case "largerDrawer":
             verification(drawer: drawer2, tapped: tapped)
-          drawer2.spriteNode.run(drawer2.drawerOpening)
             print("largerDrawer")
         case "smallerDrawer2":
             verification(drawer: drawer3, tapped: tapped)
-          drawer3.spriteNode.run(drawer3.drawerOpening)
             print("smallerDrawer2")
         default:
             return

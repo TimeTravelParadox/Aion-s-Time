@@ -16,6 +16,7 @@ class Shelf: SKNode{
     var hiddenPolaroid: SKSpriteNode?
     var shelf: SKSpriteNode?
     var polaroid: SKSpriteNode?
+    var takenPolaroid: Bool = false
     
     let expand = SKAction.resize(toWidth: 1000, height: 1000, duration: 1)
     
@@ -69,13 +70,13 @@ class Shelf: SKNode{
             print("shelf")
         case "hiddenPolaroid":
             // se clicar na polaroid e tiver com zoom
-            if delegate?.didZoom == true {
+            if delegate?.didZoom == true && takenPolaroid == false {
                 polaroid?.isHidden = false
-                hiddenPolaroid?.isHidden = true
+                
                 let moveToInventary = SKAction.run {
                     //codigo do inventario AQUI
-                    self.polaroid?.isHidden = true //substituir por esse
-                    //
+                    HUD.addOnInv(node: self.polaroid, inventario: &inventario)
+                    self.takenPolaroid = true
                 }
                 let sequence = SKAction.sequence([expand, shake, moveToInventary])
                 polaroid?.run(sequence)

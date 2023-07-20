@@ -22,6 +22,8 @@ class Drawer {
         }
     }
     
+    let drawerOpening = SKAction.playSoundFileNamed("gavetaAbrindo", waitForCompletion: false)
+    
     var spriteNode: SKSpriteNode
     let drawerSize: Size
     var isOpened: Bool
@@ -65,8 +67,9 @@ class Drawer {
                 SKAction.resize(toWidth: size.width, height: size.height, duration: duration / 2)
             ]))
         }
-        
-        spriteNode.run(SKAction.sequence(animations)) { [weak self] in // weak self serve para guardar na memória CASO haja alguma referencia dps que mudar de cena (ao voltar pro passado a gaveta estar aberta ou fechada)
+        let sequence = SKAction.sequence(animations)
+        let animation = SKAction.group([sequence, SKAction.playSoundFileNamed("gavetaAbrindo", waitForCompletion: false)])
+        spriteNode.run(animation) { [weak self] in // weak self serve para guardar na memória CASO haja alguma referencia dps que mudar de cena (ao voltar pro passado a gaveta estar aberta ou fechada)
             // A animação terminou de rodar
             guard let self = self else {
                 return
@@ -79,6 +82,7 @@ class Drawer {
     
     //sequencia de animação dos assets
     private func animationTextures() -> [SKTexture] {
+        
         return [SKTexture(imageNamed: "\(drawerSize.prefix)ClosedDrawer"), SKTexture(imageNamed: "\(drawerSize.prefix)HalfOpenDrawer"), SKTexture(imageNamed: "\(drawerSize.prefix)OpenDrawer")]
     }
 }

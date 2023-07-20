@@ -78,6 +78,8 @@ class Vault: SKNode {
         if self.delegate?.didZoom == true {
           print("Você clicou no num\(i)")
           self.nums[i] += 1
+          label.isPaused = false
+          label.run(self.vaultChoose)
           if self.nums[i] > 9 {
             self.nums[i] = 0
           }

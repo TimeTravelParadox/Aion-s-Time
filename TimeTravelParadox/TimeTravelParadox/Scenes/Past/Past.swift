@@ -16,7 +16,7 @@ class Past: SKNode {
     
     private let crumpledPaper = SKSpriteNode(imageNamed: "crumpledPaper")
     private let paper = SKSpriteNode(imageNamed: "paper")
-    private var takenPaper:Bool = false
+    private var takenPaper: Bool = false
     
     var delegate: ZoomProtocol?
     
@@ -129,9 +129,6 @@ class Past: SKNode {
     
     func verification(drawer: Drawer, tapped: SKNode) {
         if delegate?.didZoom == true && tapped == drawer.spriteNode {
-            if drawer.isOpened {
-                //self.crumpledPaper.removeFromParent()
-            }
             drawer.toggle(completion: { [weak self] in
                 guard let self else {
                     return
@@ -147,7 +144,7 @@ class Past: SKNode {
                     }
                 } else {
                     if drawer.drawerSize == .large { // Verifica se a gaveta é a largerOpenDrawer
-                         
+                        
                     }
                 }
             })

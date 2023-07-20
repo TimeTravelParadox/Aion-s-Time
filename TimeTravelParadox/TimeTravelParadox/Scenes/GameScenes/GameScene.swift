@@ -7,9 +7,12 @@ class GameScene: SKScene, ZoomProtocol{
     private let hud = HUD()
     private let qg = QG()
     
+    var isTravelingSFXPlaying = false
+    
     private var fade: Fade?
   
-  let zoomSound = SKAction.playSoundFileNamed("zoomSound", waitForCompletion: false)
+   let zoomSound = SKAction.playSoundFileNamed("zoomSound", waitForCompletion: false)
+   let travelingSFX = SKAction.playSoundFileNamed("traveling.mp3", waitForCompletion: false)
     
     let cameraNode = SKCameraNode()
     var cameraPosition = CGPoint(x: 0, y: 0)
@@ -92,19 +95,31 @@ class GameScene: SKScene, ZoomProtocol{
             hud.hideQGButton(isHide: true)
             
         case "travel":
-            if past?.zPosition ?? 0 > 0  {
-                past?.zPosition = 0
-                qg.zPosition = 0
-                future?.zPosition = 10
-                hud.hideQGButton(isHide: false)
-                
-            }else{
-                qg.zPosition = 0
-                future?.zPosition = 0
-                past?.zPosition = 10
-                hud.hideQGButton(isHide: false)
-                
+            if isTravelingSFXPlaying {
+                return
             }
+            
+            // marca o estado do som tocando
+            isTravelingSFXPlaying = true
+
+            scene?.run(travelingSFX)
+            scene?.run(SKAction.wait(forDuration: 1.9)) {
+                if self.past?.zPosition ?? 0 > 0  {
+                    self.past?.zPosition = 0
+                    self.qg.zPosition = 0
+                    self.future?.zPosition = 10
+                    self.hud.hideQGButton(isHide: false)
+                } else {
+                    self.qg.zPosition = 0
+                    self.future?.zPosition = 0
+                    self.past?.zPosition = 10
+                    self.hud.hideQGButton(isHide: false)
+                }
+
+                // marca som finalizado
+                self.isTravelingSFXPlaying = false
+            }
+
         default:
             return
         }

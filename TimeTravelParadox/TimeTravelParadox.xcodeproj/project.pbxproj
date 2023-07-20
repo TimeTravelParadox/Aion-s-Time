@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3710127A2A69D5440028A79B /* traveling.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 371012792A69D5440028A79B /* traveling.mp3 */; };
 		3753BE9D2A6740210075AA56 /* deleting.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3753BE9C2A6740210075AA56 /* deleting.mp3 */; };
 		3753BE9F2A6740270075AA56 /* typing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3753BE9E2A6740270075AA56 /* typing.mp3 */; };
 		3753BEA12A6740340075AA56 /* ding.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3753BEA02A6740340075AA56 /* ding.wav */; };
@@ -50,6 +51,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		371012792A69D5440028A79B /* traveling.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = traveling.mp3; sourceTree = "<group>"; };
 		3753BE9C2A6740210075AA56 /* deleting.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = deleting.mp3; sourceTree = "<group>"; };
 		3753BE9E2A6740270075AA56 /* typing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = typing.mp3; sourceTree = "<group>"; };
 		3753BEA02A6740340075AA56 /* ding.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ding.wav; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 		377D8C3C2A5C7192008C6355 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				371012792A69D5440028A79B /* traveling.mp3 */,
 				9BF7D4932A69CDE2006E628B /* zoomSound.mp3 */,
 				9BF7D48F2A69C8DB006E628B /* cofreAbrindo.wav */,
 				9BF7D4902A69C8DB006E628B /* escolhaDaSenha.mp3 */,
@@ -317,6 +320,7 @@
 				9B82F4D92A5C6EB200BC66F2 /* Main.storyboard in Resources */,
 				9B82F4D02A5C6EB200BC66F2 /* GameScene.sks in Resources */,
 				3753BE9F2A6740270075AA56 /* typing.mp3 in Resources */,
+				3710127A2A69D5440028A79B /* traveling.mp3 in Resources */,
 				379B54602A60F42D00F10217 /* PastScene.sks in Resources */,
 				9B82F4DB2A5C6EB400BC66F2 /* Assets.xcassets in Resources */,
 				9BF7D48D2A69B523006E628B /* gavetaAbrindo.mp3 in Resources */,

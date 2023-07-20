@@ -9,6 +9,8 @@ class GameScene: SKScene, ZoomProtocol{
     
     private var fade: Fade?
     
+    let travelingSFX = SKAction.playSoundFileNamed("travelingSFX.mp3", waitForCompletion: true)
+    
     let cameraNode = SKCameraNode()
     var cameraPosition = CGPoint(x: 0, y: 0)
     
@@ -87,18 +89,21 @@ class GameScene: SKScene, ZoomProtocol{
             hud.hideQGButton(isHide: true)
             
         case "travel":
-            if past?.zPosition ?? 0 > 0  {
-                past?.zPosition = 0
-                qg.zPosition = 0
-                future?.zPosition = 10
-                hud.hideQGButton(isHide: false)
-                
-            }else{
-                qg.zPosition = 0
-                future?.zPosition = 0
-                past?.zPosition = 10
-                hud.hideQGButton(isHide: false)
-                
+            scene?.run(travelingSFX)
+            scene?.run(SKAction.wait(forDuration: 1.9)){
+                if self.past?.zPosition ?? 0 > 0  {
+                    self.past?.zPosition = 0
+                    self.qg.zPosition = 0
+                    self.future?.zPosition = 10
+                    self.hud.hideQGButton(isHide: false)
+                    
+                }else{
+                    self.qg.zPosition = 0
+                    self.future?.zPosition = 0
+                    self.past?.zPosition = 10
+                    self.hud.hideQGButton(isHide: false)
+                    
+                }
             }
         default:
             return

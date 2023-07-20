@@ -16,6 +16,7 @@ class Past: SKNode {
     
     private let crumpledPaper = SKSpriteNode(imageNamed: "crumpledPaper")
     private let paper = SKSpriteNode(imageNamed: "paper")
+    private var takenPaper:Bool = false
     
 
     
@@ -70,6 +71,7 @@ class Past: SKNode {
         self.addChild(drawer1.spriteNode)
         self.addChild(drawer2.spriteNode)
         self.addChild(drawer3.spriteNode)
+        crumpledPaper.name = "crumpledPaper"
         
         if let table {
             table.removeFromParent()
@@ -103,36 +105,51 @@ class Past: SKNode {
         case "smallerDrawer2":
             verification(drawer: drawer3, tapped: tapped)
             print("smallerDrawer2")
+        case "crumpledPaper":
+            HUD.addOnInv(node: crumpledPaper, inventario: &inventario)
+            takenPaper = true
+            print("crumpledpapper")
         default:
             return
         }
     }
     
     
-    private func positionCrumpledPaper() {
+    private func positionCrumpledPaper(drawer: Drawer) {
         // Defina as coordenadas x e y desejadas para a posição do crumpledPaper
         let desiredX: CGFloat = 0
         let desiredY: CGFloat = -20
         
-        crumpledPaper.position = CGPoint(x: desiredX, y: desiredY)
+        let relativePosition = CGPoint(x: desiredX, y: desiredY)
+        let absolutePosition = drawer.spriteNode.convert(relativePosition, to: self)
+        
+        
+        crumpledPaper.position = absolutePosition
         crumpledPaper.zPosition = 3
     }
     
     
     func verification(drawer: Drawer, tapped: SKNode) {
         if delegate?.didZoom == true && tapped == drawer.spriteNode {
+            if drawer.isOpened {
+                //self.crumpledPaper.removeFromParent()
+            }
             drawer.toggle(completion: { [weak self] in
                 guard let self else {
                     return
                 }
+                guard takenPaper == false else {
+                    return
+                }
                 if drawer.isOpened == true {
                     if drawer.drawerSize == .large { // Verifica se a gaveta é a largerOpenDrawer
-                        drawer.spriteNode.addChild(self.crumpledPaper)
-                        self.positionCrumpledPaper()
+                        
+                        self.addChild(self.crumpledPaper)
+                        self.positionCrumpledPaper(drawer: drawer)
                     }
                 } else {
                     if drawer.drawerSize == .large { // Verifica se a gaveta é a largerOpenDrawer
-                        self.crumpledPaper.removeFromParent() //ta aqui o problema do papel
+                         
                     }
                 }
             })

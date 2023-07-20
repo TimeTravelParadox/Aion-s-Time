@@ -27,6 +27,8 @@ class Drawer {
     var isOpened: Bool
     // para dar pra clicar só quando a animação estiver false
     private var isAnimating = false
+  
+  let drawerOpening = SKAction.playSoundFileNamed("gavetaAbrindo", waitForCompletion: false)
     
     //inicializando os objetos
     init(drawerSize: Size, spriteNode: SKSpriteNode) {

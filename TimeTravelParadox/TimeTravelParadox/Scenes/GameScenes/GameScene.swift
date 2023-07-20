@@ -10,7 +10,8 @@ class GameScene: SKScene, ZoomProtocol{
     private var fade: Fade?
     
     let travelingSFX = SKAction.playSoundFileNamed("travelingSFX.mp3", waitForCompletion: true)
-    
+    var isTravelingSFXPlaying = false // evitar que caso o usuário clicque várias vezes no botão viajar o som nao sobrepor ele mesmo
+
     let cameraNode = SKCameraNode()
     var cameraPosition = CGPoint(x: 0, y: 0)
     
@@ -89,21 +90,29 @@ class GameScene: SKScene, ZoomProtocol{
             hud.hideQGButton(isHide: true)
             
         case "travel":
+            if isTravelingSFXPlaying {
+                return
+            }
+            
+            // o som esta tocando
+            isTravelingSFXPlaying = true
+
             scene?.run(travelingSFX)
-            scene?.run(SKAction.wait(forDuration: 1.9)){
+            scene?.run(SKAction.wait(forDuration: 1.9)) {
                 if self.past?.zPosition ?? 0 > 0  {
                     self.past?.zPosition = 0
                     self.qg.zPosition = 0
                     self.future?.zPosition = 10
                     self.hud.hideQGButton(isHide: false)
-                    
-                }else{
+                } else {
                     self.qg.zPosition = 0
                     self.future?.zPosition = 0
                     self.past?.zPosition = 10
                     self.hud.hideQGButton(isHide: false)
-                    
                 }
+                
+                // o som parou de tocar
+                self.isTravelingSFXPlaying = false
             }
         default:
             return

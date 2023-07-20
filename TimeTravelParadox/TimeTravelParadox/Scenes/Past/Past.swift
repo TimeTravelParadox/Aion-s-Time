@@ -17,8 +17,6 @@ class Past: SKNode {
     private let crumpledPaper = SKSpriteNode(imageNamed: "crumpledPaper")
     private let paper = SKSpriteNode(imageNamed: "paper")
     
-
-    
     var delegate: ZoomProtocol?
     
     var minuteRotate: CGFloat = 0 // variável para saber o grau dos minutos

@@ -7,6 +7,7 @@ class Future: SKNode{
   
   var computer: Computer?
   var vault: Vault?
+  var hologram: Hologram?
   
   let futureST = SKAction.repeatForever(SKAction.playSoundFileNamed("futureST.mp3", waitForCompletion: true))
   
@@ -17,10 +18,11 @@ class Future: SKNode{
     self.delegate = delegate
     self.computer = Computer(delegate: delegate)
     self.vault = Vault(delegate: delegate)
+    self.hologram = Hologram(delegate: delegate)
     vault?.setupCofre()
     vault?.zPosition()
     
-    if let futureScene, let computer, let vault {
+    if let futureScene, let computer, let vault, let hologram {
       futureBG = (futureScene.childNode(withName: "futureBG") as? SKSpriteNode)
       futureBG?.removeFromParent()
       
@@ -34,6 +36,8 @@ class Future: SKNode{
       computer.delegate = delegate
       self.addChild(vault)
       vault.delegate = delegate
+      self.addChild(hologram)
+      hologram.delegate = delegate
       
     }
     

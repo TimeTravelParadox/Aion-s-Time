@@ -30,12 +30,14 @@ class GameScene: SKScene, ZoomProtocol{
             self.cameraNode.position = self.cameraPosition
             self.cameraNode.run(SKAction.scale(to: ratio, duration: 0))
             fade?.fade(camera: cameraNode.position)
+            hud.hideTravelQG(isHide: true)
         } else {
             self.didZoom = isZoom
             self.cameraNode.position = node?.position ?? self.cameraNode.position
             self.cameraNode.run(SKAction.scale(to: 1, duration: 0))
             fade?.fade(camera: cameraNode.position)
             print("zoom out")
+            hud.hideTravelQG(isHide: false)
         }
     }
     

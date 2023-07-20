@@ -14,13 +14,14 @@ class Computer: SKNode {
   
   var delegate: ZoomProtocol?
   
+  let mouseClick = SKAction.playSoundFileNamed("mouseClick.mp3", waitForCompletion: false)
+  
   private var fundoVerde: SKSpriteNode?
   private var pasta1: SKSpriteNode?
   private var pasta2: SKSpriteNode?
   private var pasta3: SKSpriteNode?
   private var enigma: SKSpriteNode?
   private var voltar: SKSpriteNode?
-  
   
   private var quadrado: SKSpriteNode?
   
@@ -41,12 +42,12 @@ class Computer: SKNode {
       enigma?.removeFromParent()
       voltar = future.childNode(withName: "voltar") as? SKSpriteNode
       voltar?.removeFromParent()
-    
+      
       self.isUserInteractionEnabled = true
     }
     
     if let fundoVerde, let pasta1, let pasta2, let pasta3, let enigma, let voltar{
-
+      
       self.addChild(fundoVerde)
       self.addChild(pasta1)
       self.addChild(pasta2)
@@ -79,7 +80,7 @@ class Computer: SKNode {
       } else {
         delegate?.zoom(isZoom: true, node: fundoVerde, ratio: 0.5)
       }
-     
+      
     case "pasta1", "pasta3":
       if delegate?.didZoom == true {
         fundoVerde?.zPosition = 1
@@ -88,10 +89,14 @@ class Computer: SKNode {
         pasta3?.zPosition = 0
         voltar?.zPosition = 2
         enigma?.zPosition = 0
+        pasta1?.isPaused = false
+        pasta1?.run(mouseClick)
+        pasta3?.isPaused = false
+        pasta3?.run(mouseClick)
       } else {
         delegate?.zoom(isZoom: true, node: fundoVerde, ratio: 0.5)
       }
-    
+      
     case "voltar":
       if delegate?.didZoom == true {
         fundoVerde?.zPosition = 1
@@ -100,25 +105,29 @@ class Computer: SKNode {
         pasta3?.zPosition = 2
         voltar?.zPosition = 0
         enigma?.zPosition = 0
+        voltar?.isPaused = false
+        voltar?.run(mouseClick)
       } else {
         delegate?.zoom(isZoom: true, node: fundoVerde, ratio: 0.5)
       }
       
     case "pasta2":
       if delegate?.didZoom == true {
-      fundoVerde?.zPosition = 1
-      pasta1?.zPosition = 0
-      pasta2?.zPosition = 0
-      pasta3?.zPosition = 0
-      voltar?.zPosition = 3
-      enigma?.zPosition = 2
+        fundoVerde?.zPosition = 1
+        pasta1?.zPosition = 0
+        pasta2?.zPosition = 0
+        pasta3?.zPosition = 0
+        voltar?.zPosition = 3
+        enigma?.zPosition = 2
+        pasta2?.isPaused = false
+        pasta2?.run(mouseClick)
       } else {
         delegate?.zoom(isZoom: true, node: fundoVerde, ratio: 0.5)
       }
       
     case "enigma":
       delegate?.zoom(isZoom: true, node: enigma, ratio: 0.5)
-
+      
     default:
       return
     }

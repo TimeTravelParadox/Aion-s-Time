@@ -9,8 +9,6 @@ class QG: SKNode{
   let QGST = SKAction.repeatForever(SKAction.playSoundFileNamed("QGST.mp3", waitForCompletion: true))
   
     
-    
-    
   override init(){
     super.init()
     if let past {
@@ -27,5 +25,9 @@ class QG: SKNode{
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
   }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+    }
   
 }

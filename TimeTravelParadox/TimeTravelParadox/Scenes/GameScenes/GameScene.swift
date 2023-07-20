@@ -8,10 +8,9 @@ class GameScene: SKScene, ZoomProtocol{
     private let qg = QG()
     
     private var fade: Fade?
+  
+  let zoomSound = SKAction.playSoundFileNamed("zoomSound", waitForCompletion: false)
     
-    let travelingSFX = SKAction.playSoundFileNamed("travelingSFX.mp3", waitForCompletion: true)
-    var isTravelingSFXPlaying = false // evitar que caso o usuário clicque várias vezes no botão viajar o som nao sobrepor ele mesmo
-
     let cameraNode = SKCameraNode()
     var cameraPosition = CGPoint(x: 0, y: 0)
     
@@ -33,14 +32,17 @@ class GameScene: SKScene, ZoomProtocol{
             self.cameraNode.position = self.cameraPosition
             self.cameraNode.run(SKAction.scale(to: ratio, duration: 0))
             fade?.fade(camera: cameraNode.position)
-            hud.hideTravelQG(isHide: true)
+          node?.isPaused = false
+          node?.run(zoomSound)
         } else {
             self.didZoom = isZoom
             self.cameraNode.position = node?.position ?? self.cameraNode.position
             self.cameraNode.run(SKAction.scale(to: 1, duration: 0))
             fade?.fade(camera: cameraNode.position)
+          node?.isPaused = false
+          node?.run(zoomSound)
             print("zoom out")
-            hud.hideTravelQG(isHide: false)
+          
         }
     }
     
@@ -90,29 +92,18 @@ class GameScene: SKScene, ZoomProtocol{
             hud.hideQGButton(isHide: true)
             
         case "travel":
-            if isTravelingSFXPlaying {
-                return
-            }
-            
-            // o som esta tocando
-            isTravelingSFXPlaying = true
-
-            scene?.run(travelingSFX)
-            scene?.run(SKAction.wait(forDuration: 1.9)) {
-                if self.past?.zPosition ?? 0 > 0  {
-                    self.past?.zPosition = 0
-                    self.qg.zPosition = 0
-                    self.future?.zPosition = 10
-                    self.hud.hideQGButton(isHide: false)
-                } else {
-                    self.qg.zPosition = 0
-                    self.future?.zPosition = 0
-                    self.past?.zPosition = 10
-                    self.hud.hideQGButton(isHide: false)
-                }
+            if past?.zPosition ?? 0 > 0  {
+                past?.zPosition = 0
+                qg.zPosition = 0
+                future?.zPosition = 10
+                hud.hideQGButton(isHide: false)
                 
-                // o som parou de tocar
-                self.isTravelingSFXPlaying = false
+            }else{
+                qg.zPosition = 0
+                future?.zPosition = 0
+                past?.zPosition = 10
+                hud.hideQGButton(isHide: false)
+                
             }
         default:
             return

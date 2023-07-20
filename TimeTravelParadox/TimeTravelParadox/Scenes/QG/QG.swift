@@ -8,6 +8,9 @@ class QG: SKNode{
   
   let QGST = SKAction.repeatForever(SKAction.playSoundFileNamed("QGST.mp3", waitForCompletion: true))
   
+    
+    
+    
   override init(){
     super.init()
     if let past {

@@ -92,6 +92,12 @@ class Past: SKNode {
         case "pastBG":
             delegate?.zoom(isZoom: false, node: pastBG, ratio: 0)
             print("plano de fundo")
+            // Deselecionar o item
+            if HUD.shared.isSelected {
+                if HUD.shared.itemSelecionado != nil {
+                    HUD.shared.removeBorder(from: HUD.shared.itemSelecionado!)
+                }
+            }
         case "table":
             print("mesa")
         case "smallerDrawer1":
@@ -104,7 +110,7 @@ class Past: SKNode {
             verification(drawer: drawer3, tapped: tapped)
             print("smallerDrawer2")
         case "crumpledPaper":
-            HUD.addOnInv(node: crumpledPaper, inventario: &inventario)
+            HUD.addOnInv(node: crumpledPaper)
             takenPaper = true
             print("crumpledpapper")
         default:

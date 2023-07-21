@@ -1,26 +1,27 @@
 import SpriteKit
 
 class Clock: SKNode{
+    
     let past = SKScene(fileNamed: "PastScene")
     
-     var delegate: ZoomProtocol?
-
+    var delegate: ZoomProtocol?
+    
     var peca1Taken = false
-    var canTapAgain: Bool = true // evitar que ele toque muito ra'pido no ponteiro e bugue
-
     
     private var clock: SKSpriteNode?
     private var hourHand: SKSpriteNode?
     private var minuteHand: SKSpriteNode?
-    private var peca1: SKSpriteNode?
+    var peca1: SKSpriteNode?
+    
+    var canTapAgain: Bool = true // evitar que ele toque muito ra'pido no ponteiro e bugue
     
     var minuteRotate: CGFloat = 0 // variável para saber o grau dos minutos
     var hourRotate: CGFloat = 0 // variável para saber o grau das horas
-
+    
     let clockOpeningSFX = SKAction.playSoundFileNamed("clockOpeningSFX.mp3", waitForCompletion: true)
     let clockTickingSFX = SKAction.playSoundFileNamed("ticking.mp3", waitForCompletion: false)
-
-
+    
+    
     let clockOpening =  SKAction.animate(with: [SKTexture(imageNamed: "clock1"), SKTexture(imageNamed: "clock2"), SKTexture(imageNamed: "clock3"), SKTexture(imageNamed: "clock4"), SKTexture(imageNamed: "clock5"), SKTexture(imageNamed: "clock6"), SKTexture(imageNamed: "clock7"), SKTexture(imageNamed: "clock8"), SKTexture(imageNamed: "clock9"), SKTexture(imageNamed: "clock10"), SKTexture(imageNamed: "clock11"), SKTexture(imageNamed: "clock12")], timePerFrame: 0.2)
     
     func spin(hand: SKSpriteNode?, degree: CGFloat) {
@@ -80,7 +81,19 @@ class Clock: SKNode{
         
         switch tapped.name {
         case "peca1":
-                HUD.addOnInv(node: self.peca1, inventario: &inventario)
+            if !peca1Taken{
+                HUD.addOnInv(node: peca1)
+                peca1Taken = true
+            }else {
+                if let itemSelecionado = HUD.shared.itemSelecionado {
+                    HUD.shared.removeBorder(from: itemSelecionado)
+                }
+                HUD.shared.addBorder(to: peca1!)
+                HUD.shared.itemSelecionado = peca1
+                HUD.shared.isSelected = true
+                HUD.shared.peca1 = peca1
+            }
+            
         case "clock":
             delegate?.zoom(isZoom: true, node: clock, ratio: 0.26)
         case "hourHand":

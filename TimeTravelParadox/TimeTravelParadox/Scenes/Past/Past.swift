@@ -92,6 +92,12 @@ class Past: SKNode {
         case "pastBG":
             delegate?.zoom(isZoom: false, node: pastBG, ratio: 0)
             print("plano de fundo")
+            // Deselecionar o item
+            if HUD.shared.isSelected {
+                if HUD.shared.itemSelecionado != nil {
+                    HUD.shared.removeBorder(from: HUD.shared.itemSelecionado!)
+                }
+            }
         case "table":
             print("mesa")
         case "smallerDrawer1":

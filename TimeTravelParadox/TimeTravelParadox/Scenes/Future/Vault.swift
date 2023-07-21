@@ -17,12 +17,11 @@ class Vault: SKNode {
   private var nums: [Int] = [0, 0, 0, 0, 0]
   private var labels: [SKLabelNode] = []
   private var buttonsCofre: [SKButtonNodeLabel] = []
+    
+    var peca2: SKSpriteNode?
+    var peca2Taken = false
   
   let vaultOpening =  SKAction.animate(with: [SKTexture(imageNamed: "cofre0"), SKTexture(imageNamed: "cofre1"), SKTexture(imageNamed: "cofre2"), SKTexture(imageNamed: "cofre3"), SKTexture(imageNamed: "cofre4")], timePerFrame: 0.4)
-  
-  let vaultOpeningSound = SKAction.playSoundFileNamed("cofreAbrindo", waitForCompletion: true)
-  
-  let vaultChoose = SKAction.playSoundFileNamed("escolhaDaSenha", waitForCompletion: false)
   
   init(delegate: ZoomProtocol) {
     super.init()
@@ -32,13 +31,18 @@ class Vault: SKNode {
     if let future {
       vault = future.childNode(withName: "cofre") as? SKSpriteNode
       vault?.removeFromParent()
+        peca2 = future.childNode(withName: "peca2") as? SKSpriteNode
+        peca2?.removeFromParent()
       
       self.isUserInteractionEnabled = true
     }
     
-    if let vault {
+    if let vault, let peca2 {
       self.addChild(vault)
+        self.addChild(peca2)
     }
+      
+      peca2?.isHidden = true
     
   }
   
@@ -55,7 +59,7 @@ class Vault: SKNode {
       
       vault?.isPaused = false
       vault?.run(vaultOpening)
-      vault?.run(vaultOpeningSound)
+        peca2?.isHidden = false
       
       // Remover os botões da cena
       for child in self.children {
@@ -73,13 +77,13 @@ class Vault: SKNode {
       label.fontSize = 14
       label.fontColor = .black
       labels.append(label)
+      //label.name = "label"
       
       let button = SKButtonNodeLabel(label: label) {
         if self.delegate?.didZoom == true {
           print("Você clicou no num\(i)")
           self.nums[i] += 1
-          label.isPaused = false
-          label.run(self.vaultChoose)
+            
           if self.nums[i] > 9 {
             self.nums[i] = 0
           }
@@ -123,6 +127,20 @@ class Vault: SKNode {
     guard let tapped = tappedNodes.first else { return } // ter ctz que algo esta sendo tocado
     
     switch tapped.name {
+    case "peca2":
+        if !peca2Taken {
+            HUD.addOnInv(node: peca2)
+            peca2Taken = true
+        }else{
+            if let itemSelecionado = HUD.shared.itemSelecionado {
+                HUD.shared.removeBorder(from: itemSelecionado)
+            }
+            HUD.shared.addBorder(to: peca2!)
+            HUD.shared.itemSelecionado = peca2
+            HUD.shared.isSelected = true
+            HUD.shared.peca2 = peca2
+        }
+        
     case "cofre":
       delegate?.zoom(isZoom: true, node: vault, ratio: 0.5)
       

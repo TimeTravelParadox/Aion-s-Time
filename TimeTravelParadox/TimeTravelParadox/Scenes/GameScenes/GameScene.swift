@@ -184,8 +184,8 @@ class GameScene: SKScene, ZoomProtocol{
         addChild(hud)
         addChild(qg)
         
-        qg.zPosition = 15
-        hud.zPosition = 20
+        qg.zPosition = 16
+        hud.zPosition = 14
         hud.hideQGButton(isHide: true)
         
     }
@@ -198,7 +198,7 @@ class GameScene: SKScene, ZoomProtocol{
         
         switch tapped.name {
         case "qgButton":
-            qg.zPosition = 15
+            qg.zPosition = 16
             past?.zPosition = 0
             future?.zPosition = 0
             hud.hideQGButton(isHide: true)

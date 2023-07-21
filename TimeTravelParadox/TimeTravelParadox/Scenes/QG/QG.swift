@@ -2,7 +2,6 @@ import SpriteKit
 
 class QG: SKNode{
   let past = SKScene(fileNamed: "QGScene")
-  let hud = HUD()
   
   var QGBG: SKSpriteNode?
   
@@ -25,9 +24,5 @@ class QG: SKNode{
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
   }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-    }
   
 }

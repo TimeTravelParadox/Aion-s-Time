@@ -76,6 +76,7 @@ class Shelf: SKNode{
                 let moveToInventary = SKAction.run {
                     //codigo do inventario AQUI
                     HUD.addOnInv(node: self.polaroid)
+                  self.polaroid?.zPosition = 15
                     self.takenPolaroid = true
                 }
                 let sequence = SKAction.sequence([expand, shake, moveToInventary])

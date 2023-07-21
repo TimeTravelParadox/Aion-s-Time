@@ -100,14 +100,15 @@ class HUD: SKNode{
         inventarioHUD?.position = CGPoint(x: 80, y: 145)
     }
     
-    static func addOnInv(node: SKSpriteNode?){//inout é uma palavra-chave em Swift que permite que um parâmetro de função seja passado por referência.
+    static func addOnInv(node: SKSpriteNode?){
+      //inout é uma palavra-chave em Swift que permite que um parâmetro de função seja passado por referência.
         let nodeName = node?.name ?? "" // Obtém o nome do nó
         if HUD.shared.inventario.contains(where: { $0.name == nodeName }) {
             return // Se já existir, retorna sem adicionar o nó novamente
         }
         
         node?.size = CGSize(width: 30, height: 30) // padroniza o tamanho do node
-        node?.zPosition = 30
+        node?.zPosition = 15
         switch HUD.shared.inventario.count {       // posiciona o node de acordo com a quantidade e node dentro de inventario
         case 0:
           node?.position = CGPoint(x: -50, y: 144)

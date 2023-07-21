@@ -74,7 +74,6 @@ class Shelf: SKNode{
                 polaroid?.isHidden = false
                 
                 let moveToInventary = SKAction.run {
-                    //codigo do inventario AQUI
                     HUD.addOnInv(node: self.polaroid)
                     self.takenPolaroid = true
                 }
@@ -84,7 +83,13 @@ class Shelf: SKNode{
             }else{
                 delegate?.zoom(isZoom: true, node: shelf, ratio: 0.5)
             }
-        print("hiddenPolaroid")
+            print("hiddenPolaroid")
+        case "polaroid":
+            if let polaroid, let scene, HUD.shared.inventario.contains(where: { $0.name == "polaroid" }) {
+                scene.addChild(ItemDetail(item: polaroid, scene: scene))
+            }
+            
+        
         default:
             return
         }

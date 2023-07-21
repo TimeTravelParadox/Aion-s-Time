@@ -49,6 +49,7 @@
 		C55C133D2A5C795B00334DD8 /* QG.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55C133C2A5C795B00334DD8 /* QG.swift */; };
 		C5C034F72A67077200E604A9 /* Drawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C034F62A67077200E604A9 /* Drawer.swift */; };
 		C5C034FB2A67090700E604A9 /* Shelf.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C034FA2A67090700E604A9 /* Shelf.swift */; };
+		C5DD537B2A6B0F74005C4CF1 /* ItemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DD537A2A6B0F74005C4CF1 /* ItemDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +96,7 @@
 		C55C133C2A5C795B00334DD8 /* QG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QG.swift; sourceTree = "<group>"; };
 		C5C034F62A67077200E604A9 /* Drawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawer.swift; sourceTree = "<group>"; };
 		C5C034FA2A67090700E604A9 /* Shelf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shelf.swift; sourceTree = "<group>"; };
+		C5DD537A2A6B0F74005C4CF1 /* ItemDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 		379B54562A60F3E600F10217 /* Past */ = {
 			isa = PBXGroup;
 			children = (
+				C5DD537A2A6B0F74005C4CF1 /* ItemDetail.swift */,
 				C55C133A2A5C792E00334DD8 /* Past.swift */,
 				379B545F2A60F42D00F10217 /* PastScene.sks */,
 				379B54652A60F8DF00F10217 /* Clock.swift */,
@@ -367,6 +370,7 @@
 				9BEB802C2A670E7E00352220 /* Buttons.swift in Sources */,
 				379B54742A61CE5D00F10217 /* Zoom.swift in Sources */,
 				9BEB80292A670C1800352220 /* Vault.swift in Sources */,
+				C5DD537B2A6B0F74005C4CF1 /* ItemDetail.swift in Sources */,
 				379B545A2A60F40A00F10217 /* HUD.swift in Sources */,
 				9B8F40612A657D4E0009567B /* Computer.swift in Sources */,
 				9B82F4CE2A5C6EB200BC66F2 /* AppDelegate.swift in Sources */,

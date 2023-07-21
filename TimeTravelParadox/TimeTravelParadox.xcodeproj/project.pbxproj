@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3710127A2A69D5440028A79B /* traveling.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 371012792A69D5440028A79B /* traveling.mp3 */; };
+		3710127C2A6A17720028A79B /* grabbing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3710127B2A6A17720028A79B /* grabbing.mp3 */; };
 		3753BE9D2A6740210075AA56 /* deleting.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3753BE9C2A6740210075AA56 /* deleting.mp3 */; };
 		3753BE9F2A6740270075AA56 /* typing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3753BE9E2A6740270075AA56 /* typing.mp3 */; };
 		3753BEA12A6740340075AA56 /* ding.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3753BEA02A6740340075AA56 /* ding.wav */; };
@@ -52,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		371012792A69D5440028A79B /* traveling.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = traveling.mp3; sourceTree = "<group>"; };
+		3710127B2A6A17720028A79B /* grabbing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = grabbing.mp3; sourceTree = "<group>"; };
 		3753BE9C2A6740210075AA56 /* deleting.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = deleting.mp3; sourceTree = "<group>"; };
 		3753BE9E2A6740270075AA56 /* typing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = typing.mp3; sourceTree = "<group>"; };
 		3753BEA02A6740340075AA56 /* ding.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ding.wav; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 		377D8C3C2A5C7192008C6355 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				3710127B2A6A17720028A79B /* grabbing.mp3 */,
 				371012792A69D5440028A79B /* traveling.mp3 */,
 				9BF7D4932A69CDE2006E628B /* zoomSound.mp3 */,
 				9BF7D48F2A69C8DB006E628B /* cofreAbrindo.wav */,
@@ -333,6 +336,7 @@
 				379B54762A6492DE00F10217 /* clockOpeningSFX.mp3 in Resources */,
 				379B545E2A60F42500F10217 /* QGScene.sks in Resources */,
 				9BF7D4942A69CDE2006E628B /* zoomSound.mp3 in Resources */,
+				3710127C2A6A17720028A79B /* grabbing.mp3 in Resources */,
 				9B82F4DE2A5C6EB400BC66F2 /* LaunchScreen.storyboard in Resources */,
 				379B546C2A60FAB200F10217 /* pastST.mp3 in Resources */,
 				379B545C2A60F41500F10217 /* HUDScene.sks in Resources */,

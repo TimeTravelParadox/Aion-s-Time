@@ -6,6 +6,8 @@ class Clock: SKNode{
      var delegate: ZoomProtocol?
 
     var peca1Taken = false
+    var canTapAgain: Bool = true // evitar que ele toque muito ra'pido no ponteiro e bugue
+
     
     private var clock: SKSpriteNode?
     private var hourHand: SKSpriteNode?
@@ -78,38 +80,49 @@ class Clock: SKNode{
         
         switch tapped.name {
         case "peca1":
-                HUD.addOnInv(node: peca1, inventario: &inventario)
+                HUD.addOnInv(node: self.peca1, inventario: &inventario)
         case "clock":
             delegate?.zoom(isZoom: true, node: clock, ratio: 0.26)
         case "hourHand":
-            if delegate?.didZoom == true {
+            if delegate?.didZoom == true && canTapAgain {
+                canTapAgain = false
                 hourHand?.run(clockTickingSFX)
                 spin(hand: hourHand, degree: 30)
-                if minuteRotate == 60  && hourRotate == 330{
+                if minuteRotate == 60 && hourRotate == 330 {
                     clock?.isPaused = false
                     clock?.run(clockOpening)
                     self.minuteHand?.isHidden = true
                     self.hourHand?.isHidden = true
                     clock?.run(clockOpeningSFX)
-                    peca1?.isHidden = false
+                    self.run(SKAction.wait(forDuration: 1.2)) {
+                        self.peca1?.isHidden = false
+                    }
                 }
-            }else{
+                self.run(SKAction.wait(forDuration: 0.2)) {
+                    self.canTapAgain = true
+                }
+            } else {
                 delegate?.zoom(isZoom: true, node: clock, ratio: 0.26)
             }
         case "minuteHand":
-            if delegate?.didZoom == true{
+            if delegate?.didZoom == true && canTapAgain {
+                canTapAgain = false
                 minuteHand?.run(clockTickingSFX)
                 spin(hand: minuteHand, degree: 30)
-                if minuteRotate == 60  && hourRotate == 330{
+                if minuteRotate == 60 && hourRotate == 330 {
                     clock?.isPaused = false
                     clock?.run(clockOpening)
                     self.minuteHand?.isHidden = true
                     self.hourHand?.isHidden = true
                     clock?.run(clockOpeningSFX)
-                    peca1?.isHidden = false
+                    self.run(SKAction.wait(forDuration: 1.2)) {
+                        self.peca1?.isHidden = false
+                    }
                 }
-            }else{
-                //zoom aqui
+                self.run(SKAction.wait(forDuration: 0.2)) {
+                    self.canTapAgain = true
+                }
+            } else {
                 delegate?.zoom(isZoom: true, node: clock, ratio: 0.26)
             }
         default:

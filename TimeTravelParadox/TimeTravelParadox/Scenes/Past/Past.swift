@@ -110,7 +110,7 @@ class Past: SKNode {
             verification(drawer: drawer3, tapped: tapped)
             print("smallerDrawer2")
         case "crumpledPaper":
-            HUD.addOnInv(node: crumpledPaper, inventario: &inventario)
+//            HUD.addOnInv(node: crumpledPaper, inventario: &inventario)
             takenPaper = true
             print("crumpledpapper")
         default:

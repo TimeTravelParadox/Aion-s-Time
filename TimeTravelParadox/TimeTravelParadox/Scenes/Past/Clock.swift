@@ -4,8 +4,8 @@ class Clock: SKNode{
     
     let past = SKScene(fileNamed: "PastScene")
     
-     var delegate: ZoomProtocol?
-
+    var delegate: ZoomProtocol?
+    
     var peca1Taken = false
     
     private var clock: SKSpriteNode?
@@ -13,13 +13,15 @@ class Clock: SKNode{
     private var minuteHand: SKSpriteNode?
     var peca1: SKSpriteNode?
     
+    var canTapAgain: Bool = true // evitar que ele toque muito ra'pido no ponteiro e bugue
+    
     var minuteRotate: CGFloat = 0 // variável para saber o grau dos minutos
     var hourRotate: CGFloat = 0 // variável para saber o grau das horas
-
+    
     let clockOpeningSFX = SKAction.playSoundFileNamed("clockOpeningSFX.mp3", waitForCompletion: true)
     let clockTickingSFX = SKAction.playSoundFileNamed("ticking.mp3", waitForCompletion: false)
-
-
+    
+    
     let clockOpening =  SKAction.animate(with: [SKTexture(imageNamed: "clock1"), SKTexture(imageNamed: "clock2"), SKTexture(imageNamed: "clock3"), SKTexture(imageNamed: "clock4"), SKTexture(imageNamed: "clock5"), SKTexture(imageNamed: "clock6"), SKTexture(imageNamed: "clock7"), SKTexture(imageNamed: "clock8"), SKTexture(imageNamed: "clock9"), SKTexture(imageNamed: "clock10"), SKTexture(imageNamed: "clock11"), SKTexture(imageNamed: "clock12")], timePerFrame: 0.2)
     
     func spin(hand: SKSpriteNode?, degree: CGFloat) {
@@ -91,38 +93,49 @@ class Clock: SKNode{
                 HUD.shared.isSelected = true
                 HUD.shared.peca1 = peca1
             }
-                
+            
         case "clock":
             delegate?.zoom(isZoom: true, node: clock, ratio: 0.26)
         case "hourHand":
-            if delegate?.didZoom == true {
+            if delegate?.didZoom == true && canTapAgain {
+                canTapAgain = false
                 hourHand?.run(clockTickingSFX)
                 spin(hand: hourHand, degree: 30)
-                if minuteRotate == 60  && hourRotate == 330{
+                if minuteRotate == 60 && hourRotate == 330 {
                     clock?.isPaused = false
                     clock?.run(clockOpening)
                     self.minuteHand?.isHidden = true
                     self.hourHand?.isHidden = true
                     clock?.run(clockOpeningSFX)
-                    peca1?.isHidden = false
+                    self.run(SKAction.wait(forDuration: 1.2)) {
+                        self.peca1?.isHidden = false
+                    }
                 }
-            }else{
+                self.run(SKAction.wait(forDuration: 0.2)) {
+                    self.canTapAgain = true
+                }
+            } else {
                 delegate?.zoom(isZoom: true, node: clock, ratio: 0.26)
             }
         case "minuteHand":
-            if delegate?.didZoom == true{
+            if delegate?.didZoom == true && canTapAgain {
+                canTapAgain = false
                 minuteHand?.run(clockTickingSFX)
                 spin(hand: minuteHand, degree: 30)
-                if minuteRotate == 60  && hourRotate == 330{
+                if minuteRotate == 60 && hourRotate == 330 {
                     clock?.isPaused = false
                     clock?.run(clockOpening)
                     self.minuteHand?.isHidden = true
                     self.hourHand?.isHidden = true
                     clock?.run(clockOpeningSFX)
-                    peca1?.isHidden = false
+                    self.run(SKAction.wait(forDuration: 1.2)) {
+                        self.peca1?.isHidden = false
+                    }
                 }
-            }else{
-                //zoom aqui
+                self.run(SKAction.wait(forDuration: 0.2)) {
+                    self.canTapAgain = true
+                }
+            } else {
                 delegate?.zoom(isZoom: true, node: clock, ratio: 0.26)
             }
         default:

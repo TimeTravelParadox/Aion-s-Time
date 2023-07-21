@@ -22,6 +22,10 @@ class Vault: SKNode {
     var peca2Taken = false
   
   let vaultOpening =  SKAction.animate(with: [SKTexture(imageNamed: "cofre0"), SKTexture(imageNamed: "cofre1"), SKTexture(imageNamed: "cofre2"), SKTexture(imageNamed: "cofre3"), SKTexture(imageNamed: "cofre4")], timePerFrame: 0.4)
+    
+    let vaultOpeningSound = SKAction.playSoundFileNamed("cofreAbrindo", waitForCompletion: true)
+
+    let vaultChoose = SKAction.playSoundFileNamed("escolhaDaSenha", waitForCompletion: false)
   
   init(delegate: ZoomProtocol) {
     super.init()
@@ -56,9 +60,10 @@ class Vault: SKNode {
     }
     
     if nums[0] == 1 && nums[1] == 1 && nums[2] == 1 && nums[3] == 1 && nums[4] == 1 {
-      
+        
       vault?.isPaused = false
       vault?.run(vaultOpening)
+        vault?.run(vaultOpeningSound)
         peca2?.isHidden = false
       
       // Remover os botões da cena
@@ -83,6 +88,8 @@ class Vault: SKNode {
         if self.delegate?.didZoom == true {
           print("Você clicou no num\(i)")
           self.nums[i] += 1
+            label.isPaused = false
+            label.run(self.vaultChoose)
             
           if self.nums[i] > 9 {
             self.nums[i] = 0

@@ -1,6 +1,7 @@
 import SpriteKit
 
 class Clock: SKNode{
+    
     let past = SKScene(fileNamed: "PastScene")
     
      var delegate: ZoomProtocol?
@@ -10,7 +11,7 @@ class Clock: SKNode{
     private var clock: SKSpriteNode?
     private var hourHand: SKSpriteNode?
     private var minuteHand: SKSpriteNode?
-    private var peca1: SKSpriteNode?
+    var peca1: SKSpriteNode?
     
     var minuteRotate: CGFloat = 0 // variável para saber o grau dos minutos
     var hourRotate: CGFloat = 0 // variável para saber o grau das horas
@@ -79,7 +80,7 @@ class Clock: SKNode{
         switch tapped.name {
         case "peca1":
             if !peca1Taken{
-                HUD.addOnInv(node: peca1, inventario: &inventario)
+                HUD.addOnInv(node: peca1)
                 peca1Taken = true
             }else {
                 if let itemSelecionado = HUD.shared.itemSelecionado {
@@ -88,6 +89,7 @@ class Clock: SKNode{
                 HUD.shared.addBorder(to: peca1!)
                 HUD.shared.itemSelecionado = peca1
                 HUD.shared.isSelected = true
+                HUD.shared.peca1 = peca1
             }
                 
         case "clock":

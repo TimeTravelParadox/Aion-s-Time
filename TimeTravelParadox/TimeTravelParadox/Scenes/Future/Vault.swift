@@ -83,6 +83,7 @@ class Vault: SKNode {
         if self.delegate?.didZoom == true {
           print("Você clicou no num\(i)")
           self.nums[i] += 1
+            
           if self.nums[i] > 9 {
             self.nums[i] = 0
           }
@@ -128,7 +129,7 @@ class Vault: SKNode {
     switch tapped.name {
     case "peca2":
         if !peca2Taken {
-            HUD.addOnInv(node: peca2, inventario: &inventario)
+            HUD.addOnInv(node: peca2)
             peca2Taken = true
         }else{
             if let itemSelecionado = HUD.shared.itemSelecionado {
@@ -137,6 +138,7 @@ class Vault: SKNode {
             HUD.shared.addBorder(to: peca2!)
             HUD.shared.itemSelecionado = peca2
             HUD.shared.isSelected = true
+            HUD.shared.peca2 = peca2
         }
         
     case "cofre":

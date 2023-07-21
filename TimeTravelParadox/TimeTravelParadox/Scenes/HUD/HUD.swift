@@ -1,7 +1,5 @@
 import SpriteKit
 
- var inventario: [SKSpriteNode] = [] //classe global para ser pega na static func
-
 class HUD: SKNode{
     
     static let shared = HUD()
@@ -9,11 +7,14 @@ class HUD: SKNode{
   private let hud = SKScene(fileNamed: "HUDScene")
   private var travel: SKSpriteNode?
   private var qgButton: SKSpriteNode?
-  
-  private var inventarioHUD: SKSpriteNode?
-  private var inventario: [SKSpriteNode] = []
+
+    var inventarioHUD: SKSpriteNode?
+    var inventario: [SKSpriteNode] = []
   var isSelected : Bool = false
   var itemSelecionado : SKSpriteNode?
+    
+    var peca1: SKSpriteNode?
+    var peca2: SKSpriteNode?
   
   var delegate: ZoomProtocol?
   
@@ -75,55 +76,34 @@ class HUD: SKNode{
       }
     }
   }
-  
-  func adicionarNoInv(item: SKSpriteNode, acao: SKAction) {
     
-    item.removeFromParent()
-    
-    let button = SKButtonNodeImg(imagem: item) {
-      
-      item.run(acao)
-      if let itemSelecionado = self.itemSelecionado {
-        self.removeBorder(from: itemSelecionado)
-      }
-      
-      self.addBorder(to: item)
-      self.itemSelecionado = item
-      self.isSelected = true
-      
+    func positionNodeRelativeToCamera(_ node: SKSpriteNode, offsetX: CGFloat, offsetY: CGFloat) {
+        if let camera = GameScene.shared.camera {
+            let cameraPositionInScene = convert(camera.position, to: self)
+            let newPosition = CGPoint(x: cameraPositionInScene.x + offsetX, y: cameraPositionInScene.y + offsetY)
+            node.position = newPosition
+        }
+    }
+
+    func reposiconarInvIn(ratio: CGFloat) {
+        inventarioHUD?.size = CGSize(width: 320*ratio, height: 50*ratio)
+        positionNodeRelativeToCamera(inventarioHUD!, offsetX: 80*ratio, offsetY: 145*ratio)
     }
     
-    item.size = CGSize(width: 50, height: 50)
-    
-    switch inventario.count {
-    case 0:
-      item.position = CGPoint(x: 35, y: 124)
-    case 1:
-      item.position = CGPoint(x: 10, y: 124)
-    case 2:
-      item.position = CGPoint(x: -15, y: 124)
-    case 3:
-      item.position = CGPoint(x: -40, y: 124)
-    case 4:
-      item.position = CGPoint(x: -65, y: 124)
-    default:
-      return
+    func reposiconarInvOut() {
+        inventarioHUD?.size = CGSize(width: 320, height: 50)
+        inventarioHUD?.position = CGPoint(x: 80, y: 145)
     }
     
-    addChild(button)
-    inventario.append(item)
-    
-  }
-    
-    static func addOnInv(node: SKSpriteNode?, inventario: inout [SKSpriteNode]){//inout é uma palavra-chave em Swift que permite que um parâmetro de função seja passado por referência.
+    static func addOnInv(node: SKSpriteNode?){//inout é uma palavra-chave em Swift que permite que um parâmetro de função seja passado por referência.
         let nodeName = node?.name ?? "" // Obtém o nome do nó
-        if inventario.contains(where: { $0.name == nodeName }) {
+        if HUD.shared.inventario.contains(where: { $0.name == nodeName }) {
             return // Se já existir, retorna sem adicionar o nó novamente
         }
         
         node?.size = CGSize(width: 30, height: 30) // padroniza o tamanho do node
         node?.zPosition = 30
-        switch inventario.count {       // posiciona o node de acordo com a quantidade e node dentro de inventario
+        switch HUD.shared.inventario.count {       // posiciona o node de acordo com a quantidade e node dentro de inventario
         case 0:
           node?.position = CGPoint(x: -50, y: 144)
         case 1:
@@ -137,7 +117,7 @@ class HUD: SKNode{
         default:
           return
         }
-        inventario.append(node!)
+        HUD.shared.inventario.append(node!)
     }
   
 }

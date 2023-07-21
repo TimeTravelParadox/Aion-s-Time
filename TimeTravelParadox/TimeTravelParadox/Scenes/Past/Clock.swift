@@ -72,6 +72,9 @@ class Clock: SKNode{
         super.init(coder: aDecoder)
     }
     
+    func removerPeca1(){
+        peca1?.removeFromParent()
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return } // se nao estiver em toque acaba aqui

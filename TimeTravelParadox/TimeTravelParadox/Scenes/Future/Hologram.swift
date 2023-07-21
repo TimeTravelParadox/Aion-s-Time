@@ -49,9 +49,6 @@ class Hologram: SKNode {
     
     switch tapped.name {
     case "hologram":
-        if let selectedItem = HUD.shared.itemSelecionado {
-            HUD.shared.removeBorder(from: selectedItem)
-        }
         if delegate?.didZoom == true && (HUD.shared.itemSelecionado == HUD.shared.peca1 || HUD.shared.itemSelecionado == HUD.shared.peca2) && holograma1peca{
             print("peca2 colocada")
             hologram?.run(hologramaAnimate)
@@ -69,15 +66,22 @@ class Hologram: SKNode {
             print("peca1 colocada")
             hologram?.run(.setTexture(SKTexture(imageNamed: "hologramaUmaPeca")))
             if HUD.shared.itemSelecionado == HUD.shared.peca1{
-                if let clock = clock {
-                    clock.peca1?.removeFromParent()
-                }
+//                if let clock = clock {
+//                    clock.peca1?.removeFromParent()
+//                }
+                print("peca do clock colocada")
+//                clock?.removerPeca1()
             }else{
-                if let vault = vault {
-                    vault.peca2?.removeFromParent()
-                }
+//                if let vault = vault {
+//                    vault.peca2?.removeFromParent()
+//                }
+                print("peca do vault colocada")
+//                vault?.removerPeca2()
             }
             holograma1peca = true
+        }
+        if let selectedItem = HUD.shared.itemSelecionado {
+            HUD.shared.removeBorder(from: selectedItem)
         }
       delegate?.zoom(isZoom: true, node: hologram, ratio: 0.5)
       

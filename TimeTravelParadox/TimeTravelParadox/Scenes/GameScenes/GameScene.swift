@@ -184,7 +184,7 @@ class GameScene: SKScene, ZoomProtocol{
         addChild(hud)
         addChild(qg)
         
-        qg.zPosition = 16
+        qg.zPosition = 20
         hud.zPosition = 14
         hud.hideQGButton(isHide: true)
         
@@ -198,12 +198,9 @@ class GameScene: SKScene, ZoomProtocol{
         
         switch tapped.name {
         case "qgButton":
-            qg.zPosition = 16
+            qg.zPosition = 20
             past?.zPosition = 0
             future?.zPosition = 0
-          
-          past?.shelf?.polaroid?.isHidden = true
-          
             hud.hideQGButton(isHide: true)
             self.fadeInAudioPlayer(self.audioPlayerQGST)
             audioPlayerQGST?.play()

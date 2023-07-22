@@ -21,6 +21,7 @@ class Future: SKNode{
     self.hologram = Hologram(delegate: delegate)
     vault?.setupCofre()
     vault?.zPosition()
+    self.zPosition = 1
     
     if let futureScene, let computer, let vault, let hologram {
       futureBG = (futureScene.childNode(withName: "futureBG") as? SKSpriteNode)

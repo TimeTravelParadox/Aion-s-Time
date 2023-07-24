@@ -76,7 +76,7 @@ class Hologram: SKNode {
 //                    vault.peca2?.removeFromParent()
 //                }
                 print("peca do vault colocada")
-//                vault?.removerPeca2()
+                vault!.removerPeca2()
             }
             holograma1peca = true
         }

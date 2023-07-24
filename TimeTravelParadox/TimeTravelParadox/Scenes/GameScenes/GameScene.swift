@@ -26,6 +26,7 @@ class GameScene: SKScene, ZoomProtocol{
     var cameraPosition = CGPoint(x: 0, y: 0)
     
     var didZoom = false
+    var ratio: CGFloat?
     
     func setupCamera(){
         cameraNode.position = cameraPosition
@@ -58,9 +59,8 @@ class GameScene: SKScene, ZoomProtocol{
             self.cameraPosition = node?.position ?? self.cameraNode.position
             self.cameraNode.position = self.cameraPosition
             self.cameraNode.run(SKAction.scale(to: ratio, duration: 0))
-            
-//            HUD.shared.inventarioHUD?.size = CGSize(width: 320, height: 50)
-//            positionNodeRelativeToCamera(HUD.shared.inventarioHUD!, offsetX: 80*ratio, offsetY: 145*ratio)
+            GameScene.shared.cameraPosition = self.cameraNode.position
+            GameScene.shared.ratio = ratio
             hud.reposiconarInvIn(ratio: ratio)
             for (index, item) in HUD.shared.inventario.enumerated() {
                 item.size = CGSize(width: 30*ratio, height: 30*ratio)
@@ -91,6 +91,8 @@ class GameScene: SKScene, ZoomProtocol{
             self.didZoom = isZoom
             self.cameraNode.position = node?.position ?? self.cameraNode.position
             self.cameraNode.run(SKAction.scale(to: 1, duration: 0))
+            GameScene.shared.cameraPosition = self.cameraNode.position
+            GameScene.shared.ratio = 1
             HUD.shared.inventarioHUD?.size = CGSize(width: 320, height: 50)
             HUD.shared.inventarioHUD?.position = CGPoint(x: 80, y: 145)
             hud.reposiconarInvOut()

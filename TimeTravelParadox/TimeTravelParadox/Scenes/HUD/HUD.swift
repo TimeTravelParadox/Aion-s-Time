@@ -105,23 +105,46 @@ class HUD: SKNode{
         if HUD.shared.inventario.contains(where: { $0.name == nodeName }) {
             return // Se já existir, retorna sem adicionar o nó novamente
         }
-        
-        node?.size = CGSize(width: 30, height: 30) // padroniza o tamanho do node
-        node?.zPosition = 30
-        switch HUD.shared.inventario.count {       // posiciona o node de acordo com a quantidade e node dentro de inventario
-        case 0:
-          node?.position = CGPoint(x: -50, y: 144)
-        case 1:
-          node?.position = CGPoint(x: 0, y: 144)
-        case 2:
-          node?.position = CGPoint(x: 50, y: 144)
-        case 3:
-          node?.position = CGPoint(x: 100, y: 144)
-        case 4:
-          node?.position = CGPoint(x: 150, y: 144)
-        default:
-          return
+        if HUD.shared.delegate?.didZoom == false {
+            node?.size = CGSize(width: 30, height: 30) // padroniza o tamanho do node
+        }else{
+            node?.size = CGSize(width: 30*GameScene.shared.ratio!, height: 30*GameScene.shared.ratio!) // padroniza o tamanho do node
         }
+        
+        node?.zPosition = 30
+        if HUD.shared.delegate?.didZoom == false {
+            switch HUD.shared.inventario.count {       // posiciona o node de acordo com a quantidade e node dentro de inventario
+            case 0:
+              node?.position = CGPoint(x: -50, y: 144)
+            case 1:
+              node?.position = CGPoint(x: 0, y: 144)
+            case 2:
+              node?.position = CGPoint(x: 50, y: 144)
+            case 3:
+              node?.position = CGPoint(x: 100, y: 144)
+            case 4:
+              node?.position = CGPoint(x: 150, y: 144)
+            default:
+              return
+            }
+        }else{
+            print(GameScene.shared.ratio!)
+            switch HUD.shared.inventario.count {       // posiciona o node de acordo com a quantidade e node dentro de inventario
+            case 0:
+                node?.position = CGPoint(x: (-50*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.x, y: (144*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.y)
+            case 1:
+              node?.position = CGPoint(x: 0, y: (144*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.y)
+            case 2:
+              node?.position = CGPoint(x: (50*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.x, y: (144*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.y)
+            case 3:
+              node?.position = CGPoint(x: (100*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.x, y: (144*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.y)
+            case 4:
+              node?.position = CGPoint(x: (150*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.x, y: (144*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.y)
+            default:
+              return
+            }
+        }
+        
         HUD.shared.inventario.append(node!)
     }
   

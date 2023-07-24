@@ -1,5 +1,8 @@
 import SpriteKit
-
+//1- mofer item details da past pra ca
+//2- HUD ser avisado de eventos de zoom
+//3- toda vez que um zoom acontecer reposicionar o elemento pro meio da tela realativo ao no da camera
+//4-
 class HUD: SKNode{
     
     static let shared = HUD()

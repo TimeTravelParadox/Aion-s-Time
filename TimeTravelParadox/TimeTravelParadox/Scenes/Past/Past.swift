@@ -128,7 +128,7 @@ class Past: SKNode, InventoryItemDelegate {
         
         clearItemDetail()
     }
-    
+    //  implementando delegate
     func clearItemDetail() {
         itemDetail?.removeFromParent()
         itemDetail = nil

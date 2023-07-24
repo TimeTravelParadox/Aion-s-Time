@@ -64,11 +64,7 @@ class HUD: SKNode{
     
     // Define as propriedades da borda
     borderNode.strokeColor = .white
-    if delegate?.didZoom == true{
-      borderNode.lineWidth = 1
-    }else{
-      borderNode.lineWidth = 2
-    }
+    borderNode.lineWidth = 2 * GameScene.shared.ratio!
     // Adiciona o shape node à cena
     node.addChild(borderNode)
   }

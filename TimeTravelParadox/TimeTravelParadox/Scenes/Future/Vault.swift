@@ -124,6 +124,10 @@ class Vault: SKNode {
       button.zPosition = 2
     }
   }
+    
+    func removerPeca2(){
+        peca2?.removeFromParent()
+    }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     

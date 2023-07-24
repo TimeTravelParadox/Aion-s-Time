@@ -179,6 +179,7 @@ class Past: SKNode, InventoryItemDelegate {
             return
         }
         itemDetail = ItemDetail(item: node)
+        itemDetail?.position = CGPoint(x: GameScene.shared.cameraPosition.x, y: GameScene.shared.cameraPosition.y)
         addChild(itemDetail!)
     }
 }

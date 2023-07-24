@@ -19,7 +19,8 @@ class ItemDetail: SKSpriteNode {
         
         switch itemName {
         case "polaroid":
-            size = CGSize(width: 100, height: 100)
+            size = CGSize(width: 100 * GameScene.shared.ratio!, height: 100 * GameScene.shared.ratio!)
+            
         default:
             return
         }
@@ -33,6 +34,8 @@ class ItemDetail: SKSpriteNode {
         switch itemName {
         case "polaroid":
             spin()
+//        case "crumpledPapper":
+//            addChild("paper")
         default:
             return
         }

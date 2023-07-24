@@ -136,7 +136,7 @@ class HUD: SKNode{
             case 0:
                 node?.position = CGPoint(x: (-50*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.x, y: (144*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.y)
             case 1:
-              node?.position = CGPoint(x: 0, y: (144*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.y)
+              node?.position = CGPoint(x: (0*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.x, y: (144*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.y)
             case 2:
               node?.position = CGPoint(x: (50*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.x, y: (144*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.y)
             case 3:

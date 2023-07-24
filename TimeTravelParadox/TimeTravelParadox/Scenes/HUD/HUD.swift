@@ -111,7 +111,7 @@ class HUD: SKNode{
             node?.size = CGSize(width: 30*GameScene.shared.ratio!, height: 30*GameScene.shared.ratio!) // padroniza o tamanho do node
         }
         
-        node?.zPosition = 30
+        
         if HUD.shared.delegate?.didZoom == false {
             switch HUD.shared.inventario.count {       // posiciona o node de acordo com a quantidade e node dentro de inventario
             case 0:
@@ -146,6 +146,7 @@ class HUD: SKNode{
         }
         
         HUD.shared.inventario.append(node!)
+        node?.zPosition = 15
     }
   
 }

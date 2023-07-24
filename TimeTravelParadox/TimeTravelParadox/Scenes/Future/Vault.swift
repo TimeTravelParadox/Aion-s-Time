@@ -14,7 +14,7 @@ class Vault: SKNode {
   
   private var vault: SKSpriteNode?
   
-  private var nums: [Int] = [0, 0, 0, 0, 0]
+  private var nums: [Int] = [0, 0, 0]
   private var labels: [SKLabelNode] = []
   private var buttonsCofre: [SKButtonNodeLabel] = []
     
@@ -59,12 +59,14 @@ class Vault: SKNode {
       labels[i].text = "\(nums[i])"
     }
     
-    if nums[0] == 1 && nums[1] == 1 && nums[2] == 1 && nums[3] == 1 && nums[4] == 1 {
+    if nums[0] == 1 && nums[1] == 1 && nums[2] == 1 {
         
       vault?.isPaused = false
       vault?.run(vaultOpening)
         vault?.run(vaultOpeningSound)
-        peca2?.isHidden = false
+      self.run(SKAction.wait(forDuration: 1.5)){
+        self.peca2?.isHidden = false
+      }
       
       // Remover os botões da cena
       for child in self.children {
@@ -82,15 +84,17 @@ class Vault: SKNode {
       label.fontSize = 14
       label.fontColor = .black
       labels.append(label)
-      //label.name = "label"
+      
       
       let button = SKButtonNodeLabel(label: label) {
+        
         if self.delegate?.didZoom == true {
-          print("Você clicou no num\(i)")
+          print("Você clicou no numero \(i)")
           self.nums[i] += 1
             label.isPaused = false
             label.run(self.vaultChoose)
-            
+          //label.name = "label"
+          
           if self.nums[i] > 9 {
             self.nums[i] = 0
           }
@@ -106,14 +110,9 @@ class Vault: SKNode {
         button.position = CGPoint(x: 203, y: 35)
       case 2:
         button.position = CGPoint(x: 226, y: 35)
-      case 3:
-        button.position = CGPoint(x: 249, y: 35)
-      case 4:
-        button.position = CGPoint(x: 272, y: 35)
       default:
         return
       }
-      
       buttonsCofre.append(button)
       self.addChild(button)
       
@@ -160,7 +159,11 @@ class Vault: SKNode {
       }
       
     case "label":
-      delegate?.zoom(isZoom: true, node: vault, ratio: 0.5)
+      if delegate?.didZoom == true {
+        
+      } else {
+        delegate?.zoom(isZoom: true, node: vault, ratio: 0.5)
+      }
       
     default:
       return

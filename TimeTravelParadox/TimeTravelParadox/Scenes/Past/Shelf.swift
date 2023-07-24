@@ -75,10 +75,12 @@ class Shelf: SKNode{
                 
                 let moveToInventary = SKAction.run {
                     HUD.addOnInv(node: self.polaroid)
+                  
                     self.takenPolaroid = true
                 }
                 let sequence = SKAction.sequence([expand, shake, moveToInventary])
                 polaroid?.run(sequence)
+              self.polaroid?.zPosition = 3
             // se clicar na polaroid e nao tiver com zoom
             }else{
                 delegate?.zoom(isZoom: true, node: shelf, ratio: 0.5)

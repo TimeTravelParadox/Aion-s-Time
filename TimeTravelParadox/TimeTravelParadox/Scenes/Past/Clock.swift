@@ -98,7 +98,7 @@ class Clock: SKNode{
             }
             
         case "clock":
-            delegate?.zoom(isZoom: true, node: clock, ratio: 0.26)
+            delegate?.zoom(isZoom: true, node: clock, ratio: 0.18)
         case "hourHand":
             if delegate?.didZoom == true && canTapAgain {
                 canTapAgain = false

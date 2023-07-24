@@ -97,7 +97,7 @@ class TypeMachine: SKNode {
                 text?.text = String(labelText.dropLast())
             }
         case "typeMachine":
-            delegate?.zoom(isZoom: true, node: typeMachine, ratio: 0.3)
+            delegate?.zoom(isZoom: true, node: typeMachine, ratio: 0.15)
         default:
             print("default")
         }

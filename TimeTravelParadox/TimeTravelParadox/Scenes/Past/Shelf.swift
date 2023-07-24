@@ -11,7 +11,7 @@ class Shelf: SKNode{
     let past = SKScene(fileNamed: "PastScene")
     
     var delegate: ZoomProtocol?
-
+    var inventoryItemDelegate: InventoryItemDelegate?
     
     var hiddenPolaroid: SKSpriteNode?
     var shelf: SKSpriteNode?
@@ -85,11 +85,9 @@ class Shelf: SKNode{
             }
             print("hiddenPolaroid")
         case "polaroid":
-            if let polaroid, let scene, HUD.shared.inventario.contains(where: { $0.name == "polaroid" }) {
-                scene.addChild(ItemDetail(item: polaroid, scene: scene))
+            if let polaroid, HUD.shared.inventario.contains(where: { $0.name == "polaroid" }) {
+                inventoryItemDelegate?.select(node: polaroid)
             }
-            
-        
         default:
             return
         }

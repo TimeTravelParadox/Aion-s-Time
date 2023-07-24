@@ -1,6 +1,6 @@
 import SpriteKit
 
-class Past: SKNode {
+class Past: SKNode, InventoryItemDelegate {
     //criar uma variavel da classe da drawer
     lazy var drawer1: Drawer = Drawer(drawerSize: .small, spriteNode: past?.childNode(withName: "smallerDrawer1") as! SKSpriteNode)
     lazy var drawer2: Drawer = Drawer(drawerSize: .large, spriteNode: past?.childNode(withName: "largerDrawer") as! SKSpriteNode)
@@ -11,6 +11,7 @@ class Past: SKNode {
     var shelf: Shelf?
     var hiddenPolaroid: Shelf?
     var table: SKSpriteNode?
+    var itemDetail: ItemDetail?
     private let past = SKScene(fileNamed: "PastScene")
     private var pastBG: SKSpriteNode?
     
@@ -40,6 +41,11 @@ class Past: SKNode {
         self.hiddenPolaroid = Shelf(delegate: delegate)
         
         super.init()
+        
+        shelf?.inventoryItemDelegate = self
+        hiddenPolaroid?.inventoryItemDelegate = self
+        clock?.inventoryItemDelegate = self
+        typeMachine?.inventoryItemDelegate = self
         
         self.zPosition = 1
         if let past, let clock, let typeMachine, let shelf, let hiddenPolaroid{
@@ -113,11 +119,20 @@ class Past: SKNode {
             HUD.addOnInv(node: crumpledPaper)
             takenPaper = true
             print("crumpledpapper")
-        default:
+        case "itemDetail":
+            itemDetail?.interact()
             return
+        default:
+            break
         }
+        
+        clearItemDetail()
     }
     
+    func clearItemDetail() {
+        itemDetail?.removeFromParent()
+        itemDetail = nil
+    }
     
     private func positionCrumpledPaper(drawer: Drawer) {
         // Defina as coordenadas x e y desejadas para a posição do crumpledPaper
@@ -158,6 +173,12 @@ class Past: SKNode {
             delegate?.zoom(isZoom: true, node: table, ratio: 0.5)
         }
     }
+    
+    func select(node: SKSpriteNode) {
+        guard itemDetail == nil else {
+            return
+        }
+        itemDetail = ItemDetail(item: node)
+        addChild(itemDetail!)
+    }
 }
-
-

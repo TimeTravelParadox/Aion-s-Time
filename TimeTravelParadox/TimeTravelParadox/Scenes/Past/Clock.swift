@@ -5,6 +5,7 @@ class Clock: SKNode{
     let past = SKScene(fileNamed: "PastScene")
     
     var delegate: ZoomProtocol?
+    var inventoryItemDelegate: InventoryItemDelegate?
     
     var peca1Taken = false
     
@@ -139,7 +140,9 @@ class Clock: SKNode{
                 delegate?.zoom(isZoom: true, node: clock, ratio: 0.26)
             }
         default:
-            return
+            break
         }
+        
+        inventoryItemDelegate?.clearItemDetail()
     }
 }

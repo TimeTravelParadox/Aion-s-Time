@@ -14,6 +14,7 @@ class TypeMachine: SKNode {
     let dingSFX = SKAction.playSoundFileNamed("ding.wav", waitForCompletion: false)
     
     var delegate: ZoomProtocol?
+    var inventoryItemDelegate: InventoryItemDelegate?
     
     init(delegate: ZoomProtocol) {
         self.delegate = delegate
@@ -101,5 +102,7 @@ class TypeMachine: SKNode {
         default:
             print("default")
         }
+        
+        inventoryItemDelegate?.clearItemDetail()
     }
 }

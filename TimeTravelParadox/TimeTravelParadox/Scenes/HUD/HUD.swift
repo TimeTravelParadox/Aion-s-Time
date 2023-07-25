@@ -26,6 +26,10 @@ class HUD: SKNode{
       inventarioHUD?.isHidden = isHide
   }
     
+    func hideTravelButton(isHide: Bool){
+        travel?.isHidden = isHide
+    }
+    
     func hideTravelQG(isHide: Bool){//esconde tudo mas o inv n
         travel?.isHidden = isHide
         qgButton?.isHidden = isHide

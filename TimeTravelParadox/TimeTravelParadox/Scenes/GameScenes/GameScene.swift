@@ -189,7 +189,7 @@ class GameScene: SKScene, ZoomProtocol{
         qg.zPosition = 20
         hud.zPosition = 14
         hud.hideQGButton(isHide: true)
-        
+        hud.hideTravelButton(isHide: true)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

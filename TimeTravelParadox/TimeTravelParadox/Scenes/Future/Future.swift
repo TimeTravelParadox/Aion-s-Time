@@ -1,6 +1,6 @@
 import SpriteKit
 
-class Future: SKNode{
+class Future: SKNode, InventoryItemDelegate {
 
   private let futureScene = SKScene(fileNamed: "FutureScene")
   private var futureBG: SKSpriteNode?
@@ -8,6 +8,7 @@ class Future: SKNode{
   var computer: Computer?
   var vault: Vault?
   var hologram: Hologram?
+
   
   let futureST = SKAction.repeatForever(SKAction.playSoundFileNamed("futureST.mp3", waitForCompletion: true))
   
@@ -39,6 +40,11 @@ class Future: SKNode{
       vault.delegate = delegate
       self.addChild(hologram)
       hologram.delegate = delegate
+        
+        computer.inventoryItemDelegate = self
+        vault.inventoryItemDelegate = self
+        hologram.inventoryItemDelegate = self
+        
       
     }
     
@@ -64,10 +70,32 @@ class Future: SKNode{
                 HUD.shared.removeBorder(from: HUD.shared.itemSelecionado!)
             }
         }
+    case "itemDetail":
+        GameScene.shared.itemDetail?.interact()
+        return
+    case "crumpledPaper":
+        if let tapped = tapped as? SKSpriteNode { //isso eh um skspritenode?
+            select(node: tapped)
+            return
+        }
     default:
-      return
+      break
     }
+      clearItemDetail()
   }
-  
+    
+    func clearItemDetail() {
+        GameScene.shared.itemDetail?.removeFromParent()
+        GameScene.shared.itemDetail = nil
+    }
+    
+    func select(node: SKSpriteNode) {
+        guard GameScene.shared.itemDetail == nil else {
+            return
+        }
+        GameScene.shared.itemDetail = ItemDetail(item: node)
+        GameScene.shared.itemDetail?.position = CGPoint(x: GameScene.shared.cameraPosition.x, y: GameScene.shared.cameraPosition.y)
+        addChild(GameScene.shared.itemDetail!)
+    }
   
 }

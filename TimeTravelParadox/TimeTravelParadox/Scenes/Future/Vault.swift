@@ -20,6 +20,7 @@ class Vault: SKNode {
     
     var peca2: SKSpriteNode?
     var peca2Taken = false
+    var inventoryItemDelegate: InventoryItemDelegate?
   
   let vaultOpening =  SKAction.animate(with: [SKTexture(imageNamed: "cofre0"), SKTexture(imageNamed: "cofre1"), SKTexture(imageNamed: "cofre2"), SKTexture(imageNamed: "cofre3"), SKTexture(imageNamed: "cofre4")], timePerFrame: 0.4)
     
@@ -172,7 +173,7 @@ class Vault: SKNode {
     default:
       return
     }
-    
+      inventoryItemDelegate?.clearItemDetail()
   }
   
 }

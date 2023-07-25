@@ -18,6 +18,8 @@ class GameScene: SKScene, ZoomProtocol{
     
     
     private var fade: Fade?
+    
+      var itemDetail: ItemDetail?
   
     let zoomSound = SKAction.playSoundFileNamed("zoomSound", waitForCompletion: false)
     let travelingSFX = SKAction.playSoundFileNamed("traveling.mp3", waitForCompletion: true)

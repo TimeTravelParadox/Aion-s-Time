@@ -12,6 +12,7 @@ class Hologram: SKNode {
   
   var delegate: ZoomProtocol?
   private var hologram: SKSpriteNode?
+    var inventoryItemDelegate: InventoryItemDelegate?
     
     var holograma1peca = false
     
@@ -88,7 +89,7 @@ class Hologram: SKNode {
     default:
       return
     }
-    
+      inventoryItemDelegate?.clearItemDetail()
   }
   
 }

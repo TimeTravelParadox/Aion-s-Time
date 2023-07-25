@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Camada_2" data-name="Camada 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40.45 64.89">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #666;
+      }
+
+      .cls-2 {
+        fill: #b1b1b1;
+      }
+
+      .cls-3 {
+        fill: #cacaca;
+        font-family: NimbusSan-Reg, 'Nimbus Sans';
+        font-size: 53.58px;
+      }
+    </style>
+  </defs>
+  <g id="Camada_1-2" data-name="Camada 1">
+    <g id="_" data-name=",">
+      <g>
+        <circle class="cls-1" cx="20.22" cy="44.67" r="18.55"/>
+        <path class="cls-2" d="m20.23,64.89c-11.15,0-20.23-9.08-20.23-20.23s9.08-20.23,20.23-20.23,20.23,9.08,20.23,20.23-9.08,20.23-20.23,20.23Zm0-37.1c-9.3,0-16.88,7.57-16.88,16.88s7.57,16.88,16.88,16.88,16.88-7.57,16.88-16.88-7.57-16.88-16.88-16.88Z"/>
+      </g>
+      <text class="cls-3" transform="translate(13.84 44.66)"><tspan x="0" y="0">,</tspan></text>
+    </g>
+  </g>
+</svg>

@@ -7,7 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		377D8C412A5C71EC008C6355 /* passadoTrilha.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 377D8C402A5C71EC008C6355 /* passadoTrilha.mp3 */; };
+		3710127A2A69D5440028A79B /* traveling.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 371012792A69D5440028A79B /* traveling.mp3 */; };
+		3710127C2A6A17720028A79B /* grabbing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3710127B2A6A17720028A79B /* grabbing.mp3 */; };
+		3753BE9D2A6740210075AA56 /* deleting.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3753BE9C2A6740210075AA56 /* deleting.mp3 */; };
+		3753BE9F2A6740270075AA56 /* typing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3753BE9E2A6740270075AA56 /* typing.mp3 */; };
+		3753BEA12A6740340075AA56 /* ding.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3753BEA02A6740340075AA56 /* ding.wav */; };
+		379B545A2A60F40A00F10217 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B54592A60F40A00F10217 /* HUD.swift */; };
+		379B545C2A60F41500F10217 /* HUDScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 379B545B2A60F41500F10217 /* HUDScene.sks */; };
+		379B545E2A60F42500F10217 /* QGScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 379B545D2A60F42500F10217 /* QGScene.sks */; };
+		379B54602A60F42D00F10217 /* PastScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 379B545F2A60F42D00F10217 /* PastScene.sks */; };
+		379B54622A60F43B00F10217 /* FutureScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 379B54612A60F43B00F10217 /* FutureScene.sks */; };
+		379B54662A60F8DF00F10217 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B54652A60F8DF00F10217 /* Clock.swift */; };
+		379B54682A60FA8F00F10217 /* futureST.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 379B54672A60FA8F00F10217 /* futureST.mp3 */; };
+		379B546A2A60FAA600F10217 /* QGST.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 379B54692A60FAA600F10217 /* QGST.mp3 */; };
+		379B546C2A60FAB200F10217 /* pastST.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 379B546B2A60FAB200F10217 /* pastST.mp3 */; };
+		379B54722A61104600F10217 /* TypeMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B54712A61104600F10217 /* TypeMachine.swift */; };
+		379B54742A61CE5D00F10217 /* Zoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B54732A61CE5D00F10217 /* Zoom.swift */; };
+		379B54762A6492DE00F10217 /* clockOpeningSFX.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 379B54752A6492DE00F10217 /* clockOpeningSFX.mp3 */; };
+		379B54782A64B7D000F10217 /* ticking.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 379B54772A64B7D000F10217 /* ticking.mp3 */; };
+		37CAE7E02A6F9D25000CCCC7 /* SpecialElite-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 37CAE7DE2A6F9444000CCCC7 /* SpecialElite-Regular.ttf */; };
+		37CAE7E22A6FA0A6000CCCC7 /* backToQG.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37CAE7E12A6FA0A6000CCCC7 /* backToQG.mp3 */; };
+		37CAE7E42A6FAB55000CCCC7 /* sizzle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37CAE7E32A6FAB55000CCCC7 /* sizzle.mp3 */; };
 		9B82F4CE2A5C6EB200BC66F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82F4CD2A5C6EB200BC66F2 /* AppDelegate.swift */; };
 		9B82F4D02A5C6EB200BC66F2 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B82F4CF2A5C6EB200BC66F2 /* GameScene.sks */; };
 		9B82F4D22A5C6EB200BC66F2 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B82F4D12A5C6EB200BC66F2 /* Actions.sks */; };
@@ -16,10 +36,49 @@
 		9B82F4D92A5C6EB200BC66F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B82F4D72A5C6EB200BC66F2 /* Main.storyboard */; };
 		9B82F4DB2A5C6EB400BC66F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B82F4DA2A5C6EB400BC66F2 /* Assets.xcassets */; };
 		9B82F4DE2A5C6EB400BC66F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B82F4DC2A5C6EB400BC66F2 /* LaunchScreen.storyboard */; };
+		9B8F40612A657D4E0009567B /* Computer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8F40602A657D4E0009567B /* Computer.swift */; };
+		9BEB80272A670C0F00352220 /* Hologram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB80262A670C0F00352220 /* Hologram.swift */; };
+		9BEB80292A670C1800352220 /* Vault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB80282A670C1800352220 /* Vault.swift */; };
+		9BEB802C2A670E7E00352220 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB802B2A670E7E00352220 /* Buttons.swift */; };
+		9BEB803A2A68694600352220 /* Fade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB80392A68694600352220 /* Fade.swift */; };
+		9BEB803C2A68695300352220 /* Fade.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9BEB803B2A68695300352220 /* Fade.sks */; };
+		9BF7D48D2A69B523006E628B /* gavetaAbrindo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BF7D48A2A69B523006E628B /* gavetaAbrindo.mp3 */; };
+		9BF7D48E2A69B523006E628B /* mouseClick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BF7D48B2A69B523006E628B /* mouseClick.mp3 */; };
+		9BF7D4912A69C8DB006E628B /* cofreAbrindo.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9BF7D48F2A69C8DB006E628B /* cofreAbrindo.wav */; };
+		9BF7D4922A69C8DB006E628B /* escolhaDaSenha.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BF7D4902A69C8DB006E628B /* escolhaDaSenha.mp3 */; };
+		9BF7D4942A69CDE2006E628B /* zoomSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BF7D4932A69CDE2006E628B /* zoomSound.mp3 */; };
+		C55C13392A5C792300334DD8 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55C13382A5C792300334DD8 /* Future.swift */; };
+		C55C133B2A5C792E00334DD8 /* Past.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55C133A2A5C792E00334DD8 /* Past.swift */; };
+		C55C133D2A5C795B00334DD8 /* QG.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55C133C2A5C795B00334DD8 /* QG.swift */; };
+		C57FFAD32A6B37160016ED74 /* InventoryItemDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FFAD22A6B37160016ED74 /* InventoryItemDelegate.swift */; };
+		C5C034F72A67077200E604A9 /* Drawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C034F62A67077200E604A9 /* Drawer.swift */; };
+		C5C034FB2A67090700E604A9 /* Shelf.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C034FA2A67090700E604A9 /* Shelf.swift */; };
+		C5DD537B2A6B0F74005C4CF1 /* ItemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DD537A2A6B0F74005C4CF1 /* ItemDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		377D8C402A5C71EC008C6355 /* passadoTrilha.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = passadoTrilha.mp3; sourceTree = "<group>"; };
+		371012792A69D5440028A79B /* traveling.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = traveling.mp3; sourceTree = "<group>"; };
+		3710127B2A6A17720028A79B /* grabbing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = grabbing.mp3; sourceTree = "<group>"; };
+		3753BE9C2A6740210075AA56 /* deleting.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = deleting.mp3; sourceTree = "<group>"; };
+		3753BE9E2A6740270075AA56 /* typing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = typing.mp3; sourceTree = "<group>"; };
+		3753BEA02A6740340075AA56 /* ding.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ding.wav; sourceTree = "<group>"; };
+		379B54592A60F40A00F10217 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
+		379B545B2A60F41500F10217 /* HUDScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HUDScene.sks; sourceTree = "<group>"; };
+		379B545D2A60F42500F10217 /* QGScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = QGScene.sks; sourceTree = "<group>"; };
+		379B545F2A60F42D00F10217 /* PastScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PastScene.sks; sourceTree = "<group>"; };
+		379B54612A60F43B00F10217 /* FutureScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FutureScene.sks; sourceTree = "<group>"; };
+		379B54652A60F8DF00F10217 /* Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
+		379B54672A60FA8F00F10217 /* futureST.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = futureST.mp3; sourceTree = "<group>"; };
+		379B54692A60FAA600F10217 /* QGST.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = QGST.mp3; sourceTree = "<group>"; };
+		379B546B2A60FAB200F10217 /* pastST.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pastST.mp3; sourceTree = "<group>"; };
+		379B54712A61104600F10217 /* TypeMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeMachine.swift; sourceTree = "<group>"; };
+		379B54732A61CE5D00F10217 /* Zoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zoom.swift; sourceTree = "<group>"; };
+		379B54752A6492DE00F10217 /* clockOpeningSFX.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clockOpeningSFX.mp3; sourceTree = "<group>"; };
+		379B54772A64B7D000F10217 /* ticking.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ticking.mp3; sourceTree = "<group>"; };
+		37CAE7DE2A6F9444000CCCC7 /* SpecialElite-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpecialElite-Regular.ttf"; sourceTree = "<group>"; };
+		37CAE7DF2A6F9469000CCCC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		37CAE7E12A6FA0A6000CCCC7 /* backToQG.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backToQG.mp3; sourceTree = "<group>"; };
+		37CAE7E32A6FAB55000CCCC7 /* sizzle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sizzle.mp3; sourceTree = "<group>"; };
 		9B82F4CA2A5C6EB200BC66F2 /* TimeTravelParadox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTravelParadox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B82F4CD2A5C6EB200BC66F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B82F4CF2A5C6EB200BC66F2 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -29,6 +88,24 @@
 		9B82F4D82A5C6EB200BC66F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9B82F4DA2A5C6EB400BC66F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B82F4DD2A5C6EB400BC66F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9B8F40602A657D4E0009567B /* Computer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Computer.swift; sourceTree = "<group>"; };
+		9BEB80262A670C0F00352220 /* Hologram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hologram.swift; sourceTree = "<group>"; };
+		9BEB80282A670C1800352220 /* Vault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vault.swift; sourceTree = "<group>"; };
+		9BEB802B2A670E7E00352220 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		9BEB80392A68694600352220 /* Fade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fade.swift; sourceTree = "<group>"; };
+		9BEB803B2A68695300352220 /* Fade.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fade.sks; sourceTree = "<group>"; };
+		9BF7D48A2A69B523006E628B /* gavetaAbrindo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gavetaAbrindo.mp3; sourceTree = "<group>"; };
+		9BF7D48B2A69B523006E628B /* mouseClick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mouseClick.mp3; sourceTree = "<group>"; };
+		9BF7D48F2A69C8DB006E628B /* cofreAbrindo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cofreAbrindo.wav; sourceTree = "<group>"; };
+		9BF7D4902A69C8DB006E628B /* escolhaDaSenha.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = escolhaDaSenha.mp3; sourceTree = "<group>"; };
+		9BF7D4932A69CDE2006E628B /* zoomSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = zoomSound.mp3; sourceTree = "<group>"; };
+		C55C13382A5C792300334DD8 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
+		C55C133A2A5C792E00334DD8 /* Past.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Past.swift; sourceTree = "<group>"; };
+		C55C133C2A5C795B00334DD8 /* QG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QG.swift; sourceTree = "<group>"; };
+		C57FFAD22A6B37160016ED74 /* InventoryItemDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryItemDelegate.swift; sourceTree = "<group>"; };
+		C5C034F62A67077200E604A9 /* Drawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawer.swift; sourceTree = "<group>"; };
+		C5C034FA2A67090700E604A9 /* Shelf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shelf.swift; sourceTree = "<group>"; };
+		C5DD537A2A6B0F74005C4CF1 /* ItemDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +122,7 @@
 		377D8C3A2A5C7180008C6355 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				377D8C3D2A5C7198008C6355 /* Font */,
+				37CAE7DD2A6F9436000CCCC7 /* Font */,
 				377D8C3C2A5C7192008C6355 /* Sound */,
 				377D8C3B2A5C7187008C6355 /* Graphic */,
 			);
@@ -63,16 +140,25 @@
 		377D8C3C2A5C7192008C6355 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
-				377D8C402A5C71EC008C6355 /* passadoTrilha.mp3 */,
+				37CAE7E32A6FAB55000CCCC7 /* sizzle.mp3 */,
+				37CAE7E12A6FA0A6000CCCC7 /* backToQG.mp3 */,
+				3710127B2A6A17720028A79B /* grabbing.mp3 */,
+				371012792A69D5440028A79B /* traveling.mp3 */,
+				9BF7D4932A69CDE2006E628B /* zoomSound.mp3 */,
+				9BF7D48F2A69C8DB006E628B /* cofreAbrindo.wav */,
+				9BF7D4902A69C8DB006E628B /* escolhaDaSenha.mp3 */,
+				9BF7D48A2A69B523006E628B /* gavetaAbrindo.mp3 */,
+				9BF7D48B2A69B523006E628B /* mouseClick.mp3 */,
+				3753BEA02A6740340075AA56 /* ding.wav */,
+				3753BE9C2A6740210075AA56 /* deleting.mp3 */,
+				3753BE9E2A6740270075AA56 /* typing.mp3 */,
+				379B54772A64B7D000F10217 /* ticking.mp3 */,
+				379B54752A6492DE00F10217 /* clockOpeningSFX.mp3 */,
+				379B546B2A60FAB200F10217 /* pastST.mp3 */,
+				379B54692A60FAA600F10217 /* QGST.mp3 */,
+				379B54672A60FA8F00F10217 /* futureST.mp3 */,
 			);
 			path = Sound;
-			sourceTree = "<group>";
-		};
-		377D8C3D2A5C7198008C6355 /* Font */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Font;
 			sourceTree = "<group>";
 		};
 		377D8C3E2A5C71A0008C6355 /* LaunchScene */ = {
@@ -86,12 +172,67 @@
 		377D8C3F2A5C71C5008C6355 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				379B54582A60F40300F10217 /* HUD */,
+				379B54572A60F3F300F10217 /* QG */,
+				379B54562A60F3E600F10217 /* Past */,
+				379B54552A60F3D900F10217 /* Future */,
+				C55C13442A5C806300334DD8 /* GameScenes */,
 				377D8C3E2A5C71A0008C6355 /* LaunchScene */,
-				9B82F4CF2A5C6EB200BC66F2 /* GameScene.sks */,
-				9B82F4D12A5C6EB200BC66F2 /* Actions.sks */,
-				9B82F4D32A5C6EB200BC66F2 /* GameScene.swift */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		379B54552A60F3D900F10217 /* Future */ = {
+			isa = PBXGroup;
+			children = (
+				C55C13382A5C792300334DD8 /* Future.swift */,
+				379B54612A60F43B00F10217 /* FutureScene.sks */,
+				9B8F40602A657D4E0009567B /* Computer.swift */,
+				9BEB80262A670C0F00352220 /* Hologram.swift */,
+				9BEB80282A670C1800352220 /* Vault.swift */,
+			);
+			path = Future;
+			sourceTree = "<group>";
+		};
+		379B54562A60F3E600F10217 /* Past */ = {
+			isa = PBXGroup;
+			children = (
+				C5DD537A2A6B0F74005C4CF1 /* ItemDetail.swift */,
+				C55C133A2A5C792E00334DD8 /* Past.swift */,
+				379B545F2A60F42D00F10217 /* PastScene.sks */,
+				379B54652A60F8DF00F10217 /* Clock.swift */,
+				379B54712A61104600F10217 /* TypeMachine.swift */,
+				C5C034F62A67077200E604A9 /* Drawer.swift */,
+				C5C034FA2A67090700E604A9 /* Shelf.swift */,
+			);
+			path = Past;
+			sourceTree = "<group>";
+		};
+		379B54572A60F3F300F10217 /* QG */ = {
+			isa = PBXGroup;
+			children = (
+				C55C133C2A5C795B00334DD8 /* QG.swift */,
+				379B545D2A60F42500F10217 /* QGScene.sks */,
+			);
+			path = QG;
+			sourceTree = "<group>";
+		};
+		379B54582A60F40300F10217 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				379B54592A60F40A00F10217 /* HUD.swift */,
+				379B545B2A60F41500F10217 /* HUDScene.sks */,
+				C57FFAD22A6B37160016ED74 /* InventoryItemDelegate.swift */,
+			);
+			path = HUD;
+			sourceTree = "<group>";
+		};
+		37CAE7DD2A6F9436000CCCC7 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				37CAE7DE2A6F9444000CCCC7 /* SpecialElite-Regular.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		9B82F4C12A5C6EB200BC66F2 = {
@@ -113,13 +254,36 @@
 		9B82F4CC2A5C6EB200BC66F2 /* TimeTravelParadox */ = {
 			isa = PBXGroup;
 			children = (
+				37CAE7DF2A6F9469000CCCC7 /* Info.plist */,
 				9B82F4CD2A5C6EB200BC66F2 /* AppDelegate.swift */,
 				9B82F4D52A5C6EB200BC66F2 /* GameViewController.swift */,
 				9B82F4D72A5C6EB200BC66F2 /* Main.storyboard */,
+				9BEB802A2A670E6100352220 /* Components */,
 				377D8C3F2A5C71C5008C6355 /* Scenes */,
 				377D8C3A2A5C7180008C6355 /* Resources */,
 			);
 			path = TimeTravelParadox;
+			sourceTree = "<group>";
+		};
+		9BEB802A2A670E6100352220 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				9BEB802B2A670E7E00352220 /* Buttons.swift */,
+				9BEB80392A68694600352220 /* Fade.swift */,
+				9BEB803B2A68695300352220 /* Fade.sks */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		C55C13442A5C806300334DD8 /* GameScenes */ = {
+			isa = PBXGroup;
+			children = (
+				9B82F4D12A5C6EB200BC66F2 /* Actions.sks */,
+				9B82F4CF2A5C6EB200BC66F2 /* GameScene.sks */,
+				9B82F4D32A5C6EB200BC66F2 /* GameScene.swift */,
+				379B54732A61CE5D00F10217 /* Zoom.swift */,
+			);
+			path = GameScenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,12 +344,34 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				379B54622A60F43B00F10217 /* FutureScene.sks in Resources */,
 				9B82F4D92A5C6EB200BC66F2 /* Main.storyboard in Resources */,
 				9B82F4D02A5C6EB200BC66F2 /* GameScene.sks in Resources */,
-				377D8C412A5C71EC008C6355 /* passadoTrilha.mp3 in Resources */,
+				3753BE9F2A6740270075AA56 /* typing.mp3 in Resources */,
+				3710127A2A69D5440028A79B /* traveling.mp3 in Resources */,
+				379B54602A60F42D00F10217 /* PastScene.sks in Resources */,
 				9B82F4DB2A5C6EB400BC66F2 /* Assets.xcassets in Resources */,
+				9BF7D48D2A69B523006E628B /* gavetaAbrindo.mp3 in Resources */,
+				3753BE9D2A6740210075AA56 /* deleting.mp3 in Resources */,
+				37CAE7E42A6FAB55000CCCC7 /* sizzle.mp3 in Resources */,
+				3753BEA12A6740340075AA56 /* ding.wav in Resources */,
+				9BF7D4922A69C8DB006E628B /* escolhaDaSenha.mp3 in Resources */,
+				379B546A2A60FAA600F10217 /* QGST.mp3 in Resources */,
+				9BF7D48E2A69B523006E628B /* mouseClick.mp3 in Resources */,
+				9BEB803C2A68695300352220 /* Fade.sks in Resources */,
+				379B54762A6492DE00F10217 /* clockOpeningSFX.mp3 in Resources */,
+				379B545E2A60F42500F10217 /* QGScene.sks in Resources */,
+				9BF7D4942A69CDE2006E628B /* zoomSound.mp3 in Resources */,
+				3710127C2A6A17720028A79B /* grabbing.mp3 in Resources */,
 				9B82F4DE2A5C6EB400BC66F2 /* LaunchScreen.storyboard in Resources */,
+				379B546C2A60FAB200F10217 /* pastST.mp3 in Resources */,
+				379B545C2A60F41500F10217 /* HUDScene.sks in Resources */,
 				9B82F4D22A5C6EB200BC66F2 /* Actions.sks in Resources */,
+				37CAE7E22A6FA0A6000CCCC7 /* backToQG.mp3 in Resources */,
+				9BF7D4912A69C8DB006E628B /* cofreAbrindo.wav in Resources */,
+				37CAE7E02A6F9D25000CCCC7 /* SpecialElite-Regular.ttf in Resources */,
+				379B54782A64B7D000F10217 /* ticking.mp3 in Resources */,
+				379B54682A60FA8F00F10217 /* futureST.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,9 +382,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5C034FB2A67090700E604A9 /* Shelf.swift in Sources */,
 				9B82F4D42A5C6EB200BC66F2 /* GameScene.swift in Sources */,
 				9B82F4D62A5C6EB200BC66F2 /* GameViewController.swift in Sources */,
+				9BEB80272A670C0F00352220 /* Hologram.swift in Sources */,
+				C55C13392A5C792300334DD8 /* Future.swift in Sources */,
+				379B54722A61104600F10217 /* TypeMachine.swift in Sources */,
+				9BEB803A2A68694600352220 /* Fade.swift in Sources */,
+				C5C034F72A67077200E604A9 /* Drawer.swift in Sources */,
+				379B54662A60F8DF00F10217 /* Clock.swift in Sources */,
+				C57FFAD32A6B37160016ED74 /* InventoryItemDelegate.swift in Sources */,
+				C55C133B2A5C792E00334DD8 /* Past.swift in Sources */,
+				9BEB802C2A670E7E00352220 /* Buttons.swift in Sources */,
+				379B54742A61CE5D00F10217 /* Zoom.swift in Sources */,
+				9BEB80292A670C1800352220 /* Vault.swift in Sources */,
+				C5DD537B2A6B0F74005C4CF1 /* ItemDetail.swift in Sources */,
+				379B545A2A60F40A00F10217 /* HUD.swift in Sources */,
+				9B8F40612A657D4E0009567B /* Computer.swift in Sources */,
 				9B82F4CE2A5C6EB200BC66F2 /* AppDelegate.swift in Sources */,
+				C55C133D2A5C795B00334DD8 /* QG.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,12 +549,14 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = K559Z2V9Q2;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TimeTravelParadox/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -360,9 +564,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = VictorHugo.TimeTravelParadox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -375,12 +582,14 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = K559Z2V9Q2;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TimeTravelParadox/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -388,9 +597,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = VictorHugo.TimeTravelParadox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

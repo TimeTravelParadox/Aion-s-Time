@@ -16,16 +16,21 @@ class Hologram: SKNode {
     private var hologram: SKSpriteNode?
     var inventoryItemDelegate: InventoryItemDelegate?
     
+    var monitorDireita: SKSpriteNode?
+    var cartaz: SKSpriteNode?
+    
     var holograma1peca = false
     
     var delegateRemove: RemoveProtocol?
+    var delegateRemove2: RemoveProtocol2?
     
     let hologramaAnimate =  SKAction.animate(with: [SKTexture(imageNamed: "hologramaUmaPeca"), SKTexture(imageNamed: "holograma0"), SKTexture(imageNamed: "holograma1"), SKTexture(imageNamed: "holograma2"), SKTexture(imageNamed: "holograma3")], timePerFrame: 0.4)
     
-    init(delegate: ZoomProtocol, delegateRemove: RemoveProtocol) {
+    init(delegate: ZoomProtocol, delegateRemove: RemoveProtocol, delegateRemove2: RemoveProtocol2) {
         super.init()
         self.delegate = delegate
         self.delegateRemove = delegateRemove
+        self.delegateRemove2 = delegateRemove2
         self.zPosition = 1
         
         
@@ -33,13 +38,22 @@ class Hologram: SKNode {
         if let future {
             hologram = future.childNode(withName: "hologram") as? SKSpriteNode
             hologram?.removeFromParent()
+            monitorDireita = future.childNode(withName: "monitorDireita") as? SKSpriteNode
+            monitorDireita?.removeFromParent()
+            cartaz = future.childNode(withName: "cartaz") as? SKSpriteNode
+            cartaz?.removeFromParent()
             
             self.isUserInteractionEnabled = true
         }
         
-        if let hologram{
+        if let hologram, let monitorDireita, let cartaz{
             self.addChild(hologram)
+            self.addChild(monitorDireita)
+            self.addChild(cartaz)
         }
+        
+        cartaz?.isHidden = true
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -53,37 +67,36 @@ class Hologram: SKNode {
         guard let tapped = tappedNodes.first else { return } // ter ctz que algo esta sendo tocado
         
         switch tapped.name {
+        case "monitorDireita":
+            delegate?.zoom(isZoom: true, node: hologram, ratio: 0.5)
         case "hologram":
-            delegateRemove?.removePeca1()
-            if delegate?.didZoom == true && (HUD.shared.itemSelecionado == HUD.shared.peca1 || HUD.shared.itemSelecionado == HUD.shared.peca2) && holograma1peca{
-                print("peca2 colocada")
-                hologram?.run(hologramaAnimate)
-                if HUD.shared.itemSelecionado == HUD.shared.peca1{
-                    //                if let clock = clock {
-                    //                    clock.peca1?.removeFromParent()
-                    //                }
-                    //            }else{
-                    //                if let vault = vault {
-                    //                    vault.peca2?.removeFromParent()
-                    //                }
-                }
+            
+            
+//            if delegate?.didZoom == true && (HUD.shared.itemSelecionado == HUD.shared.peca1 || HUD.shared.itemSelecionado == HUD.shared.peca2) && holograma1peca{
+//                print("pecas completas colocada")
+//                hologram?.run(.setTexture(SKTexture(imageNamed: "hologramaCompleto")))
+//                monitorDireita?.isHidden = true
+//                cartaz?.isHidden = false
+//                delegateRemove?.removePeca()
+//            }
+            if delegate?.didZoom == true && (HUD.shared.itemSelecionado == HUD.shared.peca2 || HUD.shared.itemSelecionado == HUD.shared.peca2) && holograma1peca && HUD.shared.itemSelecionado != nil{
+                print("pecas completas colocada")
+                hologram?.run(.setTexture(SKTexture(imageNamed: "hologramaCompleto")))
+                monitorDireita?.isHidden = true
+                cartaz?.isHidden = false
+                delegateRemove?.removePeca()
+                delegateRemove2?.removePeca()
             }
-            if delegate?.didZoom == true && (HUD.shared.itemSelecionado == HUD.shared.peca1 || HUD.shared.itemSelecionado == HUD.shared.peca2) && !holograma1peca{
+            if delegate?.didZoom == true && HUD.shared.itemSelecionado == HUD.shared.peca1 && !holograma1peca && HUD.shared.itemSelecionado != nil{
                 print("peca1 colocada")
                 hologram?.run(.setTexture(SKTexture(imageNamed: "hologramaUmaPeca")))
-                if HUD.shared.itemSelecionado == HUD.shared.peca1{
-                    //                if let clock = clock {
-                    //                    clock.peca1?.removeFromParent()
-                    //                }
-                    print("peca do clock colocada")
-                    //                clock?.removerPeca1()
-                }else{
-                    //                if let vault = vault {
-                    //                    vault.peca2?.removeFromParent()
-                    //                }
-                    print("peca do vault colocada")
-                    //                vault!.removerPeca2()
-                }
+                delegateRemove?.removePeca()
+                holograma1peca = true
+            }
+            if delegate?.didZoom == true && HUD.shared.itemSelecionado == HUD.shared.peca2 && !holograma1peca && HUD.shared.itemSelecionado != nil{
+                print("peca2 colocada")
+                hologram?.run(.setTexture(SKTexture(imageNamed: "hologramaPeca2")))
+                delegateRemove2?.removePeca()
                 holograma1peca = true
             }
             if let selectedItem = HUD.shared.itemSelecionado {

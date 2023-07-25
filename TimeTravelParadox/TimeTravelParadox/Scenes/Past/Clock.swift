@@ -2,7 +2,7 @@ import SpriteKit
 var isPeca1Selected = false
 
 class Clock: SKNode, RemoveProtocol{
-    func removePeca1() {
+    func removePeca() {
         peca1?.removeFromParent()
     }
     
@@ -83,10 +83,6 @@ class Clock: SKNode, RemoveProtocol{
     required init?(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)
-    }
-    
-    func removerPeca1(){
-        peca1?.removeFromParent()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

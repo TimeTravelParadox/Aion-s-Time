@@ -7,9 +7,11 @@
 
 import SpriteKit
 
-var peca1OUT = false
-
-class Vault: SKNode {
+class Vault: SKNode, RemoveProtocol2 {
+    func removePeca() {
+        peca2?.removeFromParent()
+    }
+    
   let future = SKScene(fileNamed: "FutureScene")
   
   var delegate: ZoomProtocol?
@@ -24,7 +26,7 @@ class Vault: SKNode {
     var peca2Taken = false
     var inventoryItemDelegate: InventoryItemDelegate?
   
-  let vaultOpening =  SKAction.animate(with: [SKTexture(imageNamed: "cofre0"), SKTexture(imageNamed: "cofre1"), SKTexture(imageNamed: "cofre2"), SKTexture(imageNamed: "cofre3"), SKTexture(imageNamed: "cofre4"), SKTexture(imageNamed: "cofre5"), SKTexture(imageNamed: "cofre6"),  SKTexture(imageNamed: "cofre7"),  SKTexture(imageNamed: "cofre8"),  SKTexture(imageNamed: "cofre9"),  SKTexture(imageNamed: "cofre10"),  SKTexture(imageNamed: "cofre11"),  SKTexture(imageNamed: "cofre12")],  timePerFrame: 0.4)
+  let vaultOpening =  SKAction.animate(with: [SKTexture(imageNamed: "cofre0"), SKTexture(imageNamed: "cofre1"), SKTexture(imageNamed: "cofre2"), SKTexture(imageNamed: "cofre3"), SKTexture(imageNamed: "cofre4"), SKTexture(imageNamed: "cofre5"), SKTexture(imageNamed: "cofre6"),  SKTexture(imageNamed: "cofre7"),  SKTexture(imageNamed: "cofre8"),  SKTexture(imageNamed: "cofre9"),  SKTexture(imageNamed: "cofre10"),  SKTexture(imageNamed: "cofre11"),  SKTexture(imageNamed: "cofre12")],  timePerFrame: 0.1)
     
     let vaultOpeningSound = SKAction.playSoundFileNamed("cofreAbrindo", waitForCompletion: true)
 
@@ -67,7 +69,7 @@ class Vault: SKNode {
       vault?.isPaused = false
       vault?.run(vaultOpening)
         vault?.run(vaultOpeningSound)
-      self.run(SKAction.wait(forDuration: 4.5)){
+        self.run(SKAction.wait(forDuration: 1)){
         self.peca2?.isHidden = false
       }
       

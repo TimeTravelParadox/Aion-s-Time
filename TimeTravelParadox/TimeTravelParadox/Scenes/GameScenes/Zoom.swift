@@ -5,5 +5,8 @@ protocol ZoomProtocol {
   func zoom(isZoom: Bool, node: SKSpriteNode?, ratio: CGFloat)
 }
 protocol RemoveProtocol{
-    func removePeca1()
+    func removePeca()
+}
+protocol RemoveProtocol2{
+    func removePeca()
 }

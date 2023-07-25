@@ -24,7 +24,7 @@ class Future: SKNode, InventoryItemDelegate {
         self.pastScene = pastScene
         self.computer = Computer(delegate: delegate)
         self.vault = Vault(delegate: delegate)
-        self.hologram = Hologram(delegate: delegate, delegateRemove: pastScene.clock!)
+        self.hologram = Hologram(delegate: delegate, delegateRemove: pastScene.clock!, delegateRemove2: vault!)
         vault?.setupCofre()
         vault?.zPosition()
         self.zPosition = 1

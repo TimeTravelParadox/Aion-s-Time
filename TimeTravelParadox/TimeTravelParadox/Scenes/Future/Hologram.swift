@@ -54,11 +54,29 @@ class Hologram: SKNode {
         
         cartaz?.isHidden = true
         
+        monitorDireita?.isPaused = false
+        startBlinkAnimation()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func startBlinkAnimation() {
+            let duration = 0.5 // Duração de cada ciclo de animação em segundos
+            let fadeInAction = SKAction.fadeIn(withDuration: duration / 2.0)
+            let fadeOutAction = SKAction.fadeOut(withDuration: duration / 2.0)
+
+            // Cria uma sequência de ações para o efeito de aparecer e desaparecer
+            let blinkAction = SKAction.sequence([fadeOutAction, fadeInAction])
+
+            // Repete a sequência para a animação continuar indefinidamente
+            let repeatAction = SKAction.repeatForever(blinkAction)
+
+            // Executa a animação no nó
+            monitorDireita?.run(repeatAction)
+        }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return } // se nao estiver em toque acaba aqui

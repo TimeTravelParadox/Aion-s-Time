@@ -91,6 +91,19 @@ class Future: SKNode, InventoryItemDelegate {
             if let tapped = tapped as? SKSpriteNode { //isso eh um skspritenode?
                 select(node: tapped)
                 return
+
+        }
+    case "itemDetail":
+        GameScene.shared.itemDetail?.interact()
+        return
+    case "mesaFuturo":
+      delegate?.zoom(isZoom: false, node: futureBG, ratio: 0)
+      print("futuro plano de fundo")
+        // Deselecionar o item
+            if HUD.shared.isSelected {
+                if HUD.shared.itemSelecionado != nil {
+                    HUD.shared.removeBorder(from: HUD.shared.itemSelecionado!)
+                }
             }
         case "mesaFuturo":
             delegate?.zoom(isZoom: false, node: futureBG, ratio: 0)

@@ -15,15 +15,15 @@ class ItemDetail: SKSpriteNode {
         itemName = item.name
         super.init(texture: item.texture, color: item.color, size: item.size)
         name = "itemDetail"
-        zPosition = item.zPosition
+        zPosition = 20
         
         switch itemName {
         case "polaroid":
             size = CGSize(width: 100 * GameScene.shared.ratio!, height: 100 * GameScene.shared.ratio!)
-        case "crumpledPaper":
-            size = CGSize(width: 100 * GameScene.shared.ratio!, height: 100 * GameScene.shared.ratio!)
-
-            
+        case "paper":
+            size = CGSize(width: 250 * GameScene.shared.ratio!, height: 120 * GameScene.shared.ratio!)
+        case "paperComplete":
+            size = CGSize(width: 250 * GameScene.shared.ratio!, height: 120 * GameScene.shared.ratio!)
         default:
             return
         }
@@ -37,10 +37,7 @@ class ItemDetail: SKSpriteNode {
         switch itemName {
         case "polaroid":
             spin()
-        case "crumpledPaper":
-            let paper = SKSpriteNode(imageNamed: "paper")
-            
-            self.addChild(paper)
+        //case "typeMachinePaper"
         default:
             return
         }

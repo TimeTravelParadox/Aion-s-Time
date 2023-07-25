@@ -83,8 +83,10 @@ class Vault: SKNode {
     
     for i in 0..<nums.count {
       let label = SKLabelNode(text: "\(nums[i])")
-      label.fontSize = 14
-      label.fontColor = .black
+      label.fontName = "SpecialElite-Regular"
+      label.fontSize = 40
+      label.setScale(0.110)
+      label.fontColor = .blue
       labels.append(label)
       
       
@@ -107,11 +109,11 @@ class Vault: SKNode {
       
       switch i {
       case 0:
-        button.position = CGPoint(x: 235, y: 63)
+        button.position = CGPoint(x: 234.5, y: 63)
       case 1:
         button.position = CGPoint(x: 243, y: 63)
       case 2:
-        button.position = CGPoint(x: 253, y: 63)
+        button.position = CGPoint(x: 251, y: 63)
       default:
         return
       }

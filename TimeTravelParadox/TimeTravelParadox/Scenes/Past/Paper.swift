@@ -14,16 +14,22 @@
 
 import SpriteKit
 
+enum PaperMode {
+    case onDrawer
+    case onInv
+}
+
 class Paper: SKNode {
-    
-    var paper = SKSpriteNode(fileNamed: "paper")
+    var mode: PaperMode = .onDrawer
+    var paper = SKSpriteNode(imageNamed: "paper")
     var inventoryItemDelegate: InventoryItemDelegate?
     var crumpledPaper = SKSpriteNode(imageNamed: "crumpledPaper")
     
     override init() {
         super.init()
-        
         isUserInteractionEnabled = true
+        paper.name = "paper"
+        addChild(crumpledPaper)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -36,13 +42,14 @@ class Paper: SKNode {
         let tappedNodes = nodes(at: location)
         guard let tapped = tappedNodes.first else { return }
         
-        
-        if let paper, HUD.shared.inventario.contains(where: { $0.name == "paper" }) {
+        switch mode {
+        case .onDrawer:
+            position = .zero
+            HUD.addOnInv(node: crumpledPaper)
+            mode = .onInv
+        case .onInv:
             inventoryItemDelegate?.select(node: paper)
         }
-        
     }
-    
-    
 }
 

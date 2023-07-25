@@ -16,8 +16,7 @@ class Past: SKNode, InventoryItemDelegate {
     private var flame: SKSpriteNode?
      var light: SKLightNode?
     
-    private let crumpledPaper = SKSpriteNode(imageNamed: "crumpledPaper")
-    private var takenPaper: Bool = false
+    private let paper: Paper = Paper()
     
     var delegate: ZoomProtocol?
     
@@ -48,6 +47,7 @@ class Past: SKNode, InventoryItemDelegate {
         hiddenPolaroid?.inventoryItemDelegate = self
         clock?.inventoryItemDelegate = self
         typeMachine?.inventoryItemDelegate = self
+        paper.inventoryItemDelegate = self
         
         self.zPosition = 1
         if let past, let clock, let typeMachine, let shelf, let hiddenPolaroid{
@@ -85,7 +85,7 @@ class Past: SKNode, InventoryItemDelegate {
         self.addChild(drawer1.spriteNode)
         self.addChild(drawer2.spriteNode)
         self.addChild(drawer3.spriteNode)
-        crumpledPaper.name = "crumpledPaper"
+        
         
         light?.categoryBitMask = 1 // Identificador para a luz (você pode usar outros números de acordo com suas necessidades)
         light?.falloff = 1
@@ -134,15 +134,7 @@ class Past: SKNode, InventoryItemDelegate {
         case "smallerDrawer2":
             verification(drawer: drawer3, tapped: tapped)
             print("smallerDrawer2")
-        case "crumpledPaper":
-            if takenPaper {
-                select(node: crumpledPaper)
-            } else {
-                HUD.addOnInv(node: crumpledPaper)
-                takenPaper = true
-                print("crumpledpapper")
-            }
-            return
+        
         case "itemDetail":
             GameScene.shared.itemDetail?.interact()
             return
@@ -167,8 +159,8 @@ class Past: SKNode, InventoryItemDelegate {
         let absolutePosition = drawer.spriteNode.convert(relativePosition, to: self)
         
         
-        crumpledPaper.position = absolutePosition
-        crumpledPaper.zPosition = 3
+        paper.position = absolutePosition
+        paper.zPosition = 3
     }
     
     
@@ -178,20 +170,24 @@ class Past: SKNode, InventoryItemDelegate {
                 guard let self else {
                     return
                 }
-                guard takenPaper == false else {
-                    return
-                }
-                if drawer.isOpened == true {
-                    if drawer.drawerSize == .large { // Verifica se a gaveta é a largerOpenDrawer
-                        
-                        self.addChild(self.crumpledPaper)
-                        self.positionCrumpledPaper(drawer: drawer)
+                
+                switch paper.mode {
+                case .onDrawer:
+                    if drawer.isOpened == true {
+                        if drawer.drawerSize == .large { // Verifica se a gaveta é a largerOpenDrawer
+                            
+                            self.addChild(self.paper)
+                            self.positionCrumpledPaper(drawer: drawer)
+                        }
+                    } else {
+                        if drawer.drawerSize == .large { // Verifica se a gaveta é a largerOpenDrawer
+                            self.paper.removeFromParent()
+                        }
                     }
-                } else {
-                    if drawer.drawerSize == .large { // Verifica se a gaveta é a largerOpenDrawer
-                        self.crumpledPaper.removeFromParent()
-                    }
+                case .onInv:
+                    break //sai do switch
                 }
+                
             })
         } else {
             delegate?.zoom(isZoom: true, node: table, ratio: 0.5)
@@ -205,5 +201,6 @@ class Past: SKNode, InventoryItemDelegate {
         GameScene.shared.itemDetail = ItemDetail(item: node)
         GameScene.shared.itemDetail?.position = CGPoint(x: GameScene.shared.cameraPosition.x, y: GameScene.shared.cameraPosition.y)
         addChild(GameScene.shared.itemDetail!)
+        GameScene.shared.itemDetail?.isHidden = false
     }
 }

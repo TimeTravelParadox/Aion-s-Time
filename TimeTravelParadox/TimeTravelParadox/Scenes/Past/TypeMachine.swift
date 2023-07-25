@@ -114,6 +114,9 @@ class TypeMachine: SKNode {
         switch tapped.name {
         case "paperComplete":
             HUD.addOnInv(node: paperComplete)
+            if let paperComplete, HUD.shared.inventario.contains(where: { $0.name == "paperComplete" }) {
+                inventoryItemDelegate?.select(node: paperComplete)
+            }
         case "delete":
             delete?.run(typingSFX)
             print("deletou")

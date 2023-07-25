@@ -80,11 +80,6 @@ class Future: SKNode, InventoryItemDelegate {
     case "itemDetail":
         GameScene.shared.itemDetail?.interact()
         return
-    case "crumpledPaper":
-        if let tapped = tapped as? SKSpriteNode { //isso eh um skspritenode?
-            select(node: tapped)
-            return
-        }
     case "mesaFuturo":
       delegate?.zoom(isZoom: false, node: futureBG, ratio: 0)
       print("futuro plano de fundo")

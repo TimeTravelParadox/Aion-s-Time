@@ -121,7 +121,6 @@ class Future: SKNode, InventoryItemDelegate {
     }
       clearItemDetail()
   }
-<<<<<<< Updated upstream
     
     func clearItemDetail() {
         GameScene.shared.itemDetail?.removeFromParent()
@@ -136,7 +135,5 @@ class Future: SKNode, InventoryItemDelegate {
         GameScene.shared.itemDetail?.position = CGPoint(x: GameScene.shared.cameraPosition.x, y: GameScene.shared.cameraPosition.y)
         addChild(GameScene.shared.itemDetail!)
     }
-=======
->>>>>>> Stashed changes
-  
+
 }

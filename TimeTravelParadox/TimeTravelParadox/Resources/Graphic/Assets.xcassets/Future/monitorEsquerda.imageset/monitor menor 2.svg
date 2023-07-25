@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Camada_2" data-name="Camada 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 97.28 67.29">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-2 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-3 {
+        letter-spacing: 0em;
+      }
+
+      .cls-4 {
+        letter-spacing: .02em;
+      }
+
+      .cls-5 {
+        fill: aqua;
+      }
+
+      .cls-6 {
+        fill: url(#Gradiente_sem_nome_31-5);
+      }
+
+      .cls-6, .cls-7, .cls-8, .cls-9, .cls-10, .cls-11, .cls-12 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-6, .cls-7, .cls-8, .cls-10 {
+        stroke: #0071ba;
+      }
+
+      .cls-6, .cls-7, .cls-8, .cls-11 {
+        stroke-width: .25px;
+      }
+
+      .cls-7 {
+        fill: url(#Gradiente_sem_nome_31-6);
+      }
+
+      .cls-8 {
+        fill: url(#Gradiente_sem_nome_31-4);
+      }
+
+      .cls-13 {
+        letter-spacing: -.05em;
+      }
+
+      .cls-9 {
+        stroke-width: .75px;
+      }
+
+      .cls-9, .cls-11 {
+        stroke: blue;
+      }
+
+      .cls-9, .cls-11, .cls-12 {
+        fill: none;
+      }
+
+      .cls-14 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-15 {
+        font-family: Orbitron-Regular, Orbitron;
+        font-size: 1px;
+        font-variation-settings: 'wght' 400;
+      }
+
+      .cls-15, .cls-16 {
+        fill: #2e3190;
+      }
+
+      .cls-17 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-18 {
+        letter-spacing: 0em;
+      }
+
+      .cls-19 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-20 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-21 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-22 {
+        fill: url(#Gradiente_sem_nome_31);
+        opacity: .36;
+      }
+
+      .cls-23 {
+        letter-spacing: 0em;
+      }
+
+      .cls-24 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-25 {
+        letter-spacing: -.04em;
+      }
+
+      .cls-26 {
+        letter-spacing: 0em;
+      }
+
+      .cls-10 {
+        fill: url(#Gradiente_sem_nome_31-3);
+      }
+
+      .cls-27 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-16 {
+        font-family: Orbitron-SemiBold, Orbitron;
+        font-size: 4px;
+        font-variation-settings: 'wght' 600;
+        font-weight: 600;
+      }
+
+      .cls-12 {
+        stroke: #29a9e0;
+        stroke-width: .5px;
+      }
+
+      .cls-28 {
+        fill: url(#Gradiente_sem_nome_31-2);
+        opacity: .46;
+      }
+    </style>
+    <radialGradient id="Gradiente_sem_nome_31" data-name="Gradiente sem nome 31" cx="153.43" cy="37.72" fx="153.43" fy="37.72" r="61.51" gradientTransform="translate(-60.21 -5.59) scale(.71 1.04)" gradientUnits="userSpaceOnUse">
+      <stop offset=".45" stop-color="aqua"/>
+      <stop offset=".61" stop-color="#00fbff"/>
+      <stop offset=".75" stop-color="#00f0ff"/>
+      <stop offset=".89" stop-color="#00deff"/>
+      <stop offset="1" stop-color="#00caff"/>
+    </radialGradient>
+    <radialGradient id="Gradiente_sem_nome_31-2" data-name="Gradiente sem nome 31" cx="66.51" cy="29.02" fx="66.51" fy="29.02" r="18.83" gradientTransform="matrix(1,0,0,1,0,0)" xlink:href="#Gradiente_sem_nome_31"/>
+    <radialGradient id="Gradiente_sem_nome_31-3" data-name="Gradiente sem nome 31" cx="67.04" cy="29.68" fx="67.04" fy="29.68" r="10.89" gradientTransform="matrix(1,0,0,1,0,0)" xlink:href="#Gradiente_sem_nome_31"/>
+    <radialGradient id="Gradiente_sem_nome_31-4" data-name="Gradiente sem nome 31" cx="59.72" cy="25.81" fx="59.72" fy="25.81" r=".7" gradientTransform="matrix(1,0,0,1,0,0)" xlink:href="#Gradiente_sem_nome_31"/>
+    <radialGradient id="Gradiente_sem_nome_31-5" data-name="Gradiente sem nome 31" cx="72.31" cy="21.97" fx="72.31" fy="21.97" r=".7" gradientTransform="matrix(1,0,0,1,0,0)" xlink:href="#Gradiente_sem_nome_31"/>
+    <radialGradient id="Gradiente_sem_nome_31-6" data-name="Gradiente sem nome 31" cx="66.51" cy="37.4" fx="66.51" fy="37.4" r=".7" gradientTransform="matrix(1,0,0,1,0,0)" xlink:href="#Gradiente_sem_nome_31"/>
+  </defs>
+  <g id="Monitor">
+    <g>
+      <rect class="cls-22" width="97.28" height="67.29" rx="4.17" ry="4.17"/>
+      <polygon class="cls-12" points="8.67 6.84 77.43 6.84 79.83 3.55 87.39 3.55 90.87 8.32 90.87 26.13 93.65 29.96 93.65 59.17 89.8 64.46 60.16 64.46 57.56 60.89 8.67 60.89 6.12 57.39 6.12 34 4.05 31.16 4.05 12.41 8.67 6.84"/>
+      <rect class="cls-5" x="18.34" y="21.97" width="25.8" height="27.89"/>
+      <polyline class="cls-9" points="45.65 20.34 26.39 20.34 16.55 30.18 16.55 52.38 45.65 52.38"/>
+      <text class="cls-16" transform="translate(23.23 31.08)"><tspan class="cls-26" x="0" y="0">K</tspan><tspan x="3.17" y="0">a</tspan><tspan class="cls-4" x="5.94" y="0">i</tspan><tspan x="6.88" y="0">r</tspan><tspan class="cls-20" x="8.96" y="0">o</tspan><tspan class="cls-18" x="11.64" y="0">s</tspan></text>
+      <text class="cls-15" transform="translate(23.23 34.58)"><tspan x="0" y="0">I</tspan><tspan class="cls-21" x=".21" y="0">u</tspan><tspan x=".89" y="0">sjdh foi</tspan><tspan class="cls-27" x="4.73" y="0">u</tspan><tspan x="5.41" y="0">tm </tspan><tspan class="cls-25" x="7.07" y="0">i</tspan><tspan x="7.25" y="0">aoe t</tspan><tspan class="cls-19" x="10.01" y="0">q</tspan><tspan class="cls-21" x="10.64" y="0">u</tspan><tspan x="11.32" y="0">sa ks</tspan><tspan class="cls-23" x="14.31" y="0">o</tspan><tspan x="14.99" y="0">a</tspan><tspan x="0" y="1.2"> </tspan><tspan class="cls-2" x=".27" y="1.2">a</tspan><tspan x=".95" y="1.2">sji</tspan><tspan class="cls-17" x="2.08" y="1.2">w</tspan><tspan x="3.12" y="1.2">e ui</tspan><tspan class="cls-2" x="4.98" y="1.2">w</tspan><tspan x="6.04" y="1.2">om j</tspan><tspan class="cls-21" x="8.22" y="1.2">i</tspan><tspan x="8.41" y="1.2">co, soedn, </tspan><tspan class="cls-2" x="14.16" y="1.2">s</tspan><tspan x="14.82" y="1.2">uwl.</tspan><tspan x="0" y="2.4">Tajsoc </tspan><tspan class="cls-21" x="4.04" y="2.4">a</tspan><tspan x="4.71" y="2.4">nzs’mdkd. A</tspan><tspan class="cls-27" x="11.24" y="2.4">u</tspan><tspan x="11.92" y="2.4">sjnd, </tspan><tspan x="0" y="3.6">k</tspan><tspan class="cls-21" x=".65" y="3.6">a</tspan><tspan x="1.32" y="3.6">ns </tspan><tspan class="cls-27" x="2.98" y="3.6">i</tspan><tspan x="3.17" y="3.6">cneijs op</tspan><tspan class="cls-1" x="8.02" y="3.6">o</tspan><tspan class="cls-3" x="8.68" y="3.6">t</tspan><tspan x="9.1" y="3.6">iys, </tspan><tspan class="cls-13" x="11.14" y="3.6">i</tspan><tspan x="11.3" y="3.6">f</tspan><tspan class="cls-24" x="11.71" y="3.6">o</tspan><tspan class="cls-14" x="12.38" y="3.6">o</tspan><tspan class="cls-19" x="13.06" y="3.6">v</tspan><tspan x="13.83" y="3.6">s. </tspan><tspan x="0" y="6">I</tspan><tspan class="cls-21" x=".21" y="6">u</tspan><tspan x=".89" y="6">sjdh foi</tspan><tspan class="cls-27" x="4.73" y="6">u</tspan><tspan x="5.41" y="6">tm </tspan><tspan class="cls-25" x="7.07" y="6">i</tspan><tspan x="7.25" y="6">aoe t</tspan><tspan class="cls-19" x="10.01" y="6">q</tspan><tspan class="cls-21" x="10.64" y="6">u</tspan><tspan x="11.32" y="6">sa ks</tspan><tspan class="cls-23" x="14.31" y="6">o</tspan><tspan x="14.99" y="6">a</tspan><tspan x="0" y="7.2"> </tspan><tspan class="cls-2" x=".27" y="7.2">a</tspan><tspan x=".95" y="7.2">sji</tspan><tspan class="cls-17" x="2.08" y="7.2">w</tspan><tspan x="3.12" y="7.2">e ui</tspan><tspan class="cls-2" x="4.98" y="7.2">w</tspan><tspan x="6.04" y="7.2">om j</tspan><tspan class="cls-21" x="8.22" y="7.2">i</tspan><tspan x="8.41" y="7.2">co, soedn, </tspan><tspan class="cls-2" x="14.16" y="7.2">s</tspan><tspan x="14.82" y="7.2">uwl.</tspan><tspan x="0" y="8.4">Tajsoc </tspan><tspan class="cls-21" x="4.04" y="8.4">a</tspan><tspan x="4.71" y="8.4">nzs’mdkd. A</tspan><tspan class="cls-27" x="11.24" y="8.4">u</tspan><tspan x="11.92" y="8.4">sjnd, </tspan><tspan x="0" y="9.6">k</tspan><tspan class="cls-21" x=".65" y="9.6">a</tspan><tspan x="1.32" y="9.6">ns </tspan><tspan class="cls-27" x="2.98" y="9.6">i</tspan><tspan x="3.17" y="9.6">cneijs op</tspan><tspan class="cls-1" x="8.02" y="9.6">o</tspan><tspan class="cls-3" x="8.68" y="9.6">t</tspan><tspan x="9.1" y="9.6">iys, </tspan><tspan class="cls-13" x="11.14" y="9.6">i</tspan><tspan x="11.3" y="9.6">f</tspan><tspan class="cls-24" x="11.71" y="9.6">o</tspan><tspan class="cls-14" x="12.38" y="9.6">o</tspan><tspan class="cls-19" x="13.06" y="9.6">v</tspan><tspan x="13.83" y="9.6">s.</tspan></text>
+      <circle class="cls-28" cx="66.51" cy="29.02" r="16.41"/>
+      <polyline class="cls-10" points="55.34 33.4 59.82 26.17 66.51 36.26 72.34 23.1 75.79 31.05 78.73 26.17"/>
+      <circle class="cls-8" cx="59.72" cy="25.81" r=".61"/>
+      <polyline class="cls-11" points="17.45 51.24 52.92 51.24 56.47 45.85"/>
+      <text></text>
+      <circle class="cls-6" cx="72.31" cy="21.97" r=".61"/>
+      <circle class="cls-7" cx="66.51" cy="37.4" r=".61"/>
+    </g>
+  </g>
+</svg>

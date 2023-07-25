@@ -4,11 +4,13 @@ class Future: SKNode{
 
   private let futureScene = SKScene(fileNamed: "FutureScene")
   private var futureBG: SKSpriteNode?
+  private var mesa: SKSpriteNode?
+  private var monitorEsquerda: SKSpriteNode?
   
   var computer: Computer?
   var vault: Vault?
   var hologram: Hologram?
-  
+ 
   let futureST = SKAction.repeatForever(SKAction.playSoundFileNamed("futureST.mp3", waitForCompletion: true))
   
   var delegate: ZoomProtocol?
@@ -26,10 +28,16 @@ class Future: SKNode{
     if let futureScene, let computer, let vault, let hologram {
       futureBG = (futureScene.childNode(withName: "futureBG") as? SKSpriteNode)
       futureBG?.removeFromParent()
+      mesa = futureScene.childNode(withName: "mesaFuturo") as? SKSpriteNode
+      mesa?.removeFromParent()
+      monitorEsquerda = futureScene.childNode(withName: "monitorEsquerda") as? SKSpriteNode
+      monitorEsquerda?.removeFromParent()
       
       self.isUserInteractionEnabled = true
  
-      if let futureBG{
+      if let futureBG, let mesa, let monitorEsquerda{
+        self.addChild(mesa)
+        self.addChild(monitorEsquerda)
         self.addChild(futureBG)
       }
       
@@ -56,6 +64,25 @@ class Future: SKNode{
     
     switch tapped.name {
     case "futureBG":
+      delegate?.zoom(isZoom: false, node: futureBG, ratio: 0)
+      print("futuro plano de fundo")
+        // Deselecionar o item
+        if HUD.shared.isSelected {
+            if HUD.shared.itemSelecionado != nil {
+                HUD.shared.removeBorder(from: HUD.shared.itemSelecionado!)
+            }
+        }
+      
+    case "mesaFuturo":
+      delegate?.zoom(isZoom: false, node: futureBG, ratio: 0)
+      print("futuro plano de fundo")
+        // Deselecionar o item
+        if HUD.shared.isSelected {
+            if HUD.shared.itemSelecionado != nil {
+                HUD.shared.removeBorder(from: HUD.shared.itemSelecionado!)
+            }
+        }
+    case "monitorEsquerda":
       delegate?.zoom(isZoom: false, node: futureBG, ratio: 0)
       print("futuro plano de fundo")
         // Deselecionar o item

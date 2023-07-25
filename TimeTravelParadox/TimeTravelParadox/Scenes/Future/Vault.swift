@@ -7,6 +7,8 @@
 
 import SpriteKit
 
+var peca1OUT = false
+
 class Vault: SKNode {
   let future = SKScene(fileNamed: "FutureScene")
   

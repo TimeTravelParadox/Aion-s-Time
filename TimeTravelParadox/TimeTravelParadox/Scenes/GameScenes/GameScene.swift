@@ -11,6 +11,9 @@ class GameScene: SKScene, ZoomProtocol{
     private let qg = QG()
     
     var isTravelingSFXPlaying = false
+    var isBackToQGSFXPlaying = false
+    
+    var zooming = true
     
     private var audioPlayerPastST: AVAudioPlayer?
     private var audioPlayerQGST: AVAudioPlayer?
@@ -23,6 +26,7 @@ class GameScene: SKScene, ZoomProtocol{
   
     let zoomSound = SKAction.playSoundFileNamed("zoomSound", waitForCompletion: false)
     let travelingSFX = SKAction.playSoundFileNamed("traveling.mp3", waitForCompletion: true)
+    let backToQGSFX = SKAction.playSoundFileNamed("backToQG.mp3", waitForCompletion: true)
     
     let cameraNode = SKCameraNode()
     var cameraPosition = CGPoint(x: 0, y: 0)
@@ -50,77 +54,87 @@ class GameScene: SKScene, ZoomProtocol{
         guard didZoom != isZoom else {
             return
         }
-        if isZoom {
-            // Deselecionar o item
-            if HUD.shared.isSelected {
-                if HUD.shared.itemSelecionado != nil {
+        
+        if zooming{
+            zooming = false
+            if isZoom {
+                // Deselecionar o item
+                if HUD.shared.isSelected {
+                    if HUD.shared.itemSelecionado != nil {
+                        HUD.shared.removeBorder(from: HUD.shared.itemSelecionado!)
+                    }
+                }
+                self.didZoom = isZoom
+                self.cameraPosition = node?.position ?? self.cameraNode.position
+                self.cameraNode.position = self.cameraPosition
+                self.cameraNode.run(SKAction.scale(to: ratio, duration: 0))
+                GameScene.shared.cameraPosition = self.cameraNode.position
+                GameScene.shared.ratio = ratio
+                hud.reposiconarInvIn(ratio: ratio)
+                for (index, item) in HUD.shared.inventario.enumerated() {
+                    item.size = CGSize(width: 30*ratio, height: 30*ratio)
+                    switch index {
+                    case 0:
+                        self.positionNodeRelativeToCamera(item, offsetX: -50*ratio, offsetY: 144*ratio)
+                    case 1:
+                        self.positionNodeRelativeToCamera(item, offsetX: 0, offsetY: 144*ratio)
+                    case 2:
+                        self.positionNodeRelativeToCamera(item, offsetX: 50*ratio, offsetY: 144*ratio)
+                    case 3:
+                        self.positionNodeRelativeToCamera(item, offsetX: 100*ratio, offsetY: 144*ratio)
+                    case 4:
+                        self.positionNodeRelativeToCamera(item, offsetX: 150*ratio, offsetY: 144*ratio)
+                    default:
+                        return
+                    }
+                }
+                fade?.fade(camera: cameraNode.position)
+                node?.isPaused = false
+                node?.run(zoomSound)
+                hud.hideTravelQG(isHide: true)
+            } else {
+
+                // Deselecionar o item
+                if HUD.shared.isSelected && HUD.shared.itemSelecionado != nil {
                     HUD.shared.removeBorder(from: HUD.shared.itemSelecionado!)
                 }
-            }
-            self.didZoom = isZoom
-            self.cameraPosition = node?.position ?? self.cameraNode.position
-            self.cameraNode.position = self.cameraPosition
-            self.cameraNode.run(SKAction.scale(to: ratio, duration: 0))
-            GameScene.shared.cameraPosition = self.cameraNode.position
-            GameScene.shared.ratio = ratio
-            hud.reposiconarInvIn(ratio: ratio)
-            for (index, item) in HUD.shared.inventario.enumerated() {
-                item.size = CGSize(width: 30*ratio, height: 30*ratio)
-                switch index {
-                case 0:
-                    self.positionNodeRelativeToCamera(item, offsetX: -50*ratio, offsetY: 144*ratio)
-                case 1:
-                    self.positionNodeRelativeToCamera(item, offsetX: 0, offsetY: 144*ratio)
-                case 2:
-                    self.positionNodeRelativeToCamera(item, offsetX: 50*ratio, offsetY: 144*ratio)
-                case 3:
-                    self.positionNodeRelativeToCamera(item, offsetX: 100*ratio, offsetY: 144*ratio)
-                case 4:
-                    self.positionNodeRelativeToCamera(item, offsetX: 150*ratio, offsetY: 144*ratio)
-                default:
-                    return
+                self.didZoom = isZoom
+                self.cameraNode.position = node?.position ?? self.cameraNode.position
+                self.cameraNode.run(SKAction.scale(to: 1, duration: 0))
+                GameScene.shared.cameraPosition = self.cameraNode.position
+                GameScene.shared.ratio = 1
+                HUD.shared.inventarioHUD?.size = CGSize(width: 320, height: 50)
+                HUD.shared.inventarioHUD?.position = CGPoint(x: 80, y: 145)
+                hud.reposiconarInvOut()
+                for (index, item) in HUD.shared.inventario.enumerated() {
+                    item.size = CGSize(width: 30, height: 30)
+                    switch index {
+                    case 0:
+                        self.positionNodeRelativeToCamera(item, offsetX: -50, offsetY: 144)
+                    case 1:
+                        self.positionNodeRelativeToCamera(item, offsetX: 0, offsetY: 144)
+                    case 2:
+                        self.positionNodeRelativeToCamera(item, offsetX: 50, offsetY: 144)
+                    case 3:
+                        self.positionNodeRelativeToCamera(item, offsetX: 100, offsetY: 144)
+                    case 4:
+                        self.positionNodeRelativeToCamera(item, offsetX: 150, offsetY: 144)
+                    default:
+                        return
+                    }
                 }
+                fade?.fade(camera: cameraNode.position)
+                node?.isPaused = false
+                node?.run(zoomSound)
+                print("zoom out")
+                hud.hideTravelQG(isHide: false)
+                
             }
-            fade?.fade(camera: cameraNode.position)
-          node?.isPaused = false
-          node?.run(zoomSound)
-            hud.hideTravelQG(isHide: true)
-        } else {
-            // Deselecionar o item
-            if HUD.shared.isSelected && HUD.shared.itemSelecionado != nil {
-                HUD.shared.removeBorder(from: HUD.shared.itemSelecionado!)
-            }
-            self.didZoom = isZoom
-            self.cameraNode.position = node?.position ?? self.cameraNode.position
-            self.cameraNode.run(SKAction.scale(to: 1, duration: 0))
-            GameScene.shared.cameraPosition = self.cameraNode.position
-            GameScene.shared.ratio = 1
-            HUD.shared.inventarioHUD?.size = CGSize(width: 320, height: 50)
-            HUD.shared.inventarioHUD?.position = CGPoint(x: 80, y: 145)
-            hud.reposiconarInvOut()
-            for (index, item) in HUD.shared.inventario.enumerated() {
-                item.size = CGSize(width: 30, height: 30)
-                switch index {
-                case 0:
-                    self.positionNodeRelativeToCamera(item, offsetX: -50, offsetY: 144)
-                case 1:
-                    self.positionNodeRelativeToCamera(item, offsetX: 0, offsetY: 144)
-                case 2:
-                    self.positionNodeRelativeToCamera(item, offsetX: 50, offsetY: 144)
-                case 3:
-                    self.positionNodeRelativeToCamera(item, offsetX: 100, offsetY: 144)
-                case 4:
-                    self.positionNodeRelativeToCamera(item, offsetX: 150, offsetY: 144)
-                default:
-                    return
-                }
-            }
-            fade?.fade(camera: cameraNode.position)
-          node?.isPaused = false
-          node?.run(zoomSound)
-            print("zoom out")
-            hud.hideTravelQG(isHide: false)
+            
+            self.run(SKAction.wait(forDuration: 0.4)){
 
+                self.zooming = true
+            }
         }
     }
     
@@ -199,17 +213,28 @@ class GameScene: SKScene, ZoomProtocol{
         let location = touch.location(in: self)
         let tappedNodes = nodes(at: location)
         guard let tapped = tappedNodes.first else { return } // ter ctz que algo esta sendo tocado
-        
+        if tapped == past?.clock?.peca1 {
+            print("print past clock peca1 da gamescene")
+        }
         switch tapped.name {
         case "qgButton":
-            qg.zPosition = 20
-            past?.zPosition = 0
-            future?.zPosition = 0
-            hud.hideQGButton(isHide: true)
-            self.fadeInAudioPlayer(self.audioPlayerQGST)
-            audioPlayerQGST?.play()
-            audioPlayerPastST?.pause()
-            audioPlayerFutureST?.pause()
+            if isBackToQGSFXPlaying{
+                return
+            }
+            scene?.run(backToQGSFX)
+            scene?.run(SKAction.wait(forDuration: 1.9)){
+                self.qg.zPosition = 20
+                self.past?.zPosition = 0
+                self.future?.zPosition = 0
+                self.hud.hideQGButton(isHide: true)
+                self.fadeInAudioPlayer(self.audioPlayerQGST)
+                self.audioPlayerQGST?.play()
+                self.audioPlayerPastST?.pause()
+                self.audioPlayerFutureST?.pause()
+                self.past?.light?.isHidden = true
+
+            }
+            isBackToQGSFXPlaying = false
         case "travel":
             if isTravelingSFXPlaying {
                 return
@@ -229,6 +254,8 @@ class GameScene: SKScene, ZoomProtocol{
                     self.audioPlayerPastST?.pause()
                     self.fadeInAudioPlayer(self.audioPlayerFutureST)
                     self.audioPlayerFutureST?.play()
+                    self.past?.light?.isHidden = true
+
 
                 } else {
                     self.qg.zPosition = 0
@@ -239,6 +266,7 @@ class GameScene: SKScene, ZoomProtocol{
                     self.fadeInAudioPlayer(self.audioPlayerPastST)
                     self.audioPlayerPastST?.play()
                     self.audioPlayerFutureST?.pause()
+                    self.past?.light?.isHidden = false
                 }
 
                 // marca som finalizado

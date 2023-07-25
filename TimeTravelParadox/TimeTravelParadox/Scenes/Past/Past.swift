@@ -13,16 +13,20 @@ class Past: SKNode, InventoryItemDelegate {
     var table: SKSpriteNode?
     private let past = SKScene(fileNamed: "PastScene")
     private var pastBG: SKSpriteNode?
+    private var flame: SKSpriteNode?
+     var light: SKLightNode?
     
     private let crumpledPaper = SKSpriteNode(imageNamed: "crumpledPaper")
     private var takenPaper: Bool = false
     
     var delegate: ZoomProtocol?
     
+    let flaming =  SKAction.repeatForever(SKAction.animate(with: [SKTexture(imageNamed: "flame1"), SKTexture(imageNamed: "flame2"), SKTexture(imageNamed: "flame3"), SKTexture(imageNamed: "flame4"), SKTexture(imageNamed: "flame5")], timePerFrame: 0.16))
+    let sizzleSFX = SKAction.playSoundFileNamed("sizzle.mp3", waitForCompletion: true)
+
     var minuteRotate: CGFloat = 0 // variável para saber o grau dos minutos
     var hourRotate: CGFloat = 0 // variável para saber o grau das horas
     
-    let pastST = SKAction.repeatForever(SKAction.playSoundFileNamed("pastST.mp3", waitForCompletion: true))
     let clockOpeningSFX = SKAction.playSoundFileNamed("clockOpeningSFX.mp3", waitForCompletion: true)
     
     func spin() {
@@ -49,12 +53,20 @@ class Past: SKNode, InventoryItemDelegate {
         if let past, let clock, let typeMachine, let shelf, let hiddenPolaroid{
             pastBG = (past.childNode(withName: "pastBG") as? SKSpriteNode)
             pastBG?.removeFromParent()
+            flame = (past.childNode(withName: "flame") as? SKSpriteNode)
+            flame?.removeFromParent()
+            light = (past.childNode(withName: "light") as? SKLightNode)
+            light?.removeFromParent()
             
             self.isUserInteractionEnabled = true
             
-            if let pastBG{
+            if let pastBG, let flame, let light{
                 self.addChild(pastBG)
+                self.addChild(flame)
+                self.addChild(light)
             }
+            flame?.isPaused = false
+            flame?.run(flaming)
             self.isPaused = false
             
             //fazer o mesmo
@@ -66,7 +78,7 @@ class Past: SKNode, InventoryItemDelegate {
             shelf.delegate = delegate
             self.addChild(hiddenPolaroid)
             hiddenPolaroid.delegate = delegate
-            
+            flame?.lightingBitMask = 1
             self.removeAction(forKey: "futureST")
         }
         
@@ -75,6 +87,12 @@ class Past: SKNode, InventoryItemDelegate {
         self.addChild(drawer3.spriteNode)
         crumpledPaper.name = "crumpledPaper"
         
+        light?.categoryBitMask = 1 // Identificador para a luz (você pode usar outros números de acordo com suas necessidades)
+        light?.falloff = 1
+        light?.ambientColor = .orange
+        light?.lightColor = .orange
+        light?.shadowColor = UIColor(white: 0, alpha: 0.5)
+        light?.isHidden = true
 
         if let table {
             table.removeFromParent()
@@ -103,6 +121,8 @@ class Past: SKNode, InventoryItemDelegate {
                     HUD.shared.removeBorder(from: HUD.shared.itemSelecionado!)
                 }
             }
+        case "flame":
+            flame?.run(sizzleSFX)
         case "table":
             print("mesa")
         case "smallerDrawer1":

@@ -6,6 +6,12 @@ class TypeMachine: SKNode {
     private var typeMachine: SKSpriteNode?
     private var text: SKLabelNode?
     private var delete: SKSpriteNode?
+    private var paper: SKSpriteNode?
+    private var paperComplete: SKSpriteNode?
+    private var trail: SKSpriteNode?
+    
+    
+
     private var keyNodes: [String: SKSpriteNode?] = [:]
     let keys = Array("ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890^")
     
@@ -31,15 +37,30 @@ class TypeMachine: SKNode {
             
             delete = (past.childNode(withName: "delete") as? SKSpriteNode)
             delete?.removeFromParent()
+            trail = (past.childNode(withName: "trail") as? SKSpriteNode)
+            trail?.removeFromParent()
+            paper = (past.childNode(withName: "paper") as? SKSpriteNode)
+            paper?.removeFromParent()
+            paperComplete = (past.childNode(withName: "paperComplete") as? SKSpriteNode)
+            paperComplete?.removeFromParent()
+
             
             self.isUserInteractionEnabled = true
             
-            if let typeMachine, let text, let delete {
+            if let typeMachine, let text, let delete, let trail, let paper, let paperComplete {
                 self.addChild(typeMachine)
                 self.addChild(text)
                 self.addChild(delete)
+                self.addChild(trail)
+                self.addChild(paper)
+                self.addChild(paperComplete)
             }
             text?.text = ""
+            text?.fontName = "SpecialElite-Regular"
+            text?.fontSize = 40 // Defina o tamanho da fonte desejado
+            text?.setScale(0.1) // Dimensione o nó
+
+            paperComplete?.isHidden = true
         }
     }
     
@@ -63,7 +84,7 @@ class TypeMachine: SKNode {
         let tappedNodes = nodes(at: location)
         guard let tapped = tappedNodes.first else { return }
         
-        if text?.text != "AION"{
+        if text?.text != "AION" {
             for (key, spriteNode) in keyNodes {
                 if tapped == spriteNode {
                     if delegate?.didZoom == true{
@@ -75,6 +96,9 @@ class TypeMachine: SKNode {
                                 if text?.text == "AION"{
                                     spriteNode?.isPaused = false
                                     spriteNode?.run(dingSFX)
+                                    paper?.isHidden = true
+                                    paperComplete?.isHidden = false
+                                    text?.isHidden = true
                                     
                                 }
                             } else {
@@ -86,11 +110,10 @@ class TypeMachine: SKNode {
                     }
                 }
             }
-        }else{
-            typeMachine?.isPaused = false
-            typeMachine?.run(dingSFX)
         }
         switch tapped.name {
+        case "paperComplete":
+            HUD.addOnInv(node: paperComplete)
         case "delete":
             delete?.run(typingSFX)
             print("deletou")
@@ -98,8 +121,9 @@ class TypeMachine: SKNode {
                 text?.text = String(labelText.dropLast())
             }
         case "typeMachine":
-            delegate?.zoom(isZoom: true, node: typeMachine, ratio: 0.3)
+            delegate?.zoom(isZoom: true, node: typeMachine, ratio: 0.13)
         default:
+            delegate?.zoom(isZoom: true, node: typeMachine, ratio: 0.13)
             print("default")
         }
         

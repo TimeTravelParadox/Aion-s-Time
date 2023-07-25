@@ -185,7 +185,7 @@ class GameScene: SKScene, ZoomProtocol{
 
         
         
-        self.future = Future(delegate: self)
+        self.future = Future(delegate: self, pastScene: past!)
         if let future {
             addChild(future)
             future.zPosition = 0

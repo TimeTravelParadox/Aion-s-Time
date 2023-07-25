@@ -6,6 +6,7 @@ class Future: SKNode, InventoryItemDelegate {
   private var futureBG: SKSpriteNode?
   private var mesa: SKSpriteNode?
   private var monitorEsquerda: SKSpriteNode?
+  private var janela: SKSpriteNode?
   
   var computer: Computer?
   var vault: Vault?
@@ -32,13 +33,16 @@ class Future: SKNode, InventoryItemDelegate {
       mesa?.removeFromParent()
       monitorEsquerda = futureScene.childNode(withName: "monitorEsquerda") as? SKSpriteNode
       monitorEsquerda?.removeFromParent()
+      janela = futureScene.childNode(withName: "janela") as? SKSpriteNode
+      janela?.removeFromParent()
       
       self.isUserInteractionEnabled = true
  
-      if let futureBG, let mesa, let monitorEsquerda{
+      if let futureBG, let mesa, let monitorEsquerda, let janela{
         self.addChild(mesa)
         self.addChild(monitorEsquerda)
         self.addChild(futureBG)
+        self.addChild(janela)
       }
       
       self.addChild(computer)
@@ -103,11 +107,21 @@ class Future: SKNode, InventoryItemDelegate {
                 HUD.shared.removeBorder(from: HUD.shared.itemSelecionado!)
             }
         }
+    case "janela":
+      delegate?.zoom(isZoom: false, node: futureBG, ratio: 0)
+      print("futuro plano de fundo")
+        // Deselecionar o item
+        if HUD.shared.isSelected {
+            if HUD.shared.itemSelecionado != nil {
+                HUD.shared.removeBorder(from: HUD.shared.itemSelecionado!)
+            }
+        }
     default:
       break
     }
       clearItemDetail()
   }
+<<<<<<< Updated upstream
     
     func clearItemDetail() {
         GameScene.shared.itemDetail?.removeFromParent()
@@ -122,5 +136,7 @@ class Future: SKNode, InventoryItemDelegate {
         GameScene.shared.itemDetail?.position = CGPoint(x: GameScene.shared.cameraPosition.x, y: GameScene.shared.cameraPosition.y)
         addChild(GameScene.shared.itemDetail!)
     }
+=======
+>>>>>>> Stashed changes
   
 }

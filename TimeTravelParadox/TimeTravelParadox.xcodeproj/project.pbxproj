@@ -79,6 +79,7 @@
 		37CAE7DF2A6F9469000CCCC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		37CAE7E12A6FA0A6000CCCC7 /* backToQG.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backToQG.mp3; sourceTree = "<group>"; };
 		37CAE7E32A6FAB55000CCCC7 /* sizzle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sizzle.mp3; sourceTree = "<group>"; };
+		9B7BCE962A70376400AE8854 /* Orbitron-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Orbitron-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		9B82F4CA2A5C6EB200BC66F2 /* TimeTravelParadox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTravelParadox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B82F4CD2A5C6EB200BC66F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B82F4CF2A5C6EB200BC66F2 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -230,6 +231,7 @@
 		37CAE7DD2A6F9436000CCCC7 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				9B7BCE962A70376400AE8854 /* Orbitron-VariableFont_wght.ttf */,
 				37CAE7DE2A6F9444000CCCC7 /* SpecialElite-Regular.ttf */,
 			);
 			path = Font;

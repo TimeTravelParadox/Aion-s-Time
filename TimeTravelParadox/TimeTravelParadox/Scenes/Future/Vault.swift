@@ -84,7 +84,7 @@ class Vault: SKNode {
     
     for i in 0..<nums.count {
       let label = SKLabelNode(text: "\(nums[i])")
-      label.fontName = "SpecialElite-Regular"
+      label.fontName = "Orbitron-VariableFont_wght"
       label.fontSize = 40
       label.setScale(0.110)
       label.fontColor = .blue

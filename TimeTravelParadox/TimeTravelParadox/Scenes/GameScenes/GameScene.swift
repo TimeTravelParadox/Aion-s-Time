@@ -21,6 +21,8 @@ class GameScene: SKScene, ZoomProtocol{
     
     
     private var fade: Fade?
+    
+      var itemDetail: ItemDetail?
   
     let zoomSound = SKAction.playSoundFileNamed("zoomSound", waitForCompletion: false)
     let travelingSFX = SKAction.playSoundFileNamed("traveling.mp3", waitForCompletion: true)
@@ -183,7 +185,7 @@ class GameScene: SKScene, ZoomProtocol{
 
         
         
-        self.future = Future(delegate: self)
+        self.future = Future(delegate: self, pastScene: past!)
         if let future {
             addChild(future)
             future.zPosition = 0

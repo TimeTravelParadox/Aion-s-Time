@@ -11,14 +11,12 @@ class Past: SKNode, InventoryItemDelegate {
     var shelf: Shelf?
     var hiddenPolaroid: Shelf?
     var table: SKSpriteNode?
-    var itemDetail: ItemDetail?
     private let past = SKScene(fileNamed: "PastScene")
     private var pastBG: SKSpriteNode?
     private var flame: SKSpriteNode?
      var light: SKLightNode?
     
     private let crumpledPaper = SKSpriteNode(imageNamed: "crumpledPaper")
-    private let paper = SKSpriteNode(imageNamed: "paper")
     private var takenPaper: Bool = false
     
     var delegate: ZoomProtocol?
@@ -88,6 +86,7 @@ class Past: SKNode, InventoryItemDelegate {
         self.addChild(drawer2.spriteNode)
         self.addChild(drawer3.spriteNode)
         crumpledPaper.name = "crumpledPaper"
+        
         light?.categoryBitMask = 1 // Identificador para a luz (você pode usar outros números de acordo com suas necessidades)
         light?.falloff = 1
         light?.ambientColor = .orange
@@ -136,11 +135,16 @@ class Past: SKNode, InventoryItemDelegate {
             verification(drawer: drawer3, tapped: tapped)
             print("smallerDrawer2")
         case "crumpledPaper":
-            HUD.addOnInv(node: crumpledPaper)
-            takenPaper = true
-            print("crumpledpapper")
+            if takenPaper {
+                select(node: crumpledPaper)
+            } else {
+                HUD.addOnInv(node: crumpledPaper)
+                takenPaper = true
+                print("crumpledpapper")
+            }
+            return
         case "itemDetail":
-            itemDetail?.interact()
+            GameScene.shared.itemDetail?.interact()
             return
         default:
             break
@@ -150,8 +154,8 @@ class Past: SKNode, InventoryItemDelegate {
     }
     //  implementando delegate
     func clearItemDetail() {
-        itemDetail?.removeFromParent()
-        itemDetail = nil
+        GameScene.shared.itemDetail?.removeFromParent()
+        GameScene.shared.itemDetail = nil
     }
     
     private func positionCrumpledPaper(drawer: Drawer) {
@@ -195,11 +199,11 @@ class Past: SKNode, InventoryItemDelegate {
     }
     
     func select(node: SKSpriteNode) {
-        guard itemDetail == nil else {
+        guard GameScene.shared.itemDetail == nil else {
             return
         }
-        itemDetail = ItemDetail(item: node)
-        itemDetail?.position = CGPoint(x: GameScene.shared.cameraPosition.x, y: GameScene.shared.cameraPosition.y)
-        addChild(itemDetail!)
+        GameScene.shared.itemDetail = ItemDetail(item: node)
+        GameScene.shared.itemDetail?.position = CGPoint(x: GameScene.shared.cameraPosition.x, y: GameScene.shared.cameraPosition.y)
+        addChild(GameScene.shared.itemDetail!)
     }
 }

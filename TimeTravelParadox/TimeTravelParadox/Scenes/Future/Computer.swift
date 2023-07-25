@@ -22,6 +22,8 @@ class Computer: SKNode {
   private var pasta3: SKSpriteNode?
   private var enigma: SKSpriteNode?
   private var voltar: SKSpriteNode?
+    
+var inventoryItemDelegate: InventoryItemDelegate?
   
   private var quadrado: SKSpriteNode?
   
@@ -137,7 +139,7 @@ class Computer: SKNode {
     default:
       return
     }
-    
+      inventoryItemDelegate?.clearItemDetail()
   }
   
 }

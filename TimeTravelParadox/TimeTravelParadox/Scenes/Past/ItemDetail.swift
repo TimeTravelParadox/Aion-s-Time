@@ -20,6 +20,9 @@ class ItemDetail: SKSpriteNode {
         switch itemName {
         case "polaroid":
             size = CGSize(width: 100 * GameScene.shared.ratio!, height: 100 * GameScene.shared.ratio!)
+        case "crumpledPaper":
+            size = CGSize(width: 100 * GameScene.shared.ratio!, height: 100 * GameScene.shared.ratio!)
+
             
         default:
             return
@@ -34,8 +37,10 @@ class ItemDetail: SKSpriteNode {
         switch itemName {
         case "polaroid":
             spin()
-//        case "crumpledPapper":
-//            addChild("paper")
+        case "crumpledPaper":
+            let paper = SKSpriteNode(imageNamed: "paper")
+            
+            self.addChild(paper)
         default:
             return
         }

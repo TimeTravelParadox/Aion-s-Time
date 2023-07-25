@@ -22,6 +22,7 @@ class Vault: SKNode {
     
     var peca2: SKSpriteNode?
     var peca2Taken = false
+    var inventoryItemDelegate: InventoryItemDelegate?
   
   let vaultOpening =  SKAction.animate(with: [SKTexture(imageNamed: "cofre0"), SKTexture(imageNamed: "cofre1"), SKTexture(imageNamed: "cofre2"), SKTexture(imageNamed: "cofre3"), SKTexture(imageNamed: "cofre4"), SKTexture(imageNamed: "cofre5"), SKTexture(imageNamed: "cofre6"),  SKTexture(imageNamed: "cofre7"),  SKTexture(imageNamed: "cofre8"),  SKTexture(imageNamed: "cofre9"),  SKTexture(imageNamed: "cofre10"),  SKTexture(imageNamed: "cofre11"),  SKTexture(imageNamed: "cofre12")],  timePerFrame: 0.4)
     
@@ -83,7 +84,7 @@ class Vault: SKNode {
     
     for i in 0..<nums.count {
       let label = SKLabelNode(text: "\(nums[i])")
-      label.fontName = "SpecialElite-Regular"
+      label.fontName = "Orbitron-VariableFont_wght"
       label.fontSize = 40
       label.setScale(0.110)
       label.fontColor = .blue
@@ -176,7 +177,7 @@ class Vault: SKNode {
     default:
       return
     }
-    
+      inventoryItemDelegate?.clearItemDetail()
   }
   
 }

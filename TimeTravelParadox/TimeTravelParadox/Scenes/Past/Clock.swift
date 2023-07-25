@@ -1,6 +1,13 @@
 import SpriteKit
+var isPeca1Selected = false
 
 class Clock: SKNode{
+    func removePeca1FromHologram() {
+        if let peca1 = peca1 {
+            peca1.removeFromParent()
+        }
+    }
+
     
     let past = SKScene(fileNamed: "PastScene")
     
@@ -14,6 +21,8 @@ class Clock: SKNode{
     private var minuteHand: SKSpriteNode?
     var peca1: SKSpriteNode?
     
+
+    
     var canTapAgain: Bool = true // evitar que ele toque muito ra'pido no ponteiro e bugue
     
     var minuteRotate: CGFloat = 0 // variável para saber o grau dos minutos
@@ -23,7 +32,9 @@ class Clock: SKNode{
     let clockTickingSFX = SKAction.playSoundFileNamed("ticking.mp3", waitForCompletion: false)
     
     
-    let clockOpening =  SKAction.animate(with: [SKTexture(imageNamed: "clock1"), SKTexture(imageNamed: "clock2"), SKTexture(imageNamed: "clock3"), SKTexture(imageNamed: "clock4"), SKTexture(imageNamed: "clock5"), SKTexture(imageNamed: "clock6"), SKTexture(imageNamed: "clock7"), SKTexture(imageNamed: "clock8"), SKTexture(imageNamed: "clock9"), SKTexture(imageNamed: "clock10"), SKTexture(imageNamed: "clock11"), SKTexture(imageNamed: "clock12")], timePerFrame: 0.2)
+    let clockOpening =  SKAction.animate(with: [SKTexture(imageNamed: "clock1"), SKTexture(imageNamed: "clock2"), SKTexture(imageNamed: "clock3"), SKTexture(imageNamed: "clock4"), SKTexture(imageNamed: "clock5"), SKTexture(imageNamed: "clock6"), SKTexture(imageNamed: "clock7"), SKTexture(imageNamed: "clock8"), SKTexture(imageNamed: "clock9"), SKTexture(imageNamed: "clock10"), SKTexture(imageNamed: "clock11"), SKTexture(imageNamed: "clock12"), SKTexture(imageNamed: "clock13"), SKTexture(imageNamed: "clock14"), SKTexture(imageNamed: "clock15"), SKTexture(imageNamed: "clock16"), SKTexture(imageNamed: "clock17")], timePerFrame: 0.16)
+    
+
     
     func spin(hand: SKSpriteNode?, degree: CGFloat) {
         hand?.isPaused = false
@@ -59,6 +70,7 @@ class Clock: SKNode{
             peca1?.removeFromParent()
             self.isUserInteractionEnabled = true
         }
+        
         if let clock, let hourHand, let minuteHand, let peca1{
             self.addChild(clock)
             self.addChild(hourHand)
@@ -66,6 +78,7 @@ class Clock: SKNode{
             self.addChild(peca1)
         }
         peca1?.isHidden = true
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -83,6 +96,16 @@ class Clock: SKNode{
         let tappedNodes = nodes(at: location)
         guard let tapped = tappedNodes.first else { return } // ter ctz que algo esta sendo tocado
         
+        if let node = atPoint(location) as? SKSpriteNode, node == peca1 {
+            // O toque ocorreu no nó específico
+            print("Toque no nó específico")
+        } else {
+            // O toque ocorreu fora do nó específico
+            isPeca1Selected = false
+            print("a peca 1\(isPeca1Selected)")
+        }
+
+        
         switch tapped.name {
         case "peca1":
             if !peca1Taken{
@@ -96,10 +119,11 @@ class Clock: SKNode{
                 HUD.shared.itemSelecionado = peca1
                 HUD.shared.isSelected = true
                 HUD.shared.peca1 = peca1
+                isPeca1Selected = true
             }
             
         case "clock":
-            delegate?.zoom(isZoom: true, node: clock, ratio: 0.18)
+            delegate?.zoom(isZoom: true, node: clock, ratio: 0.13)
         case "hourHand":
             if delegate?.didZoom == true && canTapAgain {
                 canTapAgain = false
@@ -111,7 +135,7 @@ class Clock: SKNode{
                     self.minuteHand?.isHidden = true
                     self.hourHand?.isHidden = true
                     clock?.run(clockOpeningSFX)
-                    self.run(SKAction.wait(forDuration: 1.2)) {
+                    self.run(SKAction.wait(forDuration: 2.5)) {
                         self.peca1?.isHidden = false
                     }
                 }
@@ -132,7 +156,7 @@ class Clock: SKNode{
                     self.minuteHand?.isHidden = true
                     self.hourHand?.isHidden = true
                     clock?.run(clockOpeningSFX)
-                    self.run(SKAction.wait(forDuration: 1.2)) {
+                    self.run(SKAction.wait(forDuration: 2.5)) {
                         self.peca1?.isHidden = false
                     }
                 }
@@ -149,3 +173,4 @@ class Clock: SKNode{
         inventoryItemDelegate?.clearItemDetail()
     }
 }
+

@@ -7,6 +7,8 @@
 
 import SpriteKit
 
+var peca1OUT = false
+
 class Vault: SKNode {
   let future = SKScene(fileNamed: "FutureScene")
   
@@ -21,7 +23,7 @@ class Vault: SKNode {
     var peca2: SKSpriteNode?
     var peca2Taken = false
   
-  let vaultOpening =  SKAction.animate(with: [SKTexture(imageNamed: "cofre0"), SKTexture(imageNamed: "cofre1"), SKTexture(imageNamed: "cofre2"), SKTexture(imageNamed: "cofre3"), SKTexture(imageNamed: "cofre4")], timePerFrame: 0.4)
+  let vaultOpening =  SKAction.animate(with: [SKTexture(imageNamed: "cofre0"), SKTexture(imageNamed: "cofre1"), SKTexture(imageNamed: "cofre2"), SKTexture(imageNamed: "cofre3"), SKTexture(imageNamed: "cofre4"), SKTexture(imageNamed: "cofre5"), SKTexture(imageNamed: "cofre6"),  SKTexture(imageNamed: "cofre7"),  SKTexture(imageNamed: "cofre8"),  SKTexture(imageNamed: "cofre9"),  SKTexture(imageNamed: "cofre10"),  SKTexture(imageNamed: "cofre11"),  SKTexture(imageNamed: "cofre12")],  timePerFrame: 0.4)
     
     let vaultOpeningSound = SKAction.playSoundFileNamed("cofreAbrindo", waitForCompletion: true)
 
@@ -59,12 +61,12 @@ class Vault: SKNode {
       labels[i].text = "\(nums[i])"
     }
     
-    if nums[0] == 1 && nums[1] == 1 && nums[2] == 1 {
+    if nums[0] == 1 && nums[1] == 5 && nums[2] == 3 {
         
       vault?.isPaused = false
       vault?.run(vaultOpening)
         vault?.run(vaultOpeningSound)
-      self.run(SKAction.wait(forDuration: 1.5)){
+      self.run(SKAction.wait(forDuration: 4.5)){
         self.peca2?.isHidden = false
       }
       
@@ -81,8 +83,10 @@ class Vault: SKNode {
     
     for i in 0..<nums.count {
       let label = SKLabelNode(text: "\(nums[i])")
-      label.fontSize = 14
-      label.fontColor = .black
+      label.fontName = "SpecialElite-Regular"
+      label.fontSize = 40
+      label.setScale(0.110)
+      label.fontColor = .blue
       labels.append(label)
       
       
@@ -105,11 +109,11 @@ class Vault: SKNode {
       
       switch i {
       case 0:
-        button.position = CGPoint(x: 180, y: 35)
+        button.position = CGPoint(x: 234.5, y: 63)
       case 1:
-        button.position = CGPoint(x: 203, y: 35)
+        button.position = CGPoint(x: 243, y: 63)
       case 2:
-        button.position = CGPoint(x: 226, y: 35)
+        button.position = CGPoint(x: 251, y: 63)
       default:
         return
       }
@@ -152,21 +156,21 @@ class Vault: SKNode {
         }
         
     case "cofre":
-      delegate?.zoom(isZoom: true, node: vault, ratio: 0.5)
+      delegate?.zoom(isZoom: true, node: vault, ratio: 0.3)
       
       if delegate?.didZoom == true {
         for (_, button) in buttonsCofre.enumerated() {
           button.zPosition = 2
         }
       } else {
-        delegate?.zoom(isZoom: true, node: vault, ratio: 0.5)
+        delegate?.zoom(isZoom: true, node: vault, ratio: 0.3)
       }
       
     case "label":
       if delegate?.didZoom == true {
         
       } else {
-        delegate?.zoom(isZoom: true, node: vault, ratio: 0.5)
+        delegate?.zoom(isZoom: true, node: vault, ratio: 0.3)
       }
       
     default:

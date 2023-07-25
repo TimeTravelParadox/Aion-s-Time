@@ -70,31 +70,37 @@ class Computer: SKNode {
     
     switch tapped.name {
     case "fundoVerde":
-      delegate?.zoom(isZoom: true, node: fundoVerde, ratio: 0.5)
+      delegate?.zoom(isZoom: true, node: fundoVerde, ratio: 0.4)
       if delegate?.didZoom == true {
         pasta1?.zPosition = 2
         pasta2?.zPosition = 2
         pasta3?.zPosition = 2
-        voltar?.zPosition = 0
-        enigma?.zPosition = 0
+        voltar?.zPosition = -2
+        enigma?.zPosition = -2
       } else {
-        delegate?.zoom(isZoom: true, node: fundoVerde, ratio: 0.5)
+       
+        fundoVerde?.zPosition = 2
+        pasta1?.zPosition = -2
+        pasta2?.zPosition = -2
+        pasta3?.zPosition = -2
+        voltar?.zPosition = -2
+        enigma?.zPosition = -2
       }
       
     case "pasta1", "pasta3":
       if delegate?.didZoom == true {
         fundoVerde?.zPosition = 1
-        pasta1?.zPosition = 0
-        pasta2?.zPosition = 0
-        pasta3?.zPosition = 0
+        pasta1?.zPosition = -2
+        pasta2?.zPosition = -2
+        pasta3?.zPosition = -2
         voltar?.zPosition = 2
-        enigma?.zPosition = 0
+        enigma?.zPosition = -2
         pasta1?.isPaused = false
         pasta1?.run(mouseClick)
         pasta3?.isPaused = false
         pasta3?.run(mouseClick)
       } else {
-        delegate?.zoom(isZoom: true, node: fundoVerde, ratio: 0.5)
+        delegate?.zoom(isZoom: true, node: fundoVerde, ratio: 0.4)
       }
       
     case "voltar":
@@ -103,30 +109,30 @@ class Computer: SKNode {
         pasta1?.zPosition = 2
         pasta2?.zPosition = 2
         pasta3?.zPosition = 2
-        voltar?.zPosition = 0
-        enigma?.zPosition = 0
+        voltar?.zPosition = -2
+        enigma?.zPosition = -2
         voltar?.isPaused = false
         voltar?.run(mouseClick)
       } else {
-        delegate?.zoom(isZoom: true, node: fundoVerde, ratio: 0.5)
+        delegate?.zoom(isZoom: true, node: fundoVerde, ratio: 0.4)
       }
       
     case "pasta2":
       if delegate?.didZoom == true {
-        fundoVerde?.zPosition = 1
-        pasta1?.zPosition = 0
-        pasta2?.zPosition = 0
-        pasta3?.zPosition = 0
+        fundoVerde?.zPosition = -2
+        pasta1?.zPosition = -2
+        pasta2?.zPosition = -2
+        pasta3?.zPosition = -2
         voltar?.zPosition = 3
         enigma?.zPosition = 2
         pasta2?.isPaused = false
         pasta2?.run(mouseClick)
       } else {
-        delegate?.zoom(isZoom: true, node: fundoVerde, ratio: 0.5)
+        delegate?.zoom(isZoom: true, node: fundoVerde, ratio: 0.4)
       }
       
     case "enigma":
-      delegate?.zoom(isZoom: true, node: enigma, ratio: 0.5)
+      delegate?.zoom(isZoom: true, node: enigma, ratio: 0.4)
       
     default:
       return

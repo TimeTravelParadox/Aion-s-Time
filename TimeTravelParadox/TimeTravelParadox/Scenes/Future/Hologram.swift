@@ -8,6 +8,8 @@
 import SpriteKit
 
 class Hologram: SKNode {
+
+    
   private let future = SKScene(fileNamed: "FutureScene")
   
   var delegate: ZoomProtocol?
@@ -15,8 +17,8 @@ class Hologram: SKNode {
     
     var holograma1peca = false
     
-    var clock: Clock?
-    var vault: Vault?
+//    var clock: Clock?
+//    var vault: Vault?
   
   let hologramaAnimate =  SKAction.animate(with: [SKTexture(imageNamed: "hologramaUmaPeca"), SKTexture(imageNamed: "holograma0"), SKTexture(imageNamed: "holograma1"), SKTexture(imageNamed: "holograma2"), SKTexture(imageNamed: "holograma3")], timePerFrame: 0.4)
   
@@ -24,11 +26,13 @@ class Hologram: SKNode {
     super.init()
     self.delegate = delegate
     self.zPosition = 1
+      
+
     
     if let future {
       hologram = future.childNode(withName: "hologram") as? SKSpriteNode
       hologram?.removeFromParent()
-      
+
       self.isUserInteractionEnabled = true
     }
     
@@ -53,13 +57,13 @@ class Hologram: SKNode {
             print("peca2 colocada")
             hologram?.run(hologramaAnimate)
             if HUD.shared.itemSelecionado == HUD.shared.peca1{
-                if let clock = clock {
-                    clock.peca1?.removeFromParent()
-                }
-            }else{
-                if let vault = vault {
-                    vault.peca2?.removeFromParent()
-                }
+//                if let clock = clock {
+//                    clock.peca1?.removeFromParent()
+//                }
+//            }else{
+//                if let vault = vault {
+//                    vault.peca2?.removeFromParent()
+//                }
             }
         }
         if delegate?.didZoom == true && (HUD.shared.itemSelecionado == HUD.shared.peca1 || HUD.shared.itemSelecionado == HUD.shared.peca2) && !holograma1peca{
@@ -76,7 +80,7 @@ class Hologram: SKNode {
 //                    vault.peca2?.removeFromParent()
 //                }
                 print("peca do vault colocada")
-                vault!.removerPeca2()
+//                vault!.removerPeca2()
             }
             holograma1peca = true
         }

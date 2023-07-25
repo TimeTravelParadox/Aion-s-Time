@@ -8,7 +8,12 @@ class QG: SKNode{
   var QGBG: SKSpriteNode?
     var botaoMissao: SKSpriteNode?
     var botaoComecar: SKSpriteNode?
-    var texto: SKLabelNode?
+    var texto1: SKLabelNode?
+    var texto2: SKLabelNode?
+    var texto3: SKLabelNode?
+    var texto4: SKLabelNode?
+    var texto5: SKLabelNode?
+    var texto6: SKLabelNode?
   
   let QGST = SKAction.repeatForever(SKAction.playSoundFileNamed("QGST.mp3", waitForCompletion: true))
   
@@ -22,16 +27,31 @@ class QG: SKNode{
         botaoMissao?.removeFromParent()
         botaoComecar = past.childNode(withName: "botaoComecar") as? SKSpriteNode
         botaoComecar?.removeFromParent()
-        texto = past.childNode(withName: "texto1") as? SKLabelNode
-        texto?.removeFromParent()
+        texto1 = past.childNode(withName: "texto1") as? SKLabelNode
+        texto1?.removeFromParent()
+        texto2 = past.childNode(withName: "texto2") as? SKLabelNode
+        texto2?.removeFromParent()
+        texto3 = past.childNode(withName: "texto3") as? SKLabelNode
+        texto3?.removeFromParent()
+        texto4 = past.childNode(withName: "texto4") as? SKLabelNode
+        texto4?.removeFromParent()
+        texto5 = past.childNode(withName: "texto5") as? SKLabelNode
+        texto5?.removeFromParent()
+        texto6 = past.childNode(withName: "texto6") as? SKLabelNode
+        texto6?.removeFromParent()
       
       self.isUserInteractionEnabled = true
     }
-    if let QGBG, let botaoMissao, let botaoComecar, let texto{
+    if let QGBG, let botaoMissao, let botaoComecar, let texto1, let texto2, let texto3, let texto4, let texto5, let texto6{
       self.addChild(QGBG)
         self.addChild(botaoMissao)
         self.addChild(botaoComecar)
-        self.addChild(texto)
+        self.addChild(texto1)
+        self.addChild(texto2)
+        self.addChild(texto3)
+        self.addChild(texto4)
+        self.addChild(texto5)
+        self.addChild(texto6)
     }
   }
   
@@ -50,7 +70,12 @@ class QG: SKNode{
         case "botaoMissao":
             botaoMissao?.isHidden = true
             botaoComecar?.isHidden = false
-            texto?.isHidden = false
+            texto1?.isHidden = false
+            texto2?.isHidden = false
+            texto3?.isHidden = false
+            texto4?.isHidden = false
+            texto5?.isHidden = false
+            texto6?.isHidden = false
         case "botaoComecar":
             hud.hideTravelButton(isHide: false)
 //            HUD.shared.hideTravelButton(isHide: false)

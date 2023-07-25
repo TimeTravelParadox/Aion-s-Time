@@ -89,15 +89,7 @@ class Hologram: SKNode {
             delegate?.zoom(isZoom: true, node: hologram, ratio: 0.5)
         case "hologram":
             
-            
-//            if delegate?.didZoom == true && (HUD.shared.itemSelecionado == HUD.shared.peca1 || HUD.shared.itemSelecionado == HUD.shared.peca2) && holograma1peca{
-//                print("pecas completas colocada")
-//                hologram?.run(.setTexture(SKTexture(imageNamed: "hologramaCompleto")))
-//                monitorDireita?.isHidden = true
-//                cartaz?.isHidden = false
-//                delegateRemove?.removePeca()
-//            }
-            if delegate?.didZoom == true && (HUD.shared.itemSelecionado == HUD.shared.peca2 || HUD.shared.itemSelecionado == HUD.shared.peca2) && holograma1peca && HUD.shared.itemSelecionado != nil{
+            if delegate?.didZoom == true && (HUD.shared.itemSelecionado == HUD.shared.peca1 || HUD.shared.itemSelecionado == HUD.shared.peca2) && holograma1peca && HUD.shared.itemSelecionado != nil{
                 print("pecas completas colocada")
                 hologram?.run(.setTexture(SKTexture(imageNamed: "hologramaCompleto")))
                 monitorDireita?.isHidden = true

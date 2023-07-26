@@ -31,8 +31,6 @@ class Hologram: SKNode {
     self.delegateRemove2 = delegateRemove2
     self.zPosition = 1
     
-    
-    
     if let future {
       hologram = future.childNode(withName: "hologram") as? SKSpriteNode
       hologram?.removeFromParent()
@@ -84,7 +82,7 @@ class Hologram: SKNode {
     
     switch tapped.name {
     case "monitorDireita":
-      delegate?.zoom(isZoom: true, node: hologram, ratio: 0.5)
+      delegate?.zoom(isZoom: true, node: hologram, ratio: 0.3)
     case "hologram":
       
       if delegate?.didZoom == true && (HUD.shared.itemSelecionado == HUD.shared.peca1 || HUD.shared.itemSelecionado == HUD.shared.peca2) && holograma1peca && HUD.shared.itemSelecionado != nil{
@@ -110,7 +108,7 @@ class Hologram: SKNode {
       if let selectedItem = HUD.shared.itemSelecionado {
         HUD.shared.removeBorder(from: selectedItem)
       }
-      delegate?.zoom(isZoom: true, node: hologram, ratio: 0.5)
+      delegate?.zoom(isZoom: true, node: hologram, ratio: 0.3)
       
     default:
       return

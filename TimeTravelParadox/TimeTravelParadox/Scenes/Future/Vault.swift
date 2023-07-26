@@ -87,12 +87,11 @@ class Vault: SKNode, RemoveProtocol2 {
     
     for i in 0..<nums.count {
       let label = SKLabelNode(text: "\(nums[i])")
-      label.fontName = "Orbitron-VariableFont_wght"
+      label.fontName = "Orbitron-Regular"
       label.fontSize = 40
-      label.setScale(0.110)
+      label.setScale(0.22)
       label.fontColor = .blue
       labels.append(label)
-      
       
       let button = SKButtonNodeLabel(label: label) {
         
@@ -113,11 +112,11 @@ class Vault: SKNode, RemoveProtocol2 {
       
       switch i {
       case 0:
-        button.position = CGPoint(x: 234.5, y: 63)
+        button.position = CGPoint(x: 236.5, y: 79)
       case 1:
-        button.position = CGPoint(x: 243, y: 63)
+        button.position = CGPoint(x: 247.5, y: 67.8)
       case 2:
-        button.position = CGPoint(x: 251, y: 63)
+        button.position = CGPoint(x: 236.5, y: 55.7)
       default:
         return
       }

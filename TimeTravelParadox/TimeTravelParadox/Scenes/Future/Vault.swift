@@ -23,7 +23,7 @@ class Vault: SKNode, RemoveProtocol2 {
   var peca2Taken = false
   var inventoryItemDelegate: InventoryItemDelegate?
   
-  let vaultOpening =  SKAction.animate(with: [SKTexture(imageNamed: "cofre0"), SKTexture(imageNamed: "cofre1"), SKTexture(imageNamed: "cofre2"), SKTexture(imageNamed: "cofre3"), SKTexture(imageNamed: "cofre4"), SKTexture(imageNamed: "cofre5"), SKTexture(imageNamed: "cofre6"),  SKTexture(imageNamed: "cofre7"),  SKTexture(imageNamed: "cofre8"),  SKTexture(imageNamed: "cofre9"),  SKTexture(imageNamed: "cofre10"),  SKTexture(imageNamed: "cofre11"),  SKTexture(imageNamed: "cofre12")],  timePerFrame: 0.1)
+  let vaultOpening =  SKAction.animate(with: [SKTexture(imageNamed: "cofre0"), SKTexture(imageNamed: "cofre1"), SKTexture(imageNamed: "cofre2"), SKTexture(imageNamed: "cofre3"), SKTexture(imageNamed: "cofre4"), SKTexture(imageNamed: "cofre5"), SKTexture(imageNamed: "cofre6"),  SKTexture(imageNamed: "cofre7"),  SKTexture(imageNamed: "cofre8"),  SKTexture(imageNamed: "cofre9"),  SKTexture(imageNamed: "cofre10"),  SKTexture(imageNamed: "cofre11")],  timePerFrame: 0.1)
   
   let vaultOpeningSound = SKAction.playSoundFileNamed("cofreAbrindo", waitForCompletion: true)
   
@@ -87,12 +87,11 @@ class Vault: SKNode, RemoveProtocol2 {
     
     for i in 0..<nums.count {
       let label = SKLabelNode(text: "\(nums[i])")
-      label.fontName = "Orbitron-VariableFont_wght"
+      label.fontName = "Orbitron-Regular"
       label.fontSize = 40
-      label.setScale(0.110)
+      label.setScale(0.22)
       label.fontColor = .blue
       labels.append(label)
-      
       
       let button = SKButtonNodeLabel(label: label) {
         
@@ -113,11 +112,11 @@ class Vault: SKNode, RemoveProtocol2 {
       
       switch i {
       case 0:
-        button.position = CGPoint(x: 234.5, y: 63)
+        button.position = CGPoint(x: 239, y: 79.5)
       case 1:
-        button.position = CGPoint(x: 243, y: 63)
+        button.position = CGPoint(x: 250, y: 68.5)
       case 2:
-        button.position = CGPoint(x: 251, y: 63)
+        button.position = CGPoint(x: 239, y: 56.5)
       default:
         return
       }

@@ -80,6 +80,7 @@ class Shelf: SKNode{
       // se clicar na polaroid e tiver com zoom
         if delegate?.didZoom == true && UserDefaultsManager.shared.takenPolaroid == false {
         polaroid?.isHidden = false
+            hiddenPolaroid?.isHidden = true
         
         let moveToInventary = SKAction.run {
           HUD.addOnInv(node: self.polaroid)

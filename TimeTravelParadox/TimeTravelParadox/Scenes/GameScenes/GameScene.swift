@@ -32,7 +32,7 @@ class GameScene: SKScene, ZoomProtocol{
   var cameraPosition = CGPoint(x: 0, y: 0)
   
   var didZoom = false
-  var ratio: CGFloat?
+  var ratio: CGFloat = 0
   
   func setupCamera(){
     cameraNode.position = cameraPosition

@@ -49,6 +49,8 @@ class HUD: SKNode{
       self.addChild(qgButton)
       self.addChild(inventarioHUD)
     }
+      
+      
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -65,7 +67,7 @@ class HUD: SKNode{
     
     // Define as propriedades da borda
     borderNode.strokeColor = .white
-    borderNode.lineWidth = 2 * GameScene.shared.ratio!
+    borderNode.lineWidth = 2 * GameScene.shared.ratio
     // Adiciona o shape node à cena
     node.addChild(borderNode)
   }
@@ -110,7 +112,7 @@ class HUD: SKNode{
     if HUD.shared.delegate?.didZoom == false {
       node?.size = CGSize(width: 30, height: 30) // padroniza o tamanho do node
     }else{
-      node?.size = CGSize(width: 30*GameScene.shared.ratio!, height: 30*GameScene.shared.ratio!) // padroniza o tamanho do node
+      node?.size = CGSize(width: 30*GameScene.shared.ratio, height: 30*GameScene.shared.ratio) // padroniza o tamanho do node
     }
     
     
@@ -130,18 +132,18 @@ class HUD: SKNode{
         return
       }
     }else{
-      print(GameScene.shared.ratio!)
+      print(GameScene.shared.ratio)
       switch HUD.shared.inventario.count {       // posiciona o node de acordo com a quantidade e node dentro de inventario
       case 0:
-        node?.position = CGPoint(x: (-50*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.x, y: (144*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.y)
+        node?.position = CGPoint(x: (-50*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (144*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
       case 1:
-        node?.position = CGPoint(x: (0*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.x, y: (144*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.y)
+        node?.position = CGPoint(x: (0*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (144*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
       case 2:
-        node?.position = CGPoint(x: (50*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.x, y: (144*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.y)
+        node?.position = CGPoint(x: (50*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (144*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
       case 3:
-        node?.position = CGPoint(x: (100*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.x, y: (144*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.y)
+        node?.position = CGPoint(x: (100*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (144*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
       case 4:
-        node?.position = CGPoint(x: (150*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.x, y: (144*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.y)
+        node?.position = CGPoint(x: (150*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (144*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
       default:
         return
       }

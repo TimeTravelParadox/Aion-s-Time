@@ -9,7 +9,7 @@ class TypeMachine: SKNode {
   private var paper: SKSpriteNode?
   private var paperComplete: SKSpriteNode?
   private var trail: SKSpriteNode?
-  
+    
   private var keyNodes: [String: SKSpriteNode?] = [:]
   let keys = Array("ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890^")
   
@@ -60,6 +60,12 @@ class TypeMachine: SKNode {
       
       paperComplete?.isHidden = true
     }
+      if UserDefaultsManager.shared.takenPaper == true {
+          paper?.isHidden = true
+          paperComplete?.isHidden = false
+          text?.isHidden = true
+          HUD.addOnInv(node: paperComplete)
+      }
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -97,7 +103,7 @@ class TypeMachine: SKNode {
                   paper?.isHidden = true
                   paperComplete?.isHidden = false
                   text?.isHidden = true
-                  
+                    UserDefaultsManager.shared.takenPaper = true
                 }
               } else {
                 spriteNode?.isPaused = false

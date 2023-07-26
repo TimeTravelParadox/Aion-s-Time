@@ -52,6 +52,7 @@
 		C55C133D2A5C795B00334DD8 /* QG.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55C133C2A5C795B00334DD8 /* QG.swift */; };
 		C57FFAD32A6B37160016ED74 /* InventoryItemDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FFAD22A6B37160016ED74 /* InventoryItemDelegate.swift */; };
 		C57FFAD72A704C5D0016ED74 /* Paper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FFAD62A704C5D0016ED74 /* Paper.swift */; };
+		C57FFADA2A715ED00016ED74 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FFAD92A715ED00016ED74 /* UserDefaultsManager.swift */; };
 		C5C034F72A67077200E604A9 /* Drawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C034F62A67077200E604A9 /* Drawer.swift */; };
 		C5C034FB2A67090700E604A9 /* Shelf.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C034FA2A67090700E604A9 /* Shelf.swift */; };
 		C5DD537B2A6B0F74005C4CF1 /* ItemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DD537A2A6B0F74005C4CF1 /* ItemDetail.swift */; };
@@ -106,6 +107,7 @@
 		C55C133C2A5C795B00334DD8 /* QG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QG.swift; sourceTree = "<group>"; };
 		C57FFAD22A6B37160016ED74 /* InventoryItemDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryItemDelegate.swift; sourceTree = "<group>"; };
 		C57FFAD62A704C5D0016ED74 /* Paper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paper.swift; sourceTree = "<group>"; };
+		C57FFAD92A715ED00016ED74 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		C5C034F62A67077200E604A9 /* Drawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawer.swift; sourceTree = "<group>"; };
 		C5C034FA2A67090700E604A9 /* Shelf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shelf.swift; sourceTree = "<group>"; };
 		C5DD537A2A6B0F74005C4CF1 /* ItemDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetail.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				9B82F4CD2A5C6EB200BC66F2 /* AppDelegate.swift */,
 				9B82F4D52A5C6EB200BC66F2 /* GameViewController.swift */,
 				9B82F4D72A5C6EB200BC66F2 /* Main.storyboard */,
+				C57FFAD82A715E910016ED74 /* UserDefaults */,
 				9BEB802A2A670E6100352220 /* Components */,
 				377D8C3F2A5C71C5008C6355 /* Scenes */,
 				377D8C3A2A5C7180008C6355 /* Resources */,
@@ -289,6 +292,14 @@
 				379B54732A61CE5D00F10217 /* Zoom.swift */,
 			);
 			path = GameScenes;
+			sourceTree = "<group>";
+		};
+		C57FFAD82A715E910016ED74 /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				C57FFAD92A715ED00016ED74 /* UserDefaultsManager.swift */,
+			);
+			path = UserDefaults;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -404,6 +415,7 @@
 				9BEB80292A670C1800352220 /* Vault.swift in Sources */,
 				C5DD537B2A6B0F74005C4CF1 /* ItemDetail.swift in Sources */,
 				379B545A2A60F40A00F10217 /* HUD.swift in Sources */,
+				C57FFADA2A715ED00016ED74 /* UserDefaultsManager.swift in Sources */,
 				9B8F40612A657D4E0009567B /* Computer.swift in Sources */,
 				9B82F4CE2A5C6EB200BC66F2 /* AppDelegate.swift in Sources */,
 				C55C133D2A5C795B00334DD8 /* QG.swift in Sources */,

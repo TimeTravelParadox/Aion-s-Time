@@ -201,7 +201,6 @@
 			isa = PBXGroup;
 			children = (
 				C57FFAD62A704C5D0016ED74 /* Paper.swift */,
-				C5DD537A2A6B0F74005C4CF1 /* ItemDetail.swift */,
 				C55C133A2A5C792E00334DD8 /* Past.swift */,
 				379B545F2A60F42D00F10217 /* PastScene.sks */,
 				379B54652A60F8DF00F10217 /* Clock.swift */,
@@ -226,7 +225,6 @@
 			children = (
 				379B54592A60F40A00F10217 /* HUD.swift */,
 				379B545B2A60F41500F10217 /* HUDScene.sks */,
-				C57FFAD22A6B37160016ED74 /* InventoryItemDelegate.swift */,
 			);
 			path = HUD;
 			sourceTree = "<group>";
@@ -276,6 +274,8 @@
 				9BEB802B2A670E7E00352220 /* Buttons.swift */,
 				9BEB80392A68694600352220 /* Fade.swift */,
 				9BEB803B2A68695300352220 /* Fade.sks */,
+				C57FFAD22A6B37160016ED74 /* InventoryItemDelegate.swift */,
+				C5DD537A2A6B0F74005C4CF1 /* ItemDetail.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";

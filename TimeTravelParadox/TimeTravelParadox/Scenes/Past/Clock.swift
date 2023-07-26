@@ -91,7 +91,7 @@ class Clock: SKNode, RemoveProtocol{
             rotationRatio -= 360
         }
         
-        let rotationAction = SKAction.rotate(byAngle: rotationAngleInRadians, duration: 0.2)
+        let rotationAction = SKAction.rotate(byAngle: rotationAngleInRadians, duration: 0.1)
         hand?.run(rotationAction)
         
         if hand == minuteHand {
@@ -140,10 +140,10 @@ class Clock: SKNode, RemoveProtocol{
                 canTapAgain = false
                 hourHand?.run(clockTickingSFX)
                 spin(hand: hourHand, degree: 30)
-                if minuteRotate == 60 && hourRotate == 330 {
+                if minuteRotate == 60 && hourRotate == 150 {
                     openClock(animating: true)
                 }
-                self.run(SKAction.wait(forDuration: 0.2)) {
+                self.run(SKAction.wait(forDuration: 0.1)) {
                     self.canTapAgain = true
                 }
             } else {
@@ -154,10 +154,10 @@ class Clock: SKNode, RemoveProtocol{
                 canTapAgain = false
                 minuteHand?.run(clockTickingSFX)
                 spin(hand: minuteHand, degree: 30)
-                if minuteRotate == 60 && hourRotate == 330 {
+                if minuteRotate == 60 && hourRotate == 150 {
                     openClock(animating: true)
                 }
-                self.run(SKAction.wait(forDuration: 0.2)) {
+                self.run(SKAction.wait(forDuration: 0.1)) {
                     self.canTapAgain = true
                 }
             } else {

@@ -51,7 +51,26 @@ class Clock: SKNode, RemoveProtocol{
         if UserDefaultsManager.shared.peca1Taken == true {
             openClock(animating: false)
             HUD.addOnInv(node: peca1)
-            peca1?.zPosition = 19
+            peca1?.zPosition = 15
+            peca1?.size = CGSize(width: 30, height: 30)
+            for (index, item) in HUD.shared.inventario.enumerated() {
+              item.size = CGSize(width: 30, height: 30)
+              switch index {
+              case 0:
+                  peca1?.position = CGPoint(x: -50, y: 144)
+              case 1:
+                  peca1?.position = CGPoint(x: 0, y: 144)
+              case 2:
+                  peca1?.position = CGPoint(x: 50, y: 144)
+              case 3:
+                  peca1?.position = CGPoint(x: 100, y: 144)
+              case 4:
+                  peca1?.position = CGPoint(x: 150, y: 144)
+              default:
+                return
+              }
+            }
+
         }
     }
     

@@ -65,6 +65,26 @@ class TypeMachine: SKNode {
           paperComplete?.isHidden = false
           text?.isHidden = true
           HUD.addOnInv(node: paperComplete)
+          paperComplete?.zPosition = 15
+          paperComplete?.size = CGSize(width: 30, height: 30)
+          for (index, item) in HUD.shared.inventario.enumerated() {
+            item.size = CGSize(width: 30, height: 30)
+            switch index {
+            case 0:
+                paperComplete?.position = CGPoint(x: -50, y: 144)
+            case 1:
+                paperComplete?.position = CGPoint(x: 0, y: 144)
+            case 2:
+                paperComplete?.position = CGPoint(x: 50, y: 144)
+            case 3:
+                paperComplete?.position = CGPoint(x: 100, y: 144)
+            case 4:
+                paperComplete?.position = CGPoint(x: 150, y: 144)
+            default:
+              return
+            }
+          }
+
       }
   }
   

@@ -62,14 +62,14 @@ class Hologram: SKNode {
           
       }
       
-      if UserDefaultsManager.shared.hologramComplete1 == true {
+      if UserDefaultsManager.shared.hologramComplete2 == true {
           hologram?.run(.setTexture(SKTexture(imageNamed: "hologramaPeca2")))
           delegateRemove2.removePeca()
           holograma1peca = true
           
       }
       
-      if UserDefaultsManager.shared.hologramComplete2 == true {
+      if UserDefaultsManager.shared.hologramComplete3 == true {
           hologram?.run(.setTexture(SKTexture(imageNamed: "hologramaCompleto")))
           monitorDireita?.isHidden = true
           cartaz?.isHidden = false
@@ -115,7 +115,7 @@ class Hologram: SKNode {
         cartaz?.isHidden = false
         delegateRemove?.removePeca()
         delegateRemove2?.removePeca()
-          UserDefaultsManager.shared.hologramComplete2 = true
+          UserDefaultsManager.shared.hologramComplete3 = true
       }
       if delegate?.didZoom == true && HUD.shared.itemSelecionado == HUD.shared.peca1 && !holograma1peca && HUD.shared.itemSelecionado != nil{
         print("peca1 colocada")
@@ -129,7 +129,7 @@ class Hologram: SKNode {
         hologram?.run(.setTexture(SKTexture(imageNamed: "hologramaPeca2")))
         delegateRemove2?.removePeca()
         holograma1peca = true
-          UserDefaultsManager.shared.hologramComplete1 = true
+          UserDefaultsManager.shared.hologramComplete2 = true
       }
       if let selectedItem = HUD.shared.itemSelecionado {
         HUD.shared.removeBorder(from: selectedItem)

@@ -22,8 +22,8 @@ class Computer: SKNode {
   private var pasta3: SKSpriteNode?
   private var enigma: SKSpriteNode?
   private var voltar: SKSpriteNode?
-    
-var inventoryItemDelegate: InventoryItemDelegate?
+  
+  var inventoryItemDelegate: InventoryItemDelegate?
   
   private var quadrado: SKSpriteNode?
   
@@ -80,7 +80,7 @@ var inventoryItemDelegate: InventoryItemDelegate?
         voltar?.zPosition = -2
         enigma?.zPosition = -2
       } else {
-       
+        
         fundoVerde?.zPosition = 2
         pasta1?.zPosition = -2
         pasta2?.zPosition = -2
@@ -139,7 +139,7 @@ var inventoryItemDelegate: InventoryItemDelegate?
     default:
       return
     }
-      inventoryItemDelegate?.clearItemDetail()
+    inventoryItemDelegate?.clearItemDetail()
   }
   
 }

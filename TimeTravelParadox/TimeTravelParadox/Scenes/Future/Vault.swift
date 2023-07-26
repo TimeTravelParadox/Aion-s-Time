@@ -8,10 +8,7 @@
 import SpriteKit
 
 class Vault: SKNode, RemoveProtocol2 {
-    func removePeca() {
-        peca2?.removeFromParent()
-    }
-    
+  
   let future = SKScene(fileNamed: "FutureScene")
   
   var delegate: ZoomProtocol?
@@ -21,16 +18,16 @@ class Vault: SKNode, RemoveProtocol2 {
   private var nums: [Int] = [0, 0, 0]
   private var labels: [SKLabelNode] = []
   private var buttonsCofre: [SKButtonNodeLabel] = []
-    
-    var peca2: SKSpriteNode?
-    var peca2Taken = false
-    var inventoryItemDelegate: InventoryItemDelegate?
+  
+  var peca2: SKSpriteNode?
+  var peca2Taken = false
+  var inventoryItemDelegate: InventoryItemDelegate?
   
   let vaultOpening =  SKAction.animate(with: [SKTexture(imageNamed: "cofre0"), SKTexture(imageNamed: "cofre1"), SKTexture(imageNamed: "cofre2"), SKTexture(imageNamed: "cofre3"), SKTexture(imageNamed: "cofre4"), SKTexture(imageNamed: "cofre5"), SKTexture(imageNamed: "cofre6"),  SKTexture(imageNamed: "cofre7"),  SKTexture(imageNamed: "cofre8"),  SKTexture(imageNamed: "cofre9"),  SKTexture(imageNamed: "cofre10"),  SKTexture(imageNamed: "cofre11"),  SKTexture(imageNamed: "cofre12")],  timePerFrame: 0.1)
-    
-    let vaultOpeningSound = SKAction.playSoundFileNamed("cofreAbrindo", waitForCompletion: true)
-
-    let vaultChoose = SKAction.playSoundFileNamed("escolhaDaSenha", waitForCompletion: false)
+  
+  let vaultOpeningSound = SKAction.playSoundFileNamed("cofreAbrindo", waitForCompletion: true)
+  
+  let vaultChoose = SKAction.playSoundFileNamed("escolhaDaSenha", waitForCompletion: false)
   
   init(delegate: ZoomProtocol) {
     super.init()
@@ -40,23 +37,27 @@ class Vault: SKNode, RemoveProtocol2 {
     if let future {
       vault = future.childNode(withName: "cofre") as? SKSpriteNode
       vault?.removeFromParent()
-        peca2 = future.childNode(withName: "peca2") as? SKSpriteNode
-        peca2?.removeFromParent()
+      peca2 = future.childNode(withName: "peca2") as? SKSpriteNode
+      peca2?.removeFromParent()
       
       self.isUserInteractionEnabled = true
     }
     
     if let vault, let peca2 {
       self.addChild(vault)
-        self.addChild(peca2)
+      self.addChild(peca2)
     }
-      
-      peca2?.isHidden = true
+    
+    peca2?.isHidden = true
     
   }
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+  
+  func removePeca() {
+    peca2?.removeFromParent()
   }
   
   func updateLabel() {
@@ -65,11 +66,11 @@ class Vault: SKNode, RemoveProtocol2 {
     }
     
     if nums[0] == 1 && nums[1] == 5 && nums[2] == 3 {
-        
+      
       vault?.isPaused = false
       vault?.run(vaultOpening)
-        vault?.run(vaultOpeningSound)
-        self.run(SKAction.wait(forDuration: 1)){
+      vault?.run(vaultOpeningSound)
+      self.run(SKAction.wait(forDuration: 1)){
         self.peca2?.isHidden = false
       }
       
@@ -98,8 +99,8 @@ class Vault: SKNode, RemoveProtocol2 {
         if self.delegate?.didZoom == true {
           print("Você clicou no numero \(i)")
           self.nums[i] += 1
-            label.isPaused = false
-            label.run(self.vaultChoose)
+          label.isPaused = false
+          label.run(self.vaultChoose)
           //label.name = "label"
           
           if self.nums[i] > 9 {
@@ -131,10 +132,10 @@ class Vault: SKNode, RemoveProtocol2 {
       button.zPosition = 2
     }
   }
-    
-    func removerPeca2(){
-        peca2?.removeFromParent()
-    }
+  
+  func removerPeca2(){
+    peca2?.removeFromParent()
+  }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     
@@ -145,26 +146,24 @@ class Vault: SKNode, RemoveProtocol2 {
     
     switch tapped.name {
     case "peca2":
-        if !peca2Taken {
-            HUD.addOnInv(node: peca2)
-            peca2Taken = true
-        }else{
-            if let itemSelecionado = HUD.shared.itemSelecionado {
-                HUD.shared.removeBorder(from: itemSelecionado)
-            }
-            HUD.shared.addBorder(to: peca2!)
-            HUD.shared.itemSelecionado = peca2
-            HUD.shared.isSelected = true
-            HUD.shared.peca2 = peca2
+      if !peca2Taken {
+        HUD.addOnInv(node: peca2)
+        peca2Taken = true
+      }else{
+        if let itemSelecionado = HUD.shared.itemSelecionado {
+          HUD.shared.removeBorder(from: itemSelecionado)
         }
-        
+        HUD.shared.addBorder(to: peca2!)
+        HUD.shared.itemSelecionado = peca2
+        HUD.shared.isSelected = true
+        HUD.shared.peca2 = peca2
+      }
+      
     case "cofre":
       delegate?.zoom(isZoom: true, node: vault, ratio: 0.3)
       
       if delegate?.didZoom == true {
-        for (_, button) in buttonsCofre.enumerated() {
-          button.zPosition = 2
-        }
+        zPosition()
       } else {
         delegate?.zoom(isZoom: true, node: vault, ratio: 0.3)
       }
@@ -179,7 +178,7 @@ class Vault: SKNode, RemoveProtocol2 {
     default:
       return
     }
-      inventoryItemDelegate?.clearItemDetail()
+    inventoryItemDelegate?.clearItemDetail()
   }
   
 }

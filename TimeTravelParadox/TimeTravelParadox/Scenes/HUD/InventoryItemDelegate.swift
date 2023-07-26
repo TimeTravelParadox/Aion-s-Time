@@ -8,6 +8,6 @@
 import SpriteKit
 
 protocol InventoryItemDelegate {
-    func select(node: SKSpriteNode)
-    func clearItemDetail()
+  func select(node: SKSpriteNode)
+  func clearItemDetail()
 }

@@ -43,7 +43,6 @@ class Past: SKNode, InventoryItemDelegate {
     super.init()
     
     shelf?.inventoryItemDelegate = self
-    
     clock?.inventoryItemDelegate = self
     typeMachine?.inventoryItemDelegate = self
     paper.inventoryItemDelegate = self
@@ -182,7 +181,7 @@ class Past: SKNode, InventoryItemDelegate {
             }
           }
         case .onInv:
-          break //sai do switch
+            break //sai do switch
         }
         
       })

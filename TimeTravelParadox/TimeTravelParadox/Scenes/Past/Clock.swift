@@ -51,7 +51,7 @@ class Clock: SKNode, RemoveProtocol{
         if UserDefaultsManager.shared.peca1Taken == true {
             openClock(animating: false)
             HUD.addOnInv(node: peca1)
-            peca1?.zPosition = 19
+            
         }
     }
     

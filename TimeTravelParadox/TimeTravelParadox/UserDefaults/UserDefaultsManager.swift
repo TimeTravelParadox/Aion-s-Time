@@ -11,6 +11,10 @@ enum UserDefaultsKey: String, CaseIterable {
     case peca1Taken
     case takenPaper
     case takenPolaroid
+    case takenCrumpledPaper
+    case takenChip
+    case hologramComplete1
+    case hologramComplete2
 }
 
 class UserDefaultsManager {
@@ -45,6 +49,46 @@ class UserDefaultsManager {
         }
         set {
             saveValue(newValue, forKey: UserDefaultsKey.takenPolaroid.rawValue)
+        }
+    }
+    
+    var takenCrumpledPaper: Bool {
+        get {
+            //o `as` checa se é um bool e se o valor existe
+            return getValue(forKey: UserDefaultsKey.takenCrumpledPaper.rawValue) as? Bool ?? false
+        }
+        set {
+            saveValue(newValue, forKey: UserDefaultsKey.takenCrumpledPaper.rawValue)
+        }
+    }
+    
+    var takenChip: Bool {
+        get {
+            //o `as` checa se é um bool e se o valor existe
+            return getValue(forKey: UserDefaultsKey.takenChip.rawValue) as? Bool ?? false
+        }
+        set {
+            saveValue(newValue, forKey: UserDefaultsKey.takenChip.rawValue)
+        }
+    }
+    
+    var hologramComplete1: Bool {
+        get {
+            //o `as` checa se é um bool e se o valor existe
+            return getValue(forKey: UserDefaultsKey.hologramComplete1.rawValue) as? Bool ?? false
+        }
+        set {
+            saveValue(newValue, forKey: UserDefaultsKey.hologramComplete1.rawValue)
+        }
+    }
+    
+    var hologramComplete2: Bool {
+        get {
+            //o `as` checa se é um bool e se o valor existe
+            return getValue(forKey: UserDefaultsKey.hologramComplete2.rawValue) as? Bool ?? false
+        }
+        set {
+            saveValue(newValue, forKey: UserDefaultsKey.hologramComplete2.rawValue)
         }
     }
     

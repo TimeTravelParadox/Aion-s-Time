@@ -23,6 +23,10 @@ class Paper: SKNode {
     isUserInteractionEnabled = true
     paper.name = "paper"
     addChild(crumpledPaper)
+      if UserDefaultsManager.shared.takenCrumpledPaper == true {
+          HUD.addOnInv(node: crumpledPaper)
+          mode = .onInv
+      }
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -33,7 +37,6 @@ class Paper: SKNode {
     guard let touch = touches.first else { return }
     let location = touch.location(in: self)
     let tappedNodes = nodes(at: location)
-    guard let tapped = tappedNodes.first else { return }
     
     switch mode {
     case .onDrawer:
@@ -42,6 +45,7 @@ class Paper: SKNode {
       mode = .onInv
     case .onInv:
       inventoryItemDelegate?.select(node: paper)
+       UserDefaultsManager.shared.takenCrumpledPaper = true
     }
   }
 }

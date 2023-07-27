@@ -58,30 +58,12 @@ class HUD: SKNode{
   }
   
   func addBorder(to node: SKSpriteNode) {
-    // Calcula o retângulo da borda com base no tamanho do sprite node
-    let borderRect = CGRect(x: -node.size.width/2, y: -node.size.height/2,
-                            width: node.size.width, height: node.size.height)
-    
-    // Cria um shape node com a forma de um retângulo
-    let borderNode = SKShapeNode(rect: borderRect)
-    
-    // Define as propriedades da borda
-    borderNode.strokeColor = .white
-    borderNode.lineWidth = 2 * GameScene.shared.ratio
-    // Adiciona o shape node à cena
-    node.addChild(borderNode)
+      node.alpha = 0.5
   }
   
   func removeBorder(from node: SKSpriteNode) {
     HUD.shared.itemSelecionado = nil
-    // Percorre os nós filhos do sprite node
-    for childNode in node.children {
-      // Verifica se o nó filho é um shape node
-      if let shapeNode = childNode as? SKShapeNode {
-        // Remove o shape node da cena
-        shapeNode.removeFromParent()
-      }
-    }
+    node.alpha = 1
   }
   
   

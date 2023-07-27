@@ -9,7 +9,6 @@ class Past: SKNode, InventoryItemDelegate {
   var clock: Clock?
   var typeMachine: TypeMachine?
   var shelf: Shelf?
-  var hiddenPolaroid: Shelf?
   var table: SKSpriteNode?
   private let past = SKScene(fileNamed: "PastScene")
   private var pastBG: SKSpriteNode?
@@ -39,18 +38,17 @@ class Past: SKNode, InventoryItemDelegate {
     self.clock = Clock(delegate: delegate)
     self.typeMachine = TypeMachine(delegate: delegate)
     self.shelf = Shelf(delegate: delegate)
-    self.hiddenPolaroid = Shelf(delegate: delegate)
+    
     
     super.init()
     
     shelf?.inventoryItemDelegate = self
-    hiddenPolaroid?.inventoryItemDelegate = self
     clock?.inventoryItemDelegate = self
     typeMachine?.inventoryItemDelegate = self
     paper.inventoryItemDelegate = self
     
     self.zPosition = 1
-    if let past, let clock, let typeMachine, let shelf, let hiddenPolaroid{
+    if let past, let clock, let typeMachine, let shelf {
       pastBG = (past.childNode(withName: "pastBG") as? SKSpriteNode)
       pastBG?.removeFromParent()
       flame = (past.childNode(withName: "flame") as? SKSpriteNode)
@@ -76,8 +74,6 @@ class Past: SKNode, InventoryItemDelegate {
       typeMachine.delegate = delegate
       self.addChild(shelf)
       shelf.delegate = delegate
-      self.addChild(hiddenPolaroid)
-      hiddenPolaroid.delegate = delegate
       flame?.lightingBitMask = 1
       self.removeAction(forKey: "futureST")
     }
@@ -185,7 +181,7 @@ class Past: SKNode, InventoryItemDelegate {
             }
           }
         case .onInv:
-          break //sai do switch
+            break //sai do switch
         }
         
       })

@@ -51,26 +51,7 @@ class Clock: SKNode, RemoveProtocol{
         if UserDefaultsManager.shared.peca1Taken == true {
             openClock(animating: false)
             HUD.addOnInv(node: peca1)
-            peca1?.zPosition = 15
-            peca1?.size = CGSize(width: 30, height: 30)
-            for (index, item) in HUD.shared.inventario.enumerated() {
-              item.size = CGSize(width: 30, height: 30)
-              switch index {
-              case 0:
-                  peca1?.position = CGPoint(x: -50, y: 144)
-              case 1:
-                  peca1?.position = CGPoint(x: 0, y: 144)
-              case 2:
-                  peca1?.position = CGPoint(x: 50, y: 144)
-              case 3:
-                  peca1?.position = CGPoint(x: 100, y: 144)
-              case 4:
-                  peca1?.position = CGPoint(x: 150, y: 144)
-              default:
-                return
-              }
-            }
-
+            
         }
     }
     
@@ -91,7 +72,7 @@ class Clock: SKNode, RemoveProtocol{
             rotationRatio -= 360
         }
         
-        let rotationAction = SKAction.rotate(byAngle: rotationAngleInRadians, duration: 0.1)
+        let rotationAction = SKAction.rotate(byAngle: rotationAngleInRadians, duration: 0.2)
         hand?.run(rotationAction)
         
         if hand == minuteHand {
@@ -140,10 +121,10 @@ class Clock: SKNode, RemoveProtocol{
                 canTapAgain = false
                 hourHand?.run(clockTickingSFX)
                 spin(hand: hourHand, degree: 30)
-                if minuteRotate == 60 && hourRotate == 150 {
+                if minuteRotate == 60 && hourRotate == 330 {
                     openClock(animating: true)
                 }
-                self.run(SKAction.wait(forDuration: 0.1)) {
+                self.run(SKAction.wait(forDuration: 0.2)) {
                     self.canTapAgain = true
                 }
             } else {
@@ -154,10 +135,10 @@ class Clock: SKNode, RemoveProtocol{
                 canTapAgain = false
                 minuteHand?.run(clockTickingSFX)
                 spin(hand: minuteHand, degree: 30)
-                if minuteRotate == 60 && hourRotate == 150 {
+                if minuteRotate == 60 && hourRotate == 330 {
                     openClock(animating: true)
                 }
-                self.run(SKAction.wait(forDuration: 0.1)) {
+                self.run(SKAction.wait(forDuration: 0.2)) {
                     self.canTapAgain = true
                 }
             } else {

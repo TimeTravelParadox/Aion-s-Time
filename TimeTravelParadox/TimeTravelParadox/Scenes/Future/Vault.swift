@@ -20,7 +20,7 @@ class Vault: SKNode, RemoveProtocol2 {
   private var buttonsCofre: [SKButtonNodeLabel] = []
   
   var peca2: SKSpriteNode?
-  var peca2Taken = false
+  
   var inventoryItemDelegate: InventoryItemDelegate?
   
   let vaultOpening =  SKAction.animate(with: [SKTexture(imageNamed: "cofre0"), SKTexture(imageNamed: "cofre1"), SKTexture(imageNamed: "cofre2"), SKTexture(imageNamed: "cofre3"), SKTexture(imageNamed: "cofre4"), SKTexture(imageNamed: "cofre5"), SKTexture(imageNamed: "cofre6"),  SKTexture(imageNamed: "cofre7"),  SKTexture(imageNamed: "cofre8"),  SKTexture(imageNamed: "cofre9"),  SKTexture(imageNamed: "cofre10"),  SKTexture(imageNamed: "cofre11")],  timePerFrame: 0.1)
@@ -49,6 +49,14 @@ class Vault: SKNode, RemoveProtocol2 {
     }
     
     peca2?.isHidden = true
+      
+      if UserDefaultsManager.shared.takenChip == true {
+          vault?.isPaused = false
+          vault!.texture = SKTexture(imageNamed: "cofre12")
+          peca2?.isHidden = false
+          HUD.addOnInv(node: peca2)
+          
+      }
     
   }
   
@@ -145,9 +153,10 @@ class Vault: SKNode, RemoveProtocol2 {
     
     switch tapped.name {
     case "peca2":
-      if !peca2Taken {
+      if !UserDefaultsManager.shared.takenChip {
         HUD.addOnInv(node: peca2)
-        peca2Taken = true
+          UserDefaultsManager.shared.takenChip = true
+        
       }else{
         if let itemSelecionado = HUD.shared.itemSelecionado {
           HUD.shared.removeBorder(from: itemSelecionado)

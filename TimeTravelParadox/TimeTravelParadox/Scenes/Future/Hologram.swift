@@ -9,7 +9,6 @@ import SpriteKit
 
 class Hologram: SKNode {
     
-    
     private let future = SKScene(fileNamed: "FutureScene")
     
     var delegate: ZoomProtocol?
@@ -17,7 +16,6 @@ class Hologram: SKNode {
     var inventoryItemDelegate: InventoryItemDelegate?
     
     var monitorDireita: SKSpriteNode?
-//    var cartaz: SKSpriteNode?
     
     var holograma1peca = false
     
@@ -33,15 +31,11 @@ class Hologram: SKNode {
         self.delegateRemove2 = delegateRemove2
         self.zPosition = 1
         
-        
-        
         if let future {
             hologram = future.childNode(withName: "hologram") as? SKSpriteNode
             hologram?.removeFromParent()
             monitorDireita = future.childNode(withName: "monitorDireita") as? SKSpriteNode
             monitorDireita?.removeFromParent()
-//            cartaz = future.childNode(withName: "cartaz") as? SKSpriteNode
-//            cartaz?.removeFromParent()
             
             self.isUserInteractionEnabled = true
         }
@@ -49,10 +43,7 @@ class Hologram: SKNode {
         if let hologram, let monitorDireita{
             self.addChild(hologram)
             self.addChild(monitorDireita)
-//            self.addChild(cartaz)
         }
-        
-//        cartaz?.isHidden = true
         
         monitorDireita?.isPaused = false
         startBlinkAnimation()
@@ -86,16 +77,14 @@ class Hologram: SKNode {
         
         switch tapped.name {
         case "monitorDireita":
-            delegate?.zoom(isZoom: true, node: hologram, ratio: 0.5)
+            delegate?.zoom(isZoom: true, node: hologram, ratio: 0.3)
         case "hologram":
             
             if delegate?.didZoom == true && (HUD.shared.itemSelecionado == HUD.shared.peca1 || HUD.shared.itemSelecionado == HUD.shared.peca2) && holograma1peca && HUD.shared.itemSelecionado != nil{
                 print("pecas completas colocada")
-//                hologram?.run(.setTexture(SKTexture(imageNamed: "hologramaCompleto")))
                 hologram?.run(hologramaAnimate)
                 monitorDireita?.isHidden = true
                 
-//                cartaz?.isHidden = false
                 delegateRemove?.removePeca()
                 delegateRemove2?.removePeca()
             }
@@ -114,7 +103,7 @@ class Hologram: SKNode {
             if let selectedItem = HUD.shared.itemSelecionado {
                 HUD.shared.removeBorder(from: selectedItem)
             }
-            delegate?.zoom(isZoom: true, node: hologram, ratio: 0.5)
+            delegate?.zoom(isZoom: true, node: hologram, ratio: 0.3)
             
         default:
             return

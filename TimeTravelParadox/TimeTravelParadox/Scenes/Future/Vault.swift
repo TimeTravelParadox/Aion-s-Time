@@ -49,13 +49,13 @@ class Vault: SKNode, RemoveProtocol2 {
     }
     
     peca2?.isHidden = true
-      
+   
       if UserDefaultsManager.shared.takenChip == true {
           vault?.isPaused = false
-          vault!.texture = SKTexture(imageNamed: "cofre12")
+          vault!.texture = SKTexture(imageNamed: "cofre11")
           peca2?.isHidden = false
           HUD.addOnInv(node: peca2)
-          
+        
       }
     
   }
@@ -82,12 +82,16 @@ class Vault: SKNode, RemoveProtocol2 {
         self.peca2?.isHidden = false
       }
       
-      // Remover os botões da cena
-      for child in self.children {
-        if let button = child as? SKButtonNodeLabel {
-          button.removeFromParent()
-        }
+      for child in buttonsCofre {
+        child.removeFromParent()
       }
+      
+      // Remover os botões da cena
+//      for child in self.children {
+//        if let button = child as? SKButtonNodeLabel {
+//          button.removeFromParent()
+//        }
+//      }
     }
   }
   
@@ -129,7 +133,7 @@ class Vault: SKNode, RemoveProtocol2 {
         return
       }
       buttonsCofre.append(button)
-      self.addChild(button)
+      self.addChild(buttonsCofre[i])
       
     }
   }
@@ -138,10 +142,6 @@ class Vault: SKNode, RemoveProtocol2 {
     for (_, button) in buttonsCofre.enumerated() {
       button.zPosition = 2
     }
-  }
-  
-  func removerPeca2(){
-    peca2?.removeFromParent()
   }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

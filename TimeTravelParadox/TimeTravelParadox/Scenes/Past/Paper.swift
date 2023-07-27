@@ -42,10 +42,10 @@ class Paper: SKNode {
     case .onDrawer:
       position = .zero
       HUD.addOnInv(node: crumpledPaper)
+      UserDefaultsManager.shared.takenCrumpledPaper = true
       mode = .onInv
     case .onInv:
       inventoryItemDelegate?.select(node: paper)
-       UserDefaultsManager.shared.takenCrumpledPaper = true
     }
   }
 }

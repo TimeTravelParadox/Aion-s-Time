@@ -15,7 +15,7 @@ class Past: SKNode, InventoryItemDelegate {
   private var flame: SKSpriteNode?
   var light: SKLightNode?
   
-  private let paper: Paper = Paper()
+  private lazy var paper: Paper = Paper(parentNode: self)
   
   var delegate: ZoomProtocol?
   

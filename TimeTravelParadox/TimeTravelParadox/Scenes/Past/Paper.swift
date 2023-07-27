@@ -18,12 +18,13 @@ class Paper: SKNode {
   var inventoryItemDelegate: InventoryItemDelegate?
   var crumpledPaper = SKSpriteNode(imageNamed: "crumpledPaper")
   
-  override init() {
+    init(parentNode: SKNode) {
     super.init()
     isUserInteractionEnabled = true
     paper.name = "paper"
     addChild(crumpledPaper)
       if UserDefaultsManager.shared.takenCrumpledPaper == true {
+          parentNode.addChild(self)
           HUD.addOnInv(node: crumpledPaper)
           mode = .onInv
       }

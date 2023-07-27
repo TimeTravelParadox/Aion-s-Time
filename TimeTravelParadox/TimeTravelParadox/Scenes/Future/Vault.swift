@@ -50,13 +50,7 @@ class Vault: SKNode, RemoveProtocol2 {
     
     peca2?.isHidden = true
    
-      if UserDefaultsManager.shared.takenChip == true {
-          vault?.isPaused = false
-          vault!.texture = SKTexture(imageNamed: "cofre11")
-          peca2?.isHidden = false
-          HUD.addOnInv(node: peca2)
-        
-      }
+      
     
   }
   
@@ -97,45 +91,53 @@ class Vault: SKNode, RemoveProtocol2 {
   
   func setupCofre() {
     
-    for i in 0..<nums.count {
-      let label = SKLabelNode(text: "\(nums[i])")
-      label.fontName = "Orbitron-Regular"
-      label.fontSize = 40
-      label.setScale(0.22)
-      label.fontColor = .blue
-      labels.append(label)
-      
-      let button = SKButtonNodeLabel(label: label) {
-        
-        if self.delegate?.didZoom == true {
-          print("Você clicou no numero \(i)")
-          self.nums[i] += 1
-          label.isPaused = false
-          label.run(self.vaultChoose)
-          //label.name = "label"
+      for i in 0..<nums.count {
+          let label = SKLabelNode(text: "\(nums[i])")
+          label.fontName = "Orbitron-Regular"
+          label.fontSize = 40
+          label.setScale(0.22)
+          label.fontColor = .blue
+          labels.append(label)
           
-          if self.nums[i] > 9 {
-            self.nums[i] = 0
+          let button = SKButtonNodeLabel(label: label) {
+              
+              if self.delegate?.didZoom == true {
+                  print("Você clicou no numero \(i)")
+                  self.nums[i] += 1
+                  label.isPaused = false
+                  label.run(self.vaultChoose)
+                  //label.name = "label"
+                  
+                  if self.nums[i] > 9 {
+                      self.nums[i] = 0
+                  }
+                  self.updateLabel()
+              }
+              
           }
-          self.updateLabel()
-        }
-        
+          
+          switch i {
+          case 0:
+              button.position = CGPoint(x: 239, y: 79.5)
+          case 1:
+              button.position = CGPoint(x: 250, y: 68.5)
+          case 2:
+              button.position = CGPoint(x: 239, y: 56.5)
+          default:
+              return
+          }
+          if UserDefaultsManager.shared.takenChip == true {
+              vault?.isPaused = false
+              vault!.texture = SKTexture(imageNamed: "cofre11")
+              peca2?.isHidden = false
+              HUD.addOnInv(node: peca2)
+              
+              
+          } else {
+              buttonsCofre.append(button)
+              self.addChild(buttonsCofre[i])
+          }
       }
-      
-      switch i {
-      case 0:
-        button.position = CGPoint(x: 239, y: 79.5)
-      case 1:
-        button.position = CGPoint(x: 250, y: 68.5)
-      case 2:
-        button.position = CGPoint(x: 239, y: 56.5)
-      default:
-        return
-      }
-      buttonsCofre.append(button)
-      self.addChild(buttonsCofre[i])
-      
-    }
   }
   
   func zPosition() {

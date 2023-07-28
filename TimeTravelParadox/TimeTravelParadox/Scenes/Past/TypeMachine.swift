@@ -137,15 +137,9 @@ class TypeMachine: SKNode {
         text?.text = String(labelText.dropLast())
       }
     case "typeMachine":
-<<<<<<< Updated upstream
-      delegate?.zoom(isZoom: true, node: typeMachine, ratio: 0.14)
-    default:
-      delegate?.zoom(isZoom: true, node: typeMachine, ratio: 0.14)
-=======
       delegate?.zoom(isZoom: true, node: typeMachine, ratio: 0.15)
     default:
       delegate?.zoom(isZoom: true, node: typeMachine, ratio: 0.15)
->>>>>>> Stashed changes
       print("default")
     }
     

@@ -253,6 +253,7 @@ class GameScene: SKScene, ZoomProtocol{
                 self.audioPlayerPastST?.pause()
                 self.audioPlayerFutureST?.pause()
                 self.past?.light?.isHidden = true
+              self.hud.reset?.isHidden = false
                 
             }
             isBackToQGSFXPlaying = false
@@ -276,7 +277,7 @@ class GameScene: SKScene, ZoomProtocol{
                     self.fadeInAudioPlayer(self.audioPlayerFutureST)
                     self.audioPlayerFutureST?.play()
                     self.past?.light?.isHidden = true
-                    
+                  self.hud.reset?.isHidden = true
                     
                 } else {
                     self.qg?.zPosition = 0
@@ -288,6 +289,8 @@ class GameScene: SKScene, ZoomProtocol{
                     self.audioPlayerPastST?.play()
                     self.audioPlayerFutureST?.pause()
                     self.past?.light?.isHidden = false
+                  
+                  self.hud.reset?.isHidden = true
                 }
                 
                 // marca som finalizado

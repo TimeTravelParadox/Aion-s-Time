@@ -117,7 +117,7 @@ class Clock: SKNode, RemoveProtocol{
             }
             
         case "clock":
-            delegate?.zoom(isZoom: true, node: clock, ratio: 0.26)
+            delegate?.zoom(isZoom: true, node: clock, ratio: 0.18)
         case "hourHand":
             if delegate?.didZoom == true && canTapAgain {
                 canTapAgain = false
@@ -130,7 +130,7 @@ class Clock: SKNode, RemoveProtocol{
                     self.canTapAgain = true
                 }
             } else {
-                delegate?.zoom(isZoom: true, node: clock, ratio: 0.26)
+                delegate?.zoom(isZoom: true, node: clock, ratio: 0.18)
             }
         case "minuteHand":
             if delegate?.didZoom == true && canTapAgain {
@@ -144,7 +144,7 @@ class Clock: SKNode, RemoveProtocol{
                     self.canTapAgain = true
                 }
             } else {
-                delegate?.zoom(isZoom: true, node: clock, ratio: 0.26)
+                delegate?.zoom(isZoom: true, node: clock, ratio: 0.18)
             }
         default:
             break

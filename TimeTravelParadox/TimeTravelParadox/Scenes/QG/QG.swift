@@ -8,6 +8,7 @@ class QG: SKNode{
     var delegateHUD: ToggleTravel?
     
     var QGBG: SKSpriteNode?
+    var tv: SKSpriteNode?
     var botaoMissao: SKSpriteNode?
     var botaoComecar: SKSpriteNode?
     var texto1: SKLabelNode?
@@ -26,6 +27,8 @@ class QG: SKNode{
         if let past {
             QGBG = (past.childNode(withName: "QGBG") as? SKSpriteNode)
             QGBG?.removeFromParent()
+            tv = (past.childNode(withName: "tv") as? SKSpriteNode)
+            tv?.removeFromParent()
             botaoMissao = past.childNode(withName: "botaoMissao") as? SKSpriteNode
             botaoMissao?.removeFromParent()
             botaoComecar = past.childNode(withName: "botaoComecar") as? SKSpriteNode
@@ -45,18 +48,27 @@ class QG: SKNode{
             
             self.isUserInteractionEnabled = true
         }
-        if let QGBG, let botaoMissao, let botaoComecar, let texto1, let texto2, let texto3, let texto4, let texto5, let texto6{
+        if let QGBG, let botaoMissao, let botaoComecar, let texto1, let texto2, let texto3, let texto4, let texto5, let texto6, let tv{
             self.addChild(QGBG)
             self.addChild(botaoMissao)
-            self.addChild(botaoComecar)
+//            self.addChild(botaoComecar)
             self.addChild(texto1)
             self.addChild(texto2)
             self.addChild(texto3)
             self.addChild(texto4)
             self.addChild(texto5)
             self.addChild(texto6)
+            self.addChild(tv)
         }
         delegateHUD.desativarTravel()
+        tv?.texture = SKTexture(imageNamed: "tv1")
+        self.run(SKAction.wait(forDuration: 1)){
+            self.tv?.texture = SKTexture(imageNamed: "tv2")
+            self.run(SKAction.wait(forDuration: 1)){
+                self.tv?.texture = SKTexture(imageNamed: "tv")
+                self.addChild(self.botaoComecar!)
+            }
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

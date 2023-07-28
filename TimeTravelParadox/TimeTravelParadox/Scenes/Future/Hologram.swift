@@ -15,14 +15,13 @@ class Hologram: SKNode {
   var inventoryItemDelegate: InventoryItemDelegate?
   
   var monitorDireita: SKSpriteNode?
-  var cartaz: SKSpriteNode?
   
   var holograma1peca = false
   
   var delegateRemove: RemoveProtocol?
   var delegateRemove2: RemoveProtocol2?
   
-  let hologramaAnimate =  SKAction.animate(with: [SKTexture(imageNamed: "hologramaUmaPeca"), SKTexture(imageNamed: "holograma0"), SKTexture(imageNamed: "holograma1"), SKTexture(imageNamed: "holograma2"), SKTexture(imageNamed: "holograma3")], timePerFrame: 0.4)
+  let hologramaAnimate =  SKAction.animate(with: [SKTexture(imageNamed: "cartazCompleto"), SKTexture(imageNamed: "cartaz1"), SKTexture(imageNamed: "cartaz2"), SKTexture(imageNamed: "cartaz3"), SKTexture(imageNamed: "cartaz4"), SKTexture(imageNamed: "cartaz5"), SKTexture(imageNamed: "cartaz6")], timePerFrame: 0.3)
   
   init(delegate: ZoomProtocol, delegateRemove: RemoveProtocol, delegateRemove2: RemoveProtocol2) {
     super.init()
@@ -38,41 +37,35 @@ class Hologram: SKNode {
       hologram?.removeFromParent()
       monitorDireita = future.childNode(withName: "monitorDireita") as? SKSpriteNode
       monitorDireita?.removeFromParent()
-      cartaz = future.childNode(withName: "cartaz") as? SKSpriteNode
-      cartaz?.removeFromParent()
       
       self.isUserInteractionEnabled = true
     }
     
-    if let hologram, let monitorDireita, let cartaz{
+    if let hologram, let monitorDireita{
       self.addChild(hologram)
       self.addChild(monitorDireita)
-      self.addChild(cartaz)
     }
-    
-    cartaz?.isHidden = true
     
     monitorDireita?.isPaused = false
     startBlinkAnimation()
     
       if UserDefaultsManager.shared.hologramComplete1 == true {
-          hologram?.run(.setTexture(SKTexture(imageNamed: "hologramaUmaPeca")))
+          hologram?.run(.setTexture(SKTexture(imageNamed: "cartazComChip")))
           delegateRemove.removePeca()
           holograma1peca = true
           
       }
       
       if UserDefaultsManager.shared.hologramComplete2 == true {
-          hologram?.run(.setTexture(SKTexture(imageNamed: "hologramaPeca2")))
+          hologram?.run(.setTexture(SKTexture(imageNamed: "cartazComPeca")))
           delegateRemove2.removePeca()
           holograma1peca = true
           
       }
       
       if UserDefaultsManager.shared.hologramComplete3 == true {
-          hologram?.run(.setTexture(SKTexture(imageNamed: "hologramaCompleto")))
+          hologram?.run(.setTexture(SKTexture(imageNamed: "cartazCompleto")))
           monitorDireita?.isHidden = true
-          cartaz?.isHidden = false
           delegateRemove.removePeca()
           delegateRemove2.removePeca()
       }
@@ -105,28 +98,27 @@ class Hologram: SKNode {
     
     switch tapped.name {
     case "monitorDireita":
-      delegate?.zoom(isZoom: true, node: hologram, ratio: 0.5)
+      delegate?.zoom(isZoom: true, node: hologram, ratio: 0.4)
     case "hologram":
       
       if delegate?.didZoom == true && (HUD.shared.itemSelecionado == HUD.shared.peca1 || HUD.shared.itemSelecionado == HUD.shared.peca2) && holograma1peca && HUD.shared.itemSelecionado != nil{
         print("pecas completas colocada")
-        hologram?.run(.setTexture(SKTexture(imageNamed: "hologramaCompleto")))
+          hologram?.run(hologramaAnimate)
         monitorDireita?.isHidden = true
-        cartaz?.isHidden = false
         delegateRemove?.removePeca()
         delegateRemove2?.removePeca()
           UserDefaultsManager.shared.hologramComplete3 = true
       }
       if delegate?.didZoom == true && HUD.shared.itemSelecionado == HUD.shared.peca1 && !holograma1peca && HUD.shared.itemSelecionado != nil{
         print("peca1 colocada")
-        hologram?.run(.setTexture(SKTexture(imageNamed: "hologramaUmaPeca")))
+        hologram?.run(.setTexture(SKTexture(imageNamed: "cartazComChip")))
         delegateRemove?.removePeca()
         holograma1peca = true
           UserDefaultsManager.shared.hologramComplete1 = true
       }
       if delegate?.didZoom == true && HUD.shared.itemSelecionado == HUD.shared.peca2 && !holograma1peca && HUD.shared.itemSelecionado != nil{
         print("peca2 colocada")
-        hologram?.run(.setTexture(SKTexture(imageNamed: "hologramaPeca2")))
+        hologram?.run(.setTexture(SKTexture(imageNamed: "cartazComPeca")))
         delegateRemove2?.removePeca()
         holograma1peca = true
           UserDefaultsManager.shared.hologramComplete2 = true
@@ -134,7 +126,7 @@ class Hologram: SKNode {
       if let selectedItem = HUD.shared.itemSelecionado {
         HUD.shared.removeBorder(from: selectedItem)
       }
-      delegate?.zoom(isZoom: true, node: hologram, ratio: 0.5)
+      delegate?.zoom(isZoom: true, node: hologram, ratio: 0.4)
       
     default:
       return

@@ -55,7 +55,7 @@ class TypeMachine: SKNode {
       }
       text?.text = ""
       text?.fontName = "SpecialElite-Regular"
-      text?.fontSize = 40 // Defina o tamanho da fonte desejado
+      text?.fontSize = 30 // Defina o tamanho da fonte desejado
       text?.setScale(0.1) // Dimensione o nó
       
       paperComplete?.isHidden = true
@@ -68,9 +68,11 @@ class TypeMachine: SKNode {
           paperComplete?.zPosition = 15
           paperComplete?.size = CGSize(width: 30, height: 30)
           CasesPositions(node: paperComplete)
+          paperComplete?.isPaused = false
           if let paperComplete {
               inventoryItemDelegate?.select(node: paperComplete)
           }
+          
       }
   }
   
@@ -135,9 +137,9 @@ class TypeMachine: SKNode {
         text?.text = String(labelText.dropLast())
       }
     case "typeMachine":
-      delegate?.zoom(isZoom: true, node: typeMachine, ratio: 0.13)
+      delegate?.zoom(isZoom: true, node: typeMachine, ratio: 0.14)
     default:
-      delegate?.zoom(isZoom: true, node: typeMachine, ratio: 0.13)
+      delegate?.zoom(isZoom: true, node: typeMachine, ratio: 0.14)
       print("default")
     }
     

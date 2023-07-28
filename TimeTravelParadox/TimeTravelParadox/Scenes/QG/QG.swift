@@ -20,6 +20,8 @@ class QG: SKNode{
     
     let QGST = SKAction.repeatForever(SKAction.playSoundFileNamed("QGST.mp3", waitForCompletion: true))
     
+    let startingTV = SKAction.animate(with: [SKTexture(imageNamed: "tv1"),SKTexture(imageNamed: "tv2"),SKTexture(imageNamed: "tv3"),SKTexture(imageNamed: "tv4"),SKTexture(imageNamed: "tv5"),SKTexture(imageNamed: "tv6"),SKTexture(imageNamed: "tv7"),SKTexture(imageNamed: "tv8"),SKTexture(imageNamed: "tv9"),SKTexture(imageNamed: "tv10")], timePerFrame: 0.4)
+    
     init(hudScene: HUD, delegateHUD: ToggleTravel){
         self.delegateHUD = delegateHUD
         self.hud = hudScene
@@ -51,7 +53,7 @@ class QG: SKNode{
         if let QGBG, let botaoMissao, let botaoComecar, let texto1, let texto2, let texto3, let texto4, let texto5, let texto6, let tv{
             self.addChild(QGBG)
             self.addChild(botaoMissao)
-//            self.addChild(botaoComecar)
+            self.addChild(botaoComecar)
             self.addChild(texto1)
             self.addChild(texto2)
             self.addChild(texto3)
@@ -61,19 +63,23 @@ class QG: SKNode{
             self.addChild(tv)
         }
         delegateHUD.desativarTravel()
+//        tv?.run(startingTV)
         tv?.texture = SKTexture(imageNamed: "tv1")
-        self.run(SKAction.wait(forDuration: 1)){
-            self.tv?.texture = SKTexture(imageNamed: "tv2")
-            self.run(SKAction.wait(forDuration: 1)){
-                self.tv?.texture = SKTexture(imageNamed: "tv")
-                self.addChild(self.botaoComecar!)
-            }
-        }
+        
+//        self.run(SKAction.wait(forDuration: 1)){
+//            self.tv?.texture = SKTexture(imageNamed: "tv2")
+//            self.run(SKAction.wait(forDuration: 1)){
+//                self.tv?.texture = SKTexture(imageNamed: "tv")
+//                self.addChild(self.botaoComecar!)
+//            }
+//        }
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return } // se nao estiver em toque acaba aqui

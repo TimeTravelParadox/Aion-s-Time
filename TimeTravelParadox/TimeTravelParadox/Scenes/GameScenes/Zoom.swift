@@ -14,13 +14,10 @@ protocol RemoveProtocol2{
 }
 
 protocol ToggleTravel{
+    func desativarTravel()
+    func ativarTravel()
 }
 
-extension ToggleTravel{
-    func desativarTravel(){
-        
-    }
-}
 
 func CasesPositions(node: SKSpriteNode?){
     for (index, item) in HUD.shared.inventario.enumerated() {

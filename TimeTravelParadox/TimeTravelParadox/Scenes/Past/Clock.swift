@@ -117,7 +117,7 @@ class Clock: SKNode, RemoveProtocol{
             }
             
         case "clock":
-            delegate?.zoom(isZoom: true, node: clock, ratio: 0.13)
+            delegate?.zoom(isZoom: true, node: clock, ratio: 0.26)
         case "hourHand":
             if delegate?.didZoom == true && canTapAgain {
                 canTapAgain = false

@@ -568,6 +568,7 @@
 				DEVELOPMENT_TEAM = K559Z2V9Q2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TimeTravelParadox/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Aion's Time";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -601,6 +602,7 @@
 				DEVELOPMENT_TEAM = K559Z2V9Q2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TimeTravelParadox/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Aion's Time";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

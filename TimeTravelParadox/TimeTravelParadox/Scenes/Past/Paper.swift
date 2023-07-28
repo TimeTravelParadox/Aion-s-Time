@@ -27,6 +27,9 @@ class Paper: SKNode {
           parentNode.addChild(self)
           HUD.addOnInv(node: crumpledPaper)
           mode = .onInv
+          CasesPositions(node: crumpledPaper)
+          inventoryItemDelegate?.select(node: crumpledPaper)
+
       }
   }
   

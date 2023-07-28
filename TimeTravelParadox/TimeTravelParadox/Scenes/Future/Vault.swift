@@ -131,7 +131,7 @@ class Vault: SKNode, RemoveProtocol2 {
               vault!.texture = SKTexture(imageNamed: "cofre11")
               peca2?.isHidden = false
               HUD.addOnInv(node: peca2)
-              
+              CasesPositions(node: peca2)
               
           } else {
               buttonsCofre.append(button)

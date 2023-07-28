@@ -60,24 +60,7 @@ class Shelf: SKNode{
           HUD.addOnInv(node: polaroid)
           polaroid?.zPosition = 15
           polaroid?.size = CGSize(width: 30, height: 30)
-          for (index, item) in HUD.shared.inventario.enumerated() {
-            item.size = CGSize(width: 30, height: 30)
-            switch index {
-            case 0:
-                polaroid?.position = CGPoint(x: -50, y: 144)
-            case 1:
-                polaroid?.position = CGPoint(x: 0, y: 144)
-            case 2:
-                polaroid?.position = CGPoint(x: 50, y: 144)
-            case 3:
-                polaroid?.position = CGPoint(x: 100, y: 144)
-            case 4:
-                polaroid?.position = CGPoint(x: 150, y: 144)
-            default:
-              return
-            }
-          }
-
+          CasesPositions(node: polaroid)
       }
   }
   

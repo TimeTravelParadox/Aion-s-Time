@@ -52,6 +52,7 @@ class Hologram: SKNode {
       if UserDefaultsManager.shared.hologramComplete1 == true {
           hologram?.run(.setTexture(SKTexture(imageNamed: "cartazComChip")))
           delegateRemove.removePeca()
+          hologram?.texture = SKTexture(imageNamed: "hologramaUmaPeca")
           holograma1peca = true
           
       }
@@ -59,6 +60,7 @@ class Hologram: SKNode {
       if UserDefaultsManager.shared.hologramComplete2 == true {
           hologram?.run(.setTexture(SKTexture(imageNamed: "cartazComPeca")))
           delegateRemove2.removePeca()
+          hologram?.texture = SKTexture(imageNamed: "hologramaPeca2")
           holograma1peca = true
           
       }
@@ -68,6 +70,8 @@ class Hologram: SKNode {
           monitorDireita?.isHidden = true
           delegateRemove.removePeca()
           delegateRemove2.removePeca()
+          hologram?.texture = SKTexture(imageNamed: "hologramaCompleto")
+
       }
   }
   

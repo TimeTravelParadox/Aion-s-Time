@@ -5,7 +5,7 @@ class GameScene: SKScene, ZoomProtocol{
 
     
     
-    static let shared = GameScene()
+    static var shared = GameScene()
     
     private var past: Past?
     private var future: Future?
@@ -226,6 +226,18 @@ class GameScene: SKScene, ZoomProtocol{
             print("print past clock peca1 da gamescene")
         }
         switch tapped.name {
+        case "reset":
+          UserDefaultsManager.shared.removeAllValues()
+          let cenaReset = SKScene(fileNamed: "GameScene")
+          cenaReset?.scaleMode = .aspectFill
+          if let gameScene = cenaReset as? GameScene {
+            GameScene.shared = gameScene
+          }
+          HUD.shared = HUD()
+          self.audioPlayerFutureST?.pause()
+          self.audioPlayerQGST?.pause()
+          self.audioPlayerPastST?.pause()
+          self.view?.presentScene(cenaReset)
         case "qgButton":
             if isBackToQGSFXPlaying{
                 return

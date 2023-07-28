@@ -14,7 +14,7 @@ class HUD: SKNode, ToggleTravel{
     
     var delegateHUD: ToggleTravel?
     
-    static let shared = HUD()
+    static var shared = HUD()
     
     private let hud = SKScene(fileNamed: "HUDScene")
     private var travel: SKSpriteNode?
@@ -24,6 +24,8 @@ class HUD: SKNode, ToggleTravel{
     var inventario: [SKSpriteNode] = []
     var isSelected : Bool = false
     var itemSelecionado : SKSpriteNode?
+  
+  var reset: SKSpriteNode?
     
     var peca1: SKSpriteNode?
     var peca2: SKSpriteNode?
@@ -54,12 +56,16 @@ class HUD: SKNode, ToggleTravel{
             
             inventarioHUD = hud.childNode(withName: "inventarioHUD") as? SKSpriteNode
             inventarioHUD?.removeFromParent()
-            //            self.isUserInteractionEnabled = true
+          
+          reset = hud.childNode(withName: "reset") as? SKSpriteNode
+          reset?.removeFromParent()
+          
         }
-        if let travel, let qgButton, let inventarioHUD {
+        if let travel, let qgButton, let inventarioHUD, let reset {
             self.addChild(travel)
             self.addChild(qgButton)
             self.addChild(inventarioHUD)
+          self.addChild(reset)
         }
         
         

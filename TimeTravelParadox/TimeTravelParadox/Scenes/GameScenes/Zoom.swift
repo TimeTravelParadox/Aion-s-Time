@@ -13,6 +13,15 @@ protocol RemoveProtocol2{
   func removePeca()
 }
 
+protocol ToggleTravel{
+}
+
+extension ToggleTravel{
+    func desativarTravel(){
+        
+    }
+}
+
 func CasesPositions(node: SKSpriteNode?){
     for (index, item) in HUD.shared.inventario.enumerated() {
       item.size = CGSize(width: 25, height: 25)

@@ -13,11 +13,15 @@ class Past: SKNode, InventoryItemDelegate {
     private let past = SKScene(fileNamed: "PastScene")
     private var pastBG: SKSpriteNode?
     private var flame: SKSpriteNode?
+    private var fireplace: SKSpriteNode?
+    private var fadeflame: SKSpriteNode?
     var light: SKLightNode?
     
     private lazy var paper: Paper = Paper(parentNode: self)
     
     var delegate: ZoomProtocol?
+    
+
     
     let flaming =  SKAction.repeatForever(SKAction.animate(with: [SKTexture(imageNamed: "flame1"), SKTexture(imageNamed: "flame2"), SKTexture(imageNamed: "flame3"), SKTexture(imageNamed: "flame4"), SKTexture(imageNamed: "flame5")], timePerFrame: 0.16))
     let sizzleSFX = SKAction.playSoundFileNamed("sizzle.mp3", waitForCompletion: true)
@@ -53,15 +57,21 @@ class Past: SKNode, InventoryItemDelegate {
             pastBG?.removeFromParent()
             flame = (past.childNode(withName: "flame") as? SKSpriteNode)
             flame?.removeFromParent()
+            fireplace = (past.childNode(withName: "fireplace") as? SKSpriteNode)
+            fireplace?.removeFromParent()
+            fadeflame = (past.childNode(withName: "fadeflame") as? SKSpriteNode)
+            fadeflame?.removeFromParent()
             light = (past.childNode(withName: "light") as? SKLightNode)
             light?.removeFromParent()
             
             self.isUserInteractionEnabled = true
             
-            if let pastBG, let flame, let light{
+            if let pastBG, let flame, let light, let fireplace, let fadeflame{
                 self.addChild(pastBG)
                 self.addChild(flame)
                 self.addChild(light)
+                self.addChild(fireplace)
+                self.addChild(fadeflame)
             }
             
             flame?.isPaused = false
@@ -79,9 +89,8 @@ class Past: SKNode, InventoryItemDelegate {
             self.removeAction(forKey: "futureST")
         }
         
-        pastBG?.size = CGSize(width: 844, height: 390)
-        pastBG?.position = CGPoint(x: 0, y: 0)
-        pastBG?.setScale(0.9)
+//        pastBG?.size = CGSize(width: 844, height: 420)
+//        pastBG?.position = CGPoint(x: 0, y: 0)
         
         self.addChild(drawer1.spriteNode)
         self.addChild(drawer2.spriteNode)
@@ -94,7 +103,7 @@ class Past: SKNode, InventoryItemDelegate {
         light?.lightColor = .orange
         light?.shadowColor = UIColor(white: 0, alpha: 0.5)
         light?.isHidden = true
-        
+        fadeflame?.alpha = 0.5
         if let table {
             table.removeFromParent()
             self.addChild(table)

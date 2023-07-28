@@ -13,9 +13,7 @@ class Future: SKNode, InventoryItemDelegate {
   var computer: Computer?
   var vault: Vault?
   var hologram: Hologram?
-  
-  let futureST = SKAction.repeatForever(SKAction.playSoundFileNamed("futureST.mp3", waitForCompletion: true))
-  
+    
   var delegate: ZoomProtocol?
   
   init(delegate: ZoomProtocol, pastScene: Past){
@@ -47,7 +45,11 @@ class Future: SKNode, InventoryItemDelegate {
         self.addChild(futureBG)
         self.addChild(janela)
       }
-      
+        
+        futureBG?.size = CGSize(width: 844, height: 390)
+        futureBG?.position = CGPoint(x: 0, y: 0)
+//        futureBG?.setScale(0.9)
+        
       self.addChild(computer)
       computer.delegate = delegate
       self.addChild(vault)

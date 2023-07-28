@@ -76,13 +76,13 @@ class HUD: SKNode{
   }
   
   func reposiconarInvIn(ratio: CGFloat) {
-    inventarioHUD?.size = CGSize(width: 320*ratio, height: 50*ratio)
-    positionNodeRelativeToCamera(inventarioHUD!, offsetX: 80*ratio, offsetY: 145*ratio)
+    inventarioHUD?.size = CGSize(width: 260*ratio, height: 50*ratio)
+    positionNodeRelativeToCamera(inventarioHUD!, offsetX: 0*ratio, offsetY: -135*ratio)
   }
   
   func reposiconarInvOut() {
-    inventarioHUD?.size = CGSize(width: 320, height: 50)
-    inventarioHUD?.position = CGPoint(x: 80, y: 145)
+    inventarioHUD?.size = CGSize(width: 260, height: 50)
+    inventarioHUD?.position = CGPoint(x: 0, y: -135)
   }
   
   static func addOnInv(node: SKSpriteNode?){//inout é uma palavra-chave em Swift que permite que um parâmetro de função seja passado por referência.
@@ -92,24 +92,24 @@ class HUD: SKNode{
     }
     node?.zRotation = 0
     if HUD.shared.delegate?.didZoom == false {
-      node?.size = CGSize(width: 30, height: 30) // padroniza o tamanho do node
+      node?.size = CGSize(width: 25, height: 25) // padroniza o tamanho do node
     }else{
-      node?.size = CGSize(width: 30*GameScene.shared.ratio, height: 30*GameScene.shared.ratio) // padroniza o tamanho do node
+      node?.size = CGSize(width: 25*GameScene.shared.ratio, height: 25*GameScene.shared.ratio) // padroniza o tamanho do node
     }
     
     
     if HUD.shared.delegate?.didZoom == false {
       switch HUD.shared.inventario.count {       // posiciona o node de acordo com a quantidade e node dentro de inventario
       case 0:
-        node?.position = CGPoint(x: -50, y: 144)
+          node?.position = CGPoint(x: -94, y: -128.5)
       case 1:
-        node?.position = CGPoint(x: 0, y: 144)
+        node?.position = CGPoint(x: -47, y: -128.5)
       case 2:
-        node?.position = CGPoint(x: 50, y: 144)
+        node?.position = CGPoint(x: 0, y: -128.5)
       case 3:
-        node?.position = CGPoint(x: 100, y: 144)
+        node?.position = CGPoint(x: 47, y: -128.5)
       case 4:
-        node?.position = CGPoint(x: 150, y: 144)
+        node?.position = CGPoint(x: 94, y: -128.5)
       default:
         return
       }
@@ -117,15 +117,15 @@ class HUD: SKNode{
       print(GameScene.shared.ratio)
       switch HUD.shared.inventario.count {       // posiciona o node de acordo com a quantidade e node dentro de inventario
       case 0:
-        node?.position = CGPoint(x: (-50*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (144*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
+        node?.position = CGPoint(x: (-94*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (-128.5*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
       case 1:
-        node?.position = CGPoint(x: (0*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (144*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
+        node?.position = CGPoint(x: (-47*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (-128.5*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
       case 2:
-        node?.position = CGPoint(x: (50*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (144*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
+        node?.position = CGPoint(x: (0*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (-128.5*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
       case 3:
-        node?.position = CGPoint(x: (100*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (144*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
+        node?.position = CGPoint(x: (47*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (-128.5*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
       case 4:
-        node?.position = CGPoint(x: (150*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (144*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
+        node?.position = CGPoint(x: (94*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (-128.5*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
       default:
         return
       }

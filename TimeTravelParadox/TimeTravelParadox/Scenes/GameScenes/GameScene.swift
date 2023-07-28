@@ -72,18 +72,18 @@ class GameScene: SKScene, ZoomProtocol{
         GameScene.shared.ratio = ratio
         hud.reposiconarInvIn(ratio: ratio)
         for (index, item) in HUD.shared.inventario.enumerated() {
-          item.size = CGSize(width: 30*ratio, height: 30*ratio)
+          item.size = CGSize(width: 25*ratio, height: 25*ratio)
           switch index {
           case 0:
-            self.positionNodeRelativeToCamera(item, offsetX: -50*ratio, offsetY: 144*ratio)
+            self.positionNodeRelativeToCamera(item, offsetX: -94*ratio, offsetY: -128.5*ratio)
           case 1:
-            self.positionNodeRelativeToCamera(item, offsetX: 0, offsetY: 144*ratio)
+            self.positionNodeRelativeToCamera(item, offsetX: -47*ratio, offsetY: -128.5*ratio)
           case 2:
-            self.positionNodeRelativeToCamera(item, offsetX: 50*ratio, offsetY: 144*ratio)
+            self.positionNodeRelativeToCamera(item, offsetX: 0*ratio, offsetY: -128.5*ratio)
           case 3:
-            self.positionNodeRelativeToCamera(item, offsetX: 100*ratio, offsetY: 144*ratio)
+            self.positionNodeRelativeToCamera(item, offsetX: 47*ratio, offsetY: -128.5*ratio)
           case 4:
-            self.positionNodeRelativeToCamera(item, offsetX: 150*ratio, offsetY: 144*ratio)
+            self.positionNodeRelativeToCamera(item, offsetX: 94*ratio, offsetY: -128.5*ratio)
           default:
             return
           }
@@ -103,22 +103,22 @@ class GameScene: SKScene, ZoomProtocol{
         self.cameraNode.run(SKAction.scale(to: 1, duration: 0))
         GameScene.shared.cameraPosition = self.cameraNode.position
         GameScene.shared.ratio = 1
-        HUD.shared.inventarioHUD?.size = CGSize(width: 320, height: 50)
-        HUD.shared.inventarioHUD?.position = CGPoint(x: 80, y: 145)
+        HUD.shared.inventarioHUD?.size = CGSize(width: 260, height: 50)
+        HUD.shared.inventarioHUD?.position = CGPoint(x: 0, y: -135)
         hud.reposiconarInvOut()
         for (index, item) in HUD.shared.inventario.enumerated() {
-          item.size = CGSize(width: 30, height: 30)
+          item.size = CGSize(width: 25, height: 25)
           switch index {
           case 0:
-            self.positionNodeRelativeToCamera(item, offsetX: -50, offsetY: 144)
+              self.positionNodeRelativeToCamera(item, offsetX: -94, offsetY: -128.5)
           case 1:
-            self.positionNodeRelativeToCamera(item, offsetX: 0, offsetY: 144)
+            self.positionNodeRelativeToCamera(item, offsetX: -47, offsetY: -128.5)
           case 2:
-            self.positionNodeRelativeToCamera(item, offsetX: 50, offsetY: 144)
+            self.positionNodeRelativeToCamera(item, offsetX: 0, offsetY: -128.5)
           case 3:
-            self.positionNodeRelativeToCamera(item, offsetX: 100, offsetY: 144)
+            self.positionNodeRelativeToCamera(item, offsetX: 47, offsetY: -128.5)
           case 4:
-            self.positionNodeRelativeToCamera(item, offsetX: 150, offsetY: 144)
+            self.positionNodeRelativeToCamera(item, offsetX: 94, offsetY: -128.5)
           default:
             return
           }

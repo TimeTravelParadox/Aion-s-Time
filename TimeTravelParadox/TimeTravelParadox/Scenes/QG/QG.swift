@@ -64,6 +64,17 @@ class QG: SKNode{
 //                self.addChild(self.botaoComecar!)
 //            }
 //        }
+        
+        if UserDefaultsManager.shared.initializedQG == true {
+            step = 5
+            self.display?.run(self.preparingMission)
+            run(SKAction.wait(forDuration: 5)){
+                self.display?.removeAllActions()
+                self.display?.texture = SKTexture(imageNamed: "display27")
+                self.delegateHUD?.ativarTravel()
+            }
+            
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -108,6 +119,7 @@ class QG: SKNode{
                     self.display?.removeAllActions()
                     self.display?.texture = SKTexture(imageNamed: "display27")
                     self.delegateHUD?.ativarTravel()
+                    UserDefaultsManager.shared.initializedQG = true
                 }
             default:
                 return

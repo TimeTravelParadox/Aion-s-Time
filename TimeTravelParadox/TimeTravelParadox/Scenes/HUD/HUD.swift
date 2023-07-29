@@ -21,6 +21,7 @@ class HUD: SKNode, ToggleTravel{
     private let hud = SKScene(fileNamed: "HUDScene")
     private var travel: SKSpriteNode?
     private var qgButton: SKSpriteNode?
+    private var fadeHUD: SKSpriteNode?
     
     var inventarioHUD: SKSpriteNode?
     var inventario: [SKSpriteNode] = []
@@ -61,13 +62,17 @@ class HUD: SKNode, ToggleTravel{
           
           reset = hud.childNode(withName: "reset") as? SKSpriteNode
           reset?.removeFromParent()
+            
+            fadeHUD = hud.childNode(withName: "fadeHUD") as? SKSpriteNode
+            fadeHUD?.removeFromParent()
           
         }
-        if let travel, let qgButton, let inventarioHUD, let reset {
+        if let travel, let qgButton, let inventarioHUD, let reset, let fadeHUD {
             self.addChild(travel)
             self.addChild(qgButton)
             self.addChild(inventarioHUD)
           self.addChild(reset)
+            self.addChild(fadeHUD)
         }
         
         

@@ -46,8 +46,6 @@ class Future: SKNode, InventoryItemDelegate {
         self.addChild(janela)
       }
         
-        futureBG?.size = CGSize(width: 844, height: 390)
-        futureBG?.position = CGPoint(x: 0, y: 0)
 //        futureBG?.setScale(0.9)
         
       self.addChild(computer)

@@ -18,6 +18,7 @@ class Past: SKNode, InventoryItemDelegate {
     private var mirror: SKSpriteNode?
     var light: SKLightNode?
     var lamp: SKSpriteNode?
+    var lightLamp: SKLightNode?
     
     private lazy var paper: Paper = Paper(parentNode: self)
     
@@ -67,6 +68,8 @@ class Past: SKNode, InventoryItemDelegate {
             fadeflame?.removeFromParent()
             light = (past.childNode(withName: "light") as? SKLightNode)
             light?.removeFromParent()
+            lightLamp = (past.childNode(withName: "lightLamp") as? SKLightNode)
+            lightLamp?.removeFromParent()
             mirror = (past.childNode(withName: "mirror") as? SKSpriteNode)
             mirror?.removeFromParent()
             lamp = (past.childNode(withName: "lamp") as? SKSpriteNode)
@@ -74,7 +77,7 @@ class Past: SKNode, InventoryItemDelegate {
             
             self.isUserInteractionEnabled = true
             
-            if let pastBG, let flame, let light, let fireplace, let fadeflame, let mirror, let lamp{
+            if let pastBG, let flame, let light, let fireplace, let fadeflame, let mirror, let lamp, let lightLamp{
                 self.addChild(pastBG)
                 self.addChild(flame)
                 self.addChild(light)
@@ -82,6 +85,7 @@ class Past: SKNode, InventoryItemDelegate {
                 self.addChild(fadeflame)
                 self.addChild(mirror)
                 self.addChild(lamp)
+                self.addChild(lightLamp)
             }
             
             flame?.isPaused = false
@@ -114,6 +118,13 @@ class Past: SKNode, InventoryItemDelegate {
         light?.shadowColor = UIColor(white: 0, alpha: 0.5)
         light?.isHidden = true
         fadeflame?.alpha = 0.5
+        
+        lightLamp?.categoryBitMask = 1 // Identificador para a luz (você pode usar outros números de acordo com suas necessidades)
+        lightLamp?.falloff = 1
+        lightLamp?.ambientColor = .orange
+        lightLamp?.lightColor = .orange
+        lightLamp?.shadowColor = UIColor(white: 0, alpha: 1)
+        lightLamp?.isHidden = true
         if let table {
             table.removeFromParent()
             self.addChild(table)

@@ -10,17 +10,16 @@ class QG: SKNode{
     var QGBG: SKSpriteNode?
     var tv: SKSpriteNode?
     var botaoMissao: SKSpriteNode?
+    var display: SKSpriteNode?
     var botaoComecar: SKSpriteNode?
-    var texto1: SKLabelNode?
-    var texto2: SKLabelNode?
-    var texto3: SKLabelNode?
-    var texto4: SKLabelNode?
-    var texto5: SKLabelNode?
-    var texto6: SKLabelNode?
+    
+    var step = 1
     
     let QGST = SKAction.repeatForever(SKAction.playSoundFileNamed("QGST.mp3", waitForCompletion: true))
     
-    let startingTV = SKAction.animate(with: [SKTexture(imageNamed: "tv1"),SKTexture(imageNamed: "tv2"),SKTexture(imageNamed: "tv3"),SKTexture(imageNamed: "tv4"),SKTexture(imageNamed: "tv5"),SKTexture(imageNamed: "tv6"),SKTexture(imageNamed: "tv7"),SKTexture(imageNamed: "tv8"),SKTexture(imageNamed: "tv9"),SKTexture(imageNamed: "tv10")], timePerFrame: 0.4)
+    let startingTV = SKAction.animate(with: [SKTexture(imageNamed: "display1"),SKTexture(imageNamed: "display2"),SKTexture(imageNamed: "display3"),SKTexture(imageNamed: "display4"),SKTexture(imageNamed: "display5"),SKTexture(imageNamed: "display6"),SKTexture(imageNamed: "display7"),SKTexture(imageNamed: "display8"),SKTexture(imageNamed: "display9"),SKTexture(imageNamed: "display10"),SKTexture(imageNamed: "display11"),SKTexture(imageNamed: "display12"),SKTexture(imageNamed: "display13"),SKTexture(imageNamed: "display14"),SKTexture(imageNamed: "display15"),SKTexture(imageNamed: "display16"),SKTexture(imageNamed: "display17"),SKTexture(imageNamed: "display18"),SKTexture(imageNamed: "display19"),SKTexture(imageNamed: "display20")], timePerFrame: 0.025)
+    
+    let preparingMission = SKAction.repeatForever(SKAction.animate(with: [SKTexture(imageNamed: "display29"),SKTexture(imageNamed: "display30"),SKTexture(imageNamed: "display31"),SKTexture(imageNamed: "display32")], timePerFrame: 0.5))
     
     init(hudScene: HUD, delegateHUD: ToggleTravel){
         self.delegateHUD = delegateHUD
@@ -31,40 +30,32 @@ class QG: SKNode{
             QGBG?.removeFromParent()
             tv = (past.childNode(withName: "tv") as? SKSpriteNode)
             tv?.removeFromParent()
+            display = (past.childNode(withName: "display") as? SKSpriteNode)
+            display?.removeFromParent()
             botaoMissao = past.childNode(withName: "botaoMissao") as? SKSpriteNode
             botaoMissao?.removeFromParent()
             botaoComecar = past.childNode(withName: "botaoComecar") as? SKSpriteNode
             botaoComecar?.removeFromParent()
-            texto1 = past.childNode(withName: "texto1") as? SKLabelNode
-            texto1?.removeFromParent()
-            texto2 = past.childNode(withName: "texto2") as? SKLabelNode
-            texto2?.removeFromParent()
-            texto3 = past.childNode(withName: "texto3") as? SKLabelNode
-            texto3?.removeFromParent()
-            texto4 = past.childNode(withName: "texto4") as? SKLabelNode
-            texto4?.removeFromParent()
-            texto5 = past.childNode(withName: "texto5") as? SKLabelNode
-            texto5?.removeFromParent()
-            texto6 = past.childNode(withName: "texto6") as? SKLabelNode
-            texto6?.removeFromParent()
             
             self.isUserInteractionEnabled = true
         }
-        if let QGBG, let botaoMissao, let botaoComecar, let texto1, let texto2, let texto3, let texto4, let texto5, let texto6, let tv{
+        if let QGBG, let botaoMissao, let botaoComecar, let tv, let display{
             self.addChild(QGBG)
             self.addChild(botaoMissao)
             self.addChild(botaoComecar)
-            self.addChild(texto1)
-            self.addChild(texto2)
-            self.addChild(texto3)
-            self.addChild(texto4)
-            self.addChild(texto5)
-            self.addChild(texto6)
             self.addChild(tv)
+            self.addChild(display)
         }
         delegateHUD.desativarTravel()
-//        tv?.run(startingTV)
-        tv?.texture = SKTexture(imageNamed: "tv1")
+        display?.isHidden = true
+        self.run(SKAction.wait(forDuration: 1)){
+            self.display?.isHidden = false
+            self.display?.isPaused = false
+            self.display?.run(self.startingTV)
+            self.run(SKAction.wait(forDuration: 1.5)){
+                self.display?.texture = SKTexture(imageNamed: "display22")
+            }
+        }
         
 //        self.run(SKAction.wait(forDuration: 1)){
 //            self.tv?.texture = SKTexture(imageNamed: "tv2")
@@ -91,17 +82,36 @@ class QG: SKNode{
         case "botaoMissao":
             botaoMissao?.isHidden = true
             botaoComecar?.isHidden = false
-            texto1?.isHidden = false
-            texto2?.isHidden = false
-            texto3?.isHidden = false
-            texto4?.isHidden = false
-            texto5?.isHidden = false
-            texto6?.isHidden = false
-        case "botaoComecar":
-            print("botao cmecár")
-//            hud.hideTravelButton(isHide: false)
-            delegateHUD?.ativarTravel()
-            //            HUD.shared.hideTravelButton(isHide: false)
+        case "display":
+            print("display")
+            print(display?.texture as Any)
+            
+            switch step{
+            case 1:
+                display?.texture = SKTexture(imageNamed: "display23")
+                step = 2
+
+            case 2:
+                display?.texture = SKTexture(imageNamed: "display24")
+                step = 3
+
+            case 3:
+                display?.texture = SKTexture(imageNamed: "display25")
+                step = 4
+
+            case 4:
+                display?.texture = SKTexture(imageNamed: "display26")
+                step = 5
+            case 5:
+                self.display?.run(self.preparingMission)
+                run(SKAction.wait(forDuration: 5)){
+                    self.display?.removeAllActions()
+                    self.display?.texture = SKTexture(imageNamed: "display27")
+                    self.delegateHUD?.ativarTravel()
+                }
+            default:
+                return
+            }
         default:
             break
         }

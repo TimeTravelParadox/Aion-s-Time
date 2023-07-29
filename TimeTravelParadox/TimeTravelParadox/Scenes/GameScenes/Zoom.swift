@@ -18,6 +18,10 @@ protocol ToggleTravel{
     func ativarTravel()
 }
 
+protocol CallDialogue{
+    func dialogue(text: String, call: Bool)
+}
+
 
 func CasesPositions(node: SKSpriteNode?){
     for (index, item) in HUD.shared.inventario.enumerated() {

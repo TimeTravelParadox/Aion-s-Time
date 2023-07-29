@@ -15,11 +15,13 @@ class Past: SKNode, InventoryItemDelegate {
     private var flame: SKSpriteNode?
     private var fireplace: SKSpriteNode?
     private var fadeflame: SKSpriteNode?
+    private var mirror: SKSpriteNode?
     var light: SKLightNode?
     
     private lazy var paper: Paper = Paper(parentNode: self)
     
     var delegate: ZoomProtocol?
+    var delegateDialogue: CallDialogue?
     
 
     
@@ -35,8 +37,9 @@ class Past: SKNode, InventoryItemDelegate {
         pastBG?.run(SKAction.rotate(byAngle: -.pi/6, duration: 0.2))
     }
     
-    init(delegate: ZoomProtocol) {
+    init(delegate: ZoomProtocol, delegateDialogue: CallDialogue) {
         self.delegate = delegate
+        self.delegateDialogue = delegateDialogue
         //fazer o mesmo abaixo
         self.table = past?.childNode(withName: "table") as? SKSpriteNode
         self.clock = Clock(delegate: delegate)
@@ -63,15 +66,18 @@ class Past: SKNode, InventoryItemDelegate {
             fadeflame?.removeFromParent()
             light = (past.childNode(withName: "light") as? SKLightNode)
             light?.removeFromParent()
+            mirror = (past.childNode(withName: "mirror") as? SKSpriteNode)
+            mirror?.removeFromParent()
             
             self.isUserInteractionEnabled = true
             
-            if let pastBG, let flame, let light, let fireplace, let fadeflame{
+            if let pastBG, let flame, let light, let fireplace, let fadeflame, let mirror{
                 self.addChild(pastBG)
                 self.addChild(flame)
                 self.addChild(light)
                 self.addChild(fireplace)
                 self.addChild(fadeflame)
+                self.addChild(mirror)
             }
             
             flame?.isPaused = false
@@ -123,6 +129,7 @@ class Past: SKNode, InventoryItemDelegate {
         
         switch tapped.name {
         case "pastBG":
+            delegateDialogue?.dialogue(text: "", call: false)
             delegate?.zoom(isZoom: false, node: pastBG, ratio: 0)
             print("plano de fundo")
             // Deselecionar o item
@@ -131,6 +138,8 @@ class Past: SKNode, InventoryItemDelegate {
                     HUD.shared.removeBorder(from: HUD.shared.itemSelecionado!)
                 }
             }
+            mirror?.texture = SKTexture(imageNamed: "mirror")
+
         case "flame":
             flame?.run(sizzleSFX)
         case "table":
@@ -144,7 +153,10 @@ class Past: SKNode, InventoryItemDelegate {
         case "smallerDrawer2":
             verification(drawer: drawer3, tapped: tapped)
             print("smallerDrawer2")
-            
+        case "mirror":
+            delegateDialogue?.dialogue(text: "estou mesmo acabado...", call: true)
+            delegate?.zoom(isZoom: true, node: mirror, ratio: 0.3)
+            mirror?.texture = SKTexture(imageNamed: "mirrorZoom")
         case "itemDetail":
             GameScene.shared.itemDetail?.interact()
             return

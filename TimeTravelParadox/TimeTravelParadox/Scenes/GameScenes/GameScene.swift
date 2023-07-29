@@ -1,7 +1,7 @@
 import SpriteKit
 import AVFoundation
 
-class GameScene: SKScene, ZoomProtocol{
+class GameScene: SKScene, ZoomProtocol, CallDialogue{
 
     
     
@@ -21,6 +21,8 @@ class GameScene: SKScene, ZoomProtocol{
     private var audioPlayerQGST: AVAudioPlayer?
     private var audioPlayerFutureST: AVAudioPlayer?
     
+    private var dialogue: SKSpriteNode?
+    private var textDialogue: SKLabelNode?
     
     private var fade: Fade?
     
@@ -146,9 +148,13 @@ class GameScene: SKScene, ZoomProtocol{
     var futurePlayingST = false
     
     override func didMove(to view: SKView) {
-        
+        dialogue = self.childNode(withName: "dialogue") as? SKSpriteNode
+        textDialogue = self.childNode(withName: "text") as? SKLabelNode
+        textDialogue?.color = .white
+        dialogue?.isHidden = true
+        textDialogue?.isHidden = true
 
-        self.past = Past(delegate: self)
+        self.past = Past(delegate: self, delegateDialogue: self)
         if let past {
             addChild(past)
             past.zPosition = 0
@@ -187,7 +193,7 @@ class GameScene: SKScene, ZoomProtocol{
                 print("Erro ao carregar o arquivo de som A: \(error)")
             }
         }
-        audioPlayerQGST?.play() // toca a música assim que inicia
+        audioPlayerQGST?.pause() // toca a música assim que inicia
         fadeInAudioPlayer(audioPlayerQGST)
         
         self.future = Future(delegate: self, pastScene: past!)
@@ -215,6 +221,19 @@ class GameScene: SKScene, ZoomProtocol{
         
         hud.zPosition = 14
         hud.hideQGButton(isHide: true)
+    }
+    
+    func dialogue(text: String, call: Bool){
+        dialogue?.position = GameScene.shared.cameraPosition
+        textDialogue?.position = GameScene.shared.cameraPosition
+        if call{
+            dialogue?.isHidden = false
+            textDialogue?.isHidden = false
+            textDialogue?.text = text
+        }else{
+            dialogue?.isHidden = true
+            textDialogue?.isHidden = true
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -249,7 +268,7 @@ class GameScene: SKScene, ZoomProtocol{
                 self.future?.zPosition = 0
                 self.hud.hideQGButton(isHide: true)
                 self.fadeInAudioPlayer(self.audioPlayerQGST)
-                self.audioPlayerQGST?.play()
+                self.audioPlayerQGST?.pause()
                 self.audioPlayerPastST?.pause()
                 self.audioPlayerFutureST?.pause()
                 self.past?.light?.isHidden = true
@@ -275,7 +294,7 @@ class GameScene: SKScene, ZoomProtocol{
                     self.audioPlayerQGST?.pause()
                     self.audioPlayerPastST?.pause()
                     self.fadeInAudioPlayer(self.audioPlayerFutureST)
-                    self.audioPlayerFutureST?.play()
+                    self.audioPlayerFutureST?.pause()
                     self.past?.light?.isHidden = true
                   self.hud.reset?.isHidden = true
                     
@@ -286,7 +305,7 @@ class GameScene: SKScene, ZoomProtocol{
                     self.hud.hideQGButton(isHide: false)
                     self.audioPlayerQGST?.pause()
                     self.fadeInAudioPlayer(self.audioPlayerPastST)
-                    self.audioPlayerPastST?.play()
+                    self.audioPlayerPastST?.pause()
                     self.audioPlayerFutureST?.pause()
                     self.past?.light?.isHidden = false
                   

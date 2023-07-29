@@ -42,6 +42,7 @@
 		9BEB802C2A670E7E00352220 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB802B2A670E7E00352220 /* Buttons.swift */; };
 		9BEB803A2A68694600352220 /* Fade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB80392A68694600352220 /* Fade.swift */; };
 		9BEB803C2A68695300352220 /* Fade.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9BEB803B2A68695300352220 /* Fade.sks */; };
+		9BEFB3AA2A754EC2007A8B05 /* Orbitron-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9BEFB3A92A754EC2007A8B05 /* Orbitron-Regular.ttf */; };
 		9BF7D48D2A69B523006E628B /* gavetaAbrindo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BF7D48A2A69B523006E628B /* gavetaAbrindo.mp3 */; };
 		9BF7D48E2A69B523006E628B /* mouseClick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BF7D48B2A69B523006E628B /* mouseClick.mp3 */; };
 		9BF7D4912A69C8DB006E628B /* cofreAbrindo.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9BF7D48F2A69C8DB006E628B /* cofreAbrindo.wav */; };
@@ -81,7 +82,6 @@
 		37CAE7DF2A6F9469000CCCC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		37CAE7E12A6FA0A6000CCCC7 /* backToQG.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backToQG.mp3; sourceTree = "<group>"; };
 		37CAE7E32A6FAB55000CCCC7 /* sizzle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sizzle.mp3; sourceTree = "<group>"; };
-		9B5F5D532A70B823009A832A /* Orbitron-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Orbitron-Regular.ttf"; sourceTree = "<group>"; };
 		9B82F4CA2A5C6EB200BC66F2 /* TimeTravelParadox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTravelParadox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B82F4CD2A5C6EB200BC66F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B82F4CF2A5C6EB200BC66F2 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -97,6 +97,7 @@
 		9BEB802B2A670E7E00352220 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		9BEB80392A68694600352220 /* Fade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fade.swift; sourceTree = "<group>"; };
 		9BEB803B2A68695300352220 /* Fade.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fade.sks; sourceTree = "<group>"; };
+		9BEFB3A92A754EC2007A8B05 /* Orbitron-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Orbitron-Regular.ttf"; sourceTree = "<group>"; };
 		9BF7D48A2A69B523006E628B /* gavetaAbrindo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gavetaAbrindo.mp3; sourceTree = "<group>"; };
 		9BF7D48B2A69B523006E628B /* mouseClick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mouseClick.mp3; sourceTree = "<group>"; };
 		9BF7D48F2A69C8DB006E628B /* cofreAbrindo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cofreAbrindo.wav; sourceTree = "<group>"; };
@@ -234,7 +235,7 @@
 		37CAE7DD2A6F9436000CCCC7 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				9B5F5D532A70B823009A832A /* Orbitron-Regular.ttf */,
+				9BEFB3A92A754EC2007A8B05 /* Orbitron-Regular.ttf */,
 				37CAE7DE2A6F9444000CCCC7 /* SpecialElite-Regular.ttf */,
 			);
 			path = Font;
@@ -374,6 +375,7 @@
 				9BF7D4922A69C8DB006E628B /* escolhaDaSenha.mp3 in Resources */,
 				379B546A2A60FAA600F10217 /* QGST.mp3 in Resources */,
 				9BF7D48E2A69B523006E628B /* mouseClick.mp3 in Resources */,
+				9BEFB3AA2A754EC2007A8B05 /* Orbitron-Regular.ttf in Resources */,
 				9BEB803C2A68695300352220 /* Fade.sks in Resources */,
 				379B54762A6492DE00F10217 /* clockOpeningSFX.mp3 in Resources */,
 				379B545E2A60F42500F10217 /* QGScene.sks in Resources */,

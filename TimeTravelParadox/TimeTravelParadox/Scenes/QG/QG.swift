@@ -46,6 +46,8 @@ class QG: SKNode{
             self.addChild(tv)
             self.addChild(display)
         }
+        
+        
         delegateHUD.desativarTravel()
         display?.isHidden = true
         self.run(SKAction.wait(forDuration: 1)){
@@ -70,10 +72,9 @@ class QG: SKNode{
             self.display?.run(self.preparingMission)
             run(SKAction.wait(forDuration: 5)){
                 self.display?.removeAllActions()
-                self.display?.texture = SKTexture(imageNamed: "display27")
+                self.display?.texture = SKTexture(imageNamed: "display28")
                 self.delegateHUD?.ativarTravel()
             }
-            
         }
     }
     

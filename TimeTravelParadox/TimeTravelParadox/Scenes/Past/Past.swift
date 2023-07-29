@@ -17,6 +17,7 @@ class Past: SKNode, InventoryItemDelegate {
     private var fadeflame: SKSpriteNode?
     private var mirror: SKSpriteNode?
     var light: SKLightNode?
+    var lamp: SKSpriteNode?
     
     private lazy var paper: Paper = Paper(parentNode: self)
     
@@ -68,16 +69,19 @@ class Past: SKNode, InventoryItemDelegate {
             light?.removeFromParent()
             mirror = (past.childNode(withName: "mirror") as? SKSpriteNode)
             mirror?.removeFromParent()
+            lamp = (past.childNode(withName: "lamp") as? SKSpriteNode)
+            lamp?.removeFromParent()
             
             self.isUserInteractionEnabled = true
             
-            if let pastBG, let flame, let light, let fireplace, let fadeflame, let mirror{
+            if let pastBG, let flame, let light, let fireplace, let fadeflame, let mirror, let lamp{
                 self.addChild(pastBG)
                 self.addChild(flame)
                 self.addChild(light)
                 self.addChild(fireplace)
                 self.addChild(fadeflame)
                 self.addChild(mirror)
+                self.addChild(lamp)
             }
             
             flame?.isPaused = false
@@ -143,6 +147,7 @@ class Past: SKNode, InventoryItemDelegate {
         case "flame":
             flame?.run(sizzleSFX)
         case "table":
+            delegate?.zoom(isZoom: true, node: table, ratio: 0.4)
             print("mesa")
         case "smallerDrawer1":
             verification(drawer: drawer1, tapped: tapped)
@@ -212,7 +217,7 @@ class Past: SKNode, InventoryItemDelegate {
                 
             })
         } else {
-            delegate?.zoom(isZoom: true, node: table, ratio: 0.5)
+            delegate?.zoom(isZoom: true, node: table, ratio: 0.4)
         }
     }
     

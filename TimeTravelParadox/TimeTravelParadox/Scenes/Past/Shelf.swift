@@ -17,7 +17,7 @@ class Shelf: SKNode{
   var shelf: SKSpriteNode?
   var polaroid: SKSpriteNode?
   
-  let expand = SKAction.resize(toWidth: 100, height: 100, duration: 1)
+  let expand = SKAction.resize(toWidth: 400, height: 400, duration: 1)
   
   let shake = SKAction.sequence([
     SKAction.rotate(byAngle: -.pi/12, duration: 0.5),

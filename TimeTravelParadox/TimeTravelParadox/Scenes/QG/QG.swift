@@ -8,10 +8,15 @@ class QG: SKNode{
     var delegateHUD: ToggleTravel?
     
     var QGBG: SKSpriteNode?
+    var shadowQG: SKSpriteNode?
+    var textureQG: SKSpriteNode?
+    var pipeQG: SKSpriteNode?
+    var leftScreenQG: SKSpriteNode?
+    var rightScreenQG: SKSpriteNode?
     var tv: SKSpriteNode?
-    var botaoMissao: SKSpriteNode?
     var display: SKSpriteNode?
     var botaoComecar: SKSpriteNode?
+
     
     var step = 1
     
@@ -34,19 +39,31 @@ class QG: SKNode{
             tv?.removeFromParent()
             display = (past.childNode(withName: "display") as? SKSpriteNode)
             display?.removeFromParent()
-            botaoMissao = past.childNode(withName: "botaoMissao") as? SKSpriteNode
-            botaoMissao?.removeFromParent()
+            shadowQG = (past.childNode(withName: "shadowQG") as? SKSpriteNode)
+            shadowQG?.removeFromParent()
             botaoComecar = past.childNode(withName: "botaoComecar") as? SKSpriteNode
             botaoComecar?.removeFromParent()
+            textureQG = past.childNode(withName: "textureQG") as? SKSpriteNode
+            textureQG?.removeFromParent()
+            pipeQG = past.childNode(withName: "pipeQG") as? SKSpriteNode
+            pipeQG?.removeFromParent()
+            leftScreenQG = past.childNode(withName: "leftScreenQG") as? SKSpriteNode
+            leftScreenQG?.removeFromParent()
+            rightScreenQG = past.childNode(withName: "rightScreenQG") as? SKSpriteNode
+            rightScreenQG?.removeFromParent()
             
             self.isUserInteractionEnabled = true
         }
-        if let QGBG, let botaoMissao, let botaoComecar, let tv, let display{
+        if let QGBG, let botaoComecar, let tv, let display, let shadowQG, let textureQG, let pipeQG, let leftScreenQG, let rightScreenQG {
             self.addChild(QGBG)
-            self.addChild(botaoMissao)
             self.addChild(botaoComecar)
             self.addChild(tv)
             self.addChild(display)
+            self.addChild(shadowQG)
+            self.addChild(textureQG)
+            self.addChild(pipeQG)
+            self.addChild(leftScreenQG)
+            self.addChild(rightScreenQG)
         }
         
         
@@ -93,7 +110,6 @@ class QG: SKNode{
         
         switch tapped.name {
         case "botaoMissao":
-            botaoMissao?.isHidden = true
             botaoComecar?.isHidden = false
         case "display":
             print("display")

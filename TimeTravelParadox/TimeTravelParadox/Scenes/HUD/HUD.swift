@@ -4,12 +4,14 @@ class HUD: SKNode, ToggleTravel{
     func ativarTravel() {
         travel?.alpha = 1
         travel?.isUserInteractionEnabled = false
+        travel?.zPosition = 15
 
     }
     
     func desativarTravel() {
         travel?.alpha = 0.5
         travel?.isUserInteractionEnabled = true
+        travel?.zPosition = 15
     }
     
     var delegateHUD: ToggleTravel?

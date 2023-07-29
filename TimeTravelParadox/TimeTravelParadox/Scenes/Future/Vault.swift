@@ -80,12 +80,6 @@ class Vault: SKNode, RemoveProtocol2 {
         child.removeFromParent()
       }
       
-      // Remover os botões da cena
-//      for child in self.children {
-//        if let button = child as? SKButtonNodeLabel {
-//          button.removeFromParent()
-//        }
-//      }
     }
   }
   
@@ -93,10 +87,11 @@ class Vault: SKNode, RemoveProtocol2 {
     
       for i in 0..<nums.count {
           let label = SKLabelNode(text: "\(nums[i])")
-          label.fontName = "Orbitron-Regular"
           label.fontSize = 40
-          label.setScale(0.22)
+          label.setScale(0.2)
           label.fontColor = .blue
+//        label.fontName = "SpecialElite-Regular"
+        label.fontName = "Orbitron-Regular"
           labels.append(label)
           
           let button = SKButtonNodeLabel(label: label) {
@@ -104,12 +99,14 @@ class Vault: SKNode, RemoveProtocol2 {
               if self.delegate?.didZoom == true {
                   print("Você clicou no numero \(i)")
                   self.nums[i] += 1
+                //label.fontName = "Orbitron-Regular"
                   label.isPaused = false
                   label.run(self.vaultChoose)
-                  //label.name = "label"
+                
                   
                   if self.nums[i] > 9 {
                       self.nums[i] = 0
+                    
                   }
                   self.updateLabel()
               }
@@ -180,7 +177,7 @@ class Vault: SKNode, RemoveProtocol2 {
       
     case "label":
       if delegate?.didZoom == true {
-        
+  
       } else {
         delegate?.zoom(isZoom: true, node: vault, ratio: 0.3)
       }

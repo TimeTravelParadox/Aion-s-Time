@@ -193,7 +193,7 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
                 print("Erro ao carregar o arquivo de som A: \(error)")
             }
         }
-        audioPlayerQGST?.pause() // toca a música assim que inicia
+        audioPlayerQGST?.play() // toca a música assim que inicia
         fadeInAudioPlayer(audioPlayerQGST)
         
         self.future = Future(delegate: self, pastScene: past!)
@@ -268,7 +268,7 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
                 self.future?.zPosition = 0
                 self.hud.hideQGButton(isHide: true)
                 self.fadeInAudioPlayer(self.audioPlayerQGST)
-                self.audioPlayerQGST?.pause()
+                self.audioPlayerQGST?.play()
                 self.audioPlayerPastST?.pause()
                 self.audioPlayerFutureST?.pause()
                 self.past?.light?.isHidden = true
@@ -294,7 +294,7 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
                     self.audioPlayerQGST?.pause()
                     self.audioPlayerPastST?.pause()
                     self.fadeInAudioPlayer(self.audioPlayerFutureST)
-                    self.audioPlayerFutureST?.pause()
+                    self.audioPlayerFutureST?.play()
                     self.past?.light?.isHidden = true
                   self.hud.reset?.isHidden = true
                     
@@ -305,7 +305,7 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
                     self.hud.hideQGButton(isHide: false)
                     self.audioPlayerQGST?.pause()
                     self.fadeInAudioPlayer(self.audioPlayerPastST)
-                    self.audioPlayerPastST?.pause()
+                    self.audioPlayerPastST?.play()
                     self.audioPlayerFutureST?.pause()
                     self.past?.light?.isHidden = false
                   

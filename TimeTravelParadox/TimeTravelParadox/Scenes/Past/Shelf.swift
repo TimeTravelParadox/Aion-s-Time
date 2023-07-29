@@ -74,6 +74,8 @@ class Shelf: SKNode{
     let location = touch.location(in: self)
     let tappedNodes = nodes(at: location)
     guard let tapped = tappedNodes.first else { return } // ter ctz que algo esta sendo tocado
+      
+      inventoryItemDelegate?.clearItemDetail()
     
     switch tapped.name {
     case "shelf":

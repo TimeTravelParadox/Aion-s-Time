@@ -17,6 +17,7 @@ enum UserDefaultsKey: String, CaseIterable {
     case hologramComplete2
     case hologramComplete3
     case initializedQG
+    case theEND
 }
 
 class UserDefaultsManager {
@@ -111,6 +112,16 @@ class UserDefaultsManager {
         }
         set {
             saveValue(newValue, forKey: UserDefaultsKey.initializedQG.rawValue)
+        }
+    }
+    
+    var theEnd: Bool {
+        get {
+            //o `as` checa se é um bool e se o valor existe
+            return getValue(forKey: UserDefaultsKey.theEND.rawValue) as? Bool ?? false
+        }
+        set {
+            saveValue(newValue, forKey: UserDefaultsKey.theEND.rawValue)
         }
     }
     

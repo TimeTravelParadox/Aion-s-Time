@@ -112,7 +112,7 @@ class Vault: SKNode, RemoveProtocol2 {
       
       switch i {
       case 0:
-        button.position = CGPoint(x: 239, y: 79.5)
+        button.position = CGPoint(x: 239, y: 80)
       case 1:
         button.position = CGPoint(x: 250, y: 68.5)
       case 2:

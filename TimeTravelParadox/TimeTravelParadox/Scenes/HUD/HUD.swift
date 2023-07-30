@@ -37,14 +37,14 @@ class HUD: SKNode, ToggleTravel{
         inventarioHUD?.isHidden = isHide
     }
     
-    func hideTravelButton(isHide: Bool){
-        travel?.isHidden = isHide
-    }
-    
     func hideTravelQG(isHide: Bool){//esconde tudo mas o inv n
         travel?.isHidden = isHide
         qgButton?.isHidden = isHide
     }
+  
+  func hideResetButton(isHide: Bool){
+    reset?.isHidden = isHide
+  }
     
     override init(){
         super.init()

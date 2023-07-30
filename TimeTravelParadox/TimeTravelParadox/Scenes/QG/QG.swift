@@ -2,9 +2,7 @@ import SpriteKit
 
 class QG: SKNode{
     let past = SKScene(fileNamed: "QGScene")
-    
-    var hud = HUD()
-    
+
     var delegateHUD: ToggleTravel?
     
     var QGBG: SKSpriteNode?
@@ -21,9 +19,8 @@ class QG: SKNode{
     
     let preparingMission = SKAction.repeatForever(SKAction.animate(with: [SKTexture(imageNamed: "display29"),SKTexture(imageNamed: "display30"),SKTexture(imageNamed: "display31"),SKTexture(imageNamed: "display32")], timePerFrame: 0.5))
     
-    init(hudScene: HUD, delegateHUD: ToggleTravel){
+    init(delegateHUD: ToggleTravel){
         self.delegateHUD = delegateHUD
-        self.hud = hudScene
         super.init()
         if let past {
             QGBG = (past.childNode(withName: "QGBG") as? SKSpriteNode)
@@ -56,22 +53,13 @@ class QG: SKNode{
                 self.display?.texture = SKTexture(imageNamed: "display22")
             }
         }
-        
-//        self.run(SKAction.wait(forDuration: 1)){
-//            self.tv?.texture = SKTexture(imageNamed: "tv2")
-//            self.run(SKAction.wait(forDuration: 1)){
-//                self.tv?.texture = SKTexture(imageNamed: "tv")
-//                self.addChild(self.botaoComecar!)
-//            }
-//        }
+
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
-
-    
+   
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return } // se nao estiver em toque acaba aqui
         let location = touch.location(in: self)

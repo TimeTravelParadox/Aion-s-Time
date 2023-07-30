@@ -112,6 +112,26 @@ class Hologram: SKNode {
         delegateRemove?.removePeca()
         delegateRemove2?.removePeca()
           UserDefaultsManager.shared.hologramComplete3 = true
+        
+        scene?.run(SKAction.wait(forDuration: 5)){
+          self.delegate?.zoom(isZoom: false, node: self.hologram, ratio: 0)
+         
+          GameScene.shared.creditos.zPosition = 21
+          GameScene.shared.creditos.setScale(0.9)
+          GameScene.shared.past?.zPosition = 0
+          GameScene.shared.qg?.zPosition = 0
+          GameScene.shared.future?.zPosition = 0
+          GameScene.shared.hud.hideQGButton(isHide: true)
+          GameScene.shared.hud.hideTravelQG(isHide: true)
+          GameScene.shared.audioPlayerQGST?.pause()
+          GameScene.shared.audioPlayerPastST?.pause()
+          GameScene.shared.audioPlayerFutureST?.pause()
+          GameScene.shared.past?.light?.isHidden = true
+          
+          GameScene.shared.hud.hideResetButton(isHide: false)
+          
+        }
+        
       }
       if delegate?.didZoom == true && HUD.shared.itemSelecionado == HUD.shared.peca1 && !holograma1peca && HUD.shared.itemSelecionado != nil{
         print("peca1 colocada")

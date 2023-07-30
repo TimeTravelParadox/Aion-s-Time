@@ -112,14 +112,27 @@ class HUD: SKNode, ToggleTravel{
     
     static func addOnInv(node: SKSpriteNode?){//inout é uma palavra-chave em Swift que permite que um parâmetro de função seja passado por referência.
         let nodeName = node?.name ?? "" // Obtém o nome do nó
+        let maior = max((node?.size.width)!, (node?.size.height)!)
+        var widthMaior = maior == node?.size.width ? true : false
+        
         if HUD.shared.inventario.contains(where: { $0.name == nodeName }) {
             return // Se já existir, retorna sem adicionar o nó novamente
         }
         node?.zRotation = 0
         if HUD.shared.delegate?.didZoom == false {
-            node?.size = CGSize(width: 25, height: 25) // padroniza o tamanho do node
+//            node?.size = CGSize(width: 25, height: 25) // padroniza o tamanho do node
+            if widthMaior {
+                node?.size = CGSize(width: 25, height: (25*(node?.size.height)!)/(node?.size.width)!)
+            }else{
+                node?.size = CGSize(width: (25*(node?.size.width)!)/(node?.size.height)!, height: 25)
+            }
         }else{
-            node?.size = CGSize(width: 25*GameScene.shared.ratio, height: 25*GameScene.shared.ratio) // padroniza o tamanho do node
+            if widthMaior {
+                node?.size = CGSize(width: 25*GameScene.shared.ratio, height: (25*(node?.size.height)!)/(node?.size.width)!*GameScene.shared.ratio)
+            }else{
+                node?.size = CGSize(width: (25*(node?.size.width)!)/(node?.size.height)!*GameScene.shared.ratio, height: 25*GameScene.shared.ratio)
+            }
+//            node?.size = CGSize(width: 25*GameScene.shared.ratio, height: 25*GameScene.shared.ratio) // padroniza o tamanho do node
         }
         
         

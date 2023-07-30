@@ -21,9 +21,9 @@ class ItemDetail: SKSpriteNode {
         case "polaroid":
             size = CGSize(width: 100 * GameScene.shared.ratio, height: 100 * GameScene.shared.ratio)
         case "paper":
-            size = CGSize(width: 250 * GameScene.shared.ratio, height: 120 * GameScene.shared.ratio)
+            size = CGSize(width: 200 * GameScene.shared.ratio, height: 200 * GameScene.shared.ratio)
         case "paperComplete":
-            size = CGSize(width: 250 * GameScene.shared.ratio, height: 120 * GameScene.shared.ratio)
+            size = CGSize(width: 200 * GameScene.shared.ratio, height: 250 * GameScene.shared.ratio)
         default:
             return
         }

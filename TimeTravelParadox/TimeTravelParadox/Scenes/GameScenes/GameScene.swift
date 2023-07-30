@@ -1,8 +1,7 @@
 import SpriteKit
 import AVFoundation
 
-class GameScene: SKScene, ZoomProtocol, CallDialogue{
-  
+class GameScene: SKScene, ZoomProtocol, CallDialogue{  
   static var shared = GameScene()
   
   var past: Past?
@@ -35,7 +34,7 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
   var cameraPosition = CGPoint(x: 0, y: 0)
   
   var didZoom = false
-  var ratio: CGFloat = 0
+  var ratio: CGFloat = 1
   
   func setupCamera() {
     addChild(cameraNode)

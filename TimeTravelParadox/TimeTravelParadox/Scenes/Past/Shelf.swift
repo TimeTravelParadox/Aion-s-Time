@@ -17,7 +17,7 @@ class Shelf: SKNode{
   var shelf: SKSpriteNode?
   var polaroid: SKSpriteNode?
   
-  let expand = SKAction.resize(toWidth: 1000, height: 1000, duration: 1)
+  let expand = SKAction.resize(toWidth: 400, height: 400, duration: 1)
   
   let shake = SKAction.sequence([
     SKAction.rotate(byAngle: -.pi/12, duration: 0.5),
@@ -74,6 +74,8 @@ class Shelf: SKNode{
     let location = touch.location(in: self)
     let tappedNodes = nodes(at: location)
     guard let tapped = tappedNodes.first else { return } // ter ctz que algo esta sendo tocado
+      
+      inventoryItemDelegate?.clearItemDetail()
     
     switch tapped.name {
     case "shelf":

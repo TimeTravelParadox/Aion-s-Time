@@ -4,12 +4,14 @@ class HUD: SKNode, ToggleTravel{
     func ativarTravel() {
         travel?.alpha = 1
         travel?.isUserInteractionEnabled = false
+        travel?.zPosition = 15
 
     }
     
     func desativarTravel() {
         travel?.alpha = 0.5
         travel?.isUserInteractionEnabled = true
+        travel?.zPosition = 15
     }
     
     var delegateHUD: ToggleTravel?
@@ -19,6 +21,7 @@ class HUD: SKNode, ToggleTravel{
     private let hud = SKScene(fileNamed: "HUDScene")
     private var travel: SKSpriteNode?
     private var qgButton: SKSpriteNode?
+    private var fadeHUD: SKSpriteNode?
     
     var inventarioHUD: SKSpriteNode?
     var inventario: [SKSpriteNode] = []
@@ -59,13 +62,17 @@ class HUD: SKNode, ToggleTravel{
           
           reset = hud.childNode(withName: "reset") as? SKSpriteNode
           reset?.removeFromParent()
+            
+            fadeHUD = hud.childNode(withName: "fadeHUD") as? SKSpriteNode
+            fadeHUD?.removeFromParent()
           
         }
-        if let travel, let qgButton, let inventarioHUD, let reset {
+        if let travel, let qgButton, let inventarioHUD, let reset, let fadeHUD {
             self.addChild(travel)
             self.addChild(qgButton)
             self.addChild(inventarioHUD)
           self.addChild(reset)
+            self.addChild(fadeHUD)
         }
         
         

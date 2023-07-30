@@ -24,7 +24,7 @@ class QG: SKNode{
     
     let startingTVTextures = [SKTexture(imageNamed: "display1"),SKTexture(imageNamed: "display2"),SKTexture(imageNamed: "display3"),SKTexture(imageNamed: "display4"),SKTexture(imageNamed: "display5"),SKTexture(imageNamed: "display6"),SKTexture(imageNamed: "display7"),SKTexture(imageNamed: "display8"),SKTexture(imageNamed: "display9"),SKTexture(imageNamed: "display10"),SKTexture(imageNamed: "display11"),SKTexture(imageNamed: "display12"),SKTexture(imageNamed: "display13"),SKTexture(imageNamed: "display14"),SKTexture(imageNamed: "display16"),SKTexture(imageNamed: "display17"),SKTexture(imageNamed: "display18"),SKTexture(imageNamed: "display19"),SKTexture(imageNamed: "display20")]
     
-    let preparingMission = SKAction.repeatForever(SKAction.animate(with: [SKTexture(imageNamed: "display29"),SKTexture(imageNamed: "display30"),SKTexture(imageNamed: "display31"),SKTexture(imageNamed: "display32")], timePerFrame: 0.5))
+    let preparingMission = SKAction.repeatForever(SKAction.animate(with: [SKTexture(imageNamed: "display29"),SKTexture(imageNamed: "display30"),SKTexture(imageNamed: "display31"),SKTexture(imageNamed: "display32")], timePerFrame: 0.3))
     
     init(delegateHUD: ToggleTravel){
         self.delegateHUD = delegateHUD
@@ -128,7 +128,7 @@ class QG: SKNode{
                 step = 5
             case 5:
                 self.display?.run(self.preparingMission)
-                run(SKAction.wait(forDuration: 5)){
+                run(SKAction.wait(forDuration: 2.5)){
                     self.display?.removeAllActions()
                     self.display?.texture = SKTexture(imageNamed: "display27")
                     self.delegateHUD?.ativarTravel()

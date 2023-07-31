@@ -120,7 +120,7 @@ class HUD: SKNode, ToggleTravel{
         }
         node?.zRotation = 0
         if HUD.shared.delegate?.didZoom == false {
-//            node?.size = CGSize(width: 25, height: 25) // padroniza o tamanho do node
+            // padroniza o tamanho do node
             if widthMaior {
                 node?.size = CGSize(width: 25, height: (25*(node?.size.height)!)/(node?.size.width)!)
             }else{
@@ -132,7 +132,6 @@ class HUD: SKNode, ToggleTravel{
             }else{
                 node?.size = CGSize(width: (25*(node?.size.width)!)/(node?.size.height)!*GameScene.shared.ratio, height: 25*GameScene.shared.ratio)
             }
-//            node?.size = CGSize(width: 25*GameScene.shared.ratio, height: 25*GameScene.shared.ratio) // padroniza o tamanho do node
         }
         
         

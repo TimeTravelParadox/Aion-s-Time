@@ -75,7 +75,13 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
         GameScene.shared.ratio = ratio
         hud.reposiconarInvIn(ratio: ratio)
         for (index, item) in HUD.shared.inventario.enumerated() {
-          item.size = CGSize(width: 25*ratio, height: 25*ratio)
+            let maior = max((item.size.width), (item.size.height))
+                        let widthMaior = maior == item.size.width ? true : false
+                        if widthMaior {
+                            item.size = CGSize(width: 25*GameScene.shared.ratio, height: (25*(item.size.height))/(item.size.width)*GameScene.shared.ratio)
+                        }else{
+                            item.size = CGSize(width: (25*(item.size.width))/(item.size.height)*GameScene.shared.ratio, height: 25*GameScene.shared.ratio)
+                        }
           switch index {
           case 0:
             self.positionNodeRelativeToCamera(item, offsetX: -94*ratio, offsetY: -128.5*ratio)
@@ -111,7 +117,13 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
         HUD.shared.inventarioHUD?.position = CGPoint(x: 0, y: -135)
         hud.reposiconarInvOut()
         for (index, item) in HUD.shared.inventario.enumerated() {
-          item.size = CGSize(width: 25, height: 25)
+            let maior = max((item.size.width), (item.size.height))
+                        let widthMaior = maior == item.size.width ? true : false
+                        if widthMaior {
+                            item.size = CGSize(width: 25, height: (25*(item.size.height))/(item.size.width))
+                        }else{
+                            item.size = CGSize(width: (25*(item.size.width))/(item.size.height), height: 25)
+                        }
           switch index {
           case 0:
             self.positionNodeRelativeToCamera(item, offsetX: -94, offsetY: -128.5)

@@ -113,7 +113,7 @@ class HUD: SKNode, ToggleTravel{
     static func addOnInv(node: SKSpriteNode?){//inout é uma palavra-chave em Swift que permite que um parâmetro de função seja passado por referência.
         let nodeName = node?.name ?? "" // Obtém o nome do nó
         let maior = max((node?.size.width)!, (node?.size.height)!)
-        var widthMaior = maior == node?.size.width ? true : false
+        let widthMaior = maior == node?.size.width ? true : false
         
         if HUD.shared.inventario.contains(where: { $0.name == nodeName }) {
             return // Se já existir, retorna sem adicionar o nó novamente

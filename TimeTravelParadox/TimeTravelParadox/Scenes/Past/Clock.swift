@@ -7,12 +7,15 @@ class Clock: SKNode, RemoveProtocol{
     let past = SKScene(fileNamed: "PastScene")
     
     var delegate: ZoomProtocol?
+    var delegateDialogue: CallDialogue?
     var inventoryItemDelegate: InventoryItemDelegate?
     
     var clock: SKSpriteNode?
     var hourHand: SKSpriteNode?
     var minuteHand: SKSpriteNode?
     var peca1: SKSpriteNode?
+    
+    var dialogueClock = true
     
     var canTapAgain: Bool = true // evitar que ele toque muito ra'pido no ponteiro e bugue
     
@@ -24,8 +27,9 @@ class Clock: SKNode, RemoveProtocol{
     
     let clockOpening =  SKAction.animate(with: [SKTexture(imageNamed: "clock1"), SKTexture(imageNamed: "clock2"), SKTexture(imageNamed: "clock3"), SKTexture(imageNamed: "clock4"), SKTexture(imageNamed: "clock5"), SKTexture(imageNamed: "clock6"), SKTexture(imageNamed: "clock7"), SKTexture(imageNamed: "clock8"), SKTexture(imageNamed: "clock9"), SKTexture(imageNamed: "clock10"), SKTexture(imageNamed: "clock11"), SKTexture(imageNamed: "clock12"), SKTexture(imageNamed: "clock13"), SKTexture(imageNamed: "clock14"), SKTexture(imageNamed: "clock15"), SKTexture(imageNamed: "clock16"), SKTexture(imageNamed: "clock17")], timePerFrame: 0.16)
     
-    init(delegate: ZoomProtocol){
+    init(delegate: ZoomProtocol, delegateDialogue: CallDialogue){
         self.delegate = delegate
+        self.delegateDialogue = delegateDialogue
         super.init()
         self.zPosition = 1
         if let past {
@@ -129,6 +133,10 @@ class Clock: SKNode, RemoveProtocol{
                 self.run(SKAction.wait(forDuration: 0.2)) {
                     self.canTapAgain = true
                 }
+                if dialogueClock && minuteRotate == 300 && hourRotate == 30{
+                    delegateDialogue?.dialogue(node: clock, texture: SKTexture(imageNamed: "dialogueClock"), ratio: 0.18, isHidden: false)
+                    dialogueClock = false
+                }
             } else {
                 delegate?.zoom(isZoom: true, node: clock, ratio: 0.18)
             }
@@ -142,6 +150,10 @@ class Clock: SKNode, RemoveProtocol{
                 }
                 self.run(SKAction.wait(forDuration: 0.2)) {
                     self.canTapAgain = true
+                }
+                if dialogueClock && minuteRotate == 300 && hourRotate == 30{
+                    delegateDialogue?.dialogue(node: clock, texture: SKTexture(imageNamed: "dialogueClock"), ratio: 0.18, isHidden: false)
+                    dialogueClock = false
                 }
             } else {
                 delegate?.zoom(isZoom: true, node: clock, ratio: 0.18)

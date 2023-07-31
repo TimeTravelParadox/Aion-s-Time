@@ -15,6 +15,9 @@ class QG: SKNode{
     var display: SKSpriteNode?
     var botaoComecar: SKSpriteNode?
 
+    var delegateDialogue: CallDialogue?
+
+    var dialogueStep = 0
     
     var step = 1
     
@@ -26,8 +29,10 @@ class QG: SKNode{
     
     let preparingMission = SKAction.repeatForever(SKAction.animate(with: [SKTexture(imageNamed: "display29"),SKTexture(imageNamed: "display30"),SKTexture(imageNamed: "display31"),SKTexture(imageNamed: "display32")], timePerFrame: 0.5))
     
-    init(delegateHUD: ToggleTravel){
+    init(delegateHUD: ToggleTravel, delegateDialogue: CallDialogue){
         self.delegateHUD = delegateHUD
+        self.delegateDialogue = delegateDialogue
+
         super.init()
         if let past {
             QGBG = (past.childNode(withName: "QGBG") as? SKSpriteNode)
@@ -127,6 +132,10 @@ class QG: SKNode{
                 display?.texture = SKTexture(imageNamed: "display26")
                 step = 5
             case 5:
+                if dialogueStep == 0{
+                    delegateDialogue?.dialogue(node: QGBG, texture: SKTexture(imageNamed: "dialogueQG01"), ratio: 1, isHidden: false)
+                    dialogueStep = 1
+                }
                 self.display?.run(self.preparingMission)
                 run(SKAction.wait(forDuration: 5)){
                     self.display?.removeAllActions()

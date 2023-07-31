@@ -19,7 +19,7 @@ protocol ToggleTravel{
 }
 
 protocol CallDialogue{
-    func dialogue(text: String, call: Bool)
+    func dialogue(node: SKSpriteNode?, texture: SKTexture, ratio: CGFloat, isHidden: Bool)
 }
 
 

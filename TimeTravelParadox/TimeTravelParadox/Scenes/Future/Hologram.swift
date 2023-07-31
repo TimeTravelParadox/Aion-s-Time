@@ -11,11 +11,12 @@ class Hologram: SKNode {
   private let future = SKScene(fileNamed: "FutureScene")
   
   var delegate: ZoomProtocol?
-  private var hologram: SKSpriteNode?
+  var delegateDialogue: CallDialogue?
+   var hologram: SKSpriteNode?
   var inventoryItemDelegate: InventoryItemDelegate?
   
   var monitorDireita: SKSpriteNode?
-  
+  var dialogueHologramStep = 0
   var holograma1peca = false
   
   var delegateRemove: RemoveProtocol?
@@ -23,11 +24,12 @@ class Hologram: SKNode {
   
   let hologramaAnimate =  SKAction.animate(with: [SKTexture(imageNamed: "cartazCompleto"), SKTexture(imageNamed: "cartaz1"), SKTexture(imageNamed: "cartaz2"), SKTexture(imageNamed: "cartaz3"), SKTexture(imageNamed: "cartaz4"), SKTexture(imageNamed: "cartaz5"), SKTexture(imageNamed: "cartaz6")], timePerFrame: 0.3)
   
-  init(delegate: ZoomProtocol, delegateRemove: RemoveProtocol, delegateRemove2: RemoveProtocol2) {
+    init(delegate: ZoomProtocol, delegateRemove: RemoveProtocol, delegateRemove2: RemoveProtocol2, delegateDialogue: CallDialogue) {
     super.init()
     self.delegate = delegate
     self.delegateRemove = delegateRemove
     self.delegateRemove2 = delegateRemove2
+    self.delegateDialogue = delegateDialogue
     self.zPosition = 1
     
     
@@ -73,6 +75,7 @@ class Hologram: SKNode {
           hologram?.texture = SKTexture(imageNamed: "cartazCompleto")
 
       }
+        
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -108,30 +111,17 @@ class Hologram: SKNode {
       if delegate?.didZoom == true && (HUD.shared.itemSelecionado == HUD.shared.peca1 || HUD.shared.itemSelecionado == HUD.shared.peca2) && holograma1peca && HUD.shared.itemSelecionado != nil{
         print("pecas completas colocada")
           hologram?.run(hologramaAnimate)
+          self.run(SKAction.wait(forDuration: 2)){
+              if self.dialogueHologramStep == 0{
+                  self.delegateDialogue?.dialogue(node: self.hologram, texture: SKTexture(imageNamed: "dialogueHologram01"), ratio: 0.4, isHidden: false)
+                  self.dialogueHologramStep = 1
+              }
+          }
+
         monitorDireita?.isHidden = true
         delegateRemove?.removePeca()
         delegateRemove2?.removePeca()
           UserDefaultsManager.shared.hologramComplete3 = true
-        
-        scene?.run(SKAction.wait(forDuration: 5)){
-          self.delegate?.zoom(isZoom: false, node: self.hologram, ratio: 0)
-         
-          GameScene.shared.creditos.zPosition = 21
-          GameScene.shared.creditos.setScale(0.9)
-          GameScene.shared.past?.zPosition = 0
-          GameScene.shared.qg?.zPosition = 0
-          GameScene.shared.future?.zPosition = 0
-          GameScene.shared.hud.hideQGButton(isHide: true)
-          GameScene.shared.hud.hideTravelQG(isHide: true)
-          GameScene.shared.audioPlayerQGST?.pause()
-          GameScene.shared.audioPlayerPastST?.pause()
-          GameScene.shared.audioPlayerFutureST?.pause()
-          GameScene.shared.past?.light?.isHidden = true
-          
-          GameScene.shared.hud.hideResetButton(isHide: false)
-          
-        }
-        
       }
       if delegate?.didZoom == true && HUD.shared.itemSelecionado == HUD.shared.peca1 && !holograma1peca && HUD.shared.itemSelecionado != nil{
         print("peca1 colocada")

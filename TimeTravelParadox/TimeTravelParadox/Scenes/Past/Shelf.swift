@@ -11,8 +11,11 @@ class Shelf: SKNode{
   let past = SKScene(fileNamed: "PastScene")
   
   var delegate: ZoomProtocol?
+  var delegateDialogue: CallDialogue?
   var inventoryItemDelegate: InventoryItemDelegate?
   
+    var polaroidDialogue = true
+    
   var hiddenPolaroid: SKSpriteNode?
   var shelf: SKSpriteNode?
   var polaroid: SKSpriteNode?
@@ -25,7 +28,7 @@ class Shelf: SKNode{
     SKAction.rotate(byAngle: -.pi/12, duration: 0.5)
   ])
   
-  init(delegate: ZoomProtocol){
+    init(delegate: ZoomProtocol, delegateDialogue: CallDialogue){
     self.delegate = delegate
     super.init()
     self.zPosition = 1
@@ -86,11 +89,14 @@ class Shelf: SKNode{
         if delegate?.didZoom == true && UserDefaultsManager.shared.takenPolaroid == false {
         polaroid?.isHidden = false
             hiddenPolaroid?.isHidden = true
-        
         let moveToInventary = SKAction.run {
           HUD.addOnInv(node: self.polaroid)
             UserDefaultsManager.shared.takenPolaroid = true
         }
+            if polaroidDialogue{
+                delegateDialogue?.dialogue(node: shelf, texture: SKTexture(imageNamed: "dialoguePolaroid"), ratio: 0.5, isHidden: false)
+                polaroidDialogue = false
+            }
         let sequence = SKAction.sequence([expand, shake, moveToInventary])
         polaroid?.run(sequence)
         self.polaroid?.zPosition = 3

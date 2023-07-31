@@ -349,10 +349,10 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
             future?.isUserInteractionEnabled = true
         }
         if future?.hologram?.dialogueHologramStep == 1{
-            dialogue(node: future?.hologram?.hologram, texture: SKTexture(imageNamed: "dialogueHologram02"), ratio: 0.4, isHidden: false)
+            dialogue(node: future?.hologram?.monitorDireita, texture: SKTexture(imageNamed: "dialogueHologram02"), ratio: 0.3, isHidden: false)
             future?.hologram?.dialogueHologramStep = 2
         }else if future?.hologram?.dialogueHologramStep == 2{
-            dialogue(node: future?.hologram?.hologram, texture: SKTexture(imageNamed: "dialogueHologram03"), ratio: 0.4, isHidden: false)
+            dialogue(node: future?.hologram?.monitorDireita, texture: SKTexture(imageNamed: "dialogueHologram03"), ratio: 0.3, isHidden: false)
             future?.hologram?.dialogueHologramStep = 3
         }else if future?.hologram?.dialogueHologramStep == 3{
 

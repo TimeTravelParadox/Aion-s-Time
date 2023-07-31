@@ -138,7 +138,7 @@ class Clock: SKNode, RemoveProtocol{
                 self.run(SKAction.wait(forDuration: 0.2)) {
                     self.canTapAgain = true
                 }
-                if dialogueClock && minuteRotate == 300 && hourRotate == 30{
+                if dialogueClock && minuteRotate == 300 && hourRotate == 30 || dialogueClock && minuteRotate == 300 && hourRotate == 390{
                     minuteRotate -= 300
                     hourRotate -= 30
 
@@ -163,7 +163,7 @@ class Clock: SKNode, RemoveProtocol{
                 self.run(SKAction.wait(forDuration: 0.2)) {
                     self.canTapAgain = true
                 }
-                if dialogueClock && minuteRotate == 300 && hourRotate == 30{
+                if dialogueClock && minuteRotate == 300 && hourRotate == 30 || dialogueClock && minuteRotate == 300 && hourRotate == 390{
                     minuteRotate -= 300
                     hourRotate -= 30
 

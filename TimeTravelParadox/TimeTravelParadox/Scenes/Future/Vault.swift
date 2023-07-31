@@ -91,8 +91,14 @@ class Vault: SKNode, RemoveProtocol2 {
       label.fontColor = .blue
       label.fontName = "Orbitron-Regular"
       labels.append(label)
+        
+        let imagem = SKSpriteNode()
+//        imagem.alpha = 1
+        imagem.zPosition = 3
+        imagem.color = .red
+        imagem.size = CGSize(width: 15, height: 15)
       
-      let button = SKButtonNodeLabel(label: label) {
+        let button = SKButtonNodeLabel(imagem: imagem, label: label) {
         
         if self.delegate?.didZoom == true {
           print("Você clicou no numero \(i)")

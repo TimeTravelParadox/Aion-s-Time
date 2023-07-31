@@ -9,11 +9,13 @@ import SpriteKit
 
 class SKButtonNodeLabel: SKNode {
   
+    var imagem: SKSpriteNode?
   var label: SKLabelNode?
   var action: (() -> Void)?
   
-  init (label: SKLabelNode, action: @escaping () -> Void) {
+    init (imagem: SKSpriteNode, label: SKLabelNode, action: @escaping () -> Void) {
     
+    self.imagem = imagem
     self.label = label
     self.action = action
     super.init()

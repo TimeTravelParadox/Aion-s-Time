@@ -72,20 +72,22 @@ class Clock: SKNode, RemoveProtocol{
     func spin(hand: SKSpriteNode?, degree: CGFloat) {
         hand?.isPaused = false
         let rotationAngleInRadians = CGFloat.pi * -degree / 180.0 // Converter graus em radianos
-        var rotationRatio = -round(hand!.zRotation * 180.0 / CGFloat.pi) + 30// Retornar um valor de rotação em 360 graus
+        var rotationRatio = -round(hand!.zRotation * 180.0 / CGFloat.pi) // Retornar um valor de rotação em 360 graus
         
-        if rotationRatio >= 360 { // Verificar se ultrapassou 360 graus
-            rotationRatio -= 360
+        if rotationRatio >= 0 && rotationRatio != 360 { // girar somente em 360 graus
+            
+            hand?.run(SKAction.rotate(byAngle:  rotationAngleInRadians , duration: 0.2))
+        }else{
+            hand?.run(SKAction.rotate(byAngle:  rotationAngleInRadians , duration: 0.2))
+            hand?.zRotation = 0
+            rotationRatio = 360
         }
-        
-        let rotationAction = SKAction.rotate(byAngle: rotationAngleInRadians, duration: 0.2)
-        hand?.run(rotationAction)
-        
         if hand == minuteHand {
-            minuteRotate = rotationRatio
+            minuteRotate = rotationRatio + 30
         } else if hand == hourHand {
-            hourRotate = rotationRatio
+            hourRotate = rotationRatio + 30
         }
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -123,6 +125,7 @@ class Clock: SKNode, RemoveProtocol{
         case "clock":
             delegate?.zoom(isZoom: true, node: clock, ratio: 0.18)
         case "hourHand":
+            print(hourRotate)
             if delegate?.didZoom == true && canTapAgain {
                 canTapAgain = false
                 hourHand?.run(clockTickingSFX)
@@ -141,6 +144,7 @@ class Clock: SKNode, RemoveProtocol{
                 delegate?.zoom(isZoom: true, node: clock, ratio: 0.18)
             }
         case "minuteHand":
+            print(minuteRotate)
             if delegate?.didZoom == true && canTapAgain {
                 canTapAgain = false
                 minuteHand?.run(clockTickingSFX)

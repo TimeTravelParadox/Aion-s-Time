@@ -98,15 +98,19 @@ class Hologram: SKNode {
     
     switch tapped.name {
     case "monitorDireita":
-      delegate?.zoom(isZoom: true, node: hologram, ratio: 0.4)
+      delegate?.zoom(isZoom: true, node: hologram, ratio: 0.2)
     case "hologram":
       
       if delegate?.didZoom == true && (HUD.shared.itemSelecionado == HUD.shared.peca1 || HUD.shared.itemSelecionado == HUD.shared.peca2) && holograma1peca && HUD.shared.itemSelecionado != nil{
         print("pecas completas colocada")
           hologram?.run(hologramaAnimate)
+        delegate?.didZoom = false
+        delegate?.zoom(isZoom: true, node: monitorDireita, ratio: 0.3)
+        GameScene.shared.invisible?.isHidden = false
           self.run(SKAction.wait(forDuration: 2)){
+            GameScene.shared.invisible?.isHidden = true
               if self.dialogueHologramStep == 0{
-                  self.delegateDialogue?.dialogue(node: self.hologram, texture: SKTexture(imageNamed: "dialogueHologram01"), ratio: 0.4, isHidden: false)
+                  self.delegateDialogue?.dialogue(node: self.monitorDireita, texture: SKTexture(imageNamed: "dialogueHologram01"), ratio: 0.3, isHidden: false)
                   self.dialogueHologramStep = 1
               }
           }
@@ -134,7 +138,7 @@ class Hologram: SKNode {
       if let selectedItem = HUD.shared.itemSelecionado {
         HUD.shared.removeBorder(from: selectedItem)
       }
-      delegate?.zoom(isZoom: true, node: hologram, ratio: 0.4)
+      delegate?.zoom(isZoom: true, node: hologram, ratio: 0.2)
       
     default:
       return

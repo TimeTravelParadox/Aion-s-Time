@@ -20,7 +20,9 @@ class Past: SKNode, InventoryItemDelegate {
     var lamp: SKSpriteNode?
     var lightLamp: SKLightNode?
     
-    private lazy var paper: Paper = Paper(parentNode: self)
+    var dialogueMirror = true
+    
+     lazy var paper: Paper = Paper(parentNode: self)
     
     var delegate: ZoomProtocol?
     var delegateDialogue: CallDialogue?
@@ -44,9 +46,9 @@ class Past: SKNode, InventoryItemDelegate {
         self.delegateDialogue = delegateDialogue
         //fazer o mesmo abaixo
         self.table = past?.childNode(withName: "table") as? SKSpriteNode
-        self.clock = Clock(delegate: delegate)
-        self.typeMachine = TypeMachine(delegate: delegate)
-        self.shelf = Shelf(delegate: delegate)
+        self.clock = Clock(delegate: delegate, delegateDialogue: delegateDialogue)
+        self.typeMachine = TypeMachine(delegate: delegate, delegateDialogue: delegateDialogue)
+        self.shelf = Shelf(delegate: delegate, delegateDialogue: delegateDialogue)
         
         
         super.init()
@@ -144,7 +146,7 @@ class Past: SKNode, InventoryItemDelegate {
         
         switch tapped.name {
         case "pastBG":
-            delegateDialogue?.dialogue(text: "", call: false)
+//            delegateDialogue?.dialogue(node: pastBG, texture: SKTexture(imageNamed: ""), ratio: 1, isHidden: true, nodeInteraction: past)
             delegate?.zoom(isZoom: false, node: pastBG, ratio: 0)
             print("plano de fundo")
             // Deselecionar o item
@@ -154,7 +156,7 @@ class Past: SKNode, InventoryItemDelegate {
                 }
             }
             mirror?.texture = SKTexture(imageNamed: "mirror")
-
+            delegateDialogue?.dialogue(node: pastBG, texture: SKTexture(imageNamed: ""), ratio: 1, isHidden: true)
         case "flame":
             flame?.run(sizzleSFX)
         case "table":
@@ -170,7 +172,10 @@ class Past: SKNode, InventoryItemDelegate {
             verification(drawer: drawer3, tapped: tapped)
             print("smallerDrawer2")
         case "mirror":
-            delegateDialogue?.dialogue(text: "estou mesmo acabado...", call: true)
+            if dialogueMirror{
+                delegateDialogue?.dialogue(node: mirror, texture: SKTexture(imageNamed: "dialogueMirror"), ratio: 0.3, isHidden: false)
+                dialogueMirror = false
+            }
             delegate?.zoom(isZoom: true, node: mirror, ratio: 0.3)
             mirror?.texture = SKTexture(imageNamed: "mirrorZoom")
         case "itemDetail":

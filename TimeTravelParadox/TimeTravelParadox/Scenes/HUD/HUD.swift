@@ -19,7 +19,7 @@ class HUD: SKNode, ToggleTravel{
     static var shared = HUD()
     
     private let hud = SKScene(fileNamed: "HUDScene")
-    private var travel: SKSpriteNode?
+     var travel: SKSpriteNode?
     private var qgButton: SKSpriteNode?
     private var fadeHUD: SKSpriteNode?
     

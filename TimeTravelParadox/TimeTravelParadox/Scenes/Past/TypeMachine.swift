@@ -7,7 +7,7 @@ class TypeMachine: SKNode {
   private var text: SKLabelNode?
   private var delete: SKSpriteNode?
   private var paper: SKSpriteNode?
-  private var paperComplete: SKSpriteNode?
+   var paperComplete: SKSpriteNode?
   private var trail: SKSpriteNode?
     
   private var keyNodes: [String: SKSpriteNode?] = [:]
@@ -18,10 +18,12 @@ class TypeMachine: SKNode {
   let dingSFX = SKAction.playSoundFileNamed("ding.wav", waitForCompletion: false)
   
   var delegate: ZoomProtocol?
+  var delegateDialogue: CallDialogue?
   var inventoryItemDelegate: InventoryItemDelegate?
   
-  init(delegate: ZoomProtocol) {
+    init(delegate: ZoomProtocol, delegateDialogue: CallDialogue) {
     self.delegate = delegate
+    self.delegateDialogue = delegateDialogue
     super.init()
     self.zPosition = 1
     if let past {
@@ -109,6 +111,7 @@ class TypeMachine: SKNode {
                   spriteNode?.isPaused = false
                   spriteNode?.run(dingSFX)
                   paper?.isHidden = true
+                    delegateDialogue?.dialogue(node: typeMachine, texture: SKTexture(imageNamed: "dialogueTypemachine"), ratio: 0.15, isHidden: false)
                   paperComplete?.isHidden = false
                   text?.isHidden = true
                     UserDefaultsManager.shared.takenPaper = true

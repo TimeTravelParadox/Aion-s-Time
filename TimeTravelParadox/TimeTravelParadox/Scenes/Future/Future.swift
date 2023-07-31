@@ -10,19 +10,22 @@ class Future: SKNode, InventoryItemDelegate {
   private var monitorEsquerda: SKSpriteNode?
   private var janela: SKSpriteNode?
   
+    
   var computer: Computer?
   var vault: Vault?
   var hologram: Hologram?
     
   var delegate: ZoomProtocol?
+  var delegateDialogue: CallDialogue?
   
-  init(delegate: ZoomProtocol, pastScene: Past){
+    init(delegate: ZoomProtocol, pastScene: Past, delegateDialogue: CallDialogue){
     super.init()
     self.delegate = delegate
+    self.delegateDialogue = delegateDialogue
     self.pastScene = pastScene
     self.computer = Computer(delegate: delegate)
     self.vault = Vault(delegate: delegate)
-    self.hologram = Hologram(delegate: delegate, delegateRemove: pastScene.clock!, delegateRemove2: vault!)
+        self.hologram = Hologram(delegate: delegate, delegateRemove: pastScene.clock!, delegateRemove2: vault!, delegateDialogue: delegateDialogue)
     vault?.setupCofre()
     vault?.zPosition()
     self.zPosition = 1

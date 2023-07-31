@@ -51,7 +51,6 @@ class Vault: SKNode, RemoveProtocol2 {
     peca2?.isHidden = true
     
     
-    
   }
   
   required init?(coder aDecoder: NSCoder) {

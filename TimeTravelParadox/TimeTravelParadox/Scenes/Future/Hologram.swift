@@ -10,13 +10,14 @@ class Hologram: SKNode {
   
   var monitorDireita: SKSpriteNode?
   var dialogueHologramStep = 0
-  var holograma1peca = false
+  var holograma1peca = false // bool de estado para colocar a segunda peça do holograma
   
   var delegateRemove: RemoveProtocol?
   var delegateRemove2: RemoveProtocol2?
   
   let hologramaAnimate =  SKAction.animate(with: [SKTexture(imageNamed: "cartazCompleto"), SKTexture(imageNamed: "cartaz1"), SKTexture(imageNamed: "cartaz2"), SKTexture(imageNamed: "cartaz3"), SKTexture(imageNamed: "cartaz4"), SKTexture(imageNamed: "cartaz5"), SKTexture(imageNamed: "cartaz6")], timePerFrame: 0.3)
   
+    // inicializador que adiciona os nós presentes no holograma e salva os progressos do userdefault
     init(delegate: ZoomProtocol, delegateRemove: RemoveProtocol, delegateRemove2: RemoveProtocol2, delegateDialogue: CallDialogue) {
     super.init()
     self.delegate = delegate
@@ -42,7 +43,7 @@ class Hologram: SKNode {
     }
     
     monitorDireita?.isPaused = false
-    startBlinkAnimation()
+    startBlinkAnimation() // animação do monitorDireita piscando para sempre
     
       if UserDefaultsManager.shared.hologramComplete1 == true {
           hologram?.run(.setTexture(SKTexture(imageNamed: "cartazComChip")))
@@ -100,18 +101,18 @@ class Hologram: SKNode {
     case "monitorDireita":
       delegate?.zoom(isZoom: true, node: hologram, ratio: 0.2)
     case "hologram":
-      
+        // colocar o segundo item no holograma
       if delegate?.didZoom == true && (HUD.shared.itemSelecionado == HUD.shared.peca1 || HUD.shared.itemSelecionado == HUD.shared.peca2) && holograma1peca && HUD.shared.itemSelecionado != nil{
         print("pecas completas colocada")
           hologram?.run(hologramaAnimate)
-        delegate?.didZoom = false
-        delegate?.zoom(isZoom: true, node: monitorDireita, ratio: 0.3)
-        GameScene.shared.hud.isHidden = true
-        GameScene.shared.invisible?.isHidden = false
-          self.run(SKAction.wait(forDuration: 2)){
-            GameScene.shared.invisible?.isHidden = true
+        delegate?.didZoom = false // setamos o didZoom para false para conseguir mudar o scale do zoom ao rodar a animação do holograma
+        delegate?.zoom(isZoom: true, node: monitorDireita, ratio: 0.3) // o zoom vai para o monitorDireita com ratio 0.3
+        GameScene.shared.hud.isHidden = true // esconde o inventário
+        GameScene.shared.invisible?.isHidden = false // tira o invisible do hidden para evitar algum clique na tela
+          self.run(SKAction.wait(forDuration: 2)){ // delay de 2s para rodar os comandos
+            GameScene.shared.invisible?.isHidden = true // deixa o invisible hidden para poder receber o clique na tela
               if self.dialogueHologramStep == 0{
-                  self.delegateDialogue?.dialogue(node: self.monitorDireita, texture: SKTexture(imageNamed: "dialogueHologram01"), ratio: 0.3, isHidden: false)
+                  self.delegateDialogue?.dialogue(node: self.monitorDireita, texture: SKTexture(imageNamed: "dialogueHologram01"), ratio: 0.3, isHidden: false) // chama o dialogo final na cena
                   self.dialogueHologramStep = 1
               }
           }
@@ -122,20 +123,23 @@ class Hologram: SKNode {
           UserDefaultsManager.shared.hologramComplete3 = true
           UserDefaultsManager.shared.theEnd = true
       }
+        // se caso colocar a peça do relogio primeiro no holograma
       if delegate?.didZoom == true && HUD.shared.itemSelecionado == HUD.shared.peca1 && !holograma1peca && HUD.shared.itemSelecionado != nil{
         print("peca1 colocada")
-        hologram?.run(.setTexture(SKTexture(imageNamed: "cartazComChip")))
+        hologram?.run(.setTexture(SKTexture(imageNamed: "cartazComChip"))) // muda textura para com holograma com apenas o chip colocada
         delegateRemove?.removePeca()
         holograma1peca = true
           UserDefaultsManager.shared.hologramComplete1 = true
       }
+        // se caso colocar a peça do cofre primeiro no holograma
       if delegate?.didZoom == true && HUD.shared.itemSelecionado == HUD.shared.peca2 && !holograma1peca && HUD.shared.itemSelecionado != nil{
         print("peca2 colocada")
-        hologram?.run(.setTexture(SKTexture(imageNamed: "cartazComPeca")))
+        hologram?.run(.setTexture(SKTexture(imageNamed: "cartazComPeca"))) // muda textura para com holograma com apenas a peca colocada
         delegateRemove2?.removePeca()
         holograma1peca = true
           UserDefaultsManager.shared.hologramComplete2 = true
       }
+        // deselecionar o item
       if let selectedItem = HUD.shared.itemSelecionado {
         HUD.shared.removeBorder(from: selectedItem)
       }
@@ -144,7 +148,7 @@ class Hologram: SKNode {
     default:
       return
     }
-    inventoryItemDelegate?.clearItemDetail()
+    inventoryItemDelegate?.clearItemDetail() // deselecionar os itens que dao zoom
   }
   
 }

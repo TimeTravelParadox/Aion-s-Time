@@ -49,6 +49,7 @@ class HUD: SKNode, ToggleTravel{
     reset?.isHidden = isHide
   }
     
+    // inicializador que adiciona os nodes presentes na HUD
     override init(){
         super.init()
         if let hud {
@@ -82,10 +83,11 @@ class HUD: SKNode, ToggleTravel{
         super.init(coder: aDecoder)
     }
     
+    // funcao que muda a estética ao selecionar o item
     func addBorder(to node: SKSpriteNode) {
         node.alpha = 0.5
     }
-    
+    // funcao que muda a estética ao deselecionar o item e deixa o itemSelecionado vazio
     func removeBorder(from node: SKSpriteNode) {
         HUD.shared.itemSelecionado = nil
         node.alpha = 1
@@ -99,28 +101,27 @@ class HUD: SKNode, ToggleTravel{
             node.position = newPosition
         }
     }
-    
+    // funcao que faz o inventario acompanhar na hora de dar zoomIn
     func reposiconarInvIn(ratio: CGFloat) {
         inventarioHUD?.size = CGSize(width: 260*ratio, height: 50*ratio)
         positionNodeRelativeToCamera(inventarioHUD!, offsetX: 0*ratio, offsetY: -135*ratio)
     }
-    
+    // funcao que faz o inventario acompanhar na hora de dar zoomOut
     func reposiconarInvOut() {
         inventarioHUD?.size = CGSize(width: 260, height: 50)
         inventarioHUD?.position = CGPoint(x: 0, y: -135)
     }
     
-    static func addOnInv(node: SKSpriteNode?){//inout é uma palavra-chave em Swift que permite que um parâmetro de função seja passado por referência.
+    static func addOnInv(node: SKSpriteNode?){
         let nodeName = node?.name ?? "" // Obtém o nome do nó
-        let maior = max((node?.size.width)!, (node?.size.height)!)
-        let widthMaior = maior == node?.size.width ? true : false
+        let maior = max((node?.size.width)!, (node?.size.height)!) // armazena o maior valor comparando o width e height
+        let widthMaior = maior == node?.size.width ? true : false // bool para identificar qual dos dois é maior
         
         if HUD.shared.inventario.contains(where: { $0.name == nodeName }) {
             return // Se já existir, retorna sem adicionar o nó novamente
         }
-        node?.zRotation = 0
-        if HUD.shared.delegate?.didZoom == false {
-            // padroniza o tamanho do node
+        node?.zRotation = 0 // padroniza o item sem rotação no inventário
+        if HUD.shared.delegate?.didZoom == false { // padroniza o tamanho do node no inventário sem distorção
             if widthMaior {
                 node?.size = CGSize(width: 25, height: (25*(node?.size.height)!)/(node?.size.width)!)
             }else{

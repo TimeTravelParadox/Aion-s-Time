@@ -36,13 +36,13 @@ class Fade: SKNode{
   func fade(camera: CGPoint) {
     
     let animateFade1 = SKAction.sequence([
-      SKAction.move(to: camera, duration: 0.2),
-      SKAction.move(to: CGPoint(x: 0, y: 195), duration: 0.2)
+      SKAction.move(to: camera, duration: 0.2), // move o fade de cima até a metade da câmera
+      SKAction.move(to: CGPoint(x: 0, y: 195), duration: 0.2) // volta o fade para o mesmo lugar
     ])
     
     let animateFade2 = SKAction.sequence([
-      SKAction.move(to: camera, duration: 0.2),
-      SKAction.move(to: CGPoint(x: 0, y: -195), duration: 0.2)
+      SKAction.move(to: camera, duration: 0.2), // move o fade de baixo até a metade da câmera
+      SKAction.move(to: CGPoint(x: 0, y: -195), duration: 0.2) // volta o fade para o mesmo lugar
     ])
     
     fade1?.isPaused = false

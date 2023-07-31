@@ -7,6 +7,7 @@
 
 import SpriteKit
 
+// classe para criar um botão com uma aparência de uma spritenode e labelnode e colocar a ação desse botão
 class SKButtonNodeLabel: SKNode {
   
     var imagem: SKSpriteNode?
@@ -23,32 +24,6 @@ class SKButtonNodeLabel: SKNode {
     
     self.addChild(imagem)
     self.addChild(label)
-    
-  }
-  
-  required init? (coder Decoder: NSCoder) {
-    super.init(coder: Decoder)
-  }
-  
-  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    self.action?()
-  }
-  
-}
-
-class SKButtonNodeImg: SKNode {
-  
-  var imagem : SKSpriteNode?
-  var action: (() -> Void)?
-  
-  init (imagem: SKSpriteNode, action: @escaping () -> Void) {
-    
-    self.imagem = imagem
-    self.action = action
-    super.init()
-    self.isUserInteractionEnabled = true
-    
-    self.addChild(imagem)
     
   }
   

@@ -27,6 +27,7 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
   
   private var dialogue: SKSpriteNode?
   private var textDialogue: SKLabelNode?
+    var invisible: SKSpriteNode?
   
   let zoomSound = SKAction.playSoundFileNamed("zoomSound", waitForCompletion: false)
   let travelingSFX = SKAction.playSoundFileNamed("traveling.mp3", waitForCompletion: true)
@@ -76,12 +77,12 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
         hud.reposiconarInvIn(ratio: ratio)
         for (index, item) in HUD.shared.inventario.enumerated() {
             let maior = max((item.size.width), (item.size.height))
-                        let widthMaior = maior == item.size.width ? true : false
-                        if widthMaior {
-                            item.size = CGSize(width: 25*GameScene.shared.ratio, height: (25*(item.size.height))/(item.size.width)*GameScene.shared.ratio)
-                        }else{
-                            item.size = CGSize(width: (25*(item.size.width))/(item.size.height)*GameScene.shared.ratio, height: 25*GameScene.shared.ratio)
-                        }
+            let widthMaior = maior == item.size.width ? true : false
+            if widthMaior {
+            item.size = CGSize(width: 25*GameScene.shared.ratio, height: (25*(item.size.height))/(item.size.width)*GameScene.shared.ratio)
+            }else{
+                item.size = CGSize(width: (25*(item.size.width))/(item.size.height)*GameScene.shared.ratio, height: 25*GameScene.shared.ratio)
+            }
           switch index {
           case 0:
             self.positionNodeRelativeToCamera(item, offsetX: -94*ratio, offsetY: -128.5*ratio)
@@ -118,12 +119,12 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
         hud.reposiconarInvOut()
         for (index, item) in HUD.shared.inventario.enumerated() {
             let maior = max((item.size.width), (item.size.height))
-                        let widthMaior = maior == item.size.width ? true : false
-                        if widthMaior {
-                            item.size = CGSize(width: 25, height: (25*(item.size.height))/(item.size.width))
-                        }else{
-                            item.size = CGSize(width: (25*(item.size.width))/(item.size.height), height: 25)
-                        }
+            let widthMaior = maior == item.size.width ? true : false
+            if widthMaior {
+                item.size = CGSize(width: 25, height: (25*(item.size.height))/(item.size.width))
+            }else{
+                item.size = CGSize(width: (25*(item.size.width))/(item.size.height), height: 25)
+            }
           switch index {
           case 0:
             self.positionNodeRelativeToCamera(item, offsetX: -94, offsetY: -128.5)
@@ -210,10 +211,14 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
   override func didMove(to view: SKView) {
     dialogue = self.childNode(withName: "dialogue") as? SKSpriteNode
     textDialogue = self.childNode(withName: "text") as? SKLabelNode
+      invisible = self.childNode(withName: "invisible") as? SKSpriteNode
     textDialogue?.color = .white
     dialogue?.isHidden = true
     textDialogue?.isHidden = true
-      
+      invisible?.isHidden = true
+      if invisible?.parent != nil {
+          invisible?.removeFromParent()
+      }
     
     self.past = Past(delegate: self, delegateDialogue: self)
     if let past {
@@ -281,6 +286,9 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
     
     addChild(hud)
     addChild(creditos)
+    if let invisible {
+        addChild(invisible)
+    }
     
     hud.zPosition = 14
     creditos.zPosition = 0
@@ -392,10 +400,11 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
         return
       }
       scene?.run(backToQGSFX)
+        invisible?.isHidden = false
       scene?.run(SKAction.wait(forDuration: 1.9)){
         
         self.hud.hideResetButton(isHide: true)
-        
+          self.invisible?.isHidden = true
         self.qg?.zPosition = 20
         self.past?.zPosition = 0
         self.future?.zPosition = 0
@@ -417,11 +426,12 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
       isTravelingSFXPlaying = true
       
       scene?.run(travelingSFX)
+        invisible?.isHidden = false
       scene?.run(SKAction.wait(forDuration: 1.9)) {
         if self.past?.zPosition ?? 0 > 0  {
           
           self.hud.hideResetButton(isHide: true)
-          
+            self.invisible?.isHidden = true
           self.past?.zPosition = 0
           self.qg?.zPosition = 0
           self.future?.zPosition = 10
@@ -435,7 +445,7 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
         } else {
           
           self.hud.hideResetButton(isHide: true)
-          
+            self.invisible?.isHidden = true
           self.qg?.zPosition = 0
           self.future?.zPosition = 0
           self.past?.zPosition = 10

@@ -25,7 +25,13 @@ protocol CallDialogue{
 
 func CasesPositions(node: SKSpriteNode?){
     for (index, item) in HUD.shared.inventario.enumerated() {
-      item.size = CGSize(width: 25, height: 25)
+        let maior = max((item.size.width), (item.size.height))
+        let widthMaior = maior == item.size.width ? true : false
+        if widthMaior {
+            item.size = CGSize(width: 25, height: (25*(item.size.height))/(item.size.width))
+        }else{
+            item.size = CGSize(width: (25*(item.size.width))/(item.size.height), height: 25)
+        }
       switch index {
       case 0:
           node?.position = CGPoint(x: -94, y: -128.5)

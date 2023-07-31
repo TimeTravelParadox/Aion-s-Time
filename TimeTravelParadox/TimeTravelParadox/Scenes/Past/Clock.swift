@@ -131,12 +131,17 @@ class Clock: SKNode, RemoveProtocol{
                 hourHand?.run(clockTickingSFX)
                 spin(hand: hourHand, degree: 30)
                 if minuteRotate == 60 && hourRotate == 150 {
+                    minuteRotate -= 60
+                    hourRotate -= 150
                     openClock(animating: true)
                 }
                 self.run(SKAction.wait(forDuration: 0.2)) {
                     self.canTapAgain = true
                 }
                 if dialogueClock && minuteRotate == 300 && hourRotate == 30{
+                    minuteRotate -= 300
+                    hourRotate -= 30
+
                     delegateDialogue?.dialogue(node: clock, texture: SKTexture(imageNamed: "dialogueClock"), ratio: 0.18, isHidden: false)
                     dialogueClock = false
                 }
@@ -150,12 +155,18 @@ class Clock: SKNode, RemoveProtocol{
                 minuteHand?.run(clockTickingSFX)
                 spin(hand: minuteHand, degree: 30)
                 if minuteRotate == 60 && hourRotate == 150 {
+                    minuteRotate -= 60
+                    hourRotate -= 150
+
                     openClock(animating: true)
                 }
                 self.run(SKAction.wait(forDuration: 0.2)) {
                     self.canTapAgain = true
                 }
                 if dialogueClock && minuteRotate == 300 && hourRotate == 30{
+                    minuteRotate -= 300
+                    hourRotate -= 30
+
                     delegateDialogue?.dialogue(node: clock, texture: SKTexture(imageNamed: "dialogueClock"), ratio: 0.18, isHidden: false)
                     dialogueClock = false
                 }

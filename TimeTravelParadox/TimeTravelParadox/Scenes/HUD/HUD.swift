@@ -1,20 +1,34 @@
 import SpriteKit
-//1- mofer item details da past pra ca
-//2- HUD ser avisado de eventos de zoom
-//3- toda vez que um zoom acontecer reposicionar o elemento pro meio da tela realativo ao no da camera
-//4-
-class HUD: SKNode{
+
+class HUD: SKNode, ToggleTravel{
+    func ativarTravel() {
+        travel?.alpha = 1
+        travel?.isUserInteractionEnabled = false
+        travel?.zPosition = 15
+
+    }
     
-    static let shared = HUD()
+    func desativarTravel() {
+        travel?.alpha = 0.5
+        travel?.isUserInteractionEnabled = true
+        travel?.zPosition = 15
+    }
+    
+    var delegateHUD: ToggleTravel?
+    
+    static var shared = HUD()
     
     private let hud = SKScene(fileNamed: "HUDScene")
-    private var travel: SKSpriteNode?
+     var travel: SKSpriteNode?
     private var qgButton: SKSpriteNode?
+    private var fadeHUD: SKSpriteNode?
     
     var inventarioHUD: SKSpriteNode?
     var inventario: [SKSpriteNode] = []
     var isSelected : Bool = false
     var itemSelecionado : SKSpriteNode?
+  
+  var reset: SKSpriteNode?
     
     var peca1: SKSpriteNode?
     var peca2: SKSpriteNode?
@@ -30,6 +44,10 @@ class HUD: SKNode{
         travel?.isHidden = isHide
         qgButton?.isHidden = isHide
     }
+  
+  func hideResetButton(isHide: Bool){
+    reset?.isHidden = isHide
+  }
     
     override init(){
         super.init()
@@ -41,13 +59,23 @@ class HUD: SKNode{
             
             inventarioHUD = hud.childNode(withName: "inventarioHUD") as? SKSpriteNode
             inventarioHUD?.removeFromParent()
-            //            self.isUserInteractionEnabled = true
+          
+          reset = hud.childNode(withName: "reset") as? SKSpriteNode
+          reset?.removeFromParent()
+            
+            fadeHUD = hud.childNode(withName: "fadeHUD") as? SKSpriteNode
+            fadeHUD?.removeFromParent()
+          
         }
-        if let travel, let qgButton, let inventarioHUD {
+        if let travel, let qgButton, let inventarioHUD, let reset, let fadeHUD {
             self.addChild(travel)
             self.addChild(qgButton)
             self.addChild(inventarioHUD)
+          self.addChild(reset)
+            self.addChild(fadeHUD)
         }
+        
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -55,30 +83,12 @@ class HUD: SKNode{
     }
     
     func addBorder(to node: SKSpriteNode) {
-        // Calcula o retângulo da borda com base no tamanho do sprite node
-        let borderRect = CGRect(x: -node.size.width/2, y: -node.size.height/2,
-                                width: node.size.width, height: node.size.height)
-        
-        // Cria um shape node com a forma de um retângulo
-        let borderNode = SKShapeNode(rect: borderRect)
-        
-        // Define as propriedades da borda
-        borderNode.strokeColor = .white
-        borderNode.lineWidth = 2 * GameScene.shared.ratio!
-        // Adiciona o shape node à cena
-        node.addChild(borderNode)
+        node.alpha = 0.5
     }
     
     func removeBorder(from node: SKSpriteNode) {
         HUD.shared.itemSelecionado = nil
-        // Percorre os nós filhos do sprite node
-        for childNode in node.children {
-            // Verifica se o nó filho é um shape node
-            if let shapeNode = childNode as? SKShapeNode {
-                // Remove o shape node da cena
-                shapeNode.removeFromParent()
-            }
-        }
+        node.alpha = 1
     }
     
     
@@ -91,56 +101,68 @@ class HUD: SKNode{
     }
     
     func reposiconarInvIn(ratio: CGFloat) {
-        inventarioHUD?.size = CGSize(width: 320*ratio, height: 50*ratio)
-        positionNodeRelativeToCamera(inventarioHUD!, offsetX: 80*ratio, offsetY: 145*ratio)
+        inventarioHUD?.size = CGSize(width: 260*ratio, height: 50*ratio)
+        positionNodeRelativeToCamera(inventarioHUD!, offsetX: 0*ratio, offsetY: -135*ratio)
     }
     
     func reposiconarInvOut() {
-        inventarioHUD?.size = CGSize(width: 320, height: 50)
-        inventarioHUD?.position = CGPoint(x: 80, y: 145)
+        inventarioHUD?.size = CGSize(width: 260, height: 50)
+        inventarioHUD?.position = CGPoint(x: 0, y: -135)
     }
     
     static func addOnInv(node: SKSpriteNode?){//inout é uma palavra-chave em Swift que permite que um parâmetro de função seja passado por referência.
         let nodeName = node?.name ?? "" // Obtém o nome do nó
+        let maior = max((node?.size.width)!, (node?.size.height)!)
+        let widthMaior = maior == node?.size.width ? true : false
+        
         if HUD.shared.inventario.contains(where: { $0.name == nodeName }) {
             return // Se já existir, retorna sem adicionar o nó novamente
         }
         node?.zRotation = 0
         if HUD.shared.delegate?.didZoom == false {
-            node?.size = CGSize(width: 30, height: 30) // padroniza o tamanho do node
+            // padroniza o tamanho do node
+            if widthMaior {
+                node?.size = CGSize(width: 25, height: (25*(node?.size.height)!)/(node?.size.width)!)
+            }else{
+                node?.size = CGSize(width: (25*(node?.size.width)!)/(node?.size.height)!, height: 25)
+            }
         }else{
-            node?.size = CGSize(width: 30*GameScene.shared.ratio!, height: 30*GameScene.shared.ratio!) // padroniza o tamanho do node
+            if widthMaior {
+                node?.size = CGSize(width: 25*GameScene.shared.ratio, height: (25*(node?.size.height)!)/(node?.size.width)!*GameScene.shared.ratio)
+            }else{
+                node?.size = CGSize(width: (25*(node?.size.width)!)/(node?.size.height)!*GameScene.shared.ratio, height: 25*GameScene.shared.ratio)
+            }
         }
         
         
         if HUD.shared.delegate?.didZoom == false {
             switch HUD.shared.inventario.count {       // posiciona o node de acordo com a quantidade e node dentro de inventario
             case 0:
-                node?.position = CGPoint(x: -50, y: 144)
+                node?.position = CGPoint(x: -94, y: -128.5)
             case 1:
-                node?.position = CGPoint(x: 0, y: 144)
+                node?.position = CGPoint(x: -47, y: -128.5)
             case 2:
-                node?.position = CGPoint(x: 50, y: 144)
+                node?.position = CGPoint(x: 0, y: -128.5)
             case 3:
-                node?.position = CGPoint(x: 100, y: 144)
+                node?.position = CGPoint(x: 47, y: -128.5)
             case 4:
-                node?.position = CGPoint(x: 150, y: 144)
+                node?.position = CGPoint(x: 94, y: -128.5)
             default:
                 return
             }
         }else{
-            print(GameScene.shared.ratio!)
+            print(GameScene.shared.ratio)
             switch HUD.shared.inventario.count {       // posiciona o node de acordo com a quantidade e node dentro de inventario
             case 0:
-                node?.position = CGPoint(x: (-50*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.x, y: (144*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.y)
+                node?.position = CGPoint(x: (-94*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (-128.5*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
             case 1:
-                node?.position = CGPoint(x: (0*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.x, y: (144*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.y)
+                node?.position = CGPoint(x: (-47*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (-128.5*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
             case 2:
-                node?.position = CGPoint(x: (50*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.x, y: (144*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.y)
+                node?.position = CGPoint(x: (0*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (-128.5*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
             case 3:
-                node?.position = CGPoint(x: (100*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.x, y: (144*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.y)
+                node?.position = CGPoint(x: (47*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (-128.5*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
             case 4:
-                node?.position = CGPoint(x: (150*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.x, y: (144*GameScene.shared.ratio!) + GameScene.shared.cameraPosition.y)
+                node?.position = CGPoint(x: (94*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (-128.5*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
             default:
                 return
             }

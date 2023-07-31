@@ -23,6 +23,8 @@ class Computer: SKNode {
   private var enigma: SKSpriteNode?
   private var voltar: SKSpriteNode?
   
+  var inventoryItemDelegate: InventoryItemDelegate?
+  
   private var quadrado: SKSpriteNode?
   
   init(delegate: ZoomProtocol) {
@@ -78,7 +80,7 @@ class Computer: SKNode {
         voltar?.zPosition = -2
         enigma?.zPosition = -2
       } else {
-       
+        
         fundoVerde?.zPosition = 2
         pasta1?.zPosition = -2
         pasta2?.zPosition = -2
@@ -137,7 +139,7 @@ class Computer: SKNode {
     default:
       return
     }
-    
+    inventoryItemDelegate?.clearItemDetail()
   }
   
 }

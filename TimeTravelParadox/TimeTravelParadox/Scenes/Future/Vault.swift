@@ -7,9 +7,8 @@
 
 import SpriteKit
 
-var peca1OUT = false
-
-class Vault: SKNode {
+class Vault: SKNode, RemoveProtocol2 {
+  
   let future = SKScene(fileNamed: "FutureScene")
   
   var delegate: ZoomProtocol?
@@ -19,15 +18,16 @@ class Vault: SKNode {
   private var nums: [Int] = [0, 0, 0]
   private var labels: [SKLabelNode] = []
   private var buttonsCofre: [SKButtonNodeLabel] = []
-    
-    var peca2: SKSpriteNode?
-    var peca2Taken = false
   
-  let vaultOpening =  SKAction.animate(with: [SKTexture(imageNamed: "cofre0"), SKTexture(imageNamed: "cofre1"), SKTexture(imageNamed: "cofre2"), SKTexture(imageNamed: "cofre3"), SKTexture(imageNamed: "cofre4"), SKTexture(imageNamed: "cofre5"), SKTexture(imageNamed: "cofre6"),  SKTexture(imageNamed: "cofre7"),  SKTexture(imageNamed: "cofre8"),  SKTexture(imageNamed: "cofre9"),  SKTexture(imageNamed: "cofre10"),  SKTexture(imageNamed: "cofre11"),  SKTexture(imageNamed: "cofre12")],  timePerFrame: 0.4)
-    
-    let vaultOpeningSound = SKAction.playSoundFileNamed("cofreAbrindo", waitForCompletion: true)
-
-    let vaultChoose = SKAction.playSoundFileNamed("escolhaDaSenha", waitForCompletion: false)
+  var peca2: SKSpriteNode?
+  
+  var inventoryItemDelegate: InventoryItemDelegate?
+  
+  let vaultOpening =  SKAction.animate(with: [SKTexture(imageNamed: "cofre0"), SKTexture(imageNamed: "cofre1"), SKTexture(imageNamed: "cofre2"), SKTexture(imageNamed: "cofre3"), SKTexture(imageNamed: "cofre4"), SKTexture(imageNamed: "cofre5"), SKTexture(imageNamed: "cofre6"),  SKTexture(imageNamed: "cofre7"),  SKTexture(imageNamed: "cofre8"),  SKTexture(imageNamed: "cofre9"),  SKTexture(imageNamed: "cofre10"),  SKTexture(imageNamed: "cofre11")],  timePerFrame: 0.1)
+  
+  let vaultOpeningSound = SKAction.playSoundFileNamed("cofreAbrindo", waitForCompletion: true)
+  
+  let vaultChoose = SKAction.playSoundFileNamed("escolhaDaSenha", waitForCompletion: false)
   
   init(delegate: ZoomProtocol) {
     super.init()
@@ -37,23 +37,28 @@ class Vault: SKNode {
     if let future {
       vault = future.childNode(withName: "cofre") as? SKSpriteNode
       vault?.removeFromParent()
-        peca2 = future.childNode(withName: "peca2") as? SKSpriteNode
-        peca2?.removeFromParent()
+      peca2 = future.childNode(withName: "peca2") as? SKSpriteNode
+      peca2?.removeFromParent()
       
       self.isUserInteractionEnabled = true
     }
     
     if let vault, let peca2 {
       self.addChild(vault)
-        self.addChild(peca2)
+      self.addChild(peca2)
     }
-      
-      peca2?.isHidden = true
+    
+    peca2?.isHidden = true
+    
     
   }
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+  
+  func removePeca() {
+    peca2?.removeFromParent()
   }
   
   func updateLabel() {
@@ -62,20 +67,18 @@ class Vault: SKNode {
     }
     
     if nums[0] == 1 && nums[1] == 5 && nums[2] == 3 {
-        
+      
       vault?.isPaused = false
       vault?.run(vaultOpening)
-        vault?.run(vaultOpeningSound)
-      self.run(SKAction.wait(forDuration: 4.5)){
+      vault?.run(vaultOpeningSound)
+      self.run(SKAction.wait(forDuration: 1)){
         self.peca2?.isHidden = false
       }
       
-      // Remover os botões da cena
-      for child in self.children {
-        if let button = child as? SKButtonNodeLabel {
-          button.removeFromParent()
-        }
+      for child in buttonsCofre {
+        child.removeFromParent()
       }
+      
     }
   }
   
@@ -83,24 +86,23 @@ class Vault: SKNode {
     
     for i in 0..<nums.count {
       let label = SKLabelNode(text: "\(nums[i])")
-      label.fontName = "SpecialElite-Regular"
       label.fontSize = 40
-      label.setScale(0.110)
+      label.setScale(0.2)
       label.fontColor = .blue
+      label.fontName = "Orbitron-Regular"
       labels.append(label)
-      
       
       let button = SKButtonNodeLabel(label: label) {
         
         if self.delegate?.didZoom == true {
           print("Você clicou no numero \(i)")
           self.nums[i] += 1
-            label.isPaused = false
-            label.run(self.vaultChoose)
-          //label.name = "label"
+          label.isPaused = false
+          label.run(self.vaultChoose)
           
           if self.nums[i] > 9 {
             self.nums[i] = 0
+            
           }
           self.updateLabel()
         }
@@ -109,17 +111,25 @@ class Vault: SKNode {
       
       switch i {
       case 0:
-        button.position = CGPoint(x: 234.5, y: 63)
+        button.position = CGPoint(x: 239, y: 80)
       case 1:
-        button.position = CGPoint(x: 243, y: 63)
+        button.position = CGPoint(x: 250, y: 68.5)
       case 2:
-        button.position = CGPoint(x: 251, y: 63)
+        button.position = CGPoint(x: 239, y: 56.5)
       default:
         return
       }
-      buttonsCofre.append(button)
-      self.addChild(button)
-      
+      if UserDefaultsManager.shared.takenChip == true {
+        vault?.isPaused = false
+        vault!.texture = SKTexture(imageNamed: "cofre11")
+        peca2?.isHidden = false
+        HUD.addOnInv(node: peca2)
+        CasesPositions(node: peca2)
+        
+      } else {
+        buttonsCofre.append(button)
+        self.addChild(buttonsCofre[i])
+      }
     }
   }
   
@@ -128,10 +138,6 @@ class Vault: SKNode {
       button.zPosition = 2
     }
   }
-    
-    func removerPeca2(){
-        peca2?.removeFromParent()
-    }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     
@@ -142,33 +148,25 @@ class Vault: SKNode {
     
     switch tapped.name {
     case "peca2":
-        if !peca2Taken {
-            HUD.addOnInv(node: peca2)
-            peca2Taken = true
-        }else{
-            if let itemSelecionado = HUD.shared.itemSelecionado {
-                HUD.shared.removeBorder(from: itemSelecionado)
-            }
-            HUD.shared.addBorder(to: peca2!)
-            HUD.shared.itemSelecionado = peca2
-            HUD.shared.isSelected = true
-            HUD.shared.peca2 = peca2
-        }
+      if !UserDefaultsManager.shared.takenChip {
+        HUD.addOnInv(node: peca2)
+        UserDefaultsManager.shared.takenChip = true
         
+      }else{
+        if let itemSelecionado = HUD.shared.itemSelecionado {
+          HUD.shared.removeBorder(from: itemSelecionado)
+        }
+        HUD.shared.addBorder(to: peca2!)
+        HUD.shared.itemSelecionado = peca2
+        HUD.shared.isSelected = true
+        HUD.shared.peca2 = peca2
+      }
+      
     case "cofre":
       delegate?.zoom(isZoom: true, node: vault, ratio: 0.3)
       
       if delegate?.didZoom == true {
-        for (_, button) in buttonsCofre.enumerated() {
-          button.zPosition = 2
-        }
-      } else {
-        delegate?.zoom(isZoom: true, node: vault, ratio: 0.3)
-      }
-      
-    case "label":
-      if delegate?.didZoom == true {
-        
+        zPosition()
       } else {
         delegate?.zoom(isZoom: true, node: vault, ratio: 0.3)
       }
@@ -176,7 +174,7 @@ class Vault: SKNode {
     default:
       return
     }
-    
+    inventoryItemDelegate?.clearItemDetail()
   }
   
 }

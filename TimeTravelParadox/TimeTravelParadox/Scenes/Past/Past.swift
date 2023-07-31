@@ -9,23 +9,29 @@ class Past: SKNode, InventoryItemDelegate {
     var clock: Clock?
     var typeMachine: TypeMachine?
     var shelf: Shelf?
-    var hiddenPolaroid: Shelf?
     var table: SKSpriteNode?
-    var itemDetail: ItemDetail?
     private let past = SKScene(fileNamed: "PastScene")
     private var pastBG: SKSpriteNode?
     private var flame: SKSpriteNode?
-     var light: SKLightNode?
+    private var fireplace: SKSpriteNode?
+    private var fadeflame: SKSpriteNode?
+    private var mirror: SKSpriteNode?
+    var light: SKLightNode?
+    var lamp: SKSpriteNode?
+    var lightLamp: SKLightNode?
     
-    private let crumpledPaper = SKSpriteNode(imageNamed: "crumpledPaper")
-    private let paper = SKSpriteNode(imageNamed: "paper")
-    private var takenPaper: Bool = false
+    var dialogueMirror = true
+    
+     lazy var paper: Paper = Paper(parentNode: self)
     
     var delegate: ZoomProtocol?
+    var delegateDialogue: CallDialogue?
+    
+
     
     let flaming =  SKAction.repeatForever(SKAction.animate(with: [SKTexture(imageNamed: "flame1"), SKTexture(imageNamed: "flame2"), SKTexture(imageNamed: "flame3"), SKTexture(imageNamed: "flame4"), SKTexture(imageNamed: "flame5")], timePerFrame: 0.16))
     let sizzleSFX = SKAction.playSoundFileNamed("sizzle.mp3", waitForCompletion: true)
-
+    
     var minuteRotate: CGFloat = 0 // variável para saber o grau dos minutos
     var hourRotate: CGFloat = 0 // variável para saber o grau das horas
     
@@ -35,38 +41,55 @@ class Past: SKNode, InventoryItemDelegate {
         pastBG?.run(SKAction.rotate(byAngle: -.pi/6, duration: 0.2))
     }
     
-    init(delegate: ZoomProtocol) {
+    init(delegate: ZoomProtocol, delegateDialogue: CallDialogue) {
         self.delegate = delegate
+        self.delegateDialogue = delegateDialogue
         //fazer o mesmo abaixo
         self.table = past?.childNode(withName: "table") as? SKSpriteNode
-        self.clock = Clock(delegate: delegate)
-        self.typeMachine = TypeMachine(delegate: delegate)
-        self.shelf = Shelf(delegate: delegate)
-        self.hiddenPolaroid = Shelf(delegate: delegate)
+        self.clock = Clock(delegate: delegate, delegateDialogue: delegateDialogue)
+        self.typeMachine = TypeMachine(delegate: delegate, delegateDialogue: delegateDialogue)
+        self.shelf = Shelf(delegate: delegate, delegateDialogue: delegateDialogue)
+        
         
         super.init()
         
         shelf?.inventoryItemDelegate = self
-        hiddenPolaroid?.inventoryItemDelegate = self
         clock?.inventoryItemDelegate = self
         typeMachine?.inventoryItemDelegate = self
+        paper.inventoryItemDelegate = self
         
         self.zPosition = 1
-        if let past, let clock, let typeMachine, let shelf, let hiddenPolaroid{
+        if let past, let clock, let typeMachine, let shelf {
             pastBG = (past.childNode(withName: "pastBG") as? SKSpriteNode)
             pastBG?.removeFromParent()
             flame = (past.childNode(withName: "flame") as? SKSpriteNode)
             flame?.removeFromParent()
+            fireplace = (past.childNode(withName: "fireplace") as? SKSpriteNode)
+            fireplace?.removeFromParent()
+            fadeflame = (past.childNode(withName: "fadeflame") as? SKSpriteNode)
+            fadeflame?.removeFromParent()
             light = (past.childNode(withName: "light") as? SKLightNode)
             light?.removeFromParent()
+            lightLamp = (past.childNode(withName: "lightLamp") as? SKLightNode)
+            lightLamp?.removeFromParent()
+            mirror = (past.childNode(withName: "mirror") as? SKSpriteNode)
+            mirror?.removeFromParent()
+            lamp = (past.childNode(withName: "lamp") as? SKSpriteNode)
+            lamp?.removeFromParent()
             
             self.isUserInteractionEnabled = true
             
-            if let pastBG, let flame, let light{
+            if let pastBG, let flame, let light, let fireplace, let fadeflame, let mirror, let lamp, let lightLamp{
                 self.addChild(pastBG)
                 self.addChild(flame)
                 self.addChild(light)
+                self.addChild(fireplace)
+                self.addChild(fadeflame)
+                self.addChild(mirror)
+                self.addChild(lamp)
+                self.addChild(lightLamp)
             }
+            
             flame?.isPaused = false
             flame?.run(flaming)
             self.isPaused = false
@@ -78,23 +101,32 @@ class Past: SKNode, InventoryItemDelegate {
             typeMachine.delegate = delegate
             self.addChild(shelf)
             shelf.delegate = delegate
-            self.addChild(hiddenPolaroid)
-            hiddenPolaroid.delegate = delegate
             flame?.lightingBitMask = 1
             self.removeAction(forKey: "futureST")
         }
         
+//        pastBG?.size = CGSize(width: 844, height: 420)
+//        pastBG?.position = CGPoint(x: 0, y: 0)
+        
         self.addChild(drawer1.spriteNode)
         self.addChild(drawer2.spriteNode)
         self.addChild(drawer3.spriteNode)
-        crumpledPaper.name = "crumpledPaper"
+        
+        
         light?.categoryBitMask = 1 // Identificador para a luz (você pode usar outros números de acordo com suas necessidades)
         light?.falloff = 1
         light?.ambientColor = .orange
         light?.lightColor = .orange
         light?.shadowColor = UIColor(white: 0, alpha: 0.5)
         light?.isHidden = true
-
+        fadeflame?.alpha = 0.5
+        
+        lightLamp?.categoryBitMask = 1 // Identificador para a luz (você pode usar outros números de acordo com suas necessidades)
+        lightLamp?.falloff = 1
+        lightLamp?.ambientColor = .orange
+        lightLamp?.lightColor = .orange
+        lightLamp?.shadowColor = UIColor(white: 0, alpha: 1)
+        lightLamp?.isHidden = true
         if let table {
             table.removeFromParent()
             self.addChild(table)
@@ -114,6 +146,7 @@ class Past: SKNode, InventoryItemDelegate {
         
         switch tapped.name {
         case "pastBG":
+//            delegateDialogue?.dialogue(node: pastBG, texture: SKTexture(imageNamed: ""), ratio: 1, isHidden: true, nodeInteraction: past)
             delegate?.zoom(isZoom: false, node: pastBG, ratio: 0)
             print("plano de fundo")
             // Deselecionar o item
@@ -122,9 +155,12 @@ class Past: SKNode, InventoryItemDelegate {
                     HUD.shared.removeBorder(from: HUD.shared.itemSelecionado!)
                 }
             }
+            mirror?.texture = SKTexture(imageNamed: "mirror")
+            delegateDialogue?.dialogue(node: pastBG, texture: SKTexture(imageNamed: ""), ratio: 1, isHidden: true)
         case "flame":
             flame?.run(sizzleSFX)
         case "table":
+            delegate?.zoom(isZoom: true, node: table, ratio: 0.4)
             print("mesa")
         case "smallerDrawer1":
             verification(drawer: drawer1, tapped: tapped)
@@ -135,12 +171,15 @@ class Past: SKNode, InventoryItemDelegate {
         case "smallerDrawer2":
             verification(drawer: drawer3, tapped: tapped)
             print("smallerDrawer2")
-        case "crumpledPaper":
-            HUD.addOnInv(node: crumpledPaper)
-            takenPaper = true
-            print("crumpledpapper")
+        case "mirror":
+            if dialogueMirror{
+                delegateDialogue?.dialogue(node: mirror, texture: SKTexture(imageNamed: "dialogueMirror"), ratio: 0.3, isHidden: false)
+                dialogueMirror = false
+            }
+            delegate?.zoom(isZoom: true, node: mirror, ratio: 0.3)
+            mirror?.texture = SKTexture(imageNamed: "mirrorZoom")
         case "itemDetail":
-            itemDetail?.interact()
+            GameScene.shared.itemDetail?.interact()
             return
         default:
             break
@@ -150,8 +189,8 @@ class Past: SKNode, InventoryItemDelegate {
     }
     //  implementando delegate
     func clearItemDetail() {
-        itemDetail?.removeFromParent()
-        itemDetail = nil
+        GameScene.shared.itemDetail?.removeFromParent()
+        GameScene.shared.itemDetail = nil
     }
     
     private func positionCrumpledPaper(drawer: Drawer) {
@@ -163,8 +202,8 @@ class Past: SKNode, InventoryItemDelegate {
         let absolutePosition = drawer.spriteNode.convert(relativePosition, to: self)
         
         
-        crumpledPaper.position = absolutePosition
-        crumpledPaper.zPosition = 3
+        paper.position = absolutePosition
+        paper.zPosition = 3
     }
     
     
@@ -174,32 +213,37 @@ class Past: SKNode, InventoryItemDelegate {
                 guard let self else {
                     return
                 }
-                guard takenPaper == false else {
-                    return
-                }
-                if drawer.isOpened == true {
-                    if drawer.drawerSize == .large { // Verifica se a gaveta é a largerOpenDrawer
-                        
-                        self.addChild(self.crumpledPaper)
-                        self.positionCrumpledPaper(drawer: drawer)
+                
+                switch paper.mode {
+                case .onDrawer:
+                    if drawer.isOpened == true {
+                        if drawer.drawerSize == .large { // Verifica se a gaveta é a largerOpenDrawer
+                            
+                            self.addChild(self.paper)
+                            self.positionCrumpledPaper(drawer: drawer)
+                        }
+                    } else {
+                        if drawer.drawerSize == .large { // Verifica se a gaveta é a largerOpenDrawer
+                            self.paper.removeFromParent()
+                        }
                     }
-                } else {
-                    if drawer.drawerSize == .large { // Verifica se a gaveta é a largerOpenDrawer
-                        self.crumpledPaper.removeFromParent()
-                    }
+                case .onInv:
+                    break //sai do switch
                 }
+                
             })
         } else {
-            delegate?.zoom(isZoom: true, node: table, ratio: 0.5)
+            delegate?.zoom(isZoom: true, node: table, ratio: 0.4)
         }
     }
     
     func select(node: SKSpriteNode) {
-        guard itemDetail == nil else {
+        guard GameScene.shared.itemDetail == nil else {
             return
         }
-        itemDetail = ItemDetail(item: node)
-        itemDetail?.position = CGPoint(x: GameScene.shared.cameraPosition.x, y: GameScene.shared.cameraPosition.y)
-        addChild(itemDetail!)
+        GameScene.shared.itemDetail = ItemDetail(item: node)
+        GameScene.shared.itemDetail?.position = CGPoint(x: GameScene.shared.cameraPosition.x, y: GameScene.shared.cameraPosition.y)
+        addChild(GameScene.shared.itemDetail!)
+        GameScene.shared.itemDetail?.isHidden = false
     }
 }

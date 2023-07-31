@@ -1,26 +1,31 @@
 import SpriteKit
 
-class Future: SKNode{
-
+class Future: SKNode, InventoryItemDelegate {
+  
+  var pastScene: Past?
+  
   private let futureScene = SKScene(fileNamed: "FutureScene")
   private var futureBG: SKSpriteNode?
   private var mesa: SKSpriteNode?
   private var monitorEsquerda: SKSpriteNode?
+  private var janela: SKSpriteNode?
   
+    
   var computer: Computer?
   var vault: Vault?
   var hologram: Hologram?
- 
-  let futureST = SKAction.repeatForever(SKAction.playSoundFileNamed("futureST.mp3", waitForCompletion: true))
-  
+    
   var delegate: ZoomProtocol?
+  var delegateDialogue: CallDialogue?
   
-  init(delegate: ZoomProtocol){
+    init(delegate: ZoomProtocol, pastScene: Past, delegateDialogue: CallDialogue){
     super.init()
     self.delegate = delegate
+    self.delegateDialogue = delegateDialogue
+    self.pastScene = pastScene
     self.computer = Computer(delegate: delegate)
     self.vault = Vault(delegate: delegate)
-    self.hologram = Hologram(delegate: delegate)
+        self.hologram = Hologram(delegate: delegate, delegateRemove: pastScene.clock!, delegateRemove2: vault!, delegateDialogue: delegateDialogue)
     vault?.setupCofre()
     vault?.zPosition()
     self.zPosition = 1
@@ -32,15 +37,20 @@ class Future: SKNode{
       mesa?.removeFromParent()
       monitorEsquerda = futureScene.childNode(withName: "monitorEsquerda") as? SKSpriteNode
       monitorEsquerda?.removeFromParent()
+      janela = futureScene.childNode(withName: "janela") as? SKSpriteNode
+      janela?.removeFromParent()
       
       self.isUserInteractionEnabled = true
- 
-      if let futureBG, let mesa, let monitorEsquerda{
+      
+      if let futureBG, let mesa, let monitorEsquerda, let janela{
         self.addChild(mesa)
         self.addChild(monitorEsquerda)
         self.addChild(futureBG)
+        self.addChild(janela)
       }
-      
+        
+//        futureBG?.setScale(0.9)
+        
       self.addChild(computer)
       computer.delegate = delegate
       self.addChild(vault)
@@ -48,6 +58,9 @@ class Future: SKNode{
       self.addChild(hologram)
       hologram.delegate = delegate
       
+      computer.inventoryItemDelegate = self
+      vault.inventoryItemDelegate = self
+      hologram.inventoryItemDelegate = self
     }
     
   }
@@ -66,35 +79,48 @@ class Future: SKNode{
     case "futureBG":
       delegate?.zoom(isZoom: false, node: futureBG, ratio: 0)
       print("futuro plano de fundo")
-        // Deselecionar o item
-        if HUD.shared.isSelected {
-            if HUD.shared.itemSelecionado != nil {
-                HUD.shared.removeBorder(from: HUD.shared.itemSelecionado!)
-            }
+      // Deselecionar o item
+      if HUD.shared.isSelected {
+        if HUD.shared.itemSelecionado != nil {
+          HUD.shared.removeBorder(from: HUD.shared.itemSelecionado!)
         }
-      
+      }
+    case "itemDetail":
+      GameScene.shared.itemDetail?.interact()
+      return
     case "mesaFuturo":
       delegate?.zoom(isZoom: false, node: futureBG, ratio: 0)
       print("futuro plano de fundo")
-        // Deselecionar o item
-        if HUD.shared.isSelected {
-            if HUD.shared.itemSelecionado != nil {
-                HUD.shared.removeBorder(from: HUD.shared.itemSelecionado!)
-            }
-        }
     case "monitorEsquerda":
       delegate?.zoom(isZoom: false, node: futureBG, ratio: 0)
       print("futuro plano de fundo")
-        // Deselecionar o item
-        if HUD.shared.isSelected {
-            if HUD.shared.itemSelecionado != nil {
-                HUD.shared.removeBorder(from: HUD.shared.itemSelecionado!)
-            }
+    case "janela":
+      delegate?.zoom(isZoom: false, node: futureBG, ratio: 0)
+      print("futuro plano de fundo")
+      // Deselecionar o item
+      if HUD.shared.isSelected {
+        if HUD.shared.itemSelecionado != nil {
+          HUD.shared.removeBorder(from: HUD.shared.itemSelecionado!)
         }
+      }
     default:
-      return
+      break
     }
+    clearItemDetail()
   }
   
   
+  func clearItemDetail() {
+    GameScene.shared.itemDetail?.removeFromParent()
+    GameScene.shared.itemDetail = nil
+  }
+  
+  func select(node: SKSpriteNode) {
+    guard GameScene.shared.itemDetail == nil else {
+      return
+    }
+    GameScene.shared.itemDetail = ItemDetail(item: node)
+    GameScene.shared.itemDetail?.position = CGPoint(x: GameScene.shared.cameraPosition.x, y: GameScene.shared.cameraPosition.y)
+    addChild(GameScene.shared.itemDetail!)
+  }
 }

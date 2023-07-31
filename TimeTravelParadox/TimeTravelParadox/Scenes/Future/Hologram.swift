@@ -106,6 +106,7 @@ class Hologram: SKNode {
           hologram?.run(hologramaAnimate)
         delegate?.didZoom = false
         delegate?.zoom(isZoom: true, node: monitorDireita, ratio: 0.3)
+        GameScene.shared.hud.isHidden = true
         GameScene.shared.invisible?.isHidden = false
           self.run(SKAction.wait(forDuration: 2)){
             GameScene.shared.invisible?.isHidden = true

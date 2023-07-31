@@ -139,6 +139,8 @@ class Computer: SKNode {
     default:
       return
     }
+    
+    // chamada da funcao que permite ao estar em zoom de um node clicar na polaroid, e nos dois papeis e faze-los aparecer no meio da tela
     inventoryItemDelegate?.clearItemDetail()
   }
   

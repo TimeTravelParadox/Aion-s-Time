@@ -21,6 +21,7 @@ class SKButtonNodeLabel: SKNode {
     super.init()
     self.isUserInteractionEnabled = true
     
+    self.addChild(imagem)
     self.addChild(label)
     
   }

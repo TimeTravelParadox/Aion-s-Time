@@ -93,10 +93,9 @@ class Vault: SKNode, RemoveProtocol2 {
       labels.append(label)
         
         let imagem = SKSpriteNode()
-//        imagem.alpha = 1
-        imagem.zPosition = 3
-        imagem.color = .red
+        imagem.alpha = 0.001
         imagem.size = CGSize(width: 15, height: 15)
+        imagem.position.y += 2
       
         let button = SKButtonNodeLabel(imagem: imagem, label: label) {
         

@@ -1,10 +1,3 @@
-//
-//  Hologram.swift
-//  TimeTravelParadox
-//
-//  Created by Victor Hugo Pacheco Araujo on 18/07/23.
-//
-
 import SpriteKit
 
 class Hologram: SKNode {
@@ -122,6 +115,7 @@ class Hologram: SKNode {
         delegateRemove?.removePeca()
         delegateRemove2?.removePeca()
           UserDefaultsManager.shared.hologramComplete3 = true
+          UserDefaultsManager.shared.theEnd = true
       }
       if delegate?.didZoom == true && HUD.shared.itemSelecionado == HUD.shared.peca1 && !holograma1peca && HUD.shared.itemSelecionado != nil{
         print("peca1 colocada")

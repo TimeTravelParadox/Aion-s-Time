@@ -1,7 +1,7 @@
 import SpriteKit
 import AVFoundation
 
-class GameScene: SKScene, ZoomProtocol, CallDialogue{  
+class GameScene: SKScene, ZoomProtocol, CallDialogue{
   static var shared = GameScene()
   
   var past: Past?
@@ -275,10 +275,24 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
     hud.hideQGButton(isHide: true)
     hud.hideResetButton(isHide: true)
     
+    if UserDefaultsManager.shared.theEnd == true {
+      creditos.zPosition = 21
+      creditos.setScale(0.9)
+      past?.zPosition = 0
+      qg?.zPosition = 0
+      future?.zPosition = 0
+      hud.hideQGButton(isHide: true)
+      hud.hideTravelQG(isHide: true)
+      audioPlayerQGST?.pause()
+      audioPlayerPastST?.pause()
+      audioPlayerFutureST?.pause()
+      past?.light?.isHidden = true
+      
+      hud.hideResetButton(isHide: false)
+    }
+    
   }
-  
 
-  
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     guard let touch = touches.first else { return } // se nao estiver em toque acaba aqui
     let location = touch.location(in: self)
@@ -322,7 +336,7 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
             future?.hologram?.dialogueHologramStep = 3
         }else if future?.hologram?.dialogueHologramStep == 3{
 
-            UserDefaultsManager.shared.hologramComplete3 = true
+//            UserDefaultsManager.shared.hologramComplete3 = true
             
             zoom(isZoom: false, node: future?.hologram?.hologram, ratio: 0)
             

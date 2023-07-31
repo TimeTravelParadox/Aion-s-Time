@@ -115,6 +115,7 @@ class Hologram: SKNode {
           UserDefaultsManager.shared.hologramComplete3 = true
         
         scene?.run(SKAction.wait(forDuration: 5)){
+            UserDefaultsManager.shared.theEnd = true
           self.delegate?.zoom(isZoom: false, node: self.hologram, ratio: 0)
             GameScene.shared.invisible?.isHidden = true
           GameScene.shared.creditos.zPosition = 21

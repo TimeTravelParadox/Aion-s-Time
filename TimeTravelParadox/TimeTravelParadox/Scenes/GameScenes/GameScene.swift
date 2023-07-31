@@ -244,6 +244,21 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
     hud.hideQGButton(isHide: true)
     hud.hideResetButton(isHide: true)
     
+      if UserDefaultsManager.shared.theEnd == true {
+          GameScene.shared.creditos.zPosition = 21
+          GameScene.shared.creditos.setScale(0.9)
+          GameScene.shared.past?.zPosition = 0
+          GameScene.shared.qg?.zPosition = 0
+          GameScene.shared.future?.zPosition = 0
+          GameScene.shared.hud.hideQGButton(isHide: true)
+          GameScene.shared.hud.hideTravelQG(isHide: true)
+          GameScene.shared.audioPlayerQGST?.pause()
+          GameScene.shared.audioPlayerPastST?.pause()
+          GameScene.shared.audioPlayerFutureST?.pause()
+          GameScene.shared.past?.light?.isHidden = true
+          
+          GameScene.shared.hud.hideResetButton(isHide: false)
+      }
   }
   
   func dialogue(text: String, call: Bool){

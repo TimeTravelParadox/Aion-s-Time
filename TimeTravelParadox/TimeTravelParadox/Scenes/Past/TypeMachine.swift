@@ -15,7 +15,7 @@ class TypeMachine: SKNode {
   
   let typingSFX = SKAction.playSoundFileNamed("typing.mp3", waitForCompletion: false)
   let deletingSFX = SKAction.playSoundFileNamed("deleting.mp3", waitForCompletion: false)
-  let dingSFX = SKAction.playSoundFileNamed("ding.wav", waitForCompletion: false)
+  let dingSFX = SKAction.playSoundFileNamed("ding.mp3", waitForCompletion: false)
   
   var delegate: ZoomProtocol?
   var delegateDialogue: CallDialogue?

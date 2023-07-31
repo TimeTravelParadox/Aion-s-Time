@@ -243,7 +243,7 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
       }
     }
       //play()
-    audioPlayerQGST?.pause() // toca a música assim que inicia
+    audioPlayerQGST?.play() // toca a música assim que inicia
     fadeInAudioPlayer(audioPlayerQGST)
     
     self.future = Future(delegate: self, pastScene: past!, delegateDialogue: self)
@@ -389,7 +389,7 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
         self.future?.zPosition = 0
         self.hud.hideQGButton(isHide: true)
         self.fadeInAudioPlayer(self.audioPlayerQGST)
-        self.audioPlayerQGST?.pause() //play()
+        self.audioPlayerQGST?.play() //play()
         self.audioPlayerPastST?.pause()
         self.audioPlayerFutureST?.pause()
         self.past?.light?.isHidden = true
@@ -417,7 +417,7 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
           self.audioPlayerQGST?.pause()
           self.audioPlayerPastST?.pause()
           self.fadeInAudioPlayer(self.audioPlayerFutureST)
-          self.audioPlayerFutureST?.pause() //play()
+          self.audioPlayerFutureST?.play() //play()
           self.past?.light?.isHidden = true
           
         } else {
@@ -430,7 +430,7 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
           self.hud.hideQGButton(isHide: false)
           self.audioPlayerQGST?.pause()
           self.fadeInAudioPlayer(self.audioPlayerPastST)
-          self.audioPlayerPastST?.pause() //play()
+          self.audioPlayerPastST?.play() //play()
           self.audioPlayerFutureST?.pause()
           self.past?.light?.isHidden = false
           

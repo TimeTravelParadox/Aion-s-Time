@@ -108,6 +108,9 @@ class Hologram: SKNode {
         delegate?.didZoom = false // setamos o didZoom para false para conseguir mudar o scale do zoom ao rodar a animação do holograma
         delegate?.zoom(isZoom: true, node: monitorDireita, ratio: 0.3) // o zoom vai para o monitorDireita com ratio 0.3
         GameScene.shared.hud.isHidden = true // esconde o inventário
+          for item in HUD.shared.inventario {
+              item.isHidden = true
+          }
         GameScene.shared.invisible?.isHidden = false // tira o invisible do hidden para evitar algum clique na tela
           self.run(SKAction.wait(forDuration: 2)){ // delay de 2s para rodar os comandos
             GameScene.shared.invisible?.isHidden = true // deixa o invisible hidden para poder receber o clique na tela

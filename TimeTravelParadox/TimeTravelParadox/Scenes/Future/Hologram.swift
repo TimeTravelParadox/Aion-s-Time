@@ -138,8 +138,8 @@ class Hologram: SKNode {
         monitorDireita?.isHidden = true
         delegateRemove?.removePeca()
         delegateRemove2?.removePeca()
+        UserDefaultsManager.shared.theEnd = true
           UserDefaultsManager.shared.hologramComplete3 = true
-          UserDefaultsManager.shared.theEnd = true
       }
         // se caso colocar a peça do relogio primeiro no holograma
       if delegate?.didZoom == true && HUD.shared.itemSelecionado == HUD.shared.peca1 && !holograma1peca && HUD.shared.itemSelecionado != nil{

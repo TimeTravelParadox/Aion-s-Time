@@ -298,12 +298,19 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
     hud.hideQGButton(isHide: true)
     hud.hideResetButton(isHide: true)
     
+    
     if UserDefaultsManager.shared.theEnd == true {
+      
+      
       creditos.zPosition = 21
       creditos.setScale(0.9)
       past?.zPosition = 0
       qg?.zPosition = 0
       future?.zPosition = 0
+      hud.hideFundoBotaoViajar(isHide: true)
+      hud.fundoBotaoViajar?.zPosition = 1
+      hud.hideResetButton(isHide: false)
+      hud.fadeHUD?.isHidden = true
       hud.hideQGButton(isHide: true)
       hud.hideTravelQG(isHide: true)
       audioPlayerQGST?.pause()
@@ -311,10 +318,7 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
       audioPlayerFutureST?.pause()
       past?.light?.isHidden = true
       
-      hud.hideResetButton(isHide: false)
-        
-        hud.hideFundoBotaoViajar(isHide: true)
-      hud.fadeHUD?.isHidden = true
+      
     }
     
   }

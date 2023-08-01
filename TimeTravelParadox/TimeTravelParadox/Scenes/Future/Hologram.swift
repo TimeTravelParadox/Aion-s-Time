@@ -90,6 +90,21 @@ class Hologram: SKNode {
     // Executa a animação no nó
     monitorDireita?.run(repeatAction)
   }
+    
+    func startBlinkAnimation2() {
+        let duration = 1.0 // Duração de cada ciclo de animação em segundos
+      let fadeInAction = SKAction.fadeIn(withDuration: duration / 2.0)
+      let fadeOutAction = SKAction.fadeOut(withDuration: duration / 2.0)
+      
+      // Cria uma sequência de ações para o efeito de aparecer e desaparecer
+      let blinkAction = SKAction.sequence([fadeOutAction, fadeInAction])
+      
+      // Repete a sequência para a animação continuar indefinidamente
+      let repeatAction = SKAction.repeatForever(blinkAction)
+      
+      // Executa a animação no nó
+      monitorDireita?.run(repeatAction)
+    }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     guard let touch = touches.first else { return } // se nao estiver em toque acaba aqui
@@ -129,6 +144,7 @@ class Hologram: SKNode {
         // se caso colocar a peça do relogio primeiro no holograma
       if delegate?.didZoom == true && HUD.shared.itemSelecionado == HUD.shared.peca1 && !holograma1peca && HUD.shared.itemSelecionado != nil{
         print("peca1 colocada")
+          startBlinkAnimation2()
         hologram?.run(.setTexture(SKTexture(imageNamed: "cartazComChip"))) // muda textura para com holograma com apenas o chip colocada
         delegateRemove?.removePeca()
         holograma1peca = true
@@ -137,6 +153,7 @@ class Hologram: SKNode {
         // se caso colocar a peça do cofre primeiro no holograma
       if delegate?.didZoom == true && HUD.shared.itemSelecionado == HUD.shared.peca2 && !holograma1peca && HUD.shared.itemSelecionado != nil{
         print("peca2 colocada")
+          startBlinkAnimation2()
         hologram?.run(.setTexture(SKTexture(imageNamed: "cartazComPeca"))) // muda textura para com holograma com apenas a peca colocada
         delegateRemove2?.removePeca()
         holograma1peca = true

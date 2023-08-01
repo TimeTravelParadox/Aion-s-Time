@@ -116,6 +116,10 @@ class Vault: SKNode, RemoveProtocol2 {
           }
           self.updateLabel()
         }
+            
+        if self.delegate?.didZoom == false {
+            self.delegate?.zoom(isZoom: true, node: self.vault, ratio: 0.3)
+        }
         
       }
       

@@ -101,6 +101,7 @@ class Shelf: SKNode{
             UserDefaultsManager.shared.takenPolaroid = true
         }
             if polaroidDialogue{
+                GameScene.shared.past?.isUserInteractionEnabled = false
                 print("dialogo polaroid")
                 self.run(SKAction.wait(forDuration: 1)){ [self] in
                     

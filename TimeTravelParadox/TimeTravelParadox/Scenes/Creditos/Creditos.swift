@@ -79,6 +79,7 @@ class Creditos: SKNode {
       botaoCreditos?.zPosition = 0
       GameScene.shared.hud.hideResetButton(isHide: true)
       botaoEmBreve?.zPosition = 0
+      HUD.shared.hideFundoBotaoViajar(isHide: true)
       
     case "botaoEmBreve":
       botaoEmBreve?.isPaused = false
@@ -91,6 +92,7 @@ class Creditos: SKNode {
       botaoCreditos?.zPosition = 2
       GameScene.shared.hud.hideResetButton(isHide: false)
       botaoEmBreve?.zPosition = 0
+      HUD.shared.hideFundoBotaoViajar(isHide: true)
       
     case "setaVoltarFinal":
       setaVoltarFinal?.isPaused = false
@@ -103,6 +105,7 @@ class Creditos: SKNode {
       botaoCreditos?.zPosition = 2
       GameScene.shared.hud.hideResetButton(isHide: false)
       botaoEmBreve?.zPosition = 2
+      HUD.shared.hideFundoBotaoViajar(isHide: true)
       
     default:
       return

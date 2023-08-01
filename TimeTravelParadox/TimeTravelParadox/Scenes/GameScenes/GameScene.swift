@@ -286,8 +286,9 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
     
     addChild(hud)
     addChild(creditos)
+    
     if let invisible {
-        addChild(invisible)
+      addChild(invisible)
     }
     
     hud.zPosition = 14
@@ -309,6 +310,8 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
       past?.light?.isHidden = true
       
       hud.hideResetButton(isHide: false)
+      
+      hud.hideFundoBotaoViajar(isHide: true)
     }
     
   }
@@ -355,8 +358,6 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
             dialogue(node: future?.hologram?.monitorDireita, texture: SKTexture(imageNamed: "dialogueHologram03"), ratio: 0.3, isHidden: false)
             future?.hologram?.dialogueHologramStep = 3
         }else if future?.hologram?.dialogueHologramStep == 3{
-
-//            UserDefaultsManager.shared.hologramComplete3 = true
             
             zoom(isZoom: false, node: future?.hologram?.hologram, ratio: 0)
             
@@ -373,7 +374,7 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
             past?.light?.isHidden = true
             
             hud.hideResetButton(isHide: false)
-//
+          
             dialogue?.isHidden = true
             past?.isUserInteractionEnabled = true
             qg?.isUserInteractionEnabled = true
@@ -436,6 +437,7 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
           self.qg?.zPosition = 0
           self.future?.zPosition = 10
           self.hud.hideQGButton(isHide: false)
+          self.hud.hideFundoBotaoViajar(isHide: true)
           self.audioPlayerQGST?.pause()
           self.audioPlayerPastST?.pause()
           self.fadeInAudioPlayer(self.audioPlayerFutureST)
@@ -450,6 +452,7 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
           self.future?.zPosition = 0
           self.past?.zPosition = 10
           self.hud.hideQGButton(isHide: false)
+          self.hud.hideFundoBotaoViajar(isHide: true)
           self.audioPlayerQGST?.pause()
           self.fadeInAudioPlayer(self.audioPlayerPastST)
           self.audioPlayerPastST?.play() //play()

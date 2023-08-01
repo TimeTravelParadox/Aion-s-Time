@@ -5,13 +5,14 @@ class HUD: SKNode, ToggleTravel{
         travel?.alpha = 1
         travel?.isUserInteractionEnabled = false
         travel?.zPosition = 15
-
+      //fundoBotaoViajar?.isHidden = false
     }
     
     func desativarTravel() {
         travel?.alpha = 0.5
         travel?.isUserInteractionEnabled = true
         travel?.zPosition = 15
+      //fundoBotaoViajar?.isHidden = true
     }
     
     var delegateHUD: ToggleTravel?
@@ -27,6 +28,8 @@ class HUD: SKNode, ToggleTravel{
     var inventario: [SKSpriteNode] = []
     var isSelected : Bool = false
     var itemSelecionado : SKSpriteNode?
+  
+  var fundoBotaoViajar: SKSpriteNode?
   
   var reset: SKSpriteNode?
     
@@ -48,6 +51,10 @@ class HUD: SKNode, ToggleTravel{
   func hideResetButton(isHide: Bool){
     reset?.isHidden = isHide
   }
+  
+  func hideFundoBotaoViajar(isHide: Bool) {
+    fundoBotaoViajar?.isHidden = isHide
+  }
     
     // inicializador que adiciona os nodes presentes na HUD
     override init(){
@@ -67,13 +74,17 @@ class HUD: SKNode, ToggleTravel{
             fadeHUD = hud.childNode(withName: "fadeHUD") as? SKSpriteNode
             fadeHUD?.removeFromParent()
           
+          fundoBotaoViajar = hud.childNode(withName: "fundoBotaoViajar") as? SKSpriteNode
+          fundoBotaoViajar?.removeFromParent()
+          
         }
-        if let travel, let qgButton, let inventarioHUD, let reset, let fadeHUD {
+        if let travel, let qgButton, let inventarioHUD, let reset, let fadeHUD, let fundoBotaoViajar {
             self.addChild(travel)
             self.addChild(qgButton)
             self.addChild(inventarioHUD)
           self.addChild(reset)
             self.addChild(fadeHUD)
+          self.addChild(fundoBotaoViajar)
         }
         
         

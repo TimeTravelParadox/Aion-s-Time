@@ -71,14 +71,7 @@ class QG: SKNode{
         
         delegateHUD.desativarTravel()
         display?.isHidden = true
-        
-//        self.run(SKAction.wait(forDuration: 1)){
-//            self.tv?.texture = SKTexture(imageNamed: "tv2")
-//            self.run(SKAction.wait(forDuration: 1)){
-//                self.tv?.texture = SKTexture(imageNamed: "tv")
-//                self.addChild(self.botaoComecar!)
-//            }
-//        }
+
         self.run(SKAction.wait(forDuration: 1)) {
             self.display?.isHidden = false
             self.display?.isPaused = false
@@ -88,6 +81,7 @@ class QG: SKNode{
                     self.step = 6
                     self.display?.removeAllActions()
                     self.display?.texture = SKTexture(imageNamed: "display28")
+                  
                     self.delegateHUD?.ativarTravel()
                 } else {
                     self.run(SKAction.wait(forDuration: 1.5)){
@@ -140,6 +134,7 @@ class QG: SKNode{
                 run(SKAction.wait(forDuration: 2.5)){
                     self.display?.removeAllActions()
                     self.display?.texture = SKTexture(imageNamed: "display27")
+                  
                     self.delegateHUD?.ativarTravel()
                     UserDefaultsManager.shared.initializedQG = true
                 }

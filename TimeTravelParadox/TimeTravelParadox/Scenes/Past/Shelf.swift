@@ -13,12 +13,14 @@ class Shelf: SKNode{
   var delegate: ZoomProtocol?
   var delegateDialogue: CallDialogue?
   var inventoryItemDelegate: InventoryItemDelegate?
-  
+  var dialogueStep = 0
     var polaroidDialogue = true
     
   var hiddenPolaroid: SKSpriteNode?
   var shelf: SKSpriteNode?
   var polaroid: SKSpriteNode?
+    
+    var anchorShelf: SKSpriteNode?
   
   let expand = SKAction.resize(toWidth: 400, height: 400, duration: 1)
   
@@ -30,6 +32,7 @@ class Shelf: SKNode{
   
     init(delegate: ZoomProtocol, delegateDialogue: CallDialogue){
     self.delegate = delegate
+        self.delegateDialogue = delegateDialogue
     super.init()
     self.zPosition = 1
     if let past {
@@ -37,14 +40,17 @@ class Shelf: SKNode{
       shelf?.removeFromParent()
       polaroid = (past.childNode(withName: "polaroid") as? SKSpriteNode)
       polaroid?.removeFromParent()
+      anchorShelf = (past.childNode(withName: "anchorShelf") as? SKSpriteNode)
+      anchorShelf?.removeFromParent()
       hiddenPolaroid = (past.childNode(withName: "hiddenPolaroid") as? SKSpriteNode)
       hiddenPolaroid?.removeFromParent()
       self.isUserInteractionEnabled = true
     }
-    if let shelf, let polaroid, let hiddenPolaroid{
+    if let shelf, let polaroid, let hiddenPolaroid, let anchorShelf{
       self.addChild(shelf)
       self.addChild(polaroid)
       self.addChild(hiddenPolaroid)
+      self.addChild(anchorShelf)
       
       polaroid.isHidden = true
       polaroid.isPaused = false
@@ -83,6 +89,7 @@ class Shelf: SKNode{
     switch tapped.name {
     case "shelf":
       delegate?.zoom(isZoom: true, node: shelf, ratio: 0.5)
+
       print("shelf")
     case "hiddenPolaroid":
       // se clicar na polaroid e tiver com zoom
@@ -94,9 +101,14 @@ class Shelf: SKNode{
             UserDefaultsManager.shared.takenPolaroid = true
         }
             if polaroidDialogue{
-                delegateDialogue?.dialogue(node: shelf, texture: SKTexture(imageNamed: "dialoguePolaroid"), ratio: 0.5, isHidden: false)
-                polaroidDialogue = false
+                print("dialogo polaroid")
+                self.run(SKAction.wait(forDuration: 1)){ [self] in
+                    
+                    delegateDialogue?.dialogue(node: self.shelf, texture: SKTexture(imageNamed: "dialoguePolaroid01"), ratio: 0.5, isHidden: false)
+                }
+                dialogueStep = 1
             }
+
         let sequence = SKAction.sequence([expand, shake, moveToInventary])
         polaroid?.run(sequence)
         self.polaroid?.zPosition = 3

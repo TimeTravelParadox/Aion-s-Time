@@ -7,6 +7,8 @@
 
 import Foundation
 
+
+// Define uma enumeração para representar as diferentes chaves do UserDefaults.
 enum UserDefaultsKey: String, CaseIterable {
     case peca1Taken
     case takenPaper
@@ -23,7 +25,8 @@ enum UserDefaultsKey: String, CaseIterable {
 class UserDefaultsManager {
     // MARK: - Singleton Pattern
     
-    static let shared = UserDefaultsManager() //tem que ser a unica instancia da classe UserDefaultsManager
+    //tem que ser a unica instancia da classe UserDefaultsManager
+    static let shared = UserDefaultsManager()
     
     var peca1Taken: Bool {
         get {
@@ -125,7 +128,7 @@ class UserDefaultsManager {
         }
     }
     
-    private init() {} // Private initializer to enforce singleton pattern
+    private init() {}
     
     // MARK: - Properties
     
@@ -133,18 +136,22 @@ class UserDefaultsManager {
     
     // MARK: - Public Methods
     
+    //função de salvar um novo valor na chave
     func saveValue(_ value: Any, forKey key: String) { //salvar
         userDefaults.set(value, forKey: key)
     }
     
+    //função de pegar o valor armazenado na chave
     func getValue(forKey key: String) -> Any? { //acessar o valor
         return userDefaults.object(forKey: key)
     }
     
+    //função de remover o valor
     func removeValue(forKey key: String) { //remover o valor
         userDefaults.removeObject(forKey: key)
     }
     
+    //função de setar todos os valores 
     func removeAllValues() {
         UserDefaultsKey.allCases.forEach { userDefaultsKey in
             removeValue(forKey: userDefaultsKey.rawValue)

@@ -7,6 +7,7 @@
 
 import SpriteKit
 
+//enum de modos do papel 
 enum PaperMode {
   case onDrawer
   case onInv
@@ -23,6 +24,7 @@ class Paper: SKNode {
     isUserInteractionEnabled = true
     paper.name = "paper"
     addChild(crumpledPaper)
+        //quando o user defaults tiver em true o crumpled paper é setado no inventário
       if UserDefaultsManager.shared.takenCrumpledPaper == true {
           parentNode.addChild(self)
           HUD.addOnInv(node: crumpledPaper)
@@ -42,6 +44,7 @@ class Paper: SKNode {
       _ = touch.location(in: self)
     
     switch mode {
+        //quando estiver na gaveta tudo isso pode acontecer
     case .onDrawer:
       position = .zero
       HUD.addOnInv(node: crumpledPaper)

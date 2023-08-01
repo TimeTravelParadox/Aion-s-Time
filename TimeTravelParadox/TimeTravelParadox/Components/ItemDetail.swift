@@ -9,7 +9,6 @@ import SpriteKit
 
 class ItemDetail: SKSpriteNode {
     var itemName: String?
-    // var text: SKSpriteNode
     
     init(item: SKSpriteNode) {
         itemName = item.name

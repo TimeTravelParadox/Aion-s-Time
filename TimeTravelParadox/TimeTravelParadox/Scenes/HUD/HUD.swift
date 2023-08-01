@@ -1,52 +1,52 @@
 import SpriteKit
 
 class HUD: SKNode, ToggleTravel{
-    func ativarTravel() {
-        travel?.alpha = 1
-        travel?.isUserInteractionEnabled = false
-        travel?.zPosition = 15
-      //fundoBotaoViajar?.isHidden = false
-    }
-    
-    func desativarTravel() {
-        travel?.alpha = 0.5
-        travel?.isUserInteractionEnabled = true
-        travel?.zPosition = 15
-      //fundoBotaoViajar?.isHidden = true
-    }
-    
-    var delegateHUD: ToggleTravel?
-    
-    static var shared = HUD()
-    
-    private let hud = SKScene(fileNamed: "HUDScene")
-     var travel: SKSpriteNode?
-    private var qgButton: SKSpriteNode?
-    private var fadeHUD: SKSpriteNode?
-    
-    var inventarioHUD: SKSpriteNode?
-    var inventario: [SKSpriteNode] = []
-    var isSelected : Bool = false
-    var itemSelecionado : SKSpriteNode?
+  func ativarTravel() {
+    travel?.alpha = 1
+    travel?.isUserInteractionEnabled = false
+    travel?.zPosition = 15
+    fundoBotaoViajar?.isHidden = false
+  }
+  
+  func desativarTravel() {
+    travel?.alpha = 0.5
+    travel?.isUserInteractionEnabled = true
+    travel?.zPosition = 15
+    fundoBotaoViajar?.isHidden = true
+  }
+  
+  var delegateHUD: ToggleTravel?
+  
+  static var shared = HUD()
+  
+  private let hud = SKScene(fileNamed: "HUDScene")
+  var travel: SKSpriteNode?
+  private var qgButton: SKSpriteNode?
+  private var fadeHUD: SKSpriteNode?
+  
+  var inventarioHUD: SKSpriteNode?
+  var inventario: [SKSpriteNode] = []
+  var isSelected : Bool = false
+  var itemSelecionado : SKSpriteNode?
   
   var fundoBotaoViajar: SKSpriteNode?
   
   var reset: SKSpriteNode?
-    
-    var peca1: SKSpriteNode?
-    var peca2: SKSpriteNode?
-    
-    var delegate: ZoomProtocol?
-    
-    func hideQGButton(isHide: Bool){
-        qgButton?.isHidden = isHide
-        inventarioHUD?.isHidden = isHide
-    }
-    
-    func hideTravelQG(isHide: Bool){//esconde tudo mas o inv n
-        travel?.isHidden = isHide
-        qgButton?.isHidden = isHide
-    }
+  
+  var peca1: SKSpriteNode?
+  var peca2: SKSpriteNode?
+  
+  var delegate: ZoomProtocol?
+  
+  func hideQGButton(isHide: Bool){
+    qgButton?.isHidden = isHide
+    inventarioHUD?.isHidden = isHide
+  }
+  
+  func hideTravelQG(isHide: Bool){//esconde tudo mas o inv n
+    travel?.isHidden = isHide
+    qgButton?.isHidden = isHide
+  }
   
   func hideResetButton(isHide: Bool){
     reset?.isHidden = isHide
@@ -55,133 +55,133 @@ class HUD: SKNode, ToggleTravel{
   func hideFundoBotaoViajar(isHide: Bool) {
     fundoBotaoViajar?.isHidden = isHide
   }
-    
-    // inicializador que adiciona os nodes presentes na HUD
-    override init(){
-        super.init()
-        if let hud {
-            travel = (hud.childNode(withName: "travel") as? SKSpriteNode)
-            travel?.removeFromParent()
-            qgButton = (hud.childNode(withName: "qgButton") as? SKSpriteNode)
-            qgButton?.removeFromParent()
-            
-            inventarioHUD = hud.childNode(withName: "inventarioHUD") as? SKSpriteNode
-            inventarioHUD?.removeFromParent()
-          
-          reset = hud.childNode(withName: "reset") as? SKSpriteNode
-          reset?.removeFromParent()
-            
-            fadeHUD = hud.childNode(withName: "fadeHUD") as? SKSpriteNode
-            fadeHUD?.removeFromParent()
-          
-          fundoBotaoViajar = hud.childNode(withName: "fundoBotaoViajar") as? SKSpriteNode
-          fundoBotaoViajar?.removeFromParent()
-          
-        }
-        if let travel, let qgButton, let inventarioHUD, let reset, let fadeHUD, let fundoBotaoViajar {
-            self.addChild(travel)
-            self.addChild(qgButton)
-            self.addChild(inventarioHUD)
-          self.addChild(reset)
-            self.addChild(fadeHUD)
-          self.addChild(fundoBotaoViajar)
-        }
-        
-        
+  
+  // inicializador que adiciona os nodes presentes na HUD
+  override init(){
+    super.init()
+    if let hud {
+      travel = (hud.childNode(withName: "travel") as? SKSpriteNode)
+      travel?.removeFromParent()
+      qgButton = (hud.childNode(withName: "qgButton") as? SKSpriteNode)
+      qgButton?.removeFromParent()
+      
+      inventarioHUD = hud.childNode(withName: "inventarioHUD") as? SKSpriteNode
+      inventarioHUD?.removeFromParent()
+      
+      reset = hud.childNode(withName: "reset") as? SKSpriteNode
+      reset?.removeFromParent()
+      
+      fadeHUD = hud.childNode(withName: "fadeHUD") as? SKSpriteNode
+      fadeHUD?.removeFromParent()
+      
+      fundoBotaoViajar = hud.childNode(withName: "fundoBotaoViajar") as? SKSpriteNode
+      fundoBotaoViajar?.removeFromParent()
+      
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    // funcao que muda a estética ao selecionar o item
-    func addBorder(to node: SKSpriteNode) {
-        node.alpha = 0.5
-    }
-    // funcao que muda a estética ao deselecionar o item e deixa o itemSelecionado vazio
-    func removeBorder(from node: SKSpriteNode) {
-        HUD.shared.itemSelecionado = nil
-        node.alpha = 1
+    if let travel, let qgButton, let inventarioHUD, let reset, let fadeHUD, let fundoBotaoViajar {
+      self.addChild(travel)
+      self.addChild(qgButton)
+      self.addChild(inventarioHUD)
+      self.addChild(reset)
+      self.addChild(fadeHUD)
+      self.addChild(fundoBotaoViajar)
     }
     
     
-    func positionNodeRelativeToCamera(_ node: SKSpriteNode, offsetX: CGFloat, offsetY: CGFloat) {
-        if let camera = GameScene.shared.camera {
-            let cameraPositionInScene = convert(camera.position, to: self)
-            let newPosition = CGPoint(x: cameraPositionInScene.x + offsetX, y: cameraPositionInScene.y + offsetY)
-            node.position = newPosition
-        }
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+  }
+  
+  // funcao que muda a estética ao selecionar o item
+  func addBorder(to node: SKSpriteNode) {
+    node.alpha = 0.5
+  }
+  // funcao que muda a estética ao deselecionar o item e deixa o itemSelecionado vazio
+  func removeBorder(from node: SKSpriteNode) {
+    HUD.shared.itemSelecionado = nil
+    node.alpha = 1
+  }
+  
+  
+  func positionNodeRelativeToCamera(_ node: SKSpriteNode, offsetX: CGFloat, offsetY: CGFloat) {
+    if let camera = GameScene.shared.camera {
+      let cameraPositionInScene = convert(camera.position, to: self)
+      let newPosition = CGPoint(x: cameraPositionInScene.x + offsetX, y: cameraPositionInScene.y + offsetY)
+      node.position = newPosition
     }
-    // funcao que faz o inventario acompanhar na hora de dar zoomIn
-    func reposiconarInvIn(ratio: CGFloat) {
-        inventarioHUD?.size = CGSize(width: 260*ratio, height: 50*ratio)
-        positionNodeRelativeToCamera(inventarioHUD!, offsetX: 0*ratio, offsetY: -135*ratio)
+  }
+  // funcao que faz o inventario acompanhar na hora de dar zoomIn
+  func reposiconarInvIn(ratio: CGFloat) {
+    inventarioHUD?.size = CGSize(width: 260*ratio, height: 50*ratio)
+    positionNodeRelativeToCamera(inventarioHUD!, offsetX: 0*ratio, offsetY: -135*ratio)
+  }
+  // funcao que faz o inventario acompanhar na hora de dar zoomOut
+  func reposiconarInvOut() {
+    inventarioHUD?.size = CGSize(width: 260, height: 50)
+    inventarioHUD?.position = CGPoint(x: 0, y: -135)
+  }
+  
+  static func addOnInv(node: SKSpriteNode?){
+    let nodeName = node?.name ?? "" // Obtém o nome do nó
+    let maior = max((node?.size.width)!, (node?.size.height)!) // armazena o maior valor comparando o width e height
+    let widthMaior = maior == node?.size.width ? true : false // bool para identificar qual dos dois é maior
+    
+    if HUD.shared.inventario.contains(where: { $0.name == nodeName }) {
+      return // Se já existir, retorna sem adicionar o nó novamente
     }
-    // funcao que faz o inventario acompanhar na hora de dar zoomOut
-    func reposiconarInvOut() {
-        inventarioHUD?.size = CGSize(width: 260, height: 50)
-        inventarioHUD?.position = CGPoint(x: 0, y: -135)
+    node?.zRotation = 0 // padroniza o item sem rotação no inventário
+    if HUD.shared.delegate?.didZoom == false { // padroniza o tamanho do node no inventário sem distorção
+      if widthMaior {
+        node?.size = CGSize(width: 25, height: (25*(node?.size.height)!)/(node?.size.width)!)
+      }else{
+        node?.size = CGSize(width: (25*(node?.size.width)!)/(node?.size.height)!, height: 25)
+      }
+    }else{
+      if widthMaior {
+        node?.size = CGSize(width: 25*GameScene.shared.ratio, height: (25*(node?.size.height)!)/(node?.size.width)!*GameScene.shared.ratio)
+      }else{
+        node?.size = CGSize(width: (25*(node?.size.width)!)/(node?.size.height)!*GameScene.shared.ratio, height: 25*GameScene.shared.ratio)
+      }
     }
     
-    static func addOnInv(node: SKSpriteNode?){
-        let nodeName = node?.name ?? "" // Obtém o nome do nó
-        let maior = max((node?.size.width)!, (node?.size.height)!) // armazena o maior valor comparando o width e height
-        let widthMaior = maior == node?.size.width ? true : false // bool para identificar qual dos dois é maior
-        
-        if HUD.shared.inventario.contains(where: { $0.name == nodeName }) {
-            return // Se já existir, retorna sem adicionar o nó novamente
-        }
-        node?.zRotation = 0 // padroniza o item sem rotação no inventário
-        if HUD.shared.delegate?.didZoom == false { // padroniza o tamanho do node no inventário sem distorção
-            if widthMaior {
-                node?.size = CGSize(width: 25, height: (25*(node?.size.height)!)/(node?.size.width)!)
-            }else{
-                node?.size = CGSize(width: (25*(node?.size.width)!)/(node?.size.height)!, height: 25)
-            }
-        }else{
-            if widthMaior {
-                node?.size = CGSize(width: 25*GameScene.shared.ratio, height: (25*(node?.size.height)!)/(node?.size.width)!*GameScene.shared.ratio)
-            }else{
-                node?.size = CGSize(width: (25*(node?.size.width)!)/(node?.size.height)!*GameScene.shared.ratio, height: 25*GameScene.shared.ratio)
-            }
-        }
-        
-        
-        if HUD.shared.delegate?.didZoom == false {
-            switch HUD.shared.inventario.count {       // posiciona o node de acordo com a quantidade e node dentro de inventario
-            case 0:
-                node?.position = CGPoint(x: -94, y: -128.5)
-            case 1:
-                node?.position = CGPoint(x: -47, y: -128.5)
-            case 2:
-                node?.position = CGPoint(x: 0, y: -128.5)
-            case 3:
-                node?.position = CGPoint(x: 47, y: -128.5)
-            case 4:
-                node?.position = CGPoint(x: 94, y: -128.5)
-            default:
-                return
-            }
-        }else{
-            print(GameScene.shared.ratio)
-            switch HUD.shared.inventario.count {       // posiciona o node de acordo com a quantidade e node dentro de inventario
-            case 0:
-                node?.position = CGPoint(x: (-94*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (-128.5*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
-            case 1:
-                node?.position = CGPoint(x: (-47*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (-128.5*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
-            case 2:
-                node?.position = CGPoint(x: (0*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (-128.5*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
-            case 3:
-                node?.position = CGPoint(x: (47*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (-128.5*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
-            case 4:
-                node?.position = CGPoint(x: (94*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (-128.5*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
-            default:
-                return
-            }
-        }
-        
-        HUD.shared.inventario.append(node!)
-        node?.zPosition = 15
+    
+    if HUD.shared.delegate?.didZoom == false {
+      switch HUD.shared.inventario.count {       // posiciona o node de acordo com a quantidade e node dentro de inventario
+      case 0:
+        node?.position = CGPoint(x: -94, y: -128.5)
+      case 1:
+        node?.position = CGPoint(x: -47, y: -128.5)
+      case 2:
+        node?.position = CGPoint(x: 0, y: -128.5)
+      case 3:
+        node?.position = CGPoint(x: 47, y: -128.5)
+      case 4:
+        node?.position = CGPoint(x: 94, y: -128.5)
+      default:
+        return
+      }
+    }else{
+      print(GameScene.shared.ratio)
+      switch HUD.shared.inventario.count {       // posiciona o node de acordo com a quantidade e node dentro de inventario
+      case 0:
+        node?.position = CGPoint(x: (-94*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (-128.5*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
+      case 1:
+        node?.position = CGPoint(x: (-47*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (-128.5*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
+      case 2:
+        node?.position = CGPoint(x: (0*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (-128.5*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
+      case 3:
+        node?.position = CGPoint(x: (47*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (-128.5*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
+      case 4:
+        node?.position = CGPoint(x: (94*GameScene.shared.ratio) + GameScene.shared.cameraPosition.x, y: (-128.5*GameScene.shared.ratio) + GameScene.shared.cameraPosition.y)
+      default:
+        return
+      }
     }
     
+    HUD.shared.inventario.append(node!)
+    node?.zPosition = 15
+  }
+  
 }

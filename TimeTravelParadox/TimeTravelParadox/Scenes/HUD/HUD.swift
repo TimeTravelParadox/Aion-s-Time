@@ -6,6 +6,7 @@ class HUD: SKNode, ToggleTravel{
         travel?.isUserInteractionEnabled = false
         travel?.zPosition = 15
         fundoBotaoViajar?.isHidden = false
+        fundoBotaoViajar?.alpha = 1
     }
     
     func desativarTravel() {
@@ -22,7 +23,7 @@ class HUD: SKNode, ToggleTravel{
     private let hud = SKScene(fileNamed: "HUDScene")
      var travel: SKSpriteNode?
      var qgButton: SKSpriteNode?
-    private var fadeHUD: SKSpriteNode?
+    var fadeHUD: SKSpriteNode?
     var fundoBotaoViajar: SKSpriteNode?
     var inventarioHUD: SKSpriteNode?
     var inventario: [SKSpriteNode] = []

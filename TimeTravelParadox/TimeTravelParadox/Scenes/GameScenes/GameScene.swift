@@ -309,6 +309,8 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
       past?.light?.isHidden = true
       
       hud.hideResetButton(isHide: false)
+        
+        hud.hideFundoBotaoViajar(isHide: true)
     }
     
   }
@@ -340,13 +342,32 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
             dialogue(node: past?.shelf?.shelf, texture: SKTexture(imageNamed: "dialoguePolaroid02"), ratio: 0.5, isHidden: false)
             past?.shelf?.dialogueStep = 2
 
-        } else if future?.hologram?.dialogueStep == 1 || future?.hologram?.dialogueStep == 2{
+        } else if future?.hologram?.dialogueStep == 1 || future?.hologram?.dialogueStep == 2 || future?.hologram?.dialogueStep == 3{
             if future?.hologram?.dialogueStep == 1{
-                dialogue(node: future?.hologram?.hologram, texture: SKTexture(imageNamed: "dialogueHologram02"), ratio: 0.4, isHidden: false)
+                dialogue(node: future?.hologram?.monitorDireita, texture: SKTexture(imageNamed: "dialogueHologram02"), ratio: 0.3, isHidden: false)
                 future?.hologram?.dialogueStep = 2
-            }else{
-                dialogue(node: future?.hologram?.hologram, texture: SKTexture(imageNamed: "dialogueHologram03"), ratio: 0.4, isHidden: false)
+            }else if future?.hologram?.dialogueStep == 2{
+                dialogue(node: future?.hologram?.monitorDireita, texture: SKTexture(imageNamed: "dialogueHologram03"), ratio: 0.3, isHidden: false)
                 future?.hologram?.dialogueStep = 3
+            }else if future?.hologram?.dialogueStep == 3{
+                
+                hud.isHidden = false
+                dialogue?.isHidden = true
+                zoom(isZoom: false, node: future?.hologram?.monitorDireita, ratio: 0)
+                creditos.zPosition = 21
+                creditos.setScale(0.9)
+                past?.zPosition = 0
+                qg?.zPosition = 0
+                future?.zPosition = 0
+                hud.hideQGButton(isHide: true)
+                hud.hideTravelQG(isHide: true)
+                audioPlayerQGST?.pause()
+                audioPlayerPastST?.pause()
+                audioPlayerFutureST?.pause()
+                past?.light?.isHidden = true
+                
+                hud.hideResetButton(isHide: false)
+                future?.hologram?.dialogueStep = 4
             }
         }
         else{
@@ -355,6 +376,24 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
             qg?.isUserInteractionEnabled = true
             future?.isUserInteractionEnabled = true
             hud.isHidden = false
+            
+            if UserDefaultsManager.shared.peca1Taken{
+                past?.clock?.peca1?.isHidden = false
+            }
+            if UserDefaultsManager.shared.takenPolaroid{
+                past?.shelf?.polaroid?.isHidden = false
+            }
+            if UserDefaultsManager.shared.takenChip{
+                future?.vault?.peca2?.isHidden = false
+            }
+            if UserDefaultsManager.shared.takenPaper{
+                past?.typeMachine?.paperComplete?.isHidden = false
+            }
+            if UserDefaultsManager.shared.takenCrumpledPaper{
+                past?.paper.crumpledPaper.isHidden = false
+            }
+
+            
 
         }
         
@@ -395,10 +434,12 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
         self.audioPlayerPastST?.pause()
         self.audioPlayerFutureST?.pause()
         self.past?.light?.isHidden = true
+          
+          self.hud.hideFundoBotaoViajar(isHide: false)
         
       }
       isBackToQGSFXPlaying = false
-    case "travel":
+    case "travel", "fundoBotaoViajar":
         hud.travel?.alpha = 0.5
         self.run(SKAction.wait(forDuration: 0.2)){
             self.hud.travel?.alpha = 1
@@ -426,6 +467,8 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
           self.fadeInAudioPlayer(self.audioPlayerFutureST)
           self.audioPlayerFutureST?.play() //play()
           self.past?.light?.isHidden = true
+            
+            self.hud.hideFundoBotaoViajar(isHide: true)
           
         } else {
           
@@ -440,6 +483,8 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
           self.audioPlayerPastST?.play() //play()
           self.audioPlayerFutureST?.pause()
           self.past?.light?.isHidden = false
+            
+        self.hud.hideFundoBotaoViajar(isHide: true)
           
         }
         

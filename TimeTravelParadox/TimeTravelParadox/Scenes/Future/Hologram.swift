@@ -9,7 +9,7 @@ class Hologram: SKNode {
   var inventoryItemDelegate: InventoryItemDelegate?
   
   var monitorDireita: SKSpriteNode?
-  var dialogueHologramStep = 0
+  var dialogueStep = 0
   var holograma1peca = false // bool de estado para colocar a segunda peça do holograma
   
   var delegateRemove: RemoveProtocol?
@@ -114,9 +114,9 @@ class Hologram: SKNode {
         GameScene.shared.invisible?.isHidden = false // tira o invisible do hidden para evitar algum clique na tela
           self.run(SKAction.wait(forDuration: 2)){ // delay de 2s para rodar os comandos
             GameScene.shared.invisible?.isHidden = true // deixa o invisible hidden para poder receber o clique na tela
-              if self.dialogueHologramStep == 0{
+              if self.dialogueStep == 0{
                   self.delegateDialogue?.dialogue(node: self.monitorDireita, texture: SKTexture(imageNamed: "dialogueHologram01"), ratio: 0.3, isHidden: false) // chama o dialogo final na cena
-                  self.dialogueHologramStep = 1
+                  self.dialogueStep = 1
               }
           }
 

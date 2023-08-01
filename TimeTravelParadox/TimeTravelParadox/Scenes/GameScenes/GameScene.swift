@@ -318,62 +318,38 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
     let location = touch.location(in: self)
     let tappedNodes = nodes(at: location)
     guard let tapped = tappedNodes.first else { return } // ter ctz que algo esta sendo tocado
-    if tapped == past?.clock?.peca1 {
-      print("print past clock peca1 da gamescene")
-    }
     switch tapped.name {
     case "dialogue":
-        if let textureName = dialogue?.texture?.description, textureName == "dialogueMirror" {
-            // Faça algo quando o nome da textura for igual a "dialogueHologram"
-            print("acessou iflet")
-        }
+        if qg?.dialogueStep == 1 || qg?.dialogueStep == 2{
+            if qg?.dialogueStep == 1{
+                dialogue(node: qg?.QGBG, texture: SKTexture(imageNamed: "dialogueQG02"), ratio: 1, isHidden: false)
+                qg?.dialogueStep = 2
+            }else {
+                dialogue(node: qg?.QGBG, texture: SKTexture(imageNamed: "dialogueQG03"), ratio: 1, isHidden: false)
+                qg?.dialogueStep = 3
+                run(SKAction.wait(forDuration: 2.5)){
+                    self.qg?.display?.removeAllActions()
+                    self.qg?.display?.removeAllActions()
+                    self.qg?.display?.texture = SKTexture(imageNamed: "display27")
+                    self.hud.ativarTravel()
+                    UserDefaultsManager.shared.initializedQG = true
+                }
 
-        
-        if qg?.dialogueStep == 1{
-            dialogue(node: qg?.QGBG, texture: SKTexture(imageNamed: "dialogueQG02"), ratio: 1, isHidden: false)
-            qg?.dialogueStep = 2
-        }else if qg?.dialogueStep == 2{
-            dialogue?.texture = SKTexture(imageNamed: "dialogueQG03")
-            qg?.dialogueStep = 3
-        }else if qg?.dialogueStep == 3{
-            dialogue?.isHidden = true
-            past?.isUserInteractionEnabled = true
-            qg?.isUserInteractionEnabled = true
-            future?.isUserInteractionEnabled = true
-            hud.isHidden = false
+            }
+        } else if past?.shelf?.dialogueStep == 1{
+            dialogue(node: past?.shelf?.shelf, texture: SKTexture(imageNamed: "dialoguePolaroid02"), ratio: 0.5, isHidden: false)
+            past?.shelf?.dialogueStep = 2
+
+        } else if future?.hologram?.dialogueStep == 1 || future?.hologram?.dialogueStep == 2{
+            if future?.hologram?.dialogueStep == 1{
+                dialogue(node: future?.hologram?.hologram, texture: SKTexture(imageNamed: "dialogueHologram02"), ratio: 0.4, isHidden: false)
+                future?.hologram?.dialogueStep = 2
+            }else{
+                dialogue(node: future?.hologram?.hologram, texture: SKTexture(imageNamed: "dialogueHologram03"), ratio: 0.4, isHidden: false)
+                future?.hologram?.dialogueStep = 3
+            }
         }
         else{
-            dialogue?.isHidden = true
-            past?.isUserInteractionEnabled = true
-            qg?.isUserInteractionEnabled = true
-            future?.isUserInteractionEnabled = true
-        }
-        if future?.hologram?.dialogueHologramStep == 1{
-            dialogue(node: future?.hologram?.hologram, texture: SKTexture(imageNamed: "dialogueHologram02"), ratio: 0.4, isHidden: false)
-            future?.hologram?.dialogueHologramStep = 2
-        }else if future?.hologram?.dialogueHologramStep == 2{
-            dialogue(node: future?.hologram?.hologram, texture: SKTexture(imageNamed: "dialogueHologram03"), ratio: 0.4, isHidden: false)
-            future?.hologram?.dialogueHologramStep = 3
-        }else if future?.hologram?.dialogueHologramStep == 3{
-
-//            UserDefaultsManager.shared.hologramComplete3 = true
-            
-            zoom(isZoom: false, node: future?.hologram?.hologram, ratio: 0)
-            
-            creditos.zPosition = 21
-            creditos.setScale(0.9)
-            past?.zPosition = 0
-            qg?.zPosition = 0
-            future?.zPosition = 0
-            hud.hideQGButton(isHide: true)
-            hud.hideTravelQG(isHide: true)
-            audioPlayerQGST?.pause()
-            audioPlayerPastST?.pause()
-            audioPlayerFutureST?.pause()
-            past?.light?.isHidden = true
-            
-            hud.hideResetButton(isHide: false)
-//
             dialogue?.isHidden = true
             past?.isUserInteractionEnabled = true
             qg?.isUserInteractionEnabled = true
@@ -396,6 +372,11 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
       self.view?.presentScene(cenaReset)
       
     case "qgButton":
+        hud.qgButton?.alpha = 0.5
+        self.run(SKAction.wait(forDuration: 0.2)){
+            self.hud.qgButton?.alpha = 1
+        }
+
       if isBackToQGSFXPlaying{
         return
       }
@@ -418,6 +399,10 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
       }
       isBackToQGSFXPlaying = false
     case "travel":
+        hud.travel?.alpha = 0.5
+        self.run(SKAction.wait(forDuration: 0.2)){
+            self.hud.travel?.alpha = 1
+        }
       if isTravelingSFXPlaying {
         return
       }
@@ -427,7 +412,7 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
       
       scene?.run(travelingSFX)
         invisible?.isHidden = false
-      scene?.run(SKAction.wait(forDuration: 1.9)) {
+      scene?.run(SKAction.wait(forDuration: 1.35)) {
         if self.past?.zPosition ?? 0 > 0  {
           
           self.hud.hideResetButton(isHide: true)

@@ -16,7 +16,7 @@ class QG: SKNode{
     var botaoComecar: SKSpriteNode?
 
     var delegateDialogue: CallDialogue?
-
+    var dialogueQG = false
     var dialogueStep = 0
     
     var step = 1
@@ -134,15 +134,14 @@ class QG: SKNode{
             case 5:
                 if dialogueStep == 0{
                     delegateDialogue?.dialogue(node: QGBG, texture: SKTexture(imageNamed: "dialogueQG01"), ratio: 1, isHidden: false)
+                    dialogueQG = true
                     dialogueStep = 1
                 }
-                self.display?.run(self.preparingMission)
-                run(SKAction.wait(forDuration: 2.5)){
-                    self.display?.removeAllActions()
-                    self.display?.texture = SKTexture(imageNamed: "display27")
-                    self.delegateHUD?.ativarTravel()
-                    UserDefaultsManager.shared.initializedQG = true
+                if dialogueStep != 3{
+                    
+                    self.display?.run(self.preparingMission)
                 }
+
             default:
                 return
             }

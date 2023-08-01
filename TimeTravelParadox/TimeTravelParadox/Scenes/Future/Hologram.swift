@@ -9,7 +9,7 @@ class Hologram: SKNode {
   var inventoryItemDelegate: InventoryItemDelegate?
   
   var monitorDireita: SKSpriteNode?
-  var dialogueHologramStep = 0
+  var dialogueStep = 0
   var holograma1peca = false
   
   var delegateRemove: RemoveProtocol?
@@ -105,9 +105,9 @@ class Hologram: SKNode {
         print("pecas completas colocada")
           hologram?.run(hologramaAnimate)
           self.run(SKAction.wait(forDuration: 2)){
-              if self.dialogueHologramStep == 0{
+              if self.dialogueStep == 0{
                   self.delegateDialogue?.dialogue(node: self.hologram, texture: SKTexture(imageNamed: "dialogueHologram01"), ratio: 0.4, isHidden: false)
-                  self.dialogueHologramStep = 1
+                  self.dialogueStep = 1
               }
           }
 

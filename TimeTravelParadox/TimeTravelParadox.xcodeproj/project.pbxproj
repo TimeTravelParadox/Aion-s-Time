@@ -22,8 +22,8 @@
 		3715AEFE2A776A800011EA6A /* zoomSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3715AEED2A776A800011EA6A /* zoomSound.mp3 */; };
 		3715AEFF2A776A800011EA6A /* gavetaAbrindo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3715AEEE2A776A800011EA6A /* gavetaAbrindo.mp3 */; };
 		3715AF002A776A800011EA6A /* clockOpeningSFX.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3715AEEF2A776A800011EA6A /* clockOpeningSFX.mp3 */; };
-		3715AF022A776B7B0011EA6A /* traveling.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3715AF012A776B7B0011EA6A /* traveling.mp3 */; };
 		3715AF042A776C310011EA6A /* backToQG.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3715AF032A776C310011EA6A /* backToQG.mp3 */; };
+		3715AF062A797CAE0011EA6A /* traveling.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3715AF052A797CAE0011EA6A /* traveling.mp3 */; };
 		379B545A2A60F40A00F10217 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B54592A60F40A00F10217 /* HUD.swift */; };
 		379B545C2A60F41500F10217 /* HUDScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 379B545B2A60F41500F10217 /* HUDScene.sks */; };
 		379B545E2A60F42500F10217 /* QGScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 379B545D2A60F42500F10217 /* QGScene.sks */; };
@@ -77,8 +77,8 @@
 		3715AEED2A776A800011EA6A /* zoomSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = zoomSound.mp3; sourceTree = "<group>"; };
 		3715AEEE2A776A800011EA6A /* gavetaAbrindo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gavetaAbrindo.mp3; sourceTree = "<group>"; };
 		3715AEEF2A776A800011EA6A /* clockOpeningSFX.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clockOpeningSFX.mp3; sourceTree = "<group>"; };
-		3715AF012A776B7B0011EA6A /* traveling.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = traveling.mp3; sourceTree = "<group>"; };
 		3715AF032A776C310011EA6A /* backToQG.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backToQG.mp3; sourceTree = "<group>"; };
+		3715AF052A797CAE0011EA6A /* traveling.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = traveling.mp3; sourceTree = "<group>"; };
 		379B54592A60F40A00F10217 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		379B545B2A60F41500F10217 /* HUDScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HUDScene.sks; sourceTree = "<group>"; };
 		379B545D2A60F42500F10217 /* QGScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = QGScene.sks; sourceTree = "<group>"; };
@@ -150,7 +150,7 @@
 		377D8C3C2A5C7192008C6355 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
-				3715AF012A776B7B0011EA6A /* traveling.mp3 */,
+				3715AF052A797CAE0011EA6A /* traveling.mp3 */,
 				3715AEEF2A776A800011EA6A /* clockOpeningSFX.mp3 */,
 				3715AF032A776C310011EA6A /* backToQG.mp3 */,
 				3715AEE42A776A7D0011EA6A /* cofreAbrindo.mp3 */,
@@ -378,7 +378,7 @@
 				379B54622A60F43B00F10217 /* FutureScene.sks in Resources */,
 				9B82F4D92A5C6EB200BC66F2 /* Main.storyboard in Resources */,
 				3715AEFC2A776A800011EA6A /* deleting.mp3 in Resources */,
-				3715AF022A776B7B0011EA6A /* traveling.mp3 in Resources */,
+				3715AF062A797CAE0011EA6A /* traveling.mp3 in Resources */,
 				3715AEF42A776A800011EA6A /* grabbing.mp3 in Resources */,
 				3715AEF02A776A800011EA6A /* ding.mp3 in Resources */,
 				9B82F4D02A5C6EB200BC66F2 /* GameScene.sks in Resources */,

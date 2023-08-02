@@ -10,40 +10,41 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
     
-    if let view = self.view as! SKView? {
-      // Load the SKScene from 'GameScene.sks'
-      if let scene = SKScene(fileNamed: "GameScene") {
-        // Set the scale mode to scale to fit the window
-        scene.scaleMode = .aspectFill
-       
-        if let gameScene = scene as? GameScene {
-            GameScene.shared = gameScene
+    // Esta função é chamada quando a view do controlador é carregada na memória.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if let view = self.view as! SKView? {
+            // Carrega a cena de 'GameScene.sks'
+            if let scene = SKScene(fileNamed: "GameScene") {
+                // Define o modo de escala da cena para preencher a tela
+                scene.scaleMode = .aspectFill
+                
+                // Verifica se a cena é do tipo GameScene e, se for, armazena-a em GameScene.shared
+                if let gameScene = scene as? GameScene {
+                    GameScene.shared = gameScene
+                }
+                
+                // Apresenta a cena na view
+                view.presentScene(scene)
+            }
+            
+            // Define se a ordem de renderização dos nós na view deve ser ignorada.
+            view.ignoresSiblingOrder = true
         }
-       // GameScene.shared = scene as! GameScene
-        
-        // Present the scene
-        view.presentScene(scene)
-      }
-      
-      view.ignoresSiblingOrder = true
-      
-      
     }
-  }
-  
-  override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-    if UIDevice.current.userInterfaceIdiom == .phone {
-      return .allButUpsideDown
-    } else {
-      return .all
+    
+    // Define as orientações de interface suportadas pelo controlador do jogo.
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return .allButUpsideDown
+        } else {
+            return .all
+        }
     }
-  }
-  
-  override var prefersStatusBarHidden: Bool {
-    return true
-  }
+    
+    // Define se a barra de status (status bar) está oculta.
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 }

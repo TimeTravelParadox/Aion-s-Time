@@ -23,29 +23,24 @@ class Past: SKNode, InventoryItemDelegate {
     var light: SKLightNode?
     var lamp: SKSpriteNode?
     var lightLamp: SKLightNode?
-    
     var dialogueMirror = true
     
     // Propriedade do item Paper no inventário.
     lazy var paper: Paper = Paper(parentNode: self)
     
-    // Delegates para a classe.
+    // Delegates de zoom e Dialogo
     var delegate: ZoomProtocol?
     var delegateDialogue: CallDialogue?
     
     // Ações e sons para animações.
     let flaming = SKAction.repeatForever(SKAction.animate(with: [SKTexture(imageNamed: "flame1"), SKTexture(imageNamed: "flame2"), SKTexture(imageNamed: "flame3"), SKTexture(imageNamed: "flame4"), SKTexture(imageNamed: "flame5")], timePerFrame: 0.16))
     let sizzleSFX = SKAction.playSoundFileNamed("sizzle.mp3", waitForCompletion: true)
-    
     var minuteRotate: CGFloat = 0 // variável para saber o grau dos minutos
     var hourRotate: CGFloat = 0 // variável para saber o grau das horas
-    
     let clockOpeningSFX = SKAction.playSoundFileNamed("clockOpeningSFX.mp3", waitForCompletion: true)
     
     // Método para girar a cena do passado.
-    func spin() {
-        pastBG?.run(SKAction.rotate(byAngle: -.pi/6, duration: 0.2))
-    }
+    
     
     // Inicializador da classe.
     init(delegate: ZoomProtocol, delegateDialogue: CallDialogue) {
@@ -114,7 +109,7 @@ class Past: SKNode, InventoryItemDelegate {
         self.addChild(drawer2.spriteNode)
         self.addChild(drawer3.spriteNode)
         
-        light?.categoryBitMask = 1 // Identificador para a luz (você pode usar outros números de acordo com suas necessidades)
+        light?.categoryBitMask = 1
         light?.falloff = 1
         light?.ambientColor = .orange
         light?.lightColor = .orange
@@ -122,7 +117,7 @@ class Past: SKNode, InventoryItemDelegate {
         light?.isHidden = true
         fadeflame?.alpha = 0.5
         
-        lightLamp?.categoryBitMask = 1 // Identificador para a luz (você pode usar outros números de acordo com suas necessidades)
+        lightLamp?.categoryBitMask = 1
         lightLamp?.falloff = 1
         lightLamp?.ambientColor = .orange
         lightLamp?.lightColor = .orange
@@ -134,7 +129,6 @@ class Past: SKNode, InventoryItemDelegate {
         }
     }
     
-    // Método necessário quando é utilizado herança com SKNode.
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -161,7 +155,7 @@ class Past: SKNode, InventoryItemDelegate {
             delegateDialogue?.dialogue(node: pastBG, texture: SKTexture(imageNamed: ""), ratio: 1, isHidden: true) // Exibe um diálogo relacionado ao plano de fundo.
         case "flame":
             // Faz alguma ação ao tocar na chama (flame).
-            flame?.run(sizzleSFX) // Executa o som da chama crepitando.
+            flame?.run(sizzleSFX)
         case "table":
             // Faz alguma ação ao tocar na mesa (table).
             delegate?.zoom(isZoom: true, node: table, ratio: 0.4) // Chama o delegate para fazer o zoom da cena para a mesa.
@@ -193,17 +187,16 @@ class Past: SKNode, InventoryItemDelegate {
         default:
             break
         }
-
         clearItemDetail() // Remove o item detalhado da cena.
     }
 
-    // Método necessário para implementar o delegate InventoryItemDelegate.
+    /// Método necessário para implementar o delegate InventoryItemDelegate.
     func clearItemDetail() {
         GameScene.shared.itemDetail?.removeFromParent() // Remove o item detalhado da cena.
         GameScene.shared.itemDetail = nil
     }
 
-    // Método para posicionar o papel amassado (crumpledPaper) dentro da gaveta.
+    /// Método para posicionar o papel amassado (crumpledPaper) dentro da gaveta.
     private func positionCrumpledPaper(drawer: Drawer) {
         // Defina as coordenadas x e y desejadas para a posição do crumpledPaper
         let desiredX: CGFloat = 0
@@ -216,12 +209,11 @@ class Past: SKNode, InventoryItemDelegate {
         paper.zPosition = 3 // Define a ordem de renderização do papel amassado.
     }
 
-    // Método para verificar ações ao tocar nas gavetas.
+    /// Método para verificar ações ao tocar nas gavetas.
     func verification(drawer: Drawer, tapped: SKNode) {
         if delegate?.didZoom == true && tapped == drawer.spriteNode {
             drawer.toggle(completion: { [weak self] in
                 guard let self = self else { return }
-
                 switch paper.mode {
                 case .onDrawer:
                     if drawer.isOpened == true {
@@ -243,7 +235,7 @@ class Past: SKNode, InventoryItemDelegate {
         }
     }
 
-    // Método do delegate InventoryItemDelegate para selecionar um item e exibi-lo no detalhe.
+    /// Método do delegate InventoryItemDelegate para selecionar um item e exibi-lo no detalhe.
     func select(node: SKSpriteNode) {
         guard GameScene.shared.itemDetail == nil else {
             return
@@ -252,5 +244,9 @@ class Past: SKNode, InventoryItemDelegate {
         GameScene.shared.itemDetail?.position = CGPoint(x: GameScene.shared.cameraPosition.x, y: GameScene.shared.cameraPosition.y)
         addChild(GameScene.shared.itemDetail!) // Adiciona o item detalhado à cena.
         GameScene.shared.itemDetail?.isHidden = false // Exibe o item detalhado.
+    }
+    ///faz girar a polaroid
+    func spin() {
+        pastBG?.run(SKAction.rotate(byAngle: -.pi/6, duration: 0.2))
     }
 }

@@ -7,9 +7,12 @@
 
 import SpriteKit
 
+// Classe que representa a tela de créditos no jogo.
 class Creditos: SKNode {
+  
   private let creditos = SKScene(fileNamed: "Creditos")
   
+  // Nodes da tela de créditos
   var telaFinal: SKSpriteNode?
   var telaCreditos: SKSpriteNode?
   var telaEmBreve: SKSpriteNode?
@@ -17,12 +20,14 @@ class Creditos: SKNode {
   var botaoEmBreve: SKSpriteNode?
   var setaVoltarFinal: SKSpriteNode?
   
+  // Som que será reproduzido ao clicar em botões.
   let clickButtonsSound = SKAction.playSoundFileNamed("escolhaDaSenha", waitForCompletion: false)
   
   override init() {
     super.init()
 
-    if let creditos{
+    // Configuração dos nós da tela de créditos
+    if let creditos {
       telaFinal = creditos.childNode(withName: "telaFinal") as? SKSpriteNode
       telaFinal?.removeFromParent()
       
@@ -45,7 +50,8 @@ class Creditos: SKNode {
 
     }
     
-    if let telaFinal, let telaCreditos, let telaEmBreve, let botaoCreditos, let botaoEmBreve, let setaVoltarFinal{
+    // Adiciona os nós à cena principal da classe
+    if let telaFinal, let telaCreditos, let telaEmBreve, let botaoCreditos, let botaoEmBreve, let setaVoltarFinal {
       self.addChild(telaFinal)
       self.addChild(telaCreditos)
       self.addChild(telaEmBreve)
@@ -60,13 +66,14 @@ class Creditos: SKNode {
     fatalError("init(coder:) has not been implemented")
   }
   
-  
+  // Função que é chamada quando o usuário toca na tela.
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    guard let touch = touches.first else { return } // se nao estiver em toque acaba aqui
+    guard let touch = touches.first else { return } // Se não estiver tocando, retorna.
     let location = touch.location(in: self)
     let tappedNodes = nodes(at: location)
-    guard let tapped = tappedNodes.first else { return } // ter ctz que algo esta sendo tocado
+    guard let tapped = tappedNodes.first else { return } // Verifica se algum nó foi tocado.
     
+    // Realiza ação de acordo com o nó tocado.
     switch tapped.name {
     case "botaoCreditos":
       botaoCreditos?.isPaused = false
@@ -81,8 +88,6 @@ class Creditos: SKNode {
       HUD.shared.hideFundoBotaoViajar(isHide: true)
       botaoEmBreve?.zPosition = 0
       
-      //HUD.shared.hideFundoBotaoViajar(isHide: true)
-      
     case "botaoEmBreve":
       botaoEmBreve?.isPaused = false
       botaoEmBreve?.run(self.clickButtonsSound)
@@ -95,8 +100,6 @@ class Creditos: SKNode {
       GameScene.shared.hud.hideResetButton(isHide: false)
       HUD.shared.hideFundoBotaoViajar(isHide: true)
       botaoEmBreve?.zPosition = 0
-      //HUD.shared.hideFundoBotaoViajar(isHide: true)
-      //HUD.shared.hideFundoBotaoViajar(isHide: true)
       
     case "setaVoltarFinal":
       setaVoltarFinal?.isPaused = false
@@ -110,8 +113,6 @@ class Creditos: SKNode {
       GameScene.shared.hud.hideResetButton(isHide: false)
       HUD.shared.hideFundoBotaoViajar(isHide: true)
       botaoEmBreve?.zPosition = 2
-      //HUD.shared.hideFundoBotaoViajar(isHide: true)
-      //HUD.shared.hideFundoBotaoViajar(isHide: true)
       
     default:
       return

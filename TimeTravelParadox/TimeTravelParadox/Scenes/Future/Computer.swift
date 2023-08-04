@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-// classe que implementa e cria o computador presente na cena do Futuro.
+/// Classe que implementa e cria o computador presente na cena do Futuro.
 class Computer: SKNode {
   let future = SKScene(fileNamed: "FutureScene")
 

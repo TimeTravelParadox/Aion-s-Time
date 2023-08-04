@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-// classe que cria e implementa o cofre presente na cena do Futuro
+/// Classe que cria e implementa o cofre presente na cena do Futuro
 class Vault: SKNode, RemoveProtocol2 {
   let future = SKScene(fileNamed: "FutureScene")
   
@@ -64,7 +64,7 @@ class Vault: SKNode, RemoveProtocol2 {
     peca2?.removeFromParent()
   }
   
-  // funcao que passa os numeros para labels para poder configura-los, alem disso define a senha do cofre, roda a animacao do cofre abrindo e faz aparecer a peca do cofre
+  /// Funcao que passa os numeros para labels para poder configura-los, alem disso define a senha do cofre, roda a animacao do cofre abrindo e faz aparecer a peca do cofre
   func updateLabel() {
     for i in 0..<labels.count {
       labels[i].text = "\(nums[i])"
@@ -86,7 +86,7 @@ class Vault: SKNode, RemoveProtocol2 {
     }
   }
   
-  // funcao que configura os labels das senhas do cofre, setando fonte, cor, etc e adiciona os numeros da senha em si
+  /// Funcao que configura os labels das senhas do cofre, setando fonte, cor, etc e adiciona os numeros da senha em si
   func setupCofre() {
     
     for i in 0..<nums.count {

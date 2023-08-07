@@ -153,6 +153,7 @@ class Past: SKNode, InventoryItemDelegate {
             }
             mirror?.texture = SKTexture(imageNamed: "mirror") // Atualiza a textura do espelho.
             delegateDialogue?.dialogue(node: pastBG, text: "", ratio: 1, isHidden: true) // Exibe um diálogo relacionado ao plano de fundo.
+          GameScene.shared.textDialogue?.isHidden = true
         case "flame":
             // Faz alguma ação ao tocar na chama (flame).
             flame?.run(sizzleSFX)

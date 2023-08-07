@@ -34,7 +34,7 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
     
     // Referencias dos nodes
     private var dialogue: SKSpriteNode?
-    private var textDialogue: SKLabelNode?
+    var textDialogue: SKLabelNode?
     var invisible: SKSpriteNode?
     let cameraNode = SKCameraNode()
     
@@ -187,7 +187,7 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
 
     func dialogue(node: SKSpriteNode?, text: String, ratio: CGFloat, isHidden: Bool){
         let callDialogue = !isHidden
-        textDialogue?.fontColor = .red
+        textDialogue?.fontColor = .white
         textDialogue?.fontName = "FiraCode-SemiBold"
         textDialogue?.position = CGPoint(x: (node?.position.x ?? 0) + (-240 * ratio), y: (node?.position.y ?? 0) + (-55*ratio))
         dialogue?.position = node?.position ?? CGPoint(x: 0, y: 0)
@@ -197,7 +197,7 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
         textDialogue?.fontSize = 20
         textDialogue?.setScale(ratio)
         textDialogue?.numberOfLines = 2
-        textDialogue?.preferredMaxLayoutWidth = ((dialogue?.size.width ?? 0) - 50 ) / ratio
+        textDialogue?.preferredMaxLayoutWidth = ((dialogue?.size.width ?? 0) - 150 * ratio) / ratio
         textDialogue?.lineBreakMode = .byWordWrapping
         textDialogue?.text = NSLocalizedString(text, comment: "")
         dialogue?.texture = SKTexture(imageNamed: "dialogue")
@@ -224,7 +224,6 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
             future?.isUserInteractionEnabled = false
             qg?.isUserInteractionEnabled = false
         }else{
-            textDialogue?.isHidden = true
             textDialogue?.isHidden = true
             hud.isHidden = false
             dialogue?.isHidden = true
@@ -418,6 +417,7 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
                     
                     hud.isHidden = false
                     dialogue?.isHidden = true
+                  textDialogue?.isHidden = true
                     zoom(isZoom: false, node: future?.hologram?.monitorDireita, ratio: 0)
                     creditos.zPosition = 21
                     creditos.setScale(0.9)
@@ -437,6 +437,7 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
             }
             else{
                 dialogue?.isHidden = true
+              textDialogue?.isHidden = true
                 past?.isUserInteractionEnabled = true
                 qg?.isUserInteractionEnabled = true
                 future?.isUserInteractionEnabled = true

@@ -144,7 +144,7 @@ class TypeMachine: SKNode {
                                     spriteNode?.isPaused = false
                                     spriteNode?.run(dingSFX)
                                     paper?.isHidden = true
-                                    delegateDialogue?.dialogue(node: typeMachine, texture: SKTexture(imageNamed: "dialogueTypemachine"), ratio: 0.15, isHidden: false)
+                                    delegateDialogue?.dialogue(node: typeMachine, text: "dialogueTypemachine", ratio: 0.15, isHidden: false)
                                     paperComplete?.isHidden = false
                                     text?.isHidden = true
                                     UserDefaultsManager.shared.takenPaper = true

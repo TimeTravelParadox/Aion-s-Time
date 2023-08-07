@@ -136,7 +136,7 @@ class Hologram: SKNode {
                 self.run(SKAction.wait(forDuration: 2)){ // delay de 2s para rodar os comandos
                     GameScene.shared.invisible?.isHidden = true // deixa o invisible hidden para poder receber o clique na tela
                     if self.dialogueStep == 0{
-                        self.delegateDialogue?.dialogue(node: self.monitorDireita, texture: SKTexture(imageNamed: "dialogueHologram01"), ratio: 0.3, isHidden: false) // chama o dialogo final na cena
+                        self.delegateDialogue?.dialogue(node: self.monitorDireita, text: "dialogueHologram01", ratio: 0.3, isHidden: false) // chama o dialogo final na cena
                         self.dialogueStep = 1
                     }
                 }

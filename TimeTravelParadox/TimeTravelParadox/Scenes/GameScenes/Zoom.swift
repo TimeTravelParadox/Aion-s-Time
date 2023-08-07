@@ -44,7 +44,7 @@ protocol CallDialogue {
     ///   - texture: A textura (imagem) a ser usada no diálogo.
     ///   - ratio: A proporção do diálogo.
     ///   - isHidden: Indica se o diálogo está oculto (true) ou visível (false).
-    func dialogue(node: SKSpriteNode?, texture: SKTexture, ratio: CGFloat, isHidden: Bool)
+    func dialogue(node: SKSpriteNode?, text: String, ratio: CGFloat, isHidden: Bool)
 }
 
 /// Função para definir a posição de cada nó (node) do inventário na cena.

@@ -152,7 +152,7 @@ class Past: SKNode, InventoryItemDelegate {
                 }
             }
             mirror?.texture = SKTexture(imageNamed: "mirror") // Atualiza a textura do espelho.
-            delegateDialogue?.dialogue(node: pastBG, texture: SKTexture(imageNamed: ""), ratio: 1, isHidden: true) // Exibe um diálogo relacionado ao plano de fundo.
+            delegateDialogue?.dialogue(node: pastBG, text: "", ratio: 1, isHidden: true) // Exibe um diálogo relacionado ao plano de fundo.
         case "flame":
             // Faz alguma ação ao tocar na chama (flame).
             flame?.run(sizzleSFX)
@@ -175,7 +175,7 @@ class Past: SKNode, InventoryItemDelegate {
         case "mirror":
             // Faz alguma ação ao tocar no espelho (mirror).
             if dialogueMirror {
-                delegateDialogue?.dialogue(node: mirror, texture: SKTexture(imageNamed: "dialogueMirror"), ratio: 0.3, isHidden: false) // Exibe um diálogo relacionado ao espelho, se ainda não tiver sido exibido.
+                delegateDialogue?.dialogue(node: mirror, text: "dialogueMirror", ratio: 0.3, isHidden: false) // Exibe um diálogo relacionado ao espelho, se ainda não tiver sido exibido.
                 dialogueMirror = false
             }
             delegate?.zoom(isZoom: true, node: mirror, ratio: 0.3) // Chama o delegate para fazer o zoom da cena para o espelho.

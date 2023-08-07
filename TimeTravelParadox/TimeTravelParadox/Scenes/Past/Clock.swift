@@ -172,7 +172,7 @@ class Clock: SKNode, RemoveProtocol{
                     minuteRotate -= 300
                     hourRotate -= 30
 
-                    delegateDialogue?.dialogue(node: clock, texture: SKTexture(imageNamed: "dialogueClock"), ratio: 0.18, isHidden: false)
+                    delegateDialogue?.dialogue(node: clock, text: "dialogueClock", ratio: 0.18, isHidden: false)
                     dialogueClock = false
                 }
             } else {
@@ -197,7 +197,7 @@ class Clock: SKNode, RemoveProtocol{
                     minuteRotate -= 300
                     hourRotate -= 30
 
-                    delegateDialogue?.dialogue(node: clock, texture: SKTexture(imageNamed: "dialogueClock"), ratio: 0.18, isHidden: false)
+                    delegateDialogue?.dialogue(node: clock, text: "dialogueClock", ratio: 0.18, isHidden: false)
                     dialogueClock = false
                 }
             } else {

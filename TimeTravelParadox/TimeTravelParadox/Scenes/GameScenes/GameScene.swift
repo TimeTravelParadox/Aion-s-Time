@@ -185,7 +185,7 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
     ///   - ratio: A escala que será aplicada ao diálogo.
     ///   - isHidden: Indica se o diálogo será exibido ou ocultado.
 
-    func dialogue(node: SKSpriteNode?, texture: SKTexture, ratio: CGFloat, isHidden: Bool){
+    func dialogue(node: SKSpriteNode?, text: String, ratio: CGFloat, isHidden: Bool){
         let callDialogue = !isHidden
         textDialogue?.fontColor = .red
         textDialogue?.fontName = "FiraCode-SemiBold"
@@ -199,8 +199,8 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
         textDialogue?.numberOfLines = 2
         textDialogue?.preferredMaxLayoutWidth = ((dialogue?.size.width ?? 0) - 50 ) / ratio
         textDialogue?.lineBreakMode = .byWordWrapping
-        textDialogue?.text = "g GNão é uma missão de correção. O infrator do tempo não faz parte da equipe de monitoramentog GNão é uma missão de correção. O infrator do tempo não faz parte da equipe de monitoramentog GNão é uma missão de correção. O infrator do tempo não faz parte da equipe de monitoramentog GNão é uma missão de correção. O infrator do tempo não faz parte da equipe de monitoramentog GNão é uma missão de correção. O infrator do tempo não faz parte da equipe de monitoramentog GNão é uma missão de correção. O infrator do tempo não faz parte da equipe de monitoramentog GNão é uma missão de correção. O infrator do tempo não faz parte da equipe de monitoramento?"
-        dialogue?.texture = texture
+        textDialogue?.text = NSLocalizedString(text, comment: "")
+        dialogue?.texture = SKTexture(imageNamed: "dialogue")
         if callDialogue {
             textDialogue?.isHidden = false
             hud.isHidden = true
@@ -389,10 +389,10 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
             // lógica responsável pelos dialogos e passar de um dialogo para o outro
             if qg?.dialogueStep == 1 || qg?.dialogueStep == 2{
                 if qg?.dialogueStep == 1{
-                    dialogue(node: qg?.QGBG, texture: SKTexture(imageNamed: "dialogueQG02"), ratio: 1, isHidden: false)
+                    dialogue(node: qg?.QGBG, text:"dialogueQG02", ratio: 1, isHidden: false)
                     qg?.dialogueStep = 2
                 }else {
-                    dialogue(node: qg?.QGBG, texture: SKTexture(imageNamed: "dialogueQG03"), ratio: 1, isHidden: false)
+                    dialogue(node: qg?.QGBG, text:"dialogueQG03", ratio: 1, isHidden: false)
                     qg?.dialogueStep = 3
                     run(SKAction.wait(forDuration: 2.5)){
                         self.qg?.display?.removeAllActions()
@@ -404,15 +404,15 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
                     
                 }
             } else if past?.shelf?.dialogueStep == 1{
-                dialogue(node: past?.shelf?.shelf, texture: SKTexture(imageNamed: "dialoguePolaroid02"), ratio: 0.5, isHidden: false)
+                dialogue(node: past?.shelf?.shelf, text: "dialoguePolaroid02", ratio: 0.5, isHidden: false)
                 past?.shelf?.dialogueStep = 2
                 
             } else if future?.hologram?.dialogueStep == 1 || future?.hologram?.dialogueStep == 2 || future?.hologram?.dialogueStep == 3{
                 if future?.hologram?.dialogueStep == 1{
-                    dialogue(node: future?.hologram?.monitorDireita, texture: SKTexture(imageNamed: "dialogueHologram02"), ratio: 0.3, isHidden: false)
+                    dialogue(node: future?.hologram?.monitorDireita, text: "dialogueHologram02", ratio: 0.3, isHidden: false)
                     future?.hologram?.dialogueStep = 2
                 }else if future?.hologram?.dialogueStep == 2{
-                    dialogue(node: future?.hologram?.monitorDireita, texture: SKTexture(imageNamed: "dialogueHologram03"), ratio: 0.3, isHidden: false)
+                    dialogue(node: future?.hologram?.monitorDireita, text: "dialogueHologram03", ratio: 0.3, isHidden: false)
                     future?.hologram?.dialogueStep = 3
                 }else if future?.hologram?.dialogueStep == 3{
                     

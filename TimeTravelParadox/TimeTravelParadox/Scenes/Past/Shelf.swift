@@ -125,7 +125,7 @@ class Shelf: SKNode {
                     GameScene.shared.past?.isUserInteractionEnabled = false
                     print("dialogo polaroid")
                     self.run(SKAction.wait(forDuration: 1)) { [self] in
-                        delegateDialogue?.dialogue(node: self.shelf, texture: SKTexture(imageNamed: "dialoguePolaroid01"), ratio: 0.5, isHidden: false)
+                        delegateDialogue?.dialogue(node: self.shelf, text: "dialoguePolaroid01", ratio: 0.5, isHidden: false)
                     }
                     dialogueStep = 1
                 }

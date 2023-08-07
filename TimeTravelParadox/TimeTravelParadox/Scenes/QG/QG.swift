@@ -126,7 +126,7 @@ class QG: SKNode{
         step = 5
       case 5:
         if dialogueStep == 0{
-          delegateDialogue?.dialogue(node: QGBG, texture: SKTexture(imageNamed: "dialogueQG01"), ratio: 1, isHidden: false)
+          delegateDialogue?.dialogue(node: QGBG, text: "dialogueQG01", ratio: 1, isHidden: false)
           dialogueQG = true
           dialogueStep = 1
         }

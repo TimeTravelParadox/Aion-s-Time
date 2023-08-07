@@ -6,6 +6,7 @@
 	<array>
 		<string>Orbitron-Regular.ttf</string>
 		<string>SpecialElite-Regular.ttf</string>
+		<string>FiraCode-SemiBold.ttf</string>
 	</array>
 	<key>UILaunchScreen</key>
 	<dict>

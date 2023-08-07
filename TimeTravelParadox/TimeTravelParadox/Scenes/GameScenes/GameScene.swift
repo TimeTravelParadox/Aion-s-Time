@@ -187,11 +187,22 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
 
     func dialogue(node: SKSpriteNode?, texture: SKTexture, ratio: CGFloat, isHidden: Bool){
         let callDialogue = !isHidden
+        textDialogue?.fontColor = .red
+        textDialogue?.fontName = "FiraCode-SemiBold"
+        textDialogue?.position = CGPoint(x: (node?.position.x ?? 0) + (-240 * ratio), y: (node?.position.y ?? 0) + (-55*ratio))
         dialogue?.position = node?.position ?? CGPoint(x: 0, y: 0)
         dialogue?.size = CGSize(width: 731.976, height: 132.228)
         dialogue?.size = CGSize(width: (dialogue?.size.width ?? 0) * ratio, height: (dialogue?.size.height ?? 0) * ratio)
+//        textDialogue?.position = dialogue?.position ?? CGPoint(x: 0, y: 0)
+        textDialogue?.fontSize = 20
+        textDialogue?.setScale(ratio)
+        textDialogue?.numberOfLines = 2
+        textDialogue?.preferredMaxLayoutWidth = ((dialogue?.size.width ?? 0) - 50 ) / ratio
+        textDialogue?.lineBreakMode = .byWordWrapping
+        textDialogue?.text = "g GNão é uma missão de correção. O infrator do tempo não faz parte da equipe de monitoramentog GNão é uma missão de correção. O infrator do tempo não faz parte da equipe de monitoramentog GNão é uma missão de correção. O infrator do tempo não faz parte da equipe de monitoramentog GNão é uma missão de correção. O infrator do tempo não faz parte da equipe de monitoramentog GNão é uma missão de correção. O infrator do tempo não faz parte da equipe de monitoramentog GNão é uma missão de correção. O infrator do tempo não faz parte da equipe de monitoramentog GNão é uma missão de correção. O infrator do tempo não faz parte da equipe de monitoramento?"
         dialogue?.texture = texture
         if callDialogue {
+            textDialogue?.isHidden = false
             hud.isHidden = true
             dialogue?.isHidden = false
             if UserDefaultsManager.shared.peca1Taken{
@@ -213,6 +224,8 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
             future?.isUserInteractionEnabled = false
             qg?.isUserInteractionEnabled = false
         }else{
+            textDialogue?.isHidden = true
+            textDialogue?.isHidden = true
             hud.isHidden = false
             dialogue?.isHidden = true
             if UserDefaultsManager.shared.peca1Taken{
@@ -242,9 +255,9 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
         dialogue = self.childNode(withName: "dialogue") as? SKSpriteNode
         textDialogue = self.childNode(withName: "text") as? SKLabelNode
         invisible = self.childNode(withName: "invisible") as? SKSpriteNode
-        textDialogue?.color = .white
         dialogue?.isHidden = true
         textDialogue?.isHidden = true
+        textDialogue?.color = .red
         invisible?.isHidden = true
         if invisible?.parent != nil {
             invisible?.removeFromParent()

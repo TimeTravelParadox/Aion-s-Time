@@ -384,7 +384,7 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
         // Verifica se há algum nó tocado
         guard let tapped = tappedNodes.first else { return }
         switch tapped.name {
-        case "dialogue":
+        case "dialogue", "text":
             // lógica responsável pelos dialogos e passar de um dialogo para o outro
             if qg?.dialogueStep == 1 || qg?.dialogueStep == 2{
                 if qg?.dialogueStep == 1{
@@ -397,6 +397,13 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
                         self.qg?.display?.removeAllActions()
                         self.qg?.display?.removeAllActions()
                         self.qg?.display?.texture = SKTexture(imageNamed: "display27")
+                      
+                      self.qg?.novaMissao?.position = CGPoint(x: -27.5, y: 25)
+                      self.qg?.novaMissao?.text = NSLocalizedString("viagemDisponivel", comment: "")
+                      self.qg?.novaMissao?.fontColor = .green
+                      self.qg?.novaMissao?.fontSize = 15
+                      self.qg?.novaMissao?.fontName = "FiraCode-SemiBold"
+                      
                         self.hud.ativarTravel()
                         UserDefaultsManager.shared.initializedQG = true
                     }

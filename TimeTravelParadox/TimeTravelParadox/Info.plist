@@ -7,6 +7,7 @@
 		<string>Orbitron-Regular.ttf</string>
 		<string>SpecialElite-Regular.ttf</string>
 		<string>FiraCode-SemiBold.ttf</string>
+		<string>FiraSans-Bold.ttf</string>
 	</array>
 	<key>UILaunchScreen</key>
 	<dict>

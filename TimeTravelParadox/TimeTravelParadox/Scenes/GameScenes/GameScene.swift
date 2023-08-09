@@ -1,5 +1,6 @@
 import SpriteKit
 import AVFoundation
+import UIKit
 
 // MARK: - GameScene
 
@@ -17,6 +18,10 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
     var qg: QG?
     var fade: Fade?
     var creditos = Creditos()
+    
+    //haptics
+    let simpleFeedbackGenerator = UINotificationFeedbackGenerator()
+
     
     //Delegate
     var itemDetail: ItemDetail?
@@ -485,6 +490,8 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
             self.view?.presentScene(cenaReset)
             
         case "qgButton":
+            simpleFeedbackGenerator.notificationOccurred(.success) // Novamente, você pode usar .error, .warning, .success
+
             hud.qgButton?.alpha = 0.5
             self.run(SKAction.wait(forDuration: 0.2)){
                 self.hud.qgButton?.alpha = 1
@@ -516,6 +523,8 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
             }
             isBackToQGSFXPlaying = false
         case "travel", "fundoBotaoViajar":
+            simpleFeedbackGenerator.notificationOccurred(.success) // Novamente, você pode usar .error, .warning, .success
+
             hud.travel?.alpha = 0.5
             self.run(SKAction.wait(forDuration: 0.2)){
                 self.hud.travel?.alpha = 1

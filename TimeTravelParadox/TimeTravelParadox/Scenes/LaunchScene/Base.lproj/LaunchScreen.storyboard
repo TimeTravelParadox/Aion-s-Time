@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_12" orientation="landscape" appearance="light"/>
+    <device id="retina6_72" orientation="landscape" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,21 +13,33 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
+                        <rect key="frame" x="0.0" y="0.0" width="932" height="430"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="launchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="zHZ-n4-3ga">
-                                <rect key="frame" x="-20" y="-10" width="893" height="412"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="launchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="zHZ-n4-3ga">
+                                <rect key="frame" x="-10" y="-20" width="972" height="450"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="launchScreenText" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUR-ZD-wRw">
+                                <rect key="frame" x="188" y="55" width="627" height="81"/>
+                                <fontDescription key="fontDescription" name="DamascusSemiBold" family="Damascus" pointSize="19"/>
+                                <color key="textColor" red="0.51372551919999998" green="0.90980386729999996" blue="0.30980393290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <viewLayoutGuide key="safeArea" id="2cI-7c-Mxg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hUR-ZD-wRw" firstAttribute="top" secondItem="2cI-7c-Mxg" secondAttribute="top" constant="55" id="aiQ-FL-A0E"/>
+                            <constraint firstItem="2cI-7c-Mxg" firstAttribute="trailing" secondItem="hUR-ZD-wRw" secondAttribute="trailing" constant="58" id="cYj-Ez-Pli"/>
+                            <constraint firstItem="2cI-7c-Mxg" firstAttribute="bottom" secondItem="hUR-ZD-wRw" secondAttribute="bottom" constant="273" id="dyr-Go-7wR"/>
+                            <constraint firstItem="hUR-ZD-wRw" firstAttribute="leading" secondItem="2cI-7c-Mxg" secondAttribute="leading" constant="129" id="x9w-gf-R7M"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52.112676056338032" y="373.28244274809157"/>
+            <point key="canvasLocation" x="50.858369098712451" y="371.16279069767444"/>
         </scene>
     </scenes>
     <resources>

@@ -7,16 +7,19 @@
 
 import SpriteKit
 
+/// Classe que cria e implementa o cofre presente na cena do Futuro
 class Vault: SKNode, RemoveProtocol2 {
-  
   let future = SKScene(fileNamed: "FutureScene")
   
   var delegate: ZoomProtocol?
   
   private var vault: SKSpriteNode?
   
+  // variavel que permite fazer a troca dos numeros do cofre
   private var nums: [Int] = [0, 0, 0]
+  // labels do botoes da senha cofre
   private var labels: [SKLabelNode] = []
+  // variavel que recebe os botoes do cofre após virarem botoes
   private var buttonsCofre: [SKButtonNodeLabel] = []
   
   var peca2: SKSpriteNode?
@@ -29,6 +32,7 @@ class Vault: SKNode, RemoveProtocol2 {
   
   let vaultChoose = SKAction.playSoundFileNamed("escolhaDaSenha", waitForCompletion: false)
   
+  // inicializador que adiciona os nodes presentes no cofre
   init(delegate: ZoomProtocol) {
     super.init()
     self.delegate = delegate
@@ -50,7 +54,6 @@ class Vault: SKNode, RemoveProtocol2 {
     
     peca2?.isHidden = true
     
-    
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -61,6 +64,7 @@ class Vault: SKNode, RemoveProtocol2 {
     peca2?.removeFromParent()
   }
   
+  /// Funcao que passa os numeros para labels para poder configura-los, alem disso define a senha do cofre, roda a animacao do cofre abrindo e faz aparecer a peca do cofre
   func updateLabel() {
     for i in 0..<labels.count {
       labels[i].text = "\(nums[i])"
@@ -82,6 +86,7 @@ class Vault: SKNode, RemoveProtocol2 {
     }
   }
   
+  /// Funcao que configura os labels das senhas do cofre, setando fonte, cor, etc e adiciona os numeros da senha em si
   func setupCofre() {
     
     for i in 0..<nums.count {
@@ -91,8 +96,14 @@ class Vault: SKNode, RemoveProtocol2 {
       label.fontColor = .blue
       label.fontName = "Orbitron-Regular"
       labels.append(label)
+        
+      // imagem que tem ao redor do botao do cofre para aumentar a area de toque
+        let imagem = SKSpriteNode()
+        imagem.alpha = 0.001
+        imagem.size = CGSize(width: 15, height: 15)
+        imagem.position.y += 2
       
-      let button = SKButtonNodeLabel(label: label) {
+        let button = SKButtonNodeLabel(imagem: imagem, label: label) {
         
         if self.delegate?.didZoom == true {
           print("Você clicou no numero \(i)")
@@ -102,9 +113,12 @@ class Vault: SKNode, RemoveProtocol2 {
           
           if self.nums[i] > 9 {
             self.nums[i] = 0
-            
           }
           self.updateLabel()
+        }
+            
+        if self.delegate?.didZoom == false {
+            self.delegate?.zoom(isZoom: true, node: self.vault, ratio: 0.3)
         }
         
       }
@@ -119,13 +133,14 @@ class Vault: SKNode, RemoveProtocol2 {
       default:
         return
       }
+      
+      // userDefault da peca do cofre 
       if UserDefaultsManager.shared.takenChip == true {
         vault?.isPaused = false
         vault!.texture = SKTexture(imageNamed: "cofre11")
         peca2?.isHidden = false
         HUD.addOnInv(node: peca2)
         CasesPositions(node: peca2)
-        
       } else {
         buttonsCofre.append(button)
         self.addChild(buttonsCofre[i])

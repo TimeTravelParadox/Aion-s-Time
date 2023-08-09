@@ -7,6 +7,8 @@
 
 import Foundation
 
+
+// Define uma enumeração para representar as diferentes chaves do UserDefaults.
 enum UserDefaultsKey: String, CaseIterable {
     case peca1Taken
     case takenPaper
@@ -23,7 +25,9 @@ enum UserDefaultsKey: String, CaseIterable {
 class UserDefaultsManager {
     // MARK: - Singleton Pattern
     
-    static let shared = UserDefaultsManager() //tem que ser a unica instancia da classe UserDefaultsManager
+    // Instância única da classe UserDefaultsManager usando o padrão Singleton.
+    static let shared = UserDefaultsManager()
+    
     
     var peca1Taken: Bool {
         get {
@@ -125,7 +129,8 @@ class UserDefaultsManager {
         }
     }
     
-    private init() {} // Private initializer to enforce singleton pattern
+    // Construtor privado para garantir que não possam ser criadas outras instâncias.
+    private init() {}
     
     // MARK: - Properties
     
@@ -133,18 +138,22 @@ class UserDefaultsManager {
     
     // MARK: - Public Methods
     
-    func saveValue(_ value: Any, forKey key: String) { //salvar
+    /// Função para salvar um novo valor na chave especificada.
+    func saveValue(_ value: Any, forKey key: String) {
         userDefaults.set(value, forKey: key)
     }
     
-    func getValue(forKey key: String) -> Any? { //acessar o valor
+    /// Função para obter o valor armazenado na chave especificada.
+    func getValue(forKey key: String) -> Any? {
         return userDefaults.object(forKey: key)
     }
     
-    func removeValue(forKey key: String) { //remover o valor
+    /// Função para remover o valor associado à chave especificada.
+    func removeValue(forKey key: String) {
         userDefaults.removeObject(forKey: key)
     }
     
+    /// Função para remover todos os valores armazenados nas chaves enumeradas.
     func removeAllValues() {
         UserDefaultsKey.allCases.forEach { userDefaultsKey in
             removeValue(forKey: userDefaultsKey.rawValue)

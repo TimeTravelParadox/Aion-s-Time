@@ -22,8 +22,9 @@
 		3715AEFE2A776A800011EA6A /* zoomSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3715AEED2A776A800011EA6A /* zoomSound.mp3 */; };
 		3715AEFF2A776A800011EA6A /* gavetaAbrindo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3715AEEE2A776A800011EA6A /* gavetaAbrindo.mp3 */; };
 		3715AF002A776A800011EA6A /* clockOpeningSFX.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3715AEEF2A776A800011EA6A /* clockOpeningSFX.mp3 */; };
-		3715AF022A776B7B0011EA6A /* traveling.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3715AF012A776B7B0011EA6A /* traveling.mp3 */; };
 		3715AF042A776C310011EA6A /* backToQG.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3715AF032A776C310011EA6A /* backToQG.mp3 */; };
+		3715AF062A797CAE0011EA6A /* traveling.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3715AF052A797CAE0011EA6A /* traveling.mp3 */; };
+		37832DEB2A8166DD001A68D9 /* FiraCode-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 37832DEA2A8166DD001A68D9 /* FiraCode-SemiBold.ttf */; };
 		379B545A2A60F40A00F10217 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B54592A60F40A00F10217 /* HUD.swift */; };
 		379B545C2A60F41500F10217 /* HUDScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 379B545B2A60F41500F10217 /* HUDScene.sks */; };
 		379B545E2A60F42500F10217 /* QGScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 379B545D2A60F42500F10217 /* QGScene.sks */; };
@@ -44,12 +45,14 @@
 		9B82F4DB2A5C6EB400BC66F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B82F4DA2A5C6EB400BC66F2 /* Assets.xcassets */; };
 		9B82F4DE2A5C6EB400BC66F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B82F4DC2A5C6EB400BC66F2 /* LaunchScreen.storyboard */; };
 		9B8F40612A657D4E0009567B /* Computer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8F40602A657D4E0009567B /* Computer.swift */; };
+		9B9F48B22A82B92700C3CD90 /* FiraSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B9F48B12A82B92700C3CD90 /* FiraSans-Bold.ttf */; };
 		9BEB80272A670C0F00352220 /* Hologram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB80262A670C0F00352220 /* Hologram.swift */; };
 		9BEB80292A670C1800352220 /* Vault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB80282A670C1800352220 /* Vault.swift */; };
 		9BEB802C2A670E7E00352220 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB802B2A670E7E00352220 /* Buttons.swift */; };
 		9BEB803A2A68694600352220 /* Fade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB80392A68694600352220 /* Fade.swift */; };
 		9BEB803C2A68695300352220 /* Fade.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9BEB803B2A68695300352220 /* Fade.sks */; };
 		9BEFB3AA2A754EC2007A8B05 /* Orbitron-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9BEFB3A92A754EC2007A8B05 /* Orbitron-Regular.ttf */; };
+		C046943C2A797791007DCCBE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C046943E2A797791007DCCBE /* Localizable.strings */; };
 		C55C13392A5C792300334DD8 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55C13382A5C792300334DD8 /* Future.swift */; };
 		C55C133B2A5C792E00334DD8 /* Past.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55C133A2A5C792E00334DD8 /* Past.swift */; };
 		C55C133D2A5C795B00334DD8 /* QG.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55C133C2A5C795B00334DD8 /* QG.swift */; };
@@ -77,8 +80,9 @@
 		3715AEED2A776A800011EA6A /* zoomSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = zoomSound.mp3; sourceTree = "<group>"; };
 		3715AEEE2A776A800011EA6A /* gavetaAbrindo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gavetaAbrindo.mp3; sourceTree = "<group>"; };
 		3715AEEF2A776A800011EA6A /* clockOpeningSFX.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clockOpeningSFX.mp3; sourceTree = "<group>"; };
-		3715AF012A776B7B0011EA6A /* traveling.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = traveling.mp3; sourceTree = "<group>"; };
 		3715AF032A776C310011EA6A /* backToQG.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backToQG.mp3; sourceTree = "<group>"; };
+		3715AF052A797CAE0011EA6A /* traveling.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = traveling.mp3; sourceTree = "<group>"; };
+		37832DEA2A8166DD001A68D9 /* FiraCode-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraCode-SemiBold.ttf"; sourceTree = "<group>"; };
 		379B54592A60F40A00F10217 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		379B545B2A60F41500F10217 /* HUDScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HUDScene.sks; sourceTree = "<group>"; };
 		379B545D2A60F42500F10217 /* QGScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = QGScene.sks; sourceTree = "<group>"; };
@@ -101,12 +105,18 @@
 		9B82F4DA2A5C6EB400BC66F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B82F4DD2A5C6EB400BC66F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B8F40602A657D4E0009567B /* Computer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Computer.swift; sourceTree = "<group>"; };
+		9B96B6EA2A83C4A7001B30DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9B9F48B12A82B92700C3CD90 /* FiraSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraSans-Bold.ttf"; sourceTree = "<group>"; };
 		9BEB80262A670C0F00352220 /* Hologram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hologram.swift; sourceTree = "<group>"; };
 		9BEB80282A670C1800352220 /* Vault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vault.swift; sourceTree = "<group>"; };
 		9BEB802B2A670E7E00352220 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		9BEB80392A68694600352220 /* Fade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fade.swift; sourceTree = "<group>"; };
 		9BEB803B2A68695300352220 /* Fade.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fade.sks; sourceTree = "<group>"; };
 		9BEFB3A92A754EC2007A8B05 /* Orbitron-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Orbitron-Regular.ttf"; sourceTree = "<group>"; };
+		C04694382A797769007DCCBE /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
+		C04694392A797769007DCCBE /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		C046943D2A797791007DCCBE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C046943F2A797796007DCCBE /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		C55C13382A5C792300334DD8 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		C55C133A2A5C792E00334DD8 /* Past.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Past.swift; sourceTree = "<group>"; };
 		C55C133C2A5C795B00334DD8 /* QG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QG.swift; sourceTree = "<group>"; };
@@ -150,7 +160,7 @@
 		377D8C3C2A5C7192008C6355 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
-				3715AF012A776B7B0011EA6A /* traveling.mp3 */,
+				3715AF052A797CAE0011EA6A /* traveling.mp3 */,
 				3715AEEF2A776A800011EA6A /* clockOpeningSFX.mp3 */,
 				3715AF032A776C310011EA6A /* backToQG.mp3 */,
 				3715AEE42A776A7D0011EA6A /* cofreAbrindo.mp3 */,
@@ -240,6 +250,8 @@
 		37CAE7DD2A6F9436000CCCC7 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				9B9F48B12A82B92700C3CD90 /* FiraSans-Bold.ttf */,
+				37832DEA2A8166DD001A68D9 /* FiraCode-SemiBold.ttf */,
 				9BEFB3A92A754EC2007A8B05 /* Orbitron-Regular.ttf */,
 				37CAE7DE2A6F9444000CCCC7 /* SpecialElite-Regular.ttf */,
 			);
@@ -294,6 +306,7 @@
 				9BEB803B2A68695300352220 /* Fade.sks */,
 				C57FFAD22A6B37160016ED74 /* InventoryItemDelegate.swift */,
 				C5DD537A2A6B0F74005C4CF1 /* ItemDetail.swift */,
+				C046943E2A797791007DCCBE /* Localizable.strings */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -359,6 +372,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = 9B82F4C12A5C6EB200BC66F2;
 			productRefGroup = 9B82F4CB2A5C6EB200BC66F2 /* Products */;
@@ -375,22 +389,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B9F48B22A82B92700C3CD90 /* FiraSans-Bold.ttf in Resources */,
 				379B54622A60F43B00F10217 /* FutureScene.sks in Resources */,
 				9B82F4D92A5C6EB200BC66F2 /* Main.storyboard in Resources */,
 				3715AEFC2A776A800011EA6A /* deleting.mp3 in Resources */,
-				3715AF022A776B7B0011EA6A /* traveling.mp3 in Resources */,
+				3715AF062A797CAE0011EA6A /* traveling.mp3 in Resources */,
 				3715AEF42A776A800011EA6A /* grabbing.mp3 in Resources */,
 				3715AEF02A776A800011EA6A /* ding.mp3 in Resources */,
 				9B82F4D02A5C6EB200BC66F2 /* GameScene.sks in Resources */,
 				9B0AB76F2A755EEB00E8B5C3 /* Creditos.sks in Resources */,
 				3715AEFD2A776A800011EA6A /* pastST.mp3 in Resources */,
 				379B54602A60F42D00F10217 /* PastScene.sks in Resources */,
+				37832DEB2A8166DD001A68D9 /* FiraCode-SemiBold.ttf in Resources */,
 				3715AF042A776C310011EA6A /* backToQG.mp3 in Resources */,
 				3715AEFE2A776A800011EA6A /* zoomSound.mp3 in Resources */,
 				3715AEFB2A776A800011EA6A /* QGST.mp3 in Resources */,
 				9B82F4DB2A5C6EB400BC66F2 /* Assets.xcassets in Resources */,
 				9BEFB3AA2A754EC2007A8B05 /* Orbitron-Regular.ttf in Resources */,
 				3715AEF12A776A800011EA6A /* futureST.mp3 in Resources */,
+				C046943C2A797791007DCCBE /* Localizable.strings in Resources */,
 				3715AEF92A776A800011EA6A /* escolhaDaSenha.mp3 in Resources */,
 				3715AEF82A776A800011EA6A /* typing.mp3 in Resources */,
 				3715AEFF2A776A800011EA6A /* gavetaAbrindo.mp3 in Resources */,
@@ -447,6 +464,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				9B82F4D82A5C6EB200BC66F2 /* Base */,
+				C04694382A797769007DCCBE /* pt-BR */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -455,8 +473,19 @@
 			isa = PBXVariantGroup;
 			children = (
 				9B82F4DD2A5C6EB400BC66F2 /* Base */,
+				C04694392A797769007DCCBE /* pt-BR */,
+				9B96B6EA2A83C4A7001B30DC /* en */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		C046943E2A797791007DCCBE /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C046943D2A797791007DCCBE /* en */,
+				C046943F2A797796007DCCBE /* pt-BR */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -466,6 +495,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -526,6 +556,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -583,17 +614,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = K559Z2V9Q2;
+				DEVELOPMENT_TEAM = W7CBBM6Z28;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TimeTravelParadox/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Aion's Time";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -617,17 +647,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = K559Z2V9Q2;
+				DEVELOPMENT_TEAM = W7CBBM6Z28;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TimeTravelParadox/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Aion's Time";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

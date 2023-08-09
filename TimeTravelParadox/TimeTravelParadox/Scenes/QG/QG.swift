@@ -100,6 +100,8 @@ class QG: SKNode{
     analiseLinhaTemporal?.fontSize = 6
     analiseLinhaTemporal?.fontName = "FiraCode-SemiBold"
     
+    self.display?.isUserInteractionEnabled = false
+    
     // roda a animacao da tela de displays
     self.run(SKAction.wait(forDuration: 1)) {
       self.display?.isHidden = false
@@ -132,6 +134,7 @@ class QG: SKNode{
         }
       }
     }
+    display?.isUserInteractionEnabled = true
   }
   
   required init?(coder aDecoder: NSCoder) {

@@ -18,6 +18,7 @@ class HUD: SKNode, ToggleTravel{
   var itemSelecionado : SKSpriteNode?
   
   var reset: SKSpriteNode?
+    var resetLabel: SKLabelNode?
   
   var peca1: SKSpriteNode?
   var peca2: SKSpriteNode?
@@ -43,16 +44,22 @@ class HUD: SKNode, ToggleTravel{
       
       fundoBotaoViajar = hud.childNode(withName: "fundoBotaoViajar") as? SKSpriteNode
       fundoBotaoViajar?.removeFromParent()
+        
+      resetLabel = hud.childNode(withName: "resetLabel") as? SKLabelNode
+      resetLabel?.removeFromParent()
       
     }
-    if let travel, let qgButton, let inventarioHUD, let reset, let fadeHUD, let fundoBotaoViajar {
+    if let travel, let qgButton, let inventarioHUD, let reset, let fadeHUD, let fundoBotaoViajar, let resetLabel{
       self.addChild(travel)
       self.addChild(qgButton)
       self.addChild(inventarioHUD)
       self.addChild(reset)
       self.addChild(fadeHUD)
       self.addChild(fundoBotaoViajar)
+      self.addChild(resetLabel)
     }
+      resetLabel?.fontName = "FiraCode-SemiBold"
+      resetLabel?.text = NSLocalizedString("reset", comment: "")
     
   }
   
@@ -107,6 +114,7 @@ class HUD: SKNode, ToggleTravel{
   ///            - false: O botão de resetar será exibido.
   func hideResetButton(isHide: Bool){
     reset?.isHidden = isHide
+      resetLabel?.isHidden = isHide
   }
   
   /// Oculta ou exibe o botão de viajar entre as eras do jogo

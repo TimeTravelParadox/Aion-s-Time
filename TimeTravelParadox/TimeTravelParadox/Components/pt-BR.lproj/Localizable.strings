@@ -7,18 +7,29 @@
 */
 
 "dialogueQG01" = "Não é uma missão de correção. O infrator do tempo não faz parte da equipe de monitoramento?";
+
 "dialogueQG02" = "É alguém que tem acesso a viagem no tempo e não faz parte dos funcionários da Aion.";
+
 "dialogueQG03" = "Essa é a primeira vez que esse tipo de ocorrência aparece em anos.";
+
 "dialogueMirror" = "Ainda não me acostumei com esse novo uniforme.";
+
 "dialoguePolaroid01" = "Será que essas pessoas estão envolvidas com o responsável por essa infração?";
+
 "dialoguePolaroid02" = "Esse horário é digital, não pertence a essa época.";
+
 "dialogueTypemachine" = "Essa pessoa certamente está envolvida com a nossa empresa.";
+
 "dialogueClock" = "Talvez eu deva ver as coisas em outro ponto de vista.";
+
 "dialogueHologram01" = "O-O que eu estou fazendo nesse cartaz?";
+
 "dialogueHologram02" = "Não parece ser desse ano, esse idioma se tornou oficial apenas em 2530.";
+
 "dialogueHologram03" = "O infrator do tempo me conhece?";
 
 "missao01" = "Missão 01";
+
 "texto1" = "Irregularidades foram detectadas na linha temporal. Os anos de 1940 e 2040 apresentam anomalias que podem causar danos no tecido temporal.
 ";
 "texto2" = "Evidências apontam que existe um viajante irregular por trás das anomalias, investigue sua origem para que possamos prender o infrator temporal.
@@ -27,7 +38,7 @@
 ";
 "novaMissao" = "Nova Missão";
 "iniciarMissao" = "INICIAR MISSÃO";
-"emAndamento" = "MISSÃO EM ANDAMENTO ...";
+"emAndamento" = "MISSÃO EM ANDAMENTO...";
 "viagemDisponivel" = "VIAGEM DISPONÍVEL";
 "preparando" = "PREPARANDO VIAGEM";
 

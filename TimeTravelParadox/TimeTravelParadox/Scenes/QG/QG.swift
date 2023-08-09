@@ -113,6 +113,7 @@ class QG: SKNode{
           
           self.novaMissao?.isHidden = false
           self.novaMissao?.text = NSLocalizedString("emAndamento", comment: "tela missao em andamento")
+          self.novaMissao?.position = CGPoint(x: -28, y: 13)
           self.novaMissao?.fontColor = .green
           self.novaMissao?.fontSize = 15
           self.novaMissao?.fontName = "FiraCode-SemiBold"
@@ -212,6 +213,7 @@ class QG: SKNode{
         display?.texture = SKTexture(imageNamed: "display26")
         
         novaMissao?.text = NSLocalizedString("iniciarMissao", comment: "botao de iniciar missao")
+        novaMissao?.position = CGPoint(x: -28, y: 10)
         novaMissao?.fontColor = .black
         novaMissao?.fontSize = 15
         novaMissao?.fontName = "FiraCode-SemiBold"

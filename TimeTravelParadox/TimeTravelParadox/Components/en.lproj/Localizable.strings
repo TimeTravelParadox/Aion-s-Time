@@ -6,25 +6,40 @@
   
 */
 
-"dialogueQG01" = "Not a fix mission. Is the time offender not part of the monitoring team?";
-"dialogueQG02" = "This is someone who has access to time travel and is not an Aion employee.";
+"dialogueQG01" = "It's not a fix mission. Isn't the time offender part of the monitoring team?";
+
+"dialogueQG02" = "It's someone who has access to time travel and is not part of Aion's employees.";
+
 "dialogueQG03" = "This is the first time this type of occurrence has appeared in years.";
+
 "dialogueMirror" = "I still can't get used to this new uniform.";
+//I haven't gotten used to this new uniform yet.
+
 "dialoguePolaroid01" = "Are these people involved with the person responsible for this infraction?";
-"dialoguePolaroid02" = "This time is digital, it does not belong to this era.";
+
+"dialoguePolaroid02" = "This schedule is digital, it does not belong to this era.";
+
 "dialogueTypemachine" = "This person is certainly involved with our company.";
+
 "dialogueClock" = "Perhaps I should see things from another point of view.";
+
 "dialogueHologram01" = "W-What am I doing on this poster?";
-"dialogueHologram02" = "It doesn't seem to be from this year, this language only became official in 2530.";
+
+"dialogueHologram02" = "It doesn't seem to be from this year, this language became official only in 2530.";
+
 "dialogueHologram03" = "Does the time offender know me?";
 
 "missao01" = "Mission 01";
-"texto1" = "Irregularities were detected in the timeline. The 1940s and 2040s feature anomalies that may cause temporal tissue damage.";
+
+"texto1" = "Irregularities were detected in the timeline. The 1940s and 2040s present anomalies that can cause damage to the temporal tissue.";
+
 "texto2" = "Evidence indicates that there is an irregular traveler behind the anomalies, investigate their origin so that we can arrest the time offender.";
+
 "texto3" = "If you accept this mission, your task is to find and correct the irregularities before there is greater damage to the timeline.";
+
 "novaMissao" = "New Mission";
 "iniciarMissao" = "START MISSION";
-"emAndamento" = "MISSION IN PROGRESS ...";
+"emAndamento" = "MISSION IN PROGRESS...";
 "viagemDisponivel" = "TRAVEL AVAILABLE";
 "preparando" = "PREPARING TRAVEL";
 

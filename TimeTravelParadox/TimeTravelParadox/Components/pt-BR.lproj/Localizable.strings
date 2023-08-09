@@ -44,6 +44,16 @@
 
 "analiseLinhaTemporal" = "Análise de linha temporal";
 
+"specialThanks" = "Esse jogo foi desenvolvido na Apple Developer Academy da Universidade
+ Católica de Brasília com o suporte incrível de excepcionais mentores.
+                Agradecemos toda dedicação e auxílio.";
+"thanks" = "Agradecimentos especiais";
+"credit" = "Créditos";
+"mission" = "Missão Concluída!";
+"emBreve" = "Você será convidado para novas missões em breve!";
+"reset" = "Reiniciar";
+
+
 //"preparando1" = "PREPARANDO VIAGEM .";
 //"preparando2" = "PREPARANDO VIAGEM ..";
 //"preparando3" = "PREPARANDO VIAGEM ...";

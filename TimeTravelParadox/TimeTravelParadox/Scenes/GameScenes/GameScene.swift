@@ -470,7 +470,7 @@ class GameScene: SKScene, ZoomProtocol, CallDialogue{
                 
             }
             
-        case "reset":
+        case "reset", "resetLabel":
             
             UserDefaultsManager.shared.removeAllValues()
             let cenaReset = SKScene(fileNamed: "GameScene")

@@ -45,6 +45,13 @@
 
 "analiseLinhaTemporal" = "Timeline analysis";
 
+"specialThanks" = "This game was developed at the Apple Developer Academy at the University Católica de Brasília with the incredible support of exceptional mentors. We appreciate all the dedication and help.";
+"thanks" = "Special thanks";
+"credit" = "Credits";
+"mission" = "Mission Completed!";
+"emBreve" = "You will be invited to new quests soon!";
+"reset" = "Reset";
+
 //"preparando1" = "PREPARING TRAVEL .";
 //"preparando2" = "PREPARING TRAVEL ..";
 //"preparando3" = "PREPARING TRAVEL ...";
